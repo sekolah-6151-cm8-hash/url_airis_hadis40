@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIRIS HADIS 40</title>
 
-    <!-- PAUTAN UTAMA (Tukar link di bawah ke URL Web baharu bila dah siap nanti) -->
-    <meta http-equiv="refresh" content="0; https://youtu.be/TEnJgWLI-os?si=L-41lAThOOCqZulS">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,6 +19,37 @@
         .loading-box {
             text-align: center;
             padding: 20px;
+            max-width: 90%;
+        }
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        /* Paparan Peratusan */
+        .percent {
+            font-size: 28px;
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+        /* Bar Kemajuan (Progress Bar) */
+        .progress-bg {
+            width: 200px;
+            height: 8px;
+            background-color: #eeeeee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto 15px auto;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background-color: #0066cc;
+            transition: width 0.02s linear;
+        }
+        p {
+            font-size: 0.9rem;
+            color: #666666;
         }
         a {
             color: #0066cc;
@@ -32,7 +60,38 @@
 <body>
     <div class="loading-box">
         <h2>Memindahkan ke Platform AIRIS HADIS 40...</h2>
+        
+        <!-- Indicator Peratus & Bar -->
+        <div class="percent" id="percentText">0%</div>
+        <div class="progress-bg">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
         <p>Jika halaman tidak bertukar secara automatik, <a href="https://youtu.be/TEnJgWLI-os?si=L-41lAThOOCqZulS">klik di sini</a>.</p>
     </div>
+
+    <script>
+        // PAUTAN UTAMA (Ubah link di sini bila ada URL baharu)
+        const targetURL = "https://youtu.be/TEnJgWLI-os?si=L-41lAThOOCqZulS";
+
+        let progress = 0;
+        const percentText = document.getElementById("percentText");
+        const progressBar = document.getElementById("progressBar");
+
+        // Masa transit (setiap 20ms tambah 1% = mengambil masa ~2 saat)
+        const timer = setInterval(() => {
+            progress += 1;
+
+            if (progress > 100) progress = 100;
+
+            percentText.innerText = progress + "%";
+            progressBar.style.width = progress + "%";
+
+            if (progress >= 100) {
+                clearInterval(timer);
+                window.location.href = targetURL; // Terus buka link YouTube/Website
+            }
+        }, 20);
+    </script>
 </body>
 </html>
