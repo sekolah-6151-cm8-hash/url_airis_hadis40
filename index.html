@@ -8,6 +8,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://i.ytimg.com">
 <title>Platform Hadis 40 Imam Nawawi | Briged Shabab An-Nawawi • SMKA Al-Irshad</title>
+<link rel="icon" type="image/png" href="logo_briged_shabab_an-nawawi.png">
+<link rel="apple-touch-icon" href="logo_briged_shabab_an-nawawi.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -311,14 +313,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
    ========================================================= */
 .vidzone{position:relative;isolation:isolate;margin-top:calc(var(--n) * -1);padding-bottom:calc(var(--n) + 8px);color:#fff;overflow:hidden}
 .vz-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;background:var(--blue-dd);clip-path:polygon(0 0,min(380px,90%) 0,calc(min(380px,90%) + var(--n)) var(--n),100% var(--n),100% 100%,0 100%)}
-.vz-bg video{position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(14px) saturate(1.2)}
+.vz-bg video{position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(2.5px) saturate(1.12)}
 .vz-fx{position:absolute;inset:0}
-.vz-fx i{position:absolute;width:55vw;height:55vw;max-width:700px;max-height:700px;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
+.vz-fx i{position:absolute;width:55vw;height:55vw;max-width:700px;max-height:700px;border-radius:50%;filter:blur(70px);opacity:.18;animation:drift 22s ease-in-out infinite alternate}
 .vz-fx i:nth-child(1){background:#5aa0ff;left:-10%;top:-20%}
 .vz-fx i:nth-child(2){background:var(--blue);right:-15%;top:20%;animation-duration:28s;animation-delay:-8s}
 .vz-fx i:nth-child(3){background:#1c4fc4;left:25%;bottom:-30%;animation-duration:32s;animation-delay:-14s}
 @keyframes drift{to{transform:translate(18vw,10vh) scale(1.2)}}
-.vz-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,119,254,.72),rgba(14,63,166,.8))}
+.vz-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,34,96,.38),rgba(14,63,166,.48))}
 .sec-testi{--twd:380px;margin-top:0;padding-bottom:calc(var(--n) + 4px);padding-top:14px}
 .sec-testi .sec-bg{display:none}
 .mq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
@@ -850,7 +852,7 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   .icards{grid-template-columns:repeat(3,76%);overflow-x:auto;scroll-snap-type:x mandatory;padding:0 0 18px;margin-right:calc(var(--pad) * -1);padding-right:var(--pad);filter:none;scrollbar-width:none}
   .icards::-webkit-scrollbar{display:none}
   .icards .icard{scroll-snap-align:center;filter:drop-shadow(6px 6px 0 var(--yellow))}
-  .hdr-mid{display:none}
+  /* .hdr-mid stays visible */
   .grid6{grid-template-columns:repeat(4,1fr);gap:14px}
   .grid6>*,.grid6.g-5>:nth-child(4),.grid6.g-2>:nth-child(1),.grid6>:last-child:nth-child(3n+1){grid-column:span 2}
   .grid6>:last-child:nth-child(odd){grid-column:2/span 2}
@@ -1202,7 +1204,7 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .sv-done p{font-size:13px;color:var(--ink);line-height:1.45}
 
 @media (max-width:720px){
-  .hdr-mob-sub{display:block}
+  /* no hdr-mob-sub */
   .kgrid.kgrid-6{grid-template-columns:repeat(2,1fr);grid-auto-rows:120px}
   .kgrid.kgrid-6 .k1,.kgrid.kgrid-6 .k2,.kgrid.kgrid-6 .k3,.kgrid.kgrid-6 .k4,.kgrid.kgrid-6 .k5,.kgrid.kgrid-6 .k6{grid-area:auto}
   .tk-wrap{grid-template-columns:1fr;max-height:88dvh;overflow-y:auto}
@@ -1219,11 +1221,10 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 
 
 /* =========================================================
-   17. NATURAL (kurangkan kesan berlebihan, lebih tulen)
+   17. PENYELARASAN REKA BENTUK TULEN & KEMAS KINI TERKINI
    ========================================================= */
 .ghost,.ic-status,.pcard-tag,.sec-ropix-sub{display:none !important}
-.tk-particles,.tk-mandala,.wpop-aura,.wpop-slash{display:none !important}
-.tk-noor{opacity:.35}
+.wpop-aura,.wpop-slash{display:none !important}
 .hero-plate{filter:drop-shadow(5px 5px 0 var(--yellow))}
 .grid6{filter:drop-shadow(4px 4px 0 var(--yellow))}
 .hdr-in{background:var(--blue) !important}
@@ -1232,10 +1233,64 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .on-blue .sec-title{text-shadow:none}
 #boot .sk{display:none}
 #boot .sk-note{top:50%;bottom:auto;transform:translateY(-50%);font-size:12px;letter-spacing:.2em;opacity:.8}
-@media(min-width:900px){
-  .grid6>:nth-child(3n+2){margin-top:20px}
-  .grid6>:nth-child(3n){margin-top:8px}
+
+/* 1) Header tunggal tanpa kotak biru tua kedua di bawah */
+.hdr-mob-sub{display:none !important}
+.hdr-mid{display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:0;overflow:hidden}
+@media (max-width:900px){
+  .hdr-in{padding:0 16px;gap:6px}
+  .slash{display:none}
+  .hdr-mid-t{font-size:clamp(10px,2.4vw,13px);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .hdr-mid-s{font-size:clamp(8px,1.9vw,10px);letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 }
+@media (max-width:520px){
+  .logo{width:28px;height:28px}
+  .soc{width:28px;height:28px}.soc svg{width:14px;height:14px}
+  .hdr-logos,.hdr-soc{gap:4px}
+}
+
+/* 2) Butang Tokoh Inspirasi Kami (gaya tulen selaras btn-skew) & Modal boleh skrol/seret */
+.btn-tokoh{
+  display:inline-flex;align-items:center;justify-content:center;gap:16px;
+  padding:13px 36px;background:var(--blue);color:#fff;border:2.5px solid var(--ink);
+  clip-path:polygon(18px 0,100% 0,calc(100% - 18px) 100%,0 100%);
+  filter:drop-shadow(5px 5px 0 var(--yellow));transition:background .22s,color .22s,transform .22s;
+}
+.btn-tokoh:hover{background:var(--yellow);color:var(--ink);transform:translateY(-3px)}
+.btn-tokoh:hover .btn-tokoh-txt strong,.btn-tokoh:hover .btn-tokoh-txt span,.btn-tokoh:hover .btn-tokoh-arr{color:var(--ink)}
+.btn-tokoh-txt{text-align:left;line-height:1.2}
+.btn-tokoh-txt strong{display:block;font:700 clamp(15px,1.8vw,19px) var(--ff-h);letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.btn-tokoh-txt span{display:block;font:600 11.5px var(--ff-h);letter-spacing:.1em;color:var(--yellow);margin-top:2px}
+.btn-tokoh-arr{font:700 28px/1 var(--ff-h);color:var(--yellow)}
+
+.mdl.tokoh-mdl{width:min(1000px,96vw);height:min(640px,86dvh);max-height:86dvh;overflow:hidden;display:flex;flex-direction:column}
+.tk-wrap{display:grid;grid-template-columns:38% 62%;grid-template-rows:minmax(0,1fr);height:100%;max-height:100%;min-height:0;width:100%;overflow:hidden}
+.tk-left{min-height:0;height:100%;justify-content:center;padding:20px 14px}
+.tk-noor{opacity:.9 !important}
+.tk-mandala{display:grid !important;opacity:.22}
+.tk-particles{display:block !important}
+.tk-figure{width:min(270px,86%);margin:0 auto}
+.tk-right{display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden}
+.tk-head{flex:0 0 auto}
+.tk-scroll{flex:1 1 auto;min-height:0;overflow-y:auto !important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;cursor:grab;padding:16px 22px 28px}
+.tk-scroll:active{cursor:grabbing}
+@media (max-width:760px){
+  .mdl.tokoh-mdl{height:auto;max-height:88dvh;overflow-y:auto !important;display:block}
+  .tk-wrap{display:flex;flex-direction:column;height:auto;max-height:none;overflow:visible}
+  .tk-left{min-height:270px;height:auto;padding:20px 14px 16px}
+  .tk-figure{width:min(210px,68%)}
+  .tk-right{height:auto;overflow:visible}
+  .tk-scroll{overflow:visible !important;height:auto;max-height:none}
+}
+
+/* 3) Kader: buang nombor belakang gambar & buang kotak bingkai pada keliling kader / dalam kotak pelajar */
+.kcard-no,.kmbr-no,.kf-mini-no{display:none !important}
+.k25-group,.k24-panel{background:transparent !important;border:0 !important;box-shadow:none !important;padding:0 !important;clip-path:none !important}
+.kcard-box-plate{filter:none !important}
+.kcard-box{background:transparent !important;padding:0 !important;clip-path:none !important}
+.kcard-in.slot,.kmbr-box.slot,.kf-mini.slot{background:transparent !important;border:0 !important;box-shadow:none !important;clip-path:none !important}
+.kmbr-box,.kf-mini{border:0 !important;box-shadow:none !important;background:transparent !important}
+.kcard-in img,.kmbr-box img,.kf-mini img{object-fit:contain !important;object-position:center bottom !important;filter:drop-shadow(0 4px 8px rgba(10,34,96,.18))}
 </style>
 </head>
 <body>
@@ -1286,10 +1341,6 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
     </div>
 
     <span class="slash r" aria-hidden="true"><i></i><i></i></span>
-  </div>
-  <div class="hdr-mob-sub">
-    <strong>Platform Hadis 40 Imam Nawawi</strong>
-    <span>Briged Shabab An-Nawawi &bull; SMKA Al-Irshad &bull; Penang</span>
   </div>
 </header>
 
@@ -1342,13 +1393,11 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   <!-- BUTANG TOKOH INSPIRASI KAMI (HADAPAN / UTAMA) -->
   <section class="tokoh-band" aria-label="Tokoh Inspirasi Kami">
     <button type="button" class="btn-tokoh" id="btnTokoh" aria-label="Kenali Tokoh Inspirasi Kami - Imam An-Nawawi">
-      <span class="btn-tokoh-ico" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M12 3l2.2 4.8L19 9.5l-3.6 3.5.9 5-4.3-2.4-4.3 2.4.9-5L5 9.5l4.8-1.7z"/><circle cx="12" cy="12" r="9.5" opacity=".35"/></svg>
-      </span>
       <span class="btn-tokoh-txt">
         <strong>Tokoh Inspirasi Kami</strong>
-        <span>Kenali Imam An-Nawawi R.A. &bull; #hadis40dihatiku</span>
+        <span>Imam An-Nawawi R.A. &bull; #hadis40dihatiku</span>
       </span>
+      <span class="btn-tokoh-arr" aria-hidden="true">&rsaquo;</span>
     </button>
   </section>
 
@@ -1494,12 +1543,8 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
     <div class="wrap">
       <div class="inov-banner-plate">
         <div class="inov-banner">
-          <div class="inov-banner-in slot" style="background:radial-gradient(circle at 50% 45%,#2877fe 0%,#0a2260 85%);display:flex;align-items:center;justify-content:center;gap:18px;padding:18px">
-            <img src="Universe_ropix_logo.PNG" alt="Logo RoPix Universe" style="width:auto;height:78%;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))" loading="lazy" decoding="async">
-            <div style="text-align:left;color:#fff;z-index:2">
-              <div style="font:700 clamp(22px,4.5vw,52px)/1 var(--ff-h);letter-spacing:.08em;text-shadow:4px 4px 0 var(--ink);-webkit-text-stroke:1.4px var(--ink);paint-order:stroke fill">ROPIX UNIVERSE</div>
-              <div style="margin-top:6px;display:inline-block;padding:4px 12px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);font:700 clamp(10px,1.2vw,13px) var(--ff-h);letter-spacing:.14em;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)">HAB INOVASI DIGITAL HADIS 40</div>
-            </div>
+          <div class="inov-banner-in slot">
+            <img src="shabab_an-nawawi_brigade_banner.jpg" alt="Briged Shabab An-Nawawi Banner" style="width:100%;height:100%;object-fit:cover;display:block" decoding="async">
           </div>
         </div>
       </div>
@@ -1911,7 +1956,7 @@ const CFG = {
       key:'ipg', lokasi:'IPG Tuanku Bainon, Bukit Mertajam, Pulau Pinang', short:'2. IPG Tuanku Bainon',
       nama:'Pameran Briged Shabab An-Nawawi',
       tarikh:'9 April 2026, Khamis',
-      vvip:'ENCIK MOHAMED ZAMRI BIN BASIR, Ketua Penolong Pengarah, Sektor Pembangunan Program Adab dan Nilai, Bahagian Pendidikan Islam, KPM',
+      vvip:'ENCIK MOHAMED ZAMRI BIN BASIR, Ketua Penolong Pengarah, Sektor, Pembangunan Program Adab dan Nilai, Bahagian Pendidikan Islam, KPM',
       perihal:'Pengiktirafan berterusan, pasukan kami menerima jemputan rasmi untuk mengadakan pameran khas bagi mempamerkan keunikan inovasi ini.',
       drive:'https://drive.google.com/drive/folders/1BaKi3c6VcKainxpJWdWt7w8ogioLWFWr',
       imgs: localP('kembara/ipg', 5, FALLBACK_GALLERY)
@@ -1929,8 +1974,8 @@ const CFG = {
       key:'smka', lokasi:'SMKA Sheikh Tahir Jalaluddin, Bukit Mertajam, Pulau Pinang', short:'4. SMKA Sheikh Tahir',
       nama:'Majlis Perasmian Sekolah Menengah Kebangsaan Agama Sheikh Tahir Jalaluddin',
       tarikh:'25 Julai 2026, Sabtu',
-      vvip:"YAB Dato' Seri Anwar bin Ibrahim, PMX & YB Datuk Seri Fadhlina Binti Sidek, Menteri Pendidikan Malaysia",
-      perihal:'Detik bersejarah yang menjadi pemangkin semangat apabila inovasi kami diberi pengiktirafan serta peluang berprestij untuk melangkah ke pentas peringkat kebangsaan.',
+      vvip:"YAB Dato' Seri Anwar bin Ibrahim , PMX & YB Datuk Seri Fadhlina Binti Sidek, Menteri Pendidikan Malaysia",
+      perihal:'Detik bersejarah buat pasukan kami apabila inovasi ini menerima pengiktirafan dan tawaran rasmi untuk berentap di pentas peringkat kebangsaan.',
       drive:'https://drive.google.com/drive/folders/1-zm-oNcX1Ary-LyD5a3zP-KvKwexpjdA',
       imgs: localP('kembara/smka', 5, ['2hero.png','1hero.jpg','3hero.jpeg','herob_2(1).jpeg','herob_2(2).jpeg'])
     },
@@ -1944,11 +1989,11 @@ const CFG = {
       imgs: localP('kembara/mufti', 5, ['1hero.jpg','3hero.jpeg','2hero.png','herob_2(2).jpeg','herob_2(3).jpeg'])
     },
     {
-      key:'pis', lokasi:'Politeknik Ibrahim Sultan, Pasir Gudang, Johor', short:'6. PIS Johor Bahru',
+      key:'pis', lokasi:'Politeknik Ibrahim Sultan, Pasir Gudang, Johor', short:'6. Politeknik Ibrahim Sultan',
       nama:'Karnival Jejak Imam Nawawi Kebangsaan 2026',
       tarikh:'14 November 2026, Sabtu',
       vvip:'',
-      perihal:'Kemuncak pameran di pentas kebangsaan.',
+      perihal:'',
       shieldText:'14 NOVEMBER 2026',
       shieldSub:'Karnival Jejak Imam Nawawi Kebangsaan 2026',
       drive:'https://drive.google.com/drive/folders/1NoK_CXISbi8E9xifJzF2bNE4RXtraTHj',
@@ -1963,7 +2008,7 @@ const CFG = {
       shieldText:'AKAN DATANG',
       shieldSub:'Karnival Penghayatan Hadis 40 Imam Nawawi Peringkat Negeri 2026',
       drive:'https://drive.google.com/drive/folders/1qvb8ARrL8BqD9lihawOS2aHlarbBcqZ0',
-      imgs: localP('kembara/fahim', 5, FALLBACK_GALLERY)
+      imgs: []
     }
   ],
 
@@ -2035,8 +2080,8 @@ const CFG = {
     },
     {
       logo:'Universe_ropix_logo.PNG', status:'', title:'Buku Hafalan Hadis 40 : RoPix',
-      img: BOOK_ROPIX_URI, btn:'HAFAZ', noInfo:true,
-      link:'https://drive.google.com/drive/folders/15Cv9OVnn00EKRwrJ3_Mls7U56K_bwP1O'
+      img:'cover_buku_irsyad.jpg', fallbackImg: BOOK_ROPIX_URI, btn:'HAFAZ', noInfo:true,
+      link:'https://drive.google.com/file/d/1jXhI6RlEOf_Nschz5koBLxNyRgpqc_9F/view?usp=sharing'
     }
   ],
 
@@ -2044,13 +2089,13 @@ const CFG = {
   karyaKhas: [
     {
       logo:'logo_irshad.png', status:'POPULAR', title:"Buku Hafalan Hadis 40 : Irsyadus Solihin Fi Hifzil Arba'in",
-      img:'https://drive.google.com/thumbnail?id=1LzJU6raatrlNp0eWWWHEZPOTc06Fc_8l&sz=w800', fallbackImg: BOOK_IRSYAD_URI,
+      img:'cover_buku_irsyad.jpg', fallbackImg: BOOK_IRSYAD_URI,
       btn:'HAFAZ', noInfo:true,
       link:'https://drive.google.com/file/d/1LzJU6raatrlNp0eWWWHEZPOTc06Fc_8l/view?usp=sharing'
     },
     {
       logo:'logo_briged_shabab_an-nawawi.png', status:'', title:'Galeri Hadis An-Nawawi',
-      img: CANVA_GAL_URI, btn:'TEROKA', noInfo:true,
+      img:'shabab_an-nawawi_brigade_banner.jpg', fallbackImg: CANVA_GAL_URI, btn:'TEROKA', noInfo:true,
       link:'https://cartaorgirshad.my.canva.site/galeri-hadis-an-nawawi'
     },
     {
@@ -2216,7 +2261,7 @@ const CFG = {
            perihal:'Tinggal di Lorong Cempaka yang sering dipenuhi dengan pergaduhan yang mengakibatkan suasana tidak tenang. Memohon anda untuk meleraikan pergaduhan dan memberi pengajaran tentang Hadis 16 [Hadis Marah].' },
         { nama:'Ustaz Mursyid', img:'Ustaz_Mursyid.png', popImg:'Ustaz_Mursyid.png', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Memohon anda mengalihkan kayu pokok yang tumbang akibat ribut yang berlaku supaya dapat menggunakan jalan hutan dan mengingatkan bahawa mengalihkan perkara di jalan juga sedekah yang berkait dengan Hadis 26 [Hadis Sedekah].' },
-        { nama:'Ustaz Fuad', img:'Ustaz_Fuad.png', fallbackImg:'army/TN HAJI MUHAMMAD FUAD BIN HUSIN.png', popImg:'army/TN HAJI MUHAMMAD FUAD BIN HUSIN.png', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustaz Fuad', img:'USTAZ_FUAD_ROBLOX.jpg', fallbackImg:'USTAZ_FUAD_ROBLOX.jpg', popImg:'USTAZ_FUAD_ROBLOX.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Menunggu anda di kaki Gunung Ilham setelah anda mengalihkan kayu di jalan. Memohon anda menghantar Kitab Hadis 40 kepada Ustazah Yusny di puncak Gunung Ilham dan mengajar ilmu tentang Hadis 36 [Hadis memudahkan urusan].' },
         { nama:'Ustazah Yusny', img:'Ustazah_Yusny.png', popImg:'Ustazah_Yusny.png', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Berada di puncak Gunung Ilham dan menerima Kitab Hadis 40 daripada anda dan memberikan soalan mengenai Hadis 2 [Hadis Islam, Iman dan Ihsan].' }
@@ -2355,14 +2400,14 @@ const hdr=$('#hdr');
    ===================================================================== */
 function openTokohModal(){
   const w = el('div','tk-wrap');
-  const particles = Array.from({length:14}, (_,i)=>
-    `<i style="--lx:${10 + (i*6.2)%80}%;--d:${5.2 + (i%4)*1.3}s;--dl:${-(i*0.65).toFixed(2)}s"></i>`
+  const particles = Array.from({length:12}, (_,i)=>
+    `<i style="--lx:${10 + (i*7.1)%80}%;--d:${5.2 + (i%4)*1.3}s;--dl:${-(i*0.65).toFixed(2)}s"></i>`
   ).join('');
 
   w.innerHTML = `
     <div class="tk-left">
       <div class="tk-mandala" aria-hidden="true">
-        <svg viewBox="0 0 200 200" fill="none" stroke="#ffc720" stroke-width="1.2">
+        <svg viewBox="0 0 200 200" fill="none" stroke="#ffc720" stroke-width="1.3">
           <g transform="translate(100,100)">
             <rect x="-58" y="-58" width="116" height="116" transform="rotate(0)"/>
             <rect x="-58" y="-58" width="116" height="116" transform="rotate(45)"/>
@@ -2376,45 +2421,57 @@ function openTokohModal(){
       <div class="tk-noor" aria-hidden="true"></div>
       <div class="tk-particles" aria-hidden="true">${particles}</div>
 
-      <!-- Ilustrasi Silhouette Tokoh Tanpa Wajah 3/4 + Kitab + Kilauan Qalam -->
-      <div class="tk-figure" aria-label="Ilustrasi tokoh ulama tanpa wajah dalam limpahan cahaya ilmu">
+      <!-- Ilustrasi Tokoh Ulama Tanpa Wajah (Jelas & Berkontras Tinggi) + Kitab + Qalam -->
+      <div class="tk-figure" aria-label="Ilustrasi tokoh ulama tanpa wajah sedang menulis kitab">
         <svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#fff7d6"/>
-              <stop offset="45%" stop-color="#ffc720"/>
-              <stop offset="100%" stop-color="#0b2468"/>
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="50%" stop-color="#ffc720"/>
+              <stop offset="100%" stop-color="#e6a800"/>
             </linearGradient>
             <linearGradient id="robe" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#102d7c"/>
-              <stop offset="55%" stop-color="#071847"/>
-              <stop offset="100%" stop-color="#030b24"/>
+              <stop offset="0%" stop-color="#2b6ef2"/>
+              <stop offset="55%" stop-color="#1545b5"/>
+              <stop offset="100%" stop-color="#0b256e"/>
+            </linearGradient>
+            <linearGradient id="turban" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="65%" stop-color="#fff3cc"/>
+              <stop offset="100%" stop-color="#f2d279"/>
+            </linearGradient>
+            <linearGradient id="faceSil" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f5dec0"/>
+              <stop offset="100%" stop-color="#d4b082"/>
             </linearGradient>
           </defs>
           <!-- Bayang bawah -->
-          <ellipse cx="142" cy="276" rx="102" ry="12" fill="rgba(0,0,0,0.45)"/>
-          <!-- Jubah Utama Duduk Bersila (3/4 pandangan) -->
-          <path d="M56 266 C48 232, 62 178, 86 146 C96 132, 118 124, 138 126 C166 128, 186 150, 200 184 L216 254 C216 268, 194 274, 152 274 C104 274, 62 272, 56 266 Z" fill="url(#robe)" stroke="url(#rim)" stroke-width="2.2"/>
-          <!-- Lipatan Serban & Leher / Rida' -->
-          <path d="M88 136 C114 148, 146 152, 168 136 C160 176, 154 205, 166 238 C144 218, 116 218, 92 246 C92 200, 86 164, 88 136 Z" fill="#0d2970" stroke="#ffc720" stroke-width="1.4" opacity="0.9"/>
-          <!-- Bentuk Kepala Tanpa Wajah (3/4 Sisi) -->
-          <path d="M104 82 C104 60, 144 60, 148 84 C150 96, 148 112, 136 122 C122 130, 108 120, 104 102 Z" fill="#05133a" stroke="#ffc720" stroke-width="1.8"/>
-          <!-- Serban Berlapis Bertatah Garisan Emas -->
-          <path d="M90 76 C84 52, 106 32, 134 34 C156 36, 168 56, 160 76 C148 84, 110 86, 90 76 Z" fill="#0e2c7a" stroke="#ffc720" stroke-width="2.2"/>
-          <path d="M92 64 Q125 50 158 64 M95 52 Q125 40 153 52" fill="none" stroke="rgba(255,199,32,0.55)" stroke-width="1.8"/>
+          <ellipse cx="142" cy="276" rx="104" ry="13" fill="rgba(4,15,51,0.55)"/>
           <!-- Ekor Serban di Belakang -->
-          <path d="M92 78 C80 96, 76 124, 86 146 C94 128, 98 106, 100 84 Z" fill="#0a2260" stroke="#ffc720" stroke-width="1.5"/>
-          <!-- Lengan Kanan & Kitab Hadis Terbuka -->
-          <path d="M138 148 L184 182 L176 202 L126 176 Z" fill="#0b2466" stroke="#ffc720" stroke-width="1.5"/>
-          <!-- Rehal & Kitab -->
-          <path d="M150 226 L186 246 L232 222 M190 220 L186 246" fill="none" stroke="#ffc720" stroke-width="3" stroke-linecap="round"/>
-          <path d="M148 214 L190 202 L238 212 L226 232 L188 222 L156 232 Z" fill="#fffaf0" stroke="#ffc720" stroke-width="2"/>
-          <path d="M190 202 L188 222" stroke="#0a2260" stroke-width="1.6"/>
+          <path d="M90 78 C76 98, 72 126, 82 150 C92 132, 98 108, 100 84 Z" fill="url(#turban)" stroke="#0a2260" stroke-width="2"/>
+          <!-- Jubah Utama Duduk Bersila (3/4 pandangan) -->
+          <path d="M52 266 C44 230, 60 174, 86 142 C96 128, 118 122, 140 124 C168 126, 188 148, 202 184 L218 254 C218 268, 194 275, 152 275 C102 275, 58 272, 52 266 Z" fill="url(#robe)" stroke="url(#rim)" stroke-width="2.8"/>
+          <!-- Rida' / Selendang Bahu Putih-Emas -->
+          <path d="M88 134 C114 148, 146 152, 168 134 C160 176, 154 206, 166 240 C144 220, 116 220, 92 248 C92 200, 86 164, 88 134 Z" fill="url(#turban)" stroke="#ffc720" stroke-width="2"/>
+          <!-- Bentuk Kepala & Janggut Tanpa Wajah (Siluet Kemas 3/4) -->
+          <path d="M104 80 C104 58, 146 58, 150 84 C152 98, 150 116, 138 128 C124 138, 108 124, 104 102 Z" fill="url(#faceSil)" stroke="#0a2260" stroke-width="2"/>
+          <!-- Janggut Siluet Kemas -->
+          <path d="M114 114 C122 122, 138 122, 148 110 C146 128, 136 140, 126 140 C116 140, 112 128, 114 114 Z" fill="#182a54"/>
+          <!-- Serban Berlapis Putih-Emas -->
+          <path d="M88 76 C82 50, 106 30, 134 32 C158 34, 170 54, 162 76 C148 86, 108 86, 88 76 Z" fill="url(#turban)" stroke="#0a2260" stroke-width="2.4"/>
+          <path d="M92 63 Q126 48 158 63 M96 50 Q126 38 154 50" fill="none" stroke="#d99b00" stroke-width="2"/>
+          <!-- Lengan Kanan & Tangan Menulis -->
+          <path d="M136 148 L186 180 L176 202 L124 176 Z" fill="#1f5cd6" stroke="#ffc720" stroke-width="2"/>
+          <circle cx="185" cy="187" r="7" fill="url(#faceSil)" stroke="#0a2260" stroke-width="1.6"/>
+          <!-- Rehal Kayu Berukir Emas & Kitab Terbuka -->
+          <path d="M148 228 L186 248 L234 224 M190 220 L186 248" fill="none" stroke="#ffc720" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M146 214 L190 200 L240 212 L228 234 L188 222 L154 234 Z" fill="#ffffff" stroke="#0a2260" stroke-width="2.2"/>
+          <path d="M190 200 L188 222" stroke="#d99b00" stroke-width="2"/>
           <!-- Pena Qalam & Kilauan Cahaya -->
-          <path d="M188 182 L212 162 L217 167 L193 187 Z" fill="#ffc720"/>
+          <path d="M184 184 L214 156 L220 162 L190 190 Z" fill="#ffc720" stroke="#0a2260" stroke-width="1.4"/>
           <g class="tk-nib-spark" fill="#fff">
             <path d="M194 181 L196 191 L206 193 L196 195 L194 205 L192 195 L182 193 L192 191 Z" fill="#ffc720"/>
-            <circle cx="194" cy="193" r="3" fill="#ffffff"/>
+            <circle cx="194" cy="193" r="3.2" fill="#ffffff"/>
           </g>
         </svg>
       </div>
@@ -2431,7 +2488,7 @@ function openTokohModal(){
         </div>
       </div>
 
-      <div class="tk-scroll">
+      <div class="tk-scroll" id="tkScrollBox" tabindex="0">
         <div class="tk-pills">
           <span>Lahir: 11 Muharam 631 H</span>
           <span>Asal: Nawa, Damsyiq, Syam</span>
@@ -2478,6 +2535,26 @@ function openTokohModal(){
       </div>
     </div>
   `;
+
+  // Sokongan seret (drag-to-scroll) dengan tetikus & sentuhan pada ruangan biodata
+  const sc = $('#tkScrollBox', w);
+  if(sc){
+    let isDown=false, startY=0, startTop=0;
+    sc.addEventListener('pointerdown', e=>{
+      if(e.pointerType==='touch') return; // sentuhan guna native touch scroll
+      isDown=true; startY=e.clientY; startTop=sc.scrollTop;
+      sc.style.cursor='grabbing';
+    });
+    window.addEventListener('pointermove', e=>{
+      if(!isDown) return;
+      sc.scrollTop = startTop - (e.clientY - startY);
+    });
+    window.addEventListener('pointerup', ()=>{
+      if(!isDown) return;
+      isDown=false; sc.style.cursor='grab';
+    });
+  }
+
   DashTracker.logVisit('utama','open_tokoh_nawawi');
   openModal(w,'tokoh-mdl');
 }
@@ -2642,7 +2719,7 @@ function openProgram(i){
   if(p.shieldText){
     const wrap=el('div','shield-wrap');
     const blurDiv=el('div','shield-blur');
-    blurDiv.appendChild(gallery(p.imgs, null));
+    blurDiv.appendChild(gallery(p.imgs && p.imgs.length ? p.imgs : FALLBACK_GALLERY, p.drive));
     blurDiv.insertAdjacentHTML('beforeend',`<div class="info">
       <div>${p.tarikh?`<div class="row"><b>Tarikh</b><p>${esc(p.tarikh)}</p></div>`:''}${p.perihal?`<div class="row"><p>${esc(p.perihal)}</p></div>`:''}</div>
       <div><div class="row"><b>Lokasi</b><p>${esc(p.lokasi)}</p></div></div></div>`);
@@ -2806,7 +2883,7 @@ function openKaderModal(k){
   const renderMember=m=>{
     const hasL=isReal(m.link);
     const inner=`<div class="kmbr-box slot">
-        <span class="kmbr-no">${esc(String(m.no))}</span>
+        
         ${makeImgHtml(m.img, m.nama)}
         ${socialBadgeHtml(m.link)}
       </div>
@@ -2891,10 +2968,13 @@ function openKaderModal(k){
     const pulse=mk('circle',{'class':'pin-pulse',cx:x,cy:y,r:10,'vector-effect':'non-scaling-stroke'});
     const dot=mk('circle',{'class':'dotp','vector-effect':'non-scaling-stroke'});
     const ic=mk('g',{'class':'icon'});
-    ic.innerHTML='<circle class="ring" cx="0" cy="-14" r="10"/><path class="body" d="M0 0C-6-9-12-14-12-21A12 12 0 1 1 12-21C12-14 6-9 0 0Z"/><text x="0" y="-16.5">'+(i+1)+'</text>';
+    ic.innerHTML='<circle class="hit" cx="0" cy="-14" r="20" fill="transparent"/><circle class="ring" cx="0" cy="-14" r="10" pointer-events="none"/><path class="body" d="M0 0C-6-9-12-14-12-21A12 12 0 1 1 12-21C12-14 6-9 0 0Z"/><text x="0" y="-16.5">'+(i+1)+'</text>';
     g.append(leader,pulse,dot,ic);pinsG.appendChild(g);
     const o={p,i,x,y,g,leader,pulse,dot,ic};
-    g.addEventListener('click',()=>{if(moved)return;openProgram(i)});
+    let pinDownX=0,pinDownY=0;
+    g.addEventListener('pointerdown',e=>{pinDownX=e.clientX;pinDownY=e.clientY;e.stopPropagation()});
+    g.addEventListener('pointerup',e=>{if(Math.hypot(e.clientX-pinDownX,e.clientY-pinDownY)<14){e.stopPropagation();openProgram(i)}});
+    g.addEventListener('click',e=>{e.stopPropagation();if(!moved)openProgram(i)});
     g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openProgram(i)}});
     g.addEventListener('pointerenter',()=>showTip(o));g.addEventListener('pointerleave',hideTip);
     g.addEventListener('focus',()=>showTip(o));g.addEventListener('blur',hideTip);
@@ -2941,7 +3021,7 @@ function openKaderModal(k){
         // Susun kipas berombak + garisan hitam tegas ke titik koordinat tepat
         const ox=fan?(k-(n-1)/2)*42/sc:0;
         const oy=fan?(-32 - (k%2)*22)/sc:0;
-        o.ic.style.transform=`translate(${o.x+ox}px,${o.y+oy}px) scale(${1/sc})`;
+        o.ic.setAttribute('transform',`translate(${o.x+ox} ${o.y+oy}) scale(${1/sc})`);o.ic.style.transform='';
         o.leader.setAttribute('x1',o.x);o.leader.setAttribute('y1',o.y);o.leader.setAttribute('x2',o.x+ox);o.leader.setAttribute('y2',o.y+oy);
         o.dot.setAttribute('cx',o.x);o.dot.setAttribute('cy',o.y);o.dot.setAttribute('r',4.2/sc);
         o.pulse.setAttribute('r',12/sc);
@@ -3041,7 +3121,7 @@ function openKaderModal(k){
       const infoBtn = single ? '' : `<button class="ic-info" data-info="${i}" aria-label="Info ${esc(c.title)}">i</button>`;
       const mainAttrs = isScroll ? `href="#koleksi" data-scroll-koleksi="1"` : (isYt ? `href="#" data-yt-modal="${i}"` : `href="${esc(c.link)}" target="_blank" rel="noopener noreferrer"`);
       return `<article class="icard fr" style="--bw:0px;cursor:pointer" data-i="${i}">
-        <div class="ic-img slot">${makeImgHtml(c.img,c.title,false)}</div>
+        <div class="ic-img slot">${makeImgHtml(c.fallbackImg?{img:c.img,fallbackImg:c.fallbackImg}:c.img,c.title,false)}</div>
         <span class="ic-logo slot" style="pointer-events:none">${img(c.logo,'Logo')}</span>
         ${stHtml}
         <div class="ic-foot"><h3>${esc(c.title)}</h3><div class="ic-btns ${single?'single':''}">
@@ -3250,7 +3330,7 @@ function openKaderModal(k){
     const inner=`<div class="kcard-box-plate">
         <div class="kcard-box">
           <div class="kcard-in slot">
-            <span class="kcard-no">${esc(String(p.no))}</span>
+            
             ${makeImgHtml(p.img,p.nama)}
             ${hasL?socialBadgeHtml(p.link):''}
           </div>
@@ -3283,7 +3363,7 @@ function openKaderModal(k){
   // Hanya bina kotak untuk ahli sebenar yang mempunyai nombor (tiada lagi kotak kosong!)
   function renderKaderUnit2026(k,idx){
     const ahli=k.ahli||[];
-    const shown = ahli.slice(0,8).map(m=>`<div class="kf-mini slot"><span class="kf-mini-no">${esc(String(m.no))}</span>${makeImgHtml(m.img,m.nama)}</div>`).join('');
+    const shown = ahli.slice(0,8).map(m=>`<div class="kf-mini slot">${makeImgHtml(m.img,m.nama)}</div>`).join('');
     const extra=Math.max(0,ahli.length-8);
     const plusHtml=extra>0?`<span class="kf-plus">+${extra}</span>`:'';
     return `<div class="kunit">
