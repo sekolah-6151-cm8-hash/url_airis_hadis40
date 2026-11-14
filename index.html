@@ -1289,11 +1289,17 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 /* 3) Kader: buang nombor belakang gambar & buang kotak bingkai pada keliling kader / dalam kotak pelajar */
 .kcard-no,.kmbr-no,.kf-mini-no{display:none !important}
 .k25-group,.k24-panel{background:transparent !important;border:0 !important;box-shadow:none !important;padding:0 !important;clip-path:none !important}
-.kcard-box-plate{filter:none !important}
-.kcard-box{background:transparent !important;padding:0 !important;clip-path:none !important}
+.kcard-box-plate{filter:none !important;width:100%}
+.kcard-box{background:transparent !important;padding:0 !important;clip-path:none !important;position:relative;width:100%;aspect-ratio:1/1}
 .kcard-in.slot,.kmbr-box.slot,.kf-mini.slot{background:transparent !important;border:0 !important;box-shadow:none !important;clip-path:none !important}
-.kmbr-box,.kf-mini{border:0 !important;box-shadow:none !important;background:transparent !important}
-.kcard-in img,.kmbr-box img,.kf-mini img{object-fit:contain !important;object-position:center bottom !important;filter:drop-shadow(0 4px 8px rgba(10,34,96,.18))}
+.kmbr-box{border:0 !important;box-shadow:none !important;background:transparent !important;position:relative !important;width:100% !important;aspect-ratio:1/1 !important;min-height:76px;display:block !important}
+.kf-mini{border:0 !important;box-shadow:none !important;background:transparent !important;position:relative !important;width:100% !important;height:100% !important;min-height:0 !important;display:block !important}
+.kfolder{position:relative !important;width:100% !important;aspect-ratio:1/1 !important;display:block !important;cursor:pointer !important;pointer-events:auto !important}
+.kfolder-in{position:absolute !important;inset:3px !important;width:auto !important;height:auto !important;display:grid !important;grid-template-columns:repeat(3,1fr) !important;grid-template-rows:repeat(3,1fr) !important;gap:6px !important;align-content:stretch !important;align-items:stretch !important}
+.kf-expand{grid-column:3 !important;grid-row:3 !important;position:relative !important;z-index:6 !important;width:100% !important;height:100% !important;cursor:pointer !important;pointer-events:auto !important;display:grid !important;place-items:center !important}
+.kf-expand *{pointer-events:none !important}
+.kcard-in img,.kmbr-box img{position:relative !important;width:100% !important;height:100% !important;aspect-ratio:1/1 !important;object-fit:contain !important;object-position:center bottom !important;filter:drop-shadow(0 4px 8px rgba(10,34,96,.18));display:block !important}
+.kf-mini img{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;object-fit:contain !important;object-position:center bottom !important;filter:drop-shadow(0 3px 6px rgba(10,34,96,.16));display:block !important}
 </style>
 </head>
 <body>
@@ -3363,7 +3369,7 @@ function openKaderModal(k){
     `;
   }
 
-  // Hanya bina kotak untuk ahli sebenar yang mempunyai nombor (tiada lagi kotak kosong!)
+  // Hanya bina kotak untuk ahli sebenar (tiada lagi kotak kosong!)
   function renderKaderUnit2026(k,idx){
     const ahli=k.ahli||[];
     const shown = ahli.slice(0,8).map(m=>`<div class="kf-mini slot">${makeImgHtml(m.img,m.nama)}</div>`).join('');
@@ -3373,15 +3379,15 @@ function openKaderModal(k){
       <div class="kunit-title">${esc(k.namaKader)}</div>
       <div class="kunit-dirs">${(k.directors||[]).map(renderStudentCard).join('')}</div>
       <div class="kfolder-plate">
-        <button type="button" class="kfolder" data-kidx="${idx}" aria-label="Buka senarai ahli ${esc(k.namaKader)} (${ahli.length} ahli)">
+        <div role="button" tabindex="0" class="kfolder" data-kidx="${idx}" aria-label="Buka senarai ahli ${esc(k.namaKader)} (${ahli.length} ahli)">
           <div class="kfolder-in">
             ${shown}
-            <div class="kf-expand" title="Klik untuk lihat semua ahli ${esc(k.namaKader)}">
+            <div class="kf-expand" data-kidx="${idx}" title="Klik untuk lihat semua ahli ${esc(k.namaKader)}">
               ${expandSvg}
               ${plusHtml}
             </div>
           </div>
-        </button>
+        </div>
       </div>
     </div>`;
   }
@@ -3464,11 +3470,13 @@ function openKaderModal(k){
   if(prevBtn)prevBtn.addEventListener('click',()=>{const i=YEARS.indexOf(curYr);renderYear(YEARS[(i-1+YEARS.length)%YEARS.length],true)});
   if(nextBtn)nextBtn.addEventListener('click',()=>{const i=YEARS.indexOf(curYr);renderYear(YEARS[(i+1)%YEARS.length],true)});
   if(pelajarRoot){
-    pelajarRoot.addEventListener('click',e=>{
-      const f=e.target.closest('.kfolder');if(!f)return;
+    const trigKader=e=>{
+      const f=e.target.closest('[data-kidx]');if(!f)return;
       const k=K.y2026&&K.y2026.kaders&&K.y2026.kaders[+f.dataset.kidx];
       if(k)openKaderModal(k);
-    });
+    };
+    pelajarRoot.addEventListener('click',trigKader);
+    pelajarRoot.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const f=e.target.closest('[data-kidx]');if(f){e.preventDefault();trigKader(e)}}});
   }
   window.resetKaderYear=()=>{if(curYr!==2026)renderYear(2026,false)};
   renderYear(2026,false);
