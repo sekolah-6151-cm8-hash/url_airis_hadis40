@@ -1234,13 +1234,16 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 #boot .sk{display:none}
 #boot .sk-note{top:50%;bottom:auto;transform:translateY(-50%);font-size:12px;letter-spacing:.2em;opacity:.8}
 
-/* 1) Header tunggal tanpa kotak biru tua kedua di bawah */
+/* 1) Header tunggal tanpa kotak biru tua kedua di bawah + Lencana V.Beta */
 .hdr-mob-sub{display:none !important}
 .hdr-mid{display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:0;overflow:hidden}
+.hdr-mid-t{display:inline-flex;align-items:center;justify-content:center;gap:7px;max-width:100%}
+.hdr-beta{display:inline-block;padding:2px 8px;background:var(--yellow);color:var(--ink);border:1.5px solid var(--ink);font:700 clamp(9px,1vw,11px)/1.1 var(--ff-h);letter-spacing:.08em;text-transform:none;clip-path:polygon(4px 0,100% 0,calc(100% - 4px) 100%,0 100%);text-shadow:none;flex:none}
 @media (max-width:900px){
   .hdr-in{padding:0 16px;gap:6px}
   .slash{display:none}
-  .hdr-mid-t{font-size:clamp(10px,2.4vw,13px);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .hdr-mid-t{font-size:clamp(10px,2.4vw,13px);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;gap:5px}
+  .hdr-beta{padding:1.5px 6px;font-size:clamp(8px,1.8vw,10px)}
   .hdr-mid-s{font-size:clamp(8px,1.9vw,10px);letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 }
 @media (max-width:520px){
@@ -1330,7 +1333,7 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
     </div>
 
     <div class="hdr-mid">
-      <strong class="hdr-mid-t">Platform Hadis 40 Imam Nawawi</strong>
+      <strong class="hdr-mid-t"><span>Platform Hadis 40 Imam Nawawi</span><span class="hdr-beta">V.Beta</span></strong>
       <span class="hdr-mid-s">Briged Shabab An-Nawawi &bull; SMKA Al-Irshad &bull; Penang</span>
     </div>
 
