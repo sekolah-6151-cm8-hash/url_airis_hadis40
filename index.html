@@ -1301,34 +1301,61 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .kcard-in img,.kmbr-box img{position:relative !important;width:100% !important;height:100% !important;aspect-ratio:1/1 !important;object-fit:contain !important;object-position:center bottom !important;filter:drop-shadow(0 4px 8px rgba(10,34,96,.18));display:block !important}
 .kf-mini img{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;object-fit:contain !important;object-position:center bottom !important;filter:drop-shadow(0 3px 6px rgba(10,34,96,.16));display:block !important}
 
-/* 4) Notis baik pulih & acara akan datang */
-.maint-wrap{width:min(1380px,100% - 2*var(--pad) - 12px);margin:0 auto 18px;filter:drop-shadow(4px 4px 0 var(--yellow))}
-.maint-bar{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;background:#fff;border:2.5px solid var(--ink);padding:11px 18px;
-  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
-.maint-info{display:flex;align-items:center;gap:12px;flex:1 1 320px;min-width:0}
-.maint-tag{flex:none;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);padding:4px 12px;font:700 11px/1.1 var(--ff-h);letter-spacing:.12em;text-transform:uppercase;
-  clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%)}
-.maint-txt{font-size:13.5px;line-height:1.45;color:var(--ink);font-weight:500}
+/* 4) Notis baik pulih sentiasa di atas skrin + simbol sedang dibaiki + kelip2 kuning + acara akan datang */
+:root{--maint:48px}
+@keyframes maintYellowBlink{
+  0%,100%{background:var(--yellow);border-color:var(--ink);box-shadow:0 0 0 0 rgba(255,199,32,.65)}
+  50%{background:#fff0a6;border-color:#d99b00;box-shadow:0 0 10px 2px rgba(255,199,32,.55)}
+}
+@keyframes maintDotBlink{
+  0%,100%{background:var(--yellow);opacity:1;transform:scale(1)}
+  50%{background:#fff3b0;opacity:.35;transform:scale(.78)}
+}
+.maint-wrap{position:fixed;top:0;left:0;right:0;z-index:1250;width:100%;margin:0;background:#fff;border-bottom:3px solid var(--yellow);box-shadow:0 4px 14px rgba(10,34,96,.16)}
+.maint-wrap::after{content:"";display:block;height:2px;background:var(--ink)}
+.maint-bar{width:min(1380px,100% - 2*var(--pad));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;padding:6px 0}
+.maint-info{display:flex;align-items:center;gap:9px;flex:1 1 300px;min-width:0}
+.maint-ico{flex:none;width:28px;height:28px;display:grid;place-items:center;background:var(--ink);color:var(--yellow);border:2px solid var(--ink);
+  clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.maint-ico svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.maint-tag{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);padding:3px 10px;
+  font:700 10.5px/1.1 var(--ff-h);letter-spacing:.1em;text-transform:uppercase;
+  clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);animation:maintYellowBlink 1.3s ease-in-out infinite}
+.maint-dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);border:1.5px solid var(--ink);flex:none;animation:maintDotBlink 1s ease-in-out infinite}
+.maint-txt{font-size:12.5px;line-height:1.35;color:var(--ink);font-weight:500;min-width:0}
 .maint-txt strong{font-weight:700;color:var(--blue-dd)}
-.maint-cd{display:flex;align-items:center;gap:5px;flex:none}
-.maint-box{display:flex;flex-direction:column;align-items:center;min-width:46px;background:var(--sky);border:2px solid var(--ink);padding:4px 7px;
+.maint-cd{display:flex;align-items:center;gap:4px;flex:none}
+.maint-box{display:flex;align-items:baseline;gap:3px;background:var(--sky);border:1.8px solid var(--ink);padding:3px 7px;
   clip-path:polygon(5px 0,100% 0,100% calc(100% - 5px),calc(100% - 5px) 100%,0 100%,0 5px)}
-.maint-box b{font:700 17px/1.05 var(--ff-h);font-variant-numeric:tabular-nums;color:var(--blue-dd)}
-.maint-box span{font:600 9.5px/1.1 var(--ff-h);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-top:2px}
-.maint-sep{font:700 16px/1 var(--ff-h);font-style:normal;color:var(--blue-d)}
+.maint-box b{font:700 14px/1 var(--ff-h);font-variant-numeric:tabular-nums;color:var(--blue-dd)}
+.maint-box span{font:600 9px/1 var(--ff-h);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.maint-sep{font:700 13px/1 var(--ff-h);font-style:normal;color:var(--blue-d)}
+#hdr{top:calc(var(--maint,48px) + 8px) !important}
+#hdr.hide{transform:translateY(calc(-100% - var(--maint,48px) - 24px)) !important}
+.hero-zone{padding-top:calc(var(--hdr) + var(--maint,48px) + 24px) !important}
+.inov-hero-zone{padding-top:calc(var(--hdr) + var(--maint,48px) + 28px) !important}
+.watak-top{padding-top:calc(var(--hdr) + var(--maint,48px) + clamp(14px,2.2vw,24px)) !important}
+.kader-page-wrap{padding-top:calc(var(--hdr) + var(--maint,48px) + clamp(14px,2vw,24px)) !important}
+.kader-float-bar{top:calc(var(--hdr) + var(--maint,48px) + 10px) !important}
+body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,48px) + 10px) !important}
 .upcoming-badge{display:inline-block;margin:0 auto 14px;padding:6px 22px;background:var(--yellow);color:var(--ink);border:2.5px solid var(--ink);
   font:700 clamp(12px,1.5vw,15px) var(--ff-h);letter-spacing:.18em;text-transform:uppercase;
   clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:4px 4px 0 rgba(10,34,96,.28)}
 #countdown .band-title{max-width:30ch}
 .band-sub.band-sub-mb0{margin-bottom:0}
 @media (max-width:720px){
-  .maint-wrap{margin-bottom:14px}
-  .maint-bar{padding:10px 14px;gap:10px}
-  .maint-info{flex-direction:column;align-items:flex-start;gap:6px;flex-basis:100%}
-  .maint-txt{font-size:12.5px}
-  .maint-cd{width:100%;justify-content:center}
-  .maint-box{flex:1;min-width:0;padding:4px}
-  .maint-box b{font-size:15px}
+  :root{--maint:64px}
+  .maint-bar{width:calc(100% - 16px);padding:6px 0;gap:5px}
+  .maint-info{gap:6px;flex-basis:100%}
+  .maint-ico{width:24px;height:24px}
+  .maint-ico svg{width:13px;height:13px}
+  .maint-tag{padding:2px 7px;font-size:9.5px;gap:4px}
+  .maint-dot{width:6px;height:6px}
+  .maint-txt{font-size:11.5px;line-height:1.28}
+  .maint-cd{width:100%;justify-content:center;gap:4px}
+  .maint-box{flex:1;justify-content:center;min-width:0;padding:3px 4px}
+  .maint-box b{font-size:13px}
+  .maint-box span{font-size:8.5px}
 }
 </style>
 </head>
@@ -1356,6 +1383,28 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 <audio id="bgm" loop preload="metadata">
   <source src="Briged_Syabab%20Nawawi_Song_Lofi.mpeg" type="audio/mpeg">
 </audio>
+
+<!-- ===================== NOTIS BAIK PULIH SENTIASA DI ATAS ===================== -->
+<div class="maint-wrap" id="maintWrap" role="status" aria-live="polite">
+  <div class="maint-bar" id="maintBar">
+    <div class="maint-info">
+      <span class="maint-ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </span>
+      <span class="maint-tag"><i class="maint-dot" aria-hidden="true"></i><span>SEDANG DIBAIKI</span></span>
+      <p class="maint-txt">Laman web sedang dibaik pulih, siap pada <strong>18 Nov 2026, 2:00 pagi</strong>.</p>
+    </div>
+    <div class="maint-cd" aria-label="Kira detik siap dibaiki">
+      <div class="maint-box"><b id="mtD">00</b><span>Hari</span></div>
+      <i class="maint-sep">:</i>
+      <div class="maint-box"><b id="mtH">00</b><span>Jam</span></div>
+      <i class="maint-sep">:</i>
+      <div class="maint-box"><b id="mtM">00</b><span>Minit</span></div>
+      <i class="maint-sep">:</i>
+      <div class="maint-box"><b id="mtS">00</b><span>Saat</span></div>
+    </div>
+  </div>
+</div>
 
 <!-- ===================== HEADER ===================== -->
 <header id="hdr" class="hdr-wrap">
@@ -1391,23 +1440,6 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 
   <!-- HERO BANNER (3 SLAID) -->
   <section class="hero-zone" id="hero-zone" aria-label="Hero banner">
-    <div class="maint-wrap">
-      <div class="maint-bar" id="maintBar" role="status" aria-live="polite">
-        <div class="maint-info">
-          <span class="maint-tag">NOTIS KEMAS KINI</span>
-          <p class="maint-txt">Laman web ini sedang dibaik pulih dan dijangka siap sepenuhnya pada <strong>18 November 2026, pukul 2:00 pagi</strong>.</p>
-        </div>
-        <div class="maint-cd" aria-label="Kira detik siap dibaiki">
-          <div class="maint-box"><b id="mtD">00</b><span>Hari</span></div>
-          <i class="maint-sep">:</i>
-          <div class="maint-box"><b id="mtH">00</b><span>Jam</span></div>
-          <i class="maint-sep">:</i>
-          <div class="maint-box"><b id="mtM">00</b><span>Minit</span></div>
-          <i class="maint-sep">:</i>
-          <div class="maint-box"><b id="mtS">00</b><span>Saat</span></div>
-        </div>
-      </div>
-    </div>
     <div class="hero-plate">
       <div class="hero" id="hero">
 
@@ -2609,6 +2641,13 @@ $('#btnTokoh').addEventListener('click', openTokohModal);
    PEMASA KIRA DETIK NOTIS BAIK PULIH (18 NOV 2026, 2:00 PAGI)
    ===================================================================== */
 (function(){
+  const mw=$('#maintWrap');
+  const syncMaintH=()=>{if(mw)document.documentElement.style.setProperty('--maint',mw.offsetHeight+'px')};
+  syncMaintH();
+  if('ResizeObserver' in window&&mw)new ResizeObserver(syncMaintH).observe(mw);
+  addEventListener('resize',syncMaintH);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(syncMaintH);
+
   const target=new Date(CFG.target).getTime();
   const E={d:$('#mtD'),h:$('#mtH'),m:$('#mtM'),s:$('#mtS')},last={};
   if(!E.d||!E.h||!E.m||!E.s)return;
