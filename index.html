@@ -1300,6 +1300,36 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .kf-expand *{pointer-events:none !important}
 .kcard-in img,.kmbr-box img{position:relative !important;width:100% !important;height:100% !important;aspect-ratio:1/1 !important;object-fit:contain !important;object-position:center bottom !important;filter:drop-shadow(0 4px 8px rgba(10,34,96,.18));display:block !important}
 .kf-mini img{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;object-fit:contain !important;object-position:center bottom !important;filter:drop-shadow(0 3px 6px rgba(10,34,96,.16));display:block !important}
+
+/* 4) Notis baik pulih & acara akan datang */
+.maint-wrap{width:min(1380px,100% - 2*var(--pad) - 12px);margin:0 auto 18px;filter:drop-shadow(4px 4px 0 var(--yellow))}
+.maint-bar{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;background:#fff;border:2.5px solid var(--ink);padding:11px 18px;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.maint-info{display:flex;align-items:center;gap:12px;flex:1 1 320px;min-width:0}
+.maint-tag{flex:none;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);padding:4px 12px;font:700 11px/1.1 var(--ff-h);letter-spacing:.12em;text-transform:uppercase;
+  clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%)}
+.maint-txt{font-size:13.5px;line-height:1.45;color:var(--ink);font-weight:500}
+.maint-txt strong{font-weight:700;color:var(--blue-dd)}
+.maint-cd{display:flex;align-items:center;gap:5px;flex:none}
+.maint-box{display:flex;flex-direction:column;align-items:center;min-width:46px;background:var(--sky);border:2px solid var(--ink);padding:4px 7px;
+  clip-path:polygon(5px 0,100% 0,100% calc(100% - 5px),calc(100% - 5px) 100%,0 100%,0 5px)}
+.maint-box b{font:700 17px/1.05 var(--ff-h);font-variant-numeric:tabular-nums;color:var(--blue-dd)}
+.maint-box span{font:600 9.5px/1.1 var(--ff-h);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-top:2px}
+.maint-sep{font:700 16px/1 var(--ff-h);font-style:normal;color:var(--blue-d)}
+.upcoming-badge{display:inline-block;margin:0 auto 14px;padding:6px 22px;background:var(--yellow);color:var(--ink);border:2.5px solid var(--ink);
+  font:700 clamp(12px,1.5vw,15px) var(--ff-h);letter-spacing:.18em;text-transform:uppercase;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:4px 4px 0 rgba(10,34,96,.28)}
+#countdown .band-title{max-width:30ch}
+.band-sub.band-sub-mb0{margin-bottom:0}
+@media (max-width:720px){
+  .maint-wrap{margin-bottom:14px}
+  .maint-bar{padding:10px 14px;gap:10px}
+  .maint-info{flex-direction:column;align-items:flex-start;gap:6px;flex-basis:100%}
+  .maint-txt{font-size:12.5px}
+  .maint-cd{width:100%;justify-content:center}
+  .maint-box{flex:1;min-width:0;padding:4px}
+  .maint-box b{font-size:15px}
+}
 </style>
 </head>
 <body>
@@ -1361,6 +1391,23 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 
   <!-- HERO BANNER (3 SLAID) -->
   <section class="hero-zone" id="hero-zone" aria-label="Hero banner">
+    <div class="maint-wrap">
+      <div class="maint-bar" id="maintBar" role="status" aria-live="polite">
+        <div class="maint-info">
+          <span class="maint-tag">NOTIS KEMAS KINI</span>
+          <p class="maint-txt">Laman web ini sedang dibaik pulih dan dijangka siap sepenuhnya pada <strong>18 November 2026, pukul 2:00 pagi</strong>.</p>
+        </div>
+        <div class="maint-cd" aria-label="Kira detik siap dibaiki">
+          <div class="maint-box"><b id="mtD">00</b><span>Hari</span></div>
+          <i class="maint-sep">:</i>
+          <div class="maint-box"><b id="mtH">00</b><span>Jam</span></div>
+          <i class="maint-sep">:</i>
+          <div class="maint-box"><b id="mtM">00</b><span>Minit</span></div>
+          <i class="maint-sep">:</i>
+          <div class="maint-box"><b id="mtS">00</b><span>Saat</span></div>
+        </div>
+      </div>
+    </div>
     <div class="hero-plate">
       <div class="hero" id="hero">
 
@@ -1410,23 +1457,12 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
     </button>
   </section>
 
-  <!-- PEMASA KARNIVAL -->
-  <section class="band" id="countdown" aria-label="Pemasa kira undur">
+  <!-- ACARA AKAN DATANG -->
+  <section class="band" id="countdown" aria-label="Program akan datang">
     <div class="wrap">
-      <div class="live-badge show" id="liveBadge"><span class="live-dot" aria-hidden="true"></span><span>SEDANG BERLANGSUNG // LIVE AT VENUE</span></div>
-      <h2 class="band-title">KARNIVAL JEJAK IMAM NAWAWI PERINGKAT KEBANGSAAN 2026</h2>
-      <p class="band-sub">POLITEKNIK IBRAHIM SULTAN, PASIR GUDANG, JOHOR</p>
-      <p class="urgent-tag" id="urgentTag">KURANG 24 JAM LAGI!</p>
-      <div class="clock" role="timer" aria-live="off">
-        <div class="cd"><div class="cd-n" id="cdD"><span>00</span></div><div class="cd-l">Hari</div></div>
-        <div class="colon">:</div>
-        <div class="cd"><div class="cd-n" id="cdH"><span>00</span></div><div class="cd-l">Jam</div></div>
-        <div class="colon">:</div>
-        <div class="cd"><div class="cd-n" id="cdM"><span>00</span></div><div class="cd-l">Minit</div></div>
-        <div class="colon">:</div>
-        <div class="cd"><div class="cd-n" id="cdS"><span>00</span></div><div class="cd-l">Saat</div></div>
-      </div>
-      <p class="cd-venue-note show" id="cdVenueNote">Sesi pameran dan demonstrasi modul sedang aktif berjalan di reruai Politeknik Ibrahim Sultan.</p>
+      <div class="upcoming-badge">AKAN DATANG</div>
+      <h2 class="band-title">KARNIVAL PENGHAYATAN HADIS 40 IMAM NAWAWI PERINGKAT NEGERI 2026</h2>
+      <p class="band-sub band-sub-mb0">MASJID ABDULLAH FAHIM, KEPALA BATAS, PULAU PINANG</p>
     </div>
   </section>
 
@@ -1932,8 +1968,8 @@ const HANGOUT_GALLERY = [
 const MAT_GALLERY = ['herob_2(1).jpeg','herob_2(2).jpeg','herob_2(3).jpeg'];
 
 const CFG = {
-  // Tarikh mula karnival 14 Nov 2026 -> memaparkan [00:00:00:00] + lencana SEDANG BERLANGSUNG
-  target: '2026-11-14T00:00:00+08:00',
+  // Sasaran siap baik pulih laman web: 18 November 2026, pukul 2:00 pagi
+  target: '2026-11-18T02:00:00+08:00',
 
   // Pilihan integrasi Google Apps Script (isi URL Web App anda jika ingin pautan langsung ke Google Sheets / Drive Live)
   driveBridgeUrl: '',
@@ -2570,26 +2606,21 @@ function openTokohModal(){
 $('#btnTokoh').addEventListener('click', openTokohModal);
 
 /* =====================================================================
-   PEMASA KARNIVAL (4 KOTAK + [00:00:00:00] + LENCANA LIVE + SUB-TEKS)
+   PEMASA KIRA DETIK NOTIS BAIK PULIH (18 NOV 2026, 2:00 PAGI)
    ===================================================================== */
 (function(){
   const target=new Date(CFG.target).getTime();
-  const E={d:$('#cdD'),h:$('#cdH'),m:$('#cdM'),s:$('#cdS')},band=$('#countdown'),badge=$('#liveBadge'),note=$('#cdVenueNote'),last={};
+  const E={d:$('#mtD'),h:$('#mtH'),m:$('#mtM'),s:$('#mtS')},last={};
+  if(!E.d||!E.h||!E.m||!E.s)return;
   function set(k,v){
     const t=String(v).padStart(2,'0');
     if(last[k]===t)return;last[k]=t;
-    const e=E[k];e.querySelector('span').textContent=t;
-    e.classList.remove('tick');void e.offsetWidth;e.classList.add('tick');
+    E[k].textContent=t;
   }
   function upd(){
     let ms=target-Date.now();if(ms<0)ms=0;
     const s=Math.floor(ms/1000);
     set('d',Math.floor(s/86400));set('h',Math.floor(s%86400/3600));set('m',Math.floor(s%3600/60));set('s',s%60);
-    const over=(ms===0);
-    band.classList.toggle('urgent',ms>0&&ms<=86400000);
-    band.classList.toggle('over',over);
-    if(badge)badge.classList.toggle('show',over);
-    if(note)note.classList.toggle('show',over);
   }
   upd();setInterval(upd,1000);
 })();
