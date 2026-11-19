@@ -1092,9 +1092,8 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .ct-map-go{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);
   font:700 11px var(--ff-h);letter-spacing:.1em;text-transform:uppercase;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);white-space:nowrap}
 .ct-map-go:hover{background:#fff}
-.ct-avatar{flex:none;width:68px;height:68px;background:linear-gradient(145deg,#ffffff 0%,var(--sky) 100%);border:2.5px solid var(--yellow);
-  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);overflow:hidden;position:relative;box-shadow:3px 3px 0 rgba(10,34,96,.38)}
-.ct-avatar img{width:100%;height:100%;object-fit:cover;object-position:center 24%;transform:scale(1.24);transform-origin:center 36%;display:block}
+.ct-avatar{flex:none;width:76px;height:76px;background:transparent;border:0;overflow:visible;position:relative}
+.ct-avatar img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 4px 10px rgba(7,24,74,.38));display:block}
 .ct-mail-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:rgba(255,255,255,.14);border:2px solid var(--yellow);
   color:#fff;font:700 14px var(--ff-h);letter-spacing:.04em;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
   transition:background .2s,color .2s,transform .2s;text-decoration:none;border-bottom:2px solid var(--yellow);max-width:100%;word-break:break-word}
@@ -1111,15 +1110,28 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .ct-tel-choice a.wa{background:#25D366;color:#052811}
 .ct-tel-choice a.call{background:var(--yellow);color:var(--ink)}
 
-/* 9) Watak: Tab Logo Besar Terus, Banner 16:9 Tepat, Hotspots Penuh Badan, Grid Tengah & Animasi Terkunci */
+/* 9) Watak: Tab Logo Besar Terus (Semua 3 Tab), Label Bawah Tab, Tajuk Statik ROPIX UNIVERSE, Butang Main & Komuniti, Banner 16:9, Grid 3+1 Tengah & Pop-up */
 .wtab{height:clamp(62px,7.2vw,84px)}
 .wtab-full{padding:5px 14px}
+.wtab-full:first-child{padding-left:calc(var(--sl) + 8px);padding-right:10px;gap:8px}
 .wtab-full:last-child{padding-right:calc(var(--sl) + 10px)}
 .wtab-full-img{width:100%;height:100%;max-height:100%;object-fit:contain;display:block;transition:transform .25s ease,filter .25s ease}
+.wtab-full.locked .wtab-full-img{flex:1;min-width:0;width:auto}
 .wtab-full:hover .wtab-full-img{transform:scale(1.04)}
 .wtab-full.on{background:linear-gradient(135deg,#eaf2ff 0%,#ffffff 55%,#d8e8ff 100%);color:var(--ink)}
 .wtab-full.on::after{background:var(--yellow);height:5px}
 .wtab-full.on .wtab-full-img{filter:drop-shadow(0 2px 6px rgba(10,34,96,.22))}
+.wtab-cycle{position:relative;width:100%;height:100%;display:block}
+.wtab-cycle img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(.95);transition:opacity .55s ease,transform .55s ease}
+.wtab-cycle img.show{opacity:1;transform:scale(1)}
+.watak-bar-labels{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;padding:0 clamp(8px,2vw,24px);text-align:center}
+.wtab-lbl{font:700 clamp(10.5px,1.3vw,13.5px)/1.2 var(--ff-h);letter-spacing:.16em;text-transform:uppercase;color:var(--blue-d);opacity:.78;transition:color .22s,opacity .22s,transform .22s}
+.wtab-lbl.on{color:var(--ink);opacity:1}
+.wtab-lbl.on::after{content:"";display:block;width:36px;height:3px;background:var(--yellow);border:1px solid var(--ink);margin:4px auto 0}
+.watak-brand-head{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.8vw,18px);flex-wrap:wrap;margin:clamp(10px,1.8vw,18px) auto clamp(14px,2vw,20px);max-width:940px}
+.watak-brand-logo{width:clamp(54px,6.8vw,82px);height:clamp(54px,6.8vw,82px);object-fit:contain;filter:drop-shadow(0 5px 12px rgba(40,119,254,.32));flex:none}
+.watak-brand-title{font:700 clamp(24px,4.2vw,44px)/1 var(--ff-h);letter-spacing:.06em;text-transform:uppercase;color:#fff;
+  -webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--blue)}
 .watak-stage-plate{max-width:940px;margin-inline:auto}
 .watak-stage-in{height:auto !important;aspect-ratio:16/9;max-height:none !important;width:100%}
 .watak-stage-in>img{width:100%;height:100%;object-fit:cover;object-position:center}
@@ -1146,12 +1158,34 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   background:var(--ink);color:var(--yellow);border:2.5px solid var(--yellow);
   padding:8px clamp(18px,3vw,30px);font:700 clamp(11px,1.35vw,13px)/1.25 var(--ff-h);letter-spacing:.16em;text-transform:uppercase;text-align:center;
   clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:4px 4px 0 var(--blue-d);pointer-events:none;max-width:100%}
+.watak-actions{max-width:940px;margin:clamp(16px,2.4vw,24px) auto 0;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.8vw,18px)}
+.watak-play-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:clamp(12px,2vw,22px);width:100%}
+.wplay-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:clamp(190px,26vw,250px);
+  padding:12px 22px 10px;background:linear-gradient(155deg,#ffffff 0%,#eaf2ff 100%);border:2.5px solid var(--ink);
+  clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+  box-shadow:5px 5px 0 var(--blue-d);transition:transform .22s,box-shadow .22s,background .22s;text-decoration:none}
+.wplay-btn:hover{transform:translateY(-4px);box-shadow:7px 7px 0 var(--yellow);background:#fff}
+.wplay-btn:active{transform:translateY(-1px)}
+.wplay-logo{height:clamp(44px,5.6vw,60px);width:auto;max-width:200px;object-fit:contain;display:block}
+.wplay-cap{font:700 11px/1.2 var(--ff-h);letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--blue);
+  border:1.5px solid var(--ink);padding:4px 14px;clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);transition:background .2s,color .2s}
+.wplay-btn:hover .wplay-cap{background:var(--yellow);color:var(--ink)}
+.wcomm-btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding:11px clamp(18px,3vw,28px);
+  background:linear-gradient(125deg,var(--ink) 0%,var(--blue-dd) 55%,var(--blue) 100%);color:#fff;border:2.5px solid var(--ink);
+  clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);box-shadow:5px 5px 0 var(--yellow);
+  transition:transform .22s,box-shadow .22s,filter .22s;text-decoration:none;max-width:100%}
+.wcomm-btn:hover{transform:translateY(-3px);box-shadow:7px 7px 0 var(--yellow);filter:brightness(1.06)}
+.wcomm-txt{display:flex;flex-direction:column;align-items:flex-start;text-align:left;line-height:1.15}
+.wcomm-txt span{font:700 10.5px var(--ff-h);letter-spacing:.18em;color:var(--yellow);text-transform:uppercase}
+.wcomm-txt strong{font:700 clamp(14px,1.8vw,18px) var(--ff-h);letter-spacing:.08em;color:#fff;text-transform:uppercase;margin-top:2px}
+.wcomm-logo{width:clamp(36px,4.4vw,46px);height:clamp(36px,4.4vw,46px);object-fit:contain;flex:none;filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))}
 .watak-soon-toast{position:absolute;left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%) scale(.9);z-index:12;background:var(--red);color:#fff;
   border:3px solid var(--ink);padding:9px 26px;font:700 clamp(13px,1.8vw,16px) var(--ff-h);letter-spacing:.18em;text-transform:uppercase;
   clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:5px 5px 0 var(--ink);opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;white-space:nowrap}
 .watak-soon-toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .watak-grid{display:grid;grid-template-columns:repeat(3,1fr) !important;max-width:940px;margin:0 auto;justify-items:center}
-.watak-grid.watak-grid-4{grid-template-columns:repeat(4,1fr) !important;max-width:940px}
+.watak-grid.watak-grid-4{grid-template-columns:repeat(3,1fr) !important;max-width:940px}
+.watak-grid.watak-grid-4 .wcard:nth-child(4){grid-column:2}
 .watak-grid .wcard{width:100%}
 
 /* Epic Watak Modal Animations */
@@ -1163,7 +1197,8 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   transition:transform .25s ease-out;transform-style:preserve-3d}
 .wpop-portrait img{animation:wpopHeroFloat 3.6s ease-in-out infinite,wpopHeroSlam .6s cubic-bezier(.2,1.35,.35,1) both;
   filter:drop-shadow(0 12px 18px rgba(10,34,96,.32));object-fit:cover;object-position:center top}
-.wpop-portrait.is-png img{object-fit:contain;object-position:center bottom;padding:6px}
+.wpop-portrait.is-hero{aspect-ratio:1/1}
+.wpop-portrait.is-hero img{object-fit:cover;object-position:center bottom;padding:0;transform:scale(1.06)}
 @keyframes wpopHeroFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.02)}}
 @keyframes wpopHeroSlam{0%{transform:scale(.72) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
 .wpop-desc{margin-top:10px;border-left:4px solid var(--blue);background:rgba(255,255,255,.86);padding:14px 16px;box-shadow:4px 4px 0 rgba(40,119,254,.16)}
@@ -1204,13 +1239,14 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .lang-globe svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
 .lang-globe:hover,.lang-bar-open .lang-globe{background:var(--yellow);color:var(--ink);transform:scale(1.06)}
 .lang-globe:active{transform:scale(.93)}
-.lang-menu{position:absolute;left:0;bottom:calc(100% + 10px);min-width:205px;display:flex;flex-direction:column;gap:5px;padding:8px;
-  background:rgba(10,34,96,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border:2.5px solid var(--yellow);box-shadow:5px 5px 0 var(--ink),0 14px 28px rgba(10,34,96,.4);
-  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+.lang-panel{position:absolute;left:0;bottom:calc(100% + 10px);min-width:205px;
   opacity:0;visibility:hidden;transform:translateY(10px) scale(.96);transform-origin:left bottom;
   transition:opacity .22s ease,transform .22s ease,visibility .22s;pointer-events:none}
-#langBar.lang-bar-open .lang-menu{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+#langBar.lang-bar-open .lang-panel{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.lang-menu{display:flex;flex-direction:column;gap:5px;padding:8px;
+  background:rgba(10,34,96,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:2.5px solid var(--yellow);box-shadow:5px 5px 0 var(--ink),0 14px 28px rgba(10,34,96,.4);
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
 .lang-btn{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:9px 12px;
   color:rgba(255,255,255,.9);font:700 12.5px/1.2 var(--ff-h);letter-spacing:.06em;text-align:left;
   border:1.5px solid transparent;clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);
@@ -1221,10 +1257,10 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .lang-lock{width:15px;height:15px;flex:none;fill:none;stroke:var(--yellow);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
 .lang-btn.shake-red{background:rgba(255,51,71,.24);border-color:#ff3347;color:#ff8a95}
 .lang-btn.shake-red .lang-lock{stroke:#ff3347;animation:lockShake .52s cubic-bezier(.36,.07,.19,.97) both}
-.lang-toast{position:absolute;left:0;bottom:calc(100% + 10px);background:var(--red);color:#fff;
+.lang-toast{position:absolute;left:0;bottom:calc(100% + 8px);background:var(--red);color:#fff;
   border:2px solid var(--ink);padding:5px 14px;font:700 11px var(--ff-h);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
   clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:3px 3px 0 var(--ink);
-  opacity:0;visibility:hidden;transform:translateY(6px);pointer-events:none;transition:opacity .2s,transform .2s,visibility .2s;z-index:5}
+  opacity:0;visibility:hidden;transform:translateY(6px);pointer-events:none;transition:opacity .2s,transform .2s,visibility .2s;z-index:10}
 .lang-toast.show{opacity:1;visibility:visible;transform:translateY(0)}
 
 @media (max-width:720px){
@@ -1236,10 +1272,19 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   .tk-right{overflow:visible}
   .wtab{height:58px}
   .wtab-full{padding:4px 8px}
+  .wtab-full:first-child{padding-left:calc(var(--sl) + 4px);padding-right:6px;gap:5px}
   .wtab-full:last-child{padding-right:calc(var(--sl) + 6px)}
+  .watak-bar-labels{padding:0 6px;margin-top:8px}
+  .wtab-lbl{font-size:10px;letter-spacing:.1em}
+  .watak-brand-logo{width:48px;height:48px}
+  .watak-brand-title{font-size:clamp(22px,6.4vw,30px)}
+  .wplay-btn{min-width:calc(50% - 8px);flex:1 1 150px;padding:10px 12px 9px}
+  .wplay-logo{height:38px}
+  .wcomm-btn{width:100%;padding:10px 16px;gap:10px}
   .watak-grid,.watak-grid.watak-grid-4{grid-template-columns:repeat(2,1fr) !important;gap:16px 12px}
+  .watak-grid.watak-grid-4 .wcard:nth-child(4){grid-column:auto}
   .watak-stage-hint{font-size:10.5px;padding:7px 16px;letter-spacing:.12em}
-  .ct-avatar{width:56px;height:56px}
+  .ct-avatar{width:64px;height:64px}
   .ct-mail-btn{font-size:12.5px;padding:8px 14px}
   .kader-row-grid{grid-template-columns:repeat(2,1fr) !important;gap:18px 12px !important;max-width:100% !important}
   .kader-row-grid>:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:min(260px,70%)}
@@ -1247,13 +1292,13 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   #langBar{left:10px;bottom:calc(74px + env(safe-area-inset-bottom,0px))}
   .lang-globe{width:46px;height:46px}
   .lang-globe svg{width:22px;height:22px}
-  .lang-menu{min-width:186px}
+  .lang-panel{min-width:186px}
   .lang-btn{padding:8px 10px;font-size:12px}
   #music{right:10px;bottom:calc(74px + env(safe-area-inset-bottom,0px));width:46px;height:46px}
 }
 @media (min-width:1600px){
   .wrap{width:min(1380px,100% - 2*var(--pad))}
-  .watak-stage-plate,.watak-grid,.watak-grid.watak-grid-4{max-width:1040px}
+  .watak-stage-plate,.watak-actions,.watak-grid,.watak-grid.watak-grid-4{max-width:1040px}
 }
 
 
@@ -1723,15 +1768,18 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
       <div class="watak-bar-wrap">
         <div class="watak-bar-plate">
           <div class="watak-bar" role="tablist" aria-label="Sub-page Watak">
-            <button class="wtab locked" id="wTabKiri" type="button" data-sub="kiri" aria-label="Sub-page Kod 40 (Terkunci - Akan Datang 2027)">
-              <span class="wtab-logo slot"><img id="wLogoKiri" src="kod40_logo.png" alt="Logo Kod 40" loading="lazy" decoding="async" onerror="this.remove()"></span>
+            <button class="wtab wtab-full locked" id="wTabKiri" type="button" data-sub="kiri" aria-label="Sub-page Kod 40 (Terkunci - Akan Datang 2027)">
+              <img class="wtab-full-img" id="wLogoKiri" src="kod40_logo.png" alt="Logo Kod 40" loading="lazy" decoding="async" onerror="this.remove()">
               <span class="wtab-lock" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path class="lock-shackle" d="M10 14V10a6 6 0 0 1 12 0v4"/><rect x="6" y="14" width="20" height="15" rx="2" fill="rgba(255,199,32,.18)"/><circle cx="16" cy="20.5" r="1.8" fill="currentColor" stroke="none"/><path d="M16 22v3"/></svg>
               </span>
             </button>
 
-            <button class="wtab wtab-full on" id="wTabTengah" type="button" role="tab" aria-selected="true" data-sub="tengah" aria-label="Watak RoPix Roblox Adventure">
-              <img class="wtab-full-img" id="wLogoTengah" src="roblox_adventure_logo.png" alt="Logo Roblox Adventure" loading="lazy" decoding="async" onerror="this.remove()">
+            <button class="wtab wtab-full on" id="wTabTengah" type="button" role="tab" aria-selected="true" data-sub="tengah" aria-label="Watak RoPix Roblox">
+              <span class="wtab-cycle" id="wCycleTengah">
+                <img class="wtab-full-img show" src="roblox_adventure_logo.png" alt="Logo Roblox Adventure" loading="lazy" decoding="async" onerror="this.remove()">
+                <img class="wtab-full-img" src="roblox_hangout_logo2.png" alt="Logo Roblox Hangout" loading="lazy" decoding="async" onerror="this.remove()">
+              </span>
             </button>
 
             <button class="wtab wtab-full" id="wTabKanan" type="button" role="tab" aria-selected="false" data-sub="kanan" aria-label="Watak The Trial Of Hadith 40">
@@ -1739,7 +1787,17 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
             </button>
           </div>
         </div>
+        <div class="watak-bar-labels" aria-hidden="true">
+          <span class="wtab-lbl" data-sub-lbl="kiri">AKAN DATANG</span>
+          <span class="wtab-lbl on" data-sub-lbl="tengah">ROBLOX</span>
+          <span class="wtab-lbl" data-sub-lbl="kanan">PIXEL</span>
+        </div>
         <div class="watak-lock-msg" id="watakLockMsg" role="status" aria-live="polite">Akan Datang 2027</div>
+      </div>
+
+      <div class="watak-brand-head">
+        <img class="watak-brand-logo" src="Universe_ropix_logo.PNG" alt="Logo RoPix Universe" decoding="async">
+        <h2 class="watak-brand-title">ROPIX UNIVERSE</h2>
       </div>
 
       <div class="watak-subview" id="watakSubview">
@@ -1755,6 +1813,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
         <div class="watak-hint-bar">
           <div class="watak-stage-hint" id="watakStageHint">KLIK UNTUK TEROKA PROFIL</div>
         </div>
+        <div class="watak-actions" id="watakActions"></div>
 
         <div class="watak-div" aria-hidden="true"></div>
 
@@ -1825,19 +1884,21 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
 
 <!-- ===================== BUTANG PILIHAN BAHASA GLOBE (BAWAH KIRI) ===================== -->
 <div id="langBar" aria-label="Pilihan Bahasa">
-  <div class="lang-menu" id="langMenu" role="menu" aria-label="Senarai Bahasa">
+  <div class="lang-panel" id="langPanel">
     <div class="lang-toast" id="langToast" role="status" aria-live="polite">AKAN DATANG</div>
-    <button type="button" class="lang-btn on" role="menuitemradio" aria-checked="true" data-lang="ms">
-      <span>Bahasa Melayu</span>
-    </button>
-    <button type="button" class="lang-btn locked" role="menuitemradio" aria-checked="false" data-lang="jawi" aria-label="Jawi (Terkunci - Akan Datang)">
-      <span>Jawi</span>
-      <svg class="lang-lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-    </button>
-    <button type="button" class="lang-btn locked" role="menuitemradio" aria-checked="false" data-lang="en" aria-label="Bahasa Inggeris (Terkunci - Akan Datang)">
-      <span>Bahasa Inggeris</span>
-      <svg class="lang-lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-    </button>
+    <div class="lang-menu" id="langMenu" role="menu" aria-label="Senarai Bahasa">
+      <button type="button" class="lang-btn on" role="menuitemradio" aria-checked="true" data-lang="ms">
+        <span>Bahasa Melayu</span>
+      </button>
+      <button type="button" class="lang-btn locked" role="menuitemradio" aria-checked="false" data-lang="jawi" aria-label="Jawi (Terkunci - Akan Datang)">
+        <span>Jawi</span>
+        <svg class="lang-lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </button>
+      <button type="button" class="lang-btn locked" role="menuitemradio" aria-checked="false" data-lang="en" aria-label="Bahasa Inggeris (Terkunci - Akan Datang)">
+        <span>Bahasa Inggeris</span>
+        <svg class="lang-lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </button>
+    </div>
   </div>
   <button type="button" class="lang-globe" id="langToggle" aria-label="Pilih Bahasa" aria-expanded="false" aria-controls="langMenu" title="Bahasa">
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -2283,17 +2344,29 @@ const CFG = {
       watakDalamGambar: [
         {
           nama:'Mat RoPix', displayName:'Mat RoPix', x:6, y:3, w:41, h:95,
-          img:'army/ropix_l.png', popImg:'army/ropix_l.png',
-          logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+          img:'army/ropix_l.png', popImg:'army/ropix_l.png', bigPortrait:true,
+          logo1:'Universe_ropix_logo.PNG', logo2:'',
           perihal:'Ikon jejaka segak dari RoPix Universe! Sentiasa tampil bergaya dengan baju Melayu dan tanjaknya, dia membawa aura semangat pengembaraan yang tersendiri.'
         },
         {
           nama:'Srikandi RoPix', displayName:'Srikandi RoPix', x:55, y:17, w:42, h:81,
-          img:'army/ropix_p.png', popImg:'army/ropix_p.png',
-          logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+          img:'army/ropix_p.png', popImg:'army/ropix_p.png', bigPortrait:true,
+          logo1:'Universe_ropix_logo.PNG', logo2:'',
           perihal:'Gadis manis bercermin mata dan ceria dari RoPix Universe! Dengan gaya sopan berbaju kurung serta sifatnya yang penuh keyakinan, dia menjadi lambang srikandi muda yang sentiasa menginspirasi.'
         }
       ],
+      actions: {
+        play: [
+          { logo:'roblox_adventure_logo.png', alt:'Hadis 40 Imam Nawawi Adventure', label:'MAIN SEKARANG', link:'https://www.roblox.com/share?code=ebfde8ed2e83d74c85d79503d207410a&type=ExperienceDetails&stamp=1795089049391' },
+          { logo:'roblox_hangout_logo2.png', alt:'Hadis 40 Imam Nawawi Hangout', label:'MAIN SEKARANG', link:'https://www.roblox.com/share?code=17d256245b361c498342f08044678b3a&type=ExperienceDetails&stamp=1795088968268' }
+        ],
+        community: {
+          top:'SERTAI KOMUNITI',
+          title:'ROPIX UNIVERSE AIRIS',
+          logo:'Universe_ropix_logo.PNG',
+          link:'https://www.roblox.com/share/g/35741702'
+        }
+      },
       sampingan: [
         { nama:'Ustaz Khairul', img:'Ustaz_Khairul.jpg', popImg:'Ustaz_Khairul.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Guru pertama anda di Kampung Irshadika memberikan tugas untuk mengutip sampah di sekitar Surau Al-Ansori sambil memberi pengajaran mengenai Hadis 1 [Hadis Niat].' },
@@ -2318,6 +2391,11 @@ const CFG = {
         { nama:'Kokpi', displayName:'Kokpi', x:12, y:24, w:34, h:66, locked:true },
         { nama:'Donat', displayName:'Donat', x:56, y:36, w:35, h:53, locked:true }
       ],
+      actions: {
+        play: [
+          { logo:'pixel_logo.png', alt:'The Trial Of Hadith 40 Imam Nawawi', label:'MAIN SEKARANG', link:'https://view.genially.com/68fde7a1c119d647f8b72a3f' }
+        ]
+      },
       sampingan: [
         { nama:'Tok Imam', img:'tok_imam.jpg', popImg:'tok_imam.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'pixel_logo.png',
            perihal:'Meminta bantuan anda sebagai Penjelajah Ilmu untuk menyelamatkan umat daripada Makhluk Kegelapan dengan menyerahkan Pedang Hidayah dan menugaskan anda mengumpulkan empat Permata Hadis di setiap peringkat.' },
@@ -2884,10 +2962,11 @@ $('#btnContact').addEventListener('click',openHubungi);
 function openWatakModal(c){
   if(!c)return;
   const w=el('div','wpop-frame');
-  const logo2Src = c.logo2 || 'roblox_adventure_logo.png';
+  const hasLogo2 = typeof c.logo2 === 'string' ? c.logo2.trim() !== '' : true;
+  const logo2Src = hasLogo2 ? (c.logo2 || 'roblox_adventure_logo.png') : '';
   const logo2Title = logo2Src.includes('pixel') ? 'The Trial Of Hadith 40' : 'Roblox Adventure';
   const popSrc = c.popImg || c.img || '';
-  const isPng = /\.png(\?|$)/i.test(popSrc);
+  const isHero = !!c.bigPortrait;
   w.innerHTML=`<div class="wpop-in">
     <div class="wpop-aura" aria-hidden="true"></div>
     <span class="wpop-slash" aria-hidden="true"></span>
@@ -2897,9 +2976,9 @@ function openWatakModal(c){
       <div class="wpop-left">
         <div class="wpop-logos">
           <span class="wpop-logo slot" title="RoPix Universe"><img src="${esc(c.logo1||'Universe_ropix_logo.PNG')}" alt="RoPix Universe" decoding="async"></span>
-          <span class="wpop-logo slot" title="${esc(logo2Title)}"><img src="${esc(logo2Src)}" alt="${esc(logo2Title)}" decoding="async"></span>
+          ${hasLogo2 ? `<span class="wpop-logo slot" title="${esc(logo2Title)}"><img src="${esc(logo2Src)}" alt="${esc(logo2Title)}" decoding="async"></span>` : ''}
         </div>
-        <div class="wpop-portrait slot${isPng?' is-png':''}">
+        <div class="wpop-portrait slot${isHero?' is-hero':''}">
           ${makeImgHtml(popSrc, c.nama, true)}
         </div>
       </div>
@@ -3261,8 +3340,20 @@ function openKaderModal(k){
 (function(){
   const W=CFG.watak;if(!W)return;
   const btnKiri=$('#wTabKiri'),btnTengah=$('#wTabTengah'),btnKanan=$('#wTabKanan');
-  const lockMsg=$('#watakLockMsg'),subview=$('#watakSubview'),stageBox=$('#watakStageBox'),stageHint=$('#watakStageHint'),hsBox=$('#watakHotspots'),grid=$('#watakGrid'),soonToast=$('#watakSoonToast');
+  const lockMsg=$('#watakLockMsg'),subview=$('#watakSubview'),stageBox=$('#watakStageBox'),stageHint=$('#watakStageHint'),hsBox=$('#watakHotspots'),actionsBox=$('#watakActions'),grid=$('#watakGrid'),soonToast=$('#watakSoonToast');
+  const tabLbls=$$('.wtab-lbl');
   let curSub='tengah',msgTimer=0,shakeTimer=0,toastTimer=0;
+
+  // Tukar logo sub-page tengah secara berkala (roblox_adventure_logo <-> roblox_hangout_logo2)
+  const cycImgs=$$('#wCycleTengah img');
+  if(cycImgs.length>1){
+    let ci=0;
+    setInterval(()=>{
+      cycImgs[ci].classList.remove('show');
+      ci=(ci+1)%cycImgs.length;
+      cycImgs[ci].classList.add('show');
+    }, 2800);
+  }
 
   function triggerLockedHotspot(btn){
     SFX.err();
@@ -3290,6 +3381,7 @@ function openKaderModal(k){
       b.classList.toggle('on',on);
       b.setAttribute('aria-selected',on?'true':'false');
     });
+    tabLbls.forEach(l=>l.classList.toggle('on', l.dataset.subLbl===key));
     const doRender=()=>{
       if(stageHint && sub.hintText) stageHint.textContent = sub.hintText;
       if(soonToast) soonToast.classList.remove('show');
@@ -3303,6 +3395,26 @@ function openKaderModal(k){
         hsBox.innerHTML=(sub.watakDalamGambar||[]).map((h,i)=>
           `<button type="button" class="watak-hs${h.locked?' locked':''}" style="left:${h.x}%;top:${h.y}%;width:${h.w}%;height:${h.h}%" data-hs="${i}" aria-label="${esc(h.nama||('Watak '+(i+1)))}${h.locked?' (Akan Datang)':''}">${h.displayName?`<span class="watak-hs-tag">${esc(h.displayName)}</span>`:''}</button>`
         ).join('');
+      }
+      if(actionsBox){
+        const act = sub.actions || {};
+        let html = '';
+        if(act.play && act.play.length){
+          html += `<div class="watak-play-row">${act.play.map(p=>
+            `<a class="wplay-btn" href="${esc(p.link)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(p.alt)} - ${esc(p.label)}">
+              <img class="wplay-logo" src="${esc(p.logo)}" alt="${esc(p.alt)}" loading="lazy" decoding="async">
+              <span class="wplay-cap">${esc(p.label)}</span>
+            </a>`
+          ).join('')}</div>`;
+        }
+        if(act.community){
+          const cm = act.community;
+          html += `<a class="wcomm-btn" href="${esc(cm.link)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(cm.top)} ${esc(cm.title)}">
+            <img class="wcomm-logo" src="${esc(cm.logo)}" alt="Logo RoPix Universe" loading="lazy" decoding="async">
+            <span class="wcomm-txt"><span>${esc(cm.top)}</span><strong>${esc(cm.title)}</strong></span>
+          </a>`;
+        }
+        actionsBox.innerHTML = html;
       }
       if(grid){
         const list = sub.sampingan || [];
