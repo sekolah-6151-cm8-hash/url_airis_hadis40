@@ -204,9 +204,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
    ========================================================= */
 .sec-video{--bg:#fff;--twd:420px}
 .vstage{--vw:62%;--vwn:.62;position:relative;height:0;padding-bottom:calc(var(--vwn) * 56.25%);overflow:hidden;margin-bottom:26px}
-.vs{position:absolute;top:0;height:100%;width:var(--vw);left:calc((100% - var(--vw))/2);transition:transform .65s cubic-bezier(.3,.85,.3,1),opacity .4s;will-change:transform}
-.vs[data-pos="-1"]{transform:translateX(calc(-100% - 14px))}
-.vs[data-pos="1"]{transform:translateX(calc(100% + 14px))}
+.vs{position:absolute;top:0;height:100%;width:var(--vw);left:calc((100% - var(--vw))/2);transition:transform .65s cubic-bezier(.3,.85,.3,1),opacity .4s;will-change:transform;z-index:1}
+.vs[data-pos="0"]{z-index:3;opacity:1;transform:translateX(0)}
+.vs[data-pos="-1"]{z-index:2;opacity:1;transform:translateX(calc(-100% - 14px))}
+.vs[data-pos="1"]{z-index:2;opacity:1;transform:translateX(calc(100% + 14px))}
+.vs[data-pos="2"]{z-index:1;opacity:0;pointer-events:none;transform:translateX(calc(200% + 28px))}
+.vs[data-pos="-2"]{z-index:1;opacity:0;pointer-events:none;transform:translateX(calc(-200% - 28px))}
 .vs.jump{transition:none;opacity:0}
 .vface{position:absolute;inset:0;--a:22px;--b2:10px;clip-path:polygon(var(--a) 0,100% 0,100% calc(100% - var(--a)),calc(100% - var(--a)) 100%,0 100%,0 var(--a));cursor:pointer;background-color:#0a2260}
 .vs[data-pos="0"] .vface{cursor:default}
@@ -1400,29 +1403,30 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   .tk-scroll{overflow:visible !important;height:auto;max-height:none;padding:16px 18px 22px}
 }
 
-/* 2b) Countdown 28 Nov 2026 (Normal, 24 Jam Terakhir Berkelip Merah, Sedang Berlangsung Berkedip, Tamat) */
+/* 2b) Countdown 28 Nov 2026 (Normal, 24 Jam Terakhir Berkelip Merah, Sedang Berlangsung ikut Gambar 2, Tamat) */
 .band.urgent .cd-n{animation:cdUrgentBlink 1s ease-in-out infinite}
 @keyframes cdUrgentBlink{
   0%,100%{background:#fff;color:var(--red-d);box-shadow:0 0 0 0 rgba(255,255,255,.55)}
   50%{background:#ffe1e5;color:#990015;box-shadow:0 0 18px 3px rgba(255,255,255,.5)}
 }
-.cd-live-badge{display:none;align-items:center;justify-content:center;gap:10px;margin:0 auto 14px;padding:7px 22px;
-  background:var(--ink);color:#fff;border:2.5px solid var(--yellow);font:700 clamp(11px,1.4vw,14px) var(--ff-h);letter-spacing:.16em;text-transform:uppercase;
-  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:4px 4px 0 rgba(10,34,96,.28);animation:liveBlink 1.3s ease-in-out infinite}
-.cd-live-box{display:none;max-width:58ch;margin:16px auto 0;padding:10px 22px;background:var(--yellow);color:var(--ink);
-  border:2.5px solid var(--ink);font:700 clamp(13px,1.6vw,17px)/1.4 var(--ff-h);letter-spacing:.06em;
-  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:5px 5px 0 var(--ink);animation:liveBlink 1.3s ease-in-out infinite}
-@keyframes liveBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.72;transform:scale(1.02)}}
+.cd-live-badge{display:none;align-items:center;justify-content:center;gap:10px;margin:0 auto 16px;padding:8px 26px;
+  background:var(--ink);color:#fff;border-top:2.5px solid var(--yellow);border-bottom:2.5px solid var(--yellow);
+  font:700 clamp(11px,1.4vw,14px) var(--ff-h);letter-spacing:.18em;text-transform:uppercase;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:0 6px 18px rgba(10,34,96,.32);animation:liveBlink 1.3s ease-in-out infinite}
+.cd-live-box{display:none;max-width:60ch;margin:22px auto 0;padding:12px 26px;background:rgba(216,232,255,.92);color:var(--ink);
+  border:2.5px solid var(--ink);font:700 clamp(13px,1.55vw,16.5px)/1.45 var(--ff-b);letter-spacing:.02em;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:0 8px 20px rgba(10,34,96,.22);animation:liveBlink 1.3s ease-in-out infinite}
+@keyframes liveBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.72;transform:scale(1.018)}}
 .cd-done-box{display:none;max-width:58ch;margin:14px auto 0;padding:12px 24px;background:rgba(255,255,255,.16);color:#fff;
   border:2px solid var(--yellow);font:600 clamp(13px,1.5vw,16px)/1.5 var(--ff-b);
   clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
 .band.live .cd-live-badge,.band.live .cd-live-box{display:inline-flex}
-.band.live .clock,.band.live .upcoming-badge,.band.live .urgent-tag{display:none !important}
+.band.live .upcoming-badge,.band.live .urgent-tag{display:none !important}
 .band.done .cd-done-box{display:inline-block}
 .band.done .clock,.band.done .upcoming-badge,.band.done .urgent-tag{display:none !important}
 
 /* 2c) Kembara Kami Thumbnail Preview Strip di bawah Slide Besar */
-.gal-thumbs{display:flex;gap:8px;margin-top:10px;padding:4px 2px 6px;overflow-x:auto;scrollbar-width:thin;justify-content:flex-start}
+.gal-thumbs{display:flex;gap:8px;margin-top:10px;padding:4px 2px 6px;overflow-x:auto;scrollbar-width:thin;justify-content:safe center}
 .gal-thumb{flex:0 0 78px;height:52px;position:relative;border:2.5px solid var(--sky2);overflow:hidden;background:var(--sky);
   transition:border-color .2s,transform .2s,opacity .2s;opacity:.68;padding:0;cursor:pointer}
 .gal-thumb img{width:100%;height:100%;object-fit:cover;display:block}
@@ -1441,9 +1445,9 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .mdl.kzoom-mdl .x{background:var(--yellow);color:var(--ink)}
 .kzoom-body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:12px}
 .kzoom-stage{position:relative;width:100%;height:min(62dvh,520px);background:#071538;border:2px solid rgba(255,199,32,.55);
-  overflow:hidden;display:grid;place-items:center;touch-action:none;cursor:grab;user-select:none}
+  overflow:hidden;display:flex;align-items:center;justify-content:center;touch-action:none;cursor:grab;user-select:none}
 .kzoom-stage:active{cursor:grabbing}
-.kzoom-stage img{max-width:100%;max-height:100%;object-fit:contain;transform-origin:center center;transition:transform .12s ease-out;pointer-events:none;will-change:transform}
+.kzoom-stage img{width:100%;height:100%;object-fit:contain;display:block;transform-origin:center center;transition:transform .12s ease-out;pointer-events:none;will-change:transform}
 .kzoom-ctrl{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
 .kzoom-btn{padding:7px 16px;background:var(--blue);color:#fff;border:2px solid var(--yellow);font:700 13px var(--ff-h);letter-spacing:.1em;text-transform:uppercase;
   clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .2s,color .2s}
@@ -1683,7 +1687,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
     <div class="wrap">
       <div class="upcoming-badge" id="cdUpcomingBadge">AKAN DATANG</div>
       <div class="urgent-tag" id="cdUrgentTag">KURANG 24 JAM LAGI</div>
-      <div class="cd-live-badge" id="cdLiveBadge"><i class="live-dot" aria-hidden="true"></i><span>SIARAN LANGSUNG &bull; SEDANG BERLANGSUNG</span></div>
+      <div class="cd-live-badge" id="cdLiveBadge"><i class="live-dot" aria-hidden="true"></i><span>SEDANG BERLANGSUNG // LIVE AT VENUE</span></div>
       <h2 class="band-title">KARNIVAL JEJAK IMAM NAWAWI PERINGKAT NEGERI 2026</h2>
       <p class="band-sub">MASJID ABDULLAH FAHIM, KEPALA BATAS, PULAU PINANG</p>
       <div class="clock" id="cdClock" aria-label="Kira detik ke 28 November 2026, 8 pagi">
@@ -2763,6 +2767,7 @@ $('#btnTokoh').addEventListener('click', openTokohModal);
     if(now>=startMs){
       band.classList.remove('urgent','done');
       band.classList.add('live');
+      set('d',0);set('h',0);set('m',0);set('s',0);
       return;
     }
     band.classList.remove('live','done');
@@ -3811,9 +3816,15 @@ function openKoleksiZoom(k){
     </div>
   </div>`;
   const st=$('#kzStage',w), im=$('#kzImg',w), lvl=$('#kzLvl',w);
-  let scale=1, tx=0, ty=0, drag=false, sx=0, sy=0, btx=0, bty=0, pDist=0, pScale=1;
+  let scale=1, tx=0, ty=0, drag=false, sx=0, sy=0, btx=0, bty=0, pDist=0, pScale=1, lastTap=0;
   const apply=()=>{
     if(scale<=1){scale=1;tx=0;ty=0}
+    else{
+      const maxX=(st.clientWidth*(scale-1))/2;
+      const maxY=(st.clientHeight*(scale-1))/2;
+      tx=clamp(tx,-maxX,maxX);
+      ty=clamp(ty,-maxY,maxY);
+    }
     im.style.transform=`translate3d(${tx.toFixed(1)}px,${ty.toFixed(1)}px,0) scale(${scale.toFixed(2)})`;
     lvl.textContent=Math.round(scale*100)+'%';
   };
@@ -3823,11 +3834,22 @@ function openKoleksiZoom(k){
   $('#kzReset',w).onclick=()=>{scale=1;tx=0;ty=0;apply()};
   st.addEventListener('wheel',e=>{e.preventDefault();setZoom(scale+(e.deltaY<0?0.3:-0.3))},{passive:false});
   st.addEventListener('dblclick',()=>setZoom(scale>1.2?1:2.2));
-  st.addEventListener('pointerdown',e=>{if(scale<=1)return;drag=true;sx=e.clientX;sy=e.clientY;btx=tx;bty=ty;st.setPointerCapture(e.pointerId)});
+  st.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='touch'){
+      const now=Date.now();
+      if(now-lastTap<300){setZoom(scale>1.2?1:2.2);lastTap=0;return}
+      lastTap=now;
+    }
+    if(scale<=1)return;
+    drag=true;sx=e.clientX;sy=e.clientY;btx=tx;bty=ty;
+    if(st.setPointerCapture)try{st.setPointerCapture(e.pointerId)}catch(_){}
+  });
   st.addEventListener('pointermove',e=>{if(!drag)return;tx=btx+(e.clientX-sx);ty=bty+(e.clientY-sy);apply()});
   st.addEventListener('pointerup',()=>{drag=false});
+  st.addEventListener('pointercancel',()=>{drag=false});
   st.addEventListener('touchstart',e=>{
     if(e.touches.length===2){
+      drag=false;
       pDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
       pScale=scale;
     }
@@ -3839,6 +3861,7 @@ function openKoleksiZoom(k){
       setZoom(pScale*(d/pDist));
     }
   },{passive:false});
+  st.addEventListener('touchend',e=>{if(e.touches.length<2)pDist=0},{passive:true});
   openModal(w,'kzoom-mdl');
 }
 
