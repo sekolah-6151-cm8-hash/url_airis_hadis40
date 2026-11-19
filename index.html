@@ -1059,9 +1059,9 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .shop{position:relative;overflow:visible}
 .shop .shop-ico{width:30px;height:30px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none;padding:4px}
 .shop .shop-ico svg{width:100%;height:100%;display:block}
-.shop-soon-pop{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) translateY(6px);background:var(--yellow);color:var(--ink);
-  border:2px solid var(--ink);padding:4px 12px;font:700 11px var(--ff-h);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;
-  box-shadow:3px 3px 0 var(--ink);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10}
+.shop-soon-pop{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) translateY(6px);background:var(--red);color:#fff;
+  border:2px solid var(--ink);padding:5px 14px;font:700 11px var(--ff-h);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:3px 3px 0 var(--ink);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10}
 .shop-soon-pop.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @keyframes shakeErr{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
 .shop.shake-err{animation:shakeErr .4s ease}
@@ -1339,39 +1339,116 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   .hdr-mid-s{font-size:clamp(7px,1.85vw,9px)}
 }
 
-/* 2) Butang Tokoh Inspirasi Kami (gaya tulen selaras btn-skew) & Modal boleh skrol/seret */
+/* 2) Butang Tokoh Inspirasi Kami (ikon kitab/rehal kiri + bayang kuning + hover lembut) & Modal Editorial Tulen */
 .btn-tokoh{
-  display:inline-flex;align-items:center;justify-content:center;gap:16px;
-  padding:13px 36px;background:var(--blue);color:#fff;border:2.5px solid var(--ink);
-  clip-path:polygon(18px 0,100% 0,calc(100% - 18px) 100%,0 100%);
-  filter:drop-shadow(5px 5px 0 var(--yellow));transition:background .22s,color .22s,transform .22s;
+  display:inline-flex;align-items:center;justify-content:center;gap:14px;
+  padding:13px clamp(20px,3vw,32px);background:linear-gradient(135deg,var(--blue-dd) 0%,var(--blue) 100%);
+  color:#fff;border:2.5px solid var(--ink);border-bottom:4px solid var(--yellow);
+  clip-path:polygon(16px 0,100% 0,calc(100% - 16px) 100%,0 100%);
+  filter:drop-shadow(6px 6px 0 var(--yellow));
+  transition:transform .24s cubic-bezier(.2,.8,.2,1),background .24s,color .24s,filter .24s;
+  max-width:100%;
 }
-.btn-tokoh:hover{background:var(--yellow);color:var(--ink);transform:translateY(-3px)}
-.btn-tokoh:hover .btn-tokoh-txt strong,.btn-tokoh:hover .btn-tokoh-txt span,.btn-tokoh:hover .btn-tokoh-arr{color:var(--ink)}
-.btn-tokoh-txt{text-align:left;line-height:1.2}
-.btn-tokoh-txt strong{display:block;font:700 clamp(15px,1.8vw,19px) var(--ff-h);letter-spacing:.14em;text-transform:uppercase;color:#fff}
-.btn-tokoh-txt span{display:block;font:600 11.5px var(--ff-h);letter-spacing:.1em;color:var(--yellow);margin-top:2px}
-.btn-tokoh-arr{font:700 28px/1 var(--ff-h);color:var(--yellow)}
+.btn-tokoh:hover{transform:translateY(-4px);filter:drop-shadow(8px 8px 0 var(--yellow));background:linear-gradient(135deg,var(--ink) 0%,var(--blue-d) 100%)}
+.btn-tokoh:active{transform:translateY(-1px)}
+.btn-tokoh-ico{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:0;
+  background:rgba(255,199,32,.14);border:2px solid var(--yellow);color:var(--yellow);
+  clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);animation:none;box-shadow:none;
+  transition:background .24s,color .24s}
+.btn-tokoh-ico svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn-tokoh:hover .btn-tokoh-ico{background:var(--yellow);color:var(--ink)}
+.btn-tokoh-txt{text-align:left;line-height:1.2;min-width:0}
+.btn-tokoh-txt strong{display:block;font:700 clamp(14px,1.8vw,18px) var(--ff-h);letter-spacing:.13em;text-transform:uppercase;color:#fff}
+.btn-tokoh-txt span{display:block;font:600 clamp(10.5px,1.2vw,12px) var(--ff-h);letter-spacing:.08em;color:var(--yellow);margin-top:3px}
+.btn-tokoh-arr{font:700 28px/1 var(--ff-h);color:var(--yellow);flex:none;transition:transform .24s cubic-bezier(.2,.8,.2,1)}
+.btn-tokoh:hover .btn-tokoh-arr{transform:translateX(5px)}
 
-.mdl.tokoh-mdl{width:min(1000px,96vw);height:min(640px,86dvh);max-height:86dvh;overflow:hidden;display:flex;flex-direction:column}
-.tk-wrap{display:grid;grid-template-columns:38% 62%;grid-template-rows:minmax(0,1fr);height:100%;max-height:100%;min-height:0;width:100%;overflow:hidden}
-.tk-left{min-height:0;height:100%;justify-content:center;padding:20px 14px}
-.tk-noor{opacity:.9 !important}
-.tk-mandala{display:grid !important;opacity:.22}
-.tk-particles{display:block !important}
-.tk-figure{width:min(270px,86%);margin:0 auto}
-.tk-right{display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden}
-.tk-head{flex:0 0 auto}
-.tk-scroll{flex:1 1 auto;min-height:0;overflow-y:auto !important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;cursor:grab;padding:16px 22px 28px}
+.mdl.tokoh-mdl{width:min(960px,96vw);height:min(640px,86dvh);max-height:86dvh;overflow:hidden;display:flex;flex-direction:column}
+.tk-wrap{display:grid;grid-template-columns:36% 64%;grid-template-rows:minmax(0,1fr);height:100%;max-height:100%;min-height:0;width:100%;overflow:hidden;background:#fff}
+.tk-left{min-height:0;height:100%;justify-content:center;align-items:center;padding:28px 22px;gap:16px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 2px,transparent 2px 16px),linear-gradient(160deg,var(--ink) 0%,var(--blue-dd) 58%,#1348bd 100%);
+  border-right:3px solid var(--yellow);text-align:center}
+.tk-plaque{width:100%;max-width:260px;padding:22px 18px;border:2px solid rgba(255,199,32,.6);background:rgba(10,34,96,.42);
+  clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+  display:flex;flex-direction:column;align-items:center;gap:14px}
+.tk-khat-main{width:100%;max-width:190px;height:auto;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+.tk-rehal-mark{width:46px;height:46px;display:grid;place-items:center;color:var(--yellow);border-top:1.5px solid rgba(255,199,32,.4);border-bottom:1.5px solid rgba(255,199,32,.4)}
+.tk-rehal-mark svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tk-caption{margin:0;padding:7px 14px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);
+  font:700 12.5px/1.25 var(--ff-h);letter-spacing:.12em;text-transform:uppercase;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.tk-meta-list{width:100%;max-width:260px;display:grid;gap:8px;text-align:left;margin-top:2px}
+.tk-meta-row{display:flex;justify-content:space-between;gap:10px;padding:6px 10px;background:rgba(255,255,255,.08);border-left:3px solid var(--yellow);font-size:12px;color:#eaf2ff}
+.tk-meta-row b{font:700 11px var(--ff-h);letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);flex:none}
+.tk-right{display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden;background:#fff}
+.tk-head{flex:0 0 auto;padding:18px 58px 16px 24px;background:var(--sky);border-bottom:2.5px solid var(--ink);display:flex;align-items:center;gap:12px}
+.tk-head-txt h3{font:700 clamp(16px,2vw,22px)/1.15 var(--ff-h);color:var(--ink);letter-spacing:.06em;text-transform:uppercase}
+.tk-head-txt p{font:600 12px var(--ff-h);color:var(--blue-d);letter-spacing:.05em;margin-top:3px}
+.tk-scroll{flex:1 1 auto;min-height:0;overflow-y:auto !important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;cursor:grab;padding:20px 26px 28px}
 .tk-scroll:active{cursor:grabbing}
+.tk-entry{padding:14px 0;border-bottom:1.5px solid var(--sky2)}
+.tk-entry:first-child{padding-top:0}
+.tk-entry:last-child{border-bottom:0;padding-bottom:0}
+.tk-entry h4{font:700 13.5px var(--ff-h);letter-spacing:.12em;text-transform:uppercase;color:var(--blue-dd);margin-bottom:7px}
+.tk-entry p,.tk-entry li{font-size:14px;line-height:1.68;color:#172a57}
+.tk-entry ul{padding-left:18px;display:grid;gap:6px}
 @media (max-width:760px){
   .mdl.tokoh-mdl{height:auto;max-height:88dvh;overflow-y:auto !important;display:block}
   .tk-wrap{display:flex;flex-direction:column;height:auto;max-height:none;overflow:visible}
-  .tk-left{min-height:270px;height:auto;padding:20px 14px 16px}
-  .tk-figure{width:min(210px,68%)}
+  .tk-left{min-height:auto;height:auto;padding:22px 16px 18px;border-right:0;border-bottom:3px solid var(--yellow)}
   .tk-right{height:auto;overflow:visible}
-  .tk-scroll{overflow:visible !important;height:auto;max-height:none}
+  .tk-head{padding:14px 54px 12px 16px}
+  .tk-scroll{overflow:visible !important;height:auto;max-height:none;padding:16px 18px 22px}
 }
+
+/* 2b) Countdown 28 Nov 2026 (Normal, 24 Jam Terakhir Berkelip Merah, Sedang Berlangsung Berkedip, Tamat) */
+.band.urgent .cd-n{animation:cdUrgentBlink 1s ease-in-out infinite}
+@keyframes cdUrgentBlink{
+  0%,100%{background:#fff;color:var(--red-d);box-shadow:0 0 0 0 rgba(255,255,255,.55)}
+  50%{background:#ffe1e5;color:#990015;box-shadow:0 0 18px 3px rgba(255,255,255,.5)}
+}
+.cd-live-badge{display:none;align-items:center;justify-content:center;gap:10px;margin:0 auto 14px;padding:7px 22px;
+  background:var(--ink);color:#fff;border:2.5px solid var(--yellow);font:700 clamp(11px,1.4vw,14px) var(--ff-h);letter-spacing:.16em;text-transform:uppercase;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:4px 4px 0 rgba(10,34,96,.28);animation:liveBlink 1.3s ease-in-out infinite}
+.cd-live-box{display:none;max-width:58ch;margin:16px auto 0;padding:10px 22px;background:var(--yellow);color:var(--ink);
+  border:2.5px solid var(--ink);font:700 clamp(13px,1.6vw,17px)/1.4 var(--ff-h);letter-spacing:.06em;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:5px 5px 0 var(--ink);animation:liveBlink 1.3s ease-in-out infinite}
+@keyframes liveBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.72;transform:scale(1.02)}}
+.cd-done-box{display:none;max-width:58ch;margin:14px auto 0;padding:12px 24px;background:rgba(255,255,255,.16);color:#fff;
+  border:2px solid var(--yellow);font:600 clamp(13px,1.5vw,16px)/1.5 var(--ff-b);
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.band.live .cd-live-badge,.band.live .cd-live-box{display:inline-flex}
+.band.live .clock,.band.live .upcoming-badge,.band.live .urgent-tag{display:none !important}
+.band.done .cd-done-box{display:inline-block}
+.band.done .clock,.band.done .upcoming-badge,.band.done .urgent-tag{display:none !important}
+
+/* 2c) Kembara Kami Thumbnail Preview Strip di bawah Slide Besar */
+.gal-thumbs{display:flex;gap:8px;margin-top:10px;padding:4px 2px 6px;overflow-x:auto;scrollbar-width:thin;justify-content:flex-start}
+.gal-thumb{flex:0 0 78px;height:52px;position:relative;border:2.5px solid var(--sky2);overflow:hidden;background:var(--sky);
+  transition:border-color .2s,transform .2s,opacity .2s;opacity:.68;padding:0;cursor:pointer}
+.gal-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.gal-thumb:hover{opacity:.95;border-color:var(--blue)}
+.gal-thumb.on{opacity:1;border-color:var(--yellow);box-shadow:0 0 0 2px var(--ink);transform:translateY(-2px)}
+.gal-thumb-no{position:absolute;left:3px;bottom:3px;background:rgba(10,34,96,.82);color:var(--yellow);
+  font:700 9.5px/1 var(--ff-h);padding:2px 5px;pointer-events:none}
+@media (max-width:520px){
+  .gal-thumb{flex:0 0 64px;height:44px}
+}
+
+/* 2d) Koleksi Eksklusif Zoomable Lightbox Modal */
+.kt{cursor:zoom-in}
+.mdl.kzoom-mdl{width:min(880px,96vw);--fill:#0a2260;--line:var(--yellow);color:#fff}
+.mdl.kzoom-mdl .mdl-head{border-color:rgba(255,255,255,.2)}
+.mdl.kzoom-mdl .x{background:var(--yellow);color:var(--ink)}
+.kzoom-body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:12px}
+.kzoom-stage{position:relative;width:100%;height:min(62dvh,520px);background:#071538;border:2px solid rgba(255,199,32,.55);
+  overflow:hidden;display:grid;place-items:center;touch-action:none;cursor:grab;user-select:none}
+.kzoom-stage:active{cursor:grabbing}
+.kzoom-stage img{max-width:100%;max-height:100%;object-fit:contain;transform-origin:center center;transition:transform .12s ease-out;pointer-events:none;will-change:transform}
+.kzoom-ctrl{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.kzoom-btn{padding:7px 16px;background:var(--blue);color:#fff;border:2px solid var(--yellow);font:700 13px var(--ff-h);letter-spacing:.1em;text-transform:uppercase;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .2s,color .2s}
+.kzoom-btn:hover{background:var(--yellow);color:var(--ink)}
+.kzoom-lvl{font:700 13px var(--ff-h);letter-spacing:.12em;color:var(--yellow);min-width:54px;text-align:center}
 
 /* 3) Kader: buang nombor belakang gambar & buang kotak bingkai pada keliling kader / dalam kotak pelajar */
 .kcard-no,.kmbr-no,.kf-mini-no{display:none !important}
@@ -1526,13 +1603,31 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
 <!-- ==================== PAGE 1 : UTAMA ==================== -->
 <div class="page" id="page-utama">
 
-  <!-- HERO BANNER (3 SLAID) -->
+  <!-- HERO BANNER (5 SLAID) -->
   <section class="hero-zone" id="hero-zone" aria-label="Hero banner">
     <div class="hero-plate">
       <div class="hero" id="hero">
 
         <article class="slide on" style="--c1:#0e3fa6;--c2:#2877fe">
-          <div class="slide-bg"><img src="1hero.jpg" alt="Inovasi Cita Rasa Gen Alpha" decoding="async" fetchpriority="high" onerror="this.remove()"></div>
+          <div class="slide-bg"><img src="5hero.jpg" alt="Revolusi Dakwah Gen Alpha" decoding="async" fetchpriority="high" onerror="this.remove()"></div>
+          <div class="slide-shade"></div>
+          <div class="slide-copy">
+            <h2>Revolusi Dakwah Gen Alpha</h2>
+            <p>Keriangan pelajar mencuba sendiri permainan Hadis 40 di pentas kebangsaan.</p>
+          </div>
+        </article>
+
+        <article class="slide" style="--c1:#1a5ee0;--c2:#0a2260">
+          <div class="slide-bg"><img src="4hero.jpg" alt="Melangkah ke Pentas Kebangsaan!" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="slide-shade"></div>
+          <div class="slide-copy">
+            <h2>Melangkah ke Pentas Kebangsaan!</h2>
+            <p>Dari SMKA Al-Irshad ke penghujung Tanah Semenanjung membawa Hadis 40 menembusi pentas utama negara.</p>
+          </div>
+        </article>
+
+        <article class="slide" style="--c1:#0e3fa6;--c2:#2877fe">
+          <div class="slide-bg"><img src="1hero.jpg" alt="Inovasi Cita Rasa Gen Alpha" loading="lazy" decoding="async" onerror="this.remove()"></div>
           <div class="slide-shade"></div>
           <div class="slide-copy">
             <h2>Inovasi Cita Rasa Gen Alpha</h2>
@@ -1569,20 +1664,39 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   <!-- BUTANG TOKOH INSPIRASI KAMI (HADAPAN / UTAMA) -->
   <section class="tokoh-band" aria-label="Tokoh Inspirasi Kami">
     <button type="button" class="btn-tokoh" id="btnTokoh" aria-label="Kenali Tokoh Inspirasi Kami - Imam An-Nawawi">
+      <span class="btn-tokoh-ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M2.5 6.5 12 10l9.5-3.5v8.5L12 18.5 2.5 15z"/>
+          <path d="M12 10v8.5M6 19.5l6-2.5 6 2.5"/>
+        </svg>
+      </span>
       <span class="btn-tokoh-txt">
         <strong>Tokoh Inspirasi Kami</strong>
-        <span>Imam An-Nawawi R.A. &bull; #hadis40dihatiku</span>
+        <span>Imam An-Nawawi R.A. &bull; Kenali Biodata</span>
       </span>
       <span class="btn-tokoh-arr" aria-hidden="true">&rsaquo;</span>
     </button>
   </section>
 
-  <!-- ACARA AKAN DATANG -->
-  <section class="band" id="countdown" aria-label="Program akan datang">
+  <!-- PEMASA KIRA DETIK ACARA (28 NOV 2026, 8:00 PAGI - 4:00 PETANG) -->
+  <section class="band" id="countdown" aria-label="Kira detik program">
     <div class="wrap">
-      <div class="upcoming-badge">AKAN DATANG</div>
-      <h2 class="band-title">KARNIVAL PENGHAYATAN HADIS 40 IMAM NAWAWI PERINGKAT NEGERI 2026</h2>
-      <p class="band-sub band-sub-mb0">MASJID ABDULLAH FAHIM, KEPALA BATAS, PULAU PINANG</p>
+      <div class="upcoming-badge" id="cdUpcomingBadge">AKAN DATANG</div>
+      <div class="urgent-tag" id="cdUrgentTag">KURANG 24 JAM LAGI</div>
+      <div class="cd-live-badge" id="cdLiveBadge"><i class="live-dot" aria-hidden="true"></i><span>SIARAN LANGSUNG &bull; SEDANG BERLANGSUNG</span></div>
+      <h2 class="band-title">KARNIVAL JEJAK IMAM NAWAWI PERINGKAT NEGERI 2026</h2>
+      <p class="band-sub">MASJID ABDULLAH FAHIM, KEPALA BATAS, PULAU PINANG</p>
+      <div class="clock" id="cdClock" aria-label="Kira detik ke 28 November 2026, 8 pagi">
+        <div class="cd"><div class="cd-n" id="cdD"><span>00</span></div><div class="cd-l">Hari</div></div>
+        <div class="colon">:</div>
+        <div class="cd"><div class="cd-n" id="cdH"><span>00</span></div><div class="cd-l">Jam</div></div>
+        <div class="colon">:</div>
+        <div class="cd"><div class="cd-n" id="cdM"><span>00</span></div><div class="cd-l">Minit</div></div>
+        <div class="colon">:</div>
+        <div class="cd"><div class="cd-n" id="cdS"><span>00</span></div><div class="cd-l">Saat</div></div>
+      </div>
+      <div class="cd-live-box" id="cdLiveBox">Sesi pameran dan demonstrasi modul sedang aktif berjalan</div>
+      <div class="cd-done-box" id="cdDoneBox"><strong>Program Telah Tamat.</strong> Terima kasih atas sokongan dan kunjungan semua!</div>
     </div>
   </section>
 
@@ -1676,9 +1790,8 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   <div class="vidzone" id="vidzone">
     <div class="vz-bg" aria-hidden="true">
       <div class="vz-fx"><i></i><i></i><i></i></div>
-      <video id="vzVideo" muted loop playsinline autoplay preload="metadata">
+      <video id="vzVideo" muted loop playsinline webkit-playsinline autoplay preload="auto">
         <source src="video_bg.mp4" type="video/mp4">
-        <source src="video_bg.mov" type="video/quicktime">
       </video>
       <div class="vz-tint"></div>
     </div>
@@ -2030,6 +2143,10 @@ const CFG = {
   // Sasaran siap baik pulih laman web: 20 November 2026, pukul 2:00 pagi
   target: '2026-11-20T02:00:00+08:00',
 
+  // Kira detik Karnival Jejak Imam Nawawi Peringkat Negeri 2026 (28 Nov 2026, 8:00 pagi - 4:00 petang)
+  eventStart: '2026-11-28T08:00:00+08:00',
+  eventEnd: '2026-11-28T16:00:00+08:00',
+
   // Pilihan integrasi Google Apps Script untuk Drive Live
   driveBridgeUrl: '',
 
@@ -2037,14 +2154,15 @@ const CFG = {
   shopee: '#',
   tiktokShop: '#',
 
-  // 3 VIDEO RASMI
+  // 4 VIDEO RASMI (SUSUNAN BAHARU)
   videos: [
-    { type:'yt', id:'Z3ROGujJYXg', url:'https://youtu.be/Z3ROGujJYXg?si=i5u-B9h5nfP5nUxF', title:'Video Rasmi 1: Briged Shabab An-Nawawi' },
-    { type:'tiktok', id:'', url:'https://vt.tiktok.com/ZSpxRU3vY/', bg:'2hero.png', title:'Video Rasmi 2: TikTok Rasmi Hadis 40 AIRIS' },
-    { type:'yt', id:'Lkyvbrv-plE', url:'https://youtu.be/Lkyvbrv-plE', title:'Video Rasmi 3: Sorotan Inovasi RoPix' }
+    { type:'yt', id:'Z3ROGujJYXg', url:'https://youtu.be/Z3ROGujJYXg?si=z60qZ6oXiKlX-XsU', title:'Video Rasmi 1: Briged Shabab An-Nawawi' },
+    { type:'yt', id:'SuPJnfpD-6I', url:'https://youtu.be/SuPJnfpD-6I?si=x0EJiKqTHqPxbH3u', title:'Video Rasmi 2: Hadis 40 Imam Nawawi AIRIS' },
+    { type:'tiktok', id:'', url:'https://vt.tiktok.com/ZSpxRU3vY/', bg:'2hero.png', title:'Perkongsian di TikTok' },
+    { type:'yt', id:'Lkyvbrv-plE', url:'https://youtu.be/Lkyvbrv-plE?si=xtGVdZyZx9_x00p4', title:'Video Rasmi 4: Sorotan Inovasi RoPix' }
   ],
 
-  // KEMBARA KAMI (7 LOKASI TERKINI)
+  // KEMBARA KAMI (7 LOKASI TERKINI + GAMBAR TEMPATAN + PAUTAN GOOGLE DRIVE VIEW)
   programs: [
     {
       key:'attaqwa', lokasi:'Masjid At-Taqwa, Kepala Batas, Pulau Pinang', short:'1. Masjid At-Taqwa',
@@ -2052,8 +2170,9 @@ const CFG = {
       tarikh:'8 November 2025, Sabtu',
       vvip:'Encik Ishak bin Harun, Ketua Penolong Kanan Pengarah Kanan, Sektor Pendidikan Islam, Jabatan Pendidikan',
       perihal:'Penampilan sulung yang mencetuskan fenomena—terus tular dan mencuri tumpuan warga maya sejak hari pertama pameran dibuka.',
-      drive:'https://drive.google.com/drive/folders/1BC54YqQIFHzH4gtNVaa4ZOegAs9pysFm',
-      imgs: localP('kembara/attaqwa', 5, HANGOUT_GALLERY)
+      drive:'https://drive.google.com/drive/folders/1BC54YqQIFHzH4gtNVaa4ZOegAs9pysFm?usp=sharing',
+      useLocalOnly: true,
+      imgs: ['taqwa1.jpg','taqwa2.jpg','taqwa3.jpg','taqwa4.jpg','taqwa5.JPG','taqwa6.JPG','taqwa7.JPG']
     },
     {
       key:'ipg', lokasi:'IPG Tuanku Bainon, Bukit Mertajam, Pulau Pinang', short:'2. IPG Tuanku Bainon',
@@ -2061,8 +2180,9 @@ const CFG = {
       tarikh:'9 April 2026, Khamis',
       vvip:'ENCIK MOHAMED ZAMRI BIN BASIR, Ketua Penolong Pengarah, Sektor, Pembangunan Program Adab dan Nilai, Bahagian Pendidikan Islam, KPM',
       perihal:'Pengiktirafan berterusan, pasukan kami menerima jemputan rasmi untuk mengadakan pameran khas bagi mempamerkan keunikan inovasi ini.',
-      drive:'https://drive.google.com/drive/folders/1BaKi3c6VcKainxpJWdWt7w8ogioLWFWr',
-      imgs: localP('kembara/ipg', 5, FALLBACK_GALLERY)
+      drive:'https://drive.google.com/drive/folders/1BaKi3c6VcKainxpJWdWt7w8ogioLWFWr?usp=sharing',
+      useLocalOnly: true,
+      imgs: ['ipg1.jpg','ipg3.jpg','ipg4.jpg','ipg5.png','ipg6.jpg']
     },
     {
       key:'adtec', lokasi:'ADTEC JTM Kampus, Kepala Batas, Pulau Pinang', short:'3. ADTEC Kepala Batas',
@@ -2070,17 +2190,19 @@ const CFG = {
       tarikh:'28 & 29 April 2026, Selasa & Rabu',
       vvip:'',
       perihal:'Sambutan luar jangka—dibanjiri maklum balas positif daripada pelajar dan guru-guru sepanjang sesi pameran berlangsung.',
-      drive:'https://drive.google.com/drive/folders/1Osr9WNDGHwWF0Zf3QrUvA6w7uKC1c_h9',
-      imgs: localP('kembara/adtec', 5, FALLBACK_GALLERY)
+      drive:'https://drive.google.com/drive/folders/1Osr9WNDGHwWF0Zf3QrUvA6w7uKC1c_h9?usp=sharing',
+      useLocalOnly: true,
+      imgs: ['sukses1.jpg','sukses2.JPG','sukses3.JPG','sukses4.png','sukses5.JPG']
     },
     {
       key:'smka', lokasi:'SMKA Sheikh Tahir Jalaluddin, Bukit Mertajam, Pulau Pinang', short:'4. SMKA Sheikh Tahir',
       nama:'Majlis Perasmian Sekolah Menengah Kebangsaan Agama Sheikh Tahir Jalaluddin',
       tarikh:'25 Julai 2026, Sabtu',
       vvip:"YAB Dato' Seri Anwar bin Ibrahim , PMX & YB Datuk Seri Fadhlina Binti Sidek, Menteri Pendidikan Malaysia",
-      perihal:'Detik bersejarah buat pasukan kami apabila inovasi ini menerima pengiktirafan dan tawaran rasmi untuk berentap di pentas peringkat kebangsaan.',
-      drive:'https://drive.google.com/drive/folders/1-zm-oNcX1Ary-LyD5a3zP-KvKwexpjdA',
-      imgs: localP('kembara/smka', 5, ['2hero.png','1hero.jpg','3hero.jpeg','herob_2(1).jpeg','herob_2(2).jpeg'])
+      perihal:'Detik bersejarah buat pasukan kami apabila inovasi ini mendapat pengiktirafan dan ditawarkan secara rasmi untuk mewakili negeri ke pentas peringkat kebangsaan.',
+      drive:'https://drive.google.com/drive/folders/1-zm-oNcX1Ary-LyD5a3zP-KvKwexpjdA?usp=sharing',
+      useLocalOnly: true,
+      imgs: ['anwar_pp.jpg','stj2.jpg','stj3.jpg','stj4.jpg','stj5.jpg','stj6.jpg']
     },
     {
       key:'mufti', lokasi:'Kediaman Mufti Perlis, Perlis', short:'5. Kediaman Mufti Perlis',
@@ -2088,29 +2210,30 @@ const CFG = {
       tarikh:'22 Oktober 2026, Khamis',
       vvip:'Dr. MAZA',
       perihal:"Berpeluang membentangkan dan memperkenalkan sendiri inovasi Hadis 40 Imam Nawawi secara eksklusif kepada Sahibus Samahah Dato' Arif Perkasa Dr. Mohd Asri bin Zainul Abidin (Dr. MAZA), Mufti Negeri Perlis.",
-      drive:'https://drive.google.com/drive/folders/1n0o8gsekc6WzKF5Gc0v4H1B3FgFwaBqI',
-      imgs: localP('kembara/mufti', 5, ['1hero.jpg','3hero.jpeg','2hero.png','herob_2(2).jpeg','herob_2(3).jpeg'])
+      drive:'https://drive.google.com/drive/folders/1n0o8gsekc6WzKF5Gc0v4H1B3FgFwaBqI?usp=sharing',
+      useLocalOnly: true,
+      imgs: ['mufti1.jpg','mufti2.JPG','mufti3.JPG','mufti4.jpg','mufti5.JPG']
     },
     {
       key:'pis', lokasi:'Politeknik Ibrahim Sultan, Pasir Gudang, Johor', short:'6. Politeknik Ibrahim Sultan',
       nama:'Karnival Jejak Imam Nawawi Kebangsaan 2026',
       tarikh:'14 November 2026, Sabtu',
-      vvip:'',
-      perihal:'',
-      shieldText:'14 NOVEMBER 2026',
-      shieldSub:'Karnival Jejak Imam Nawawi Kebangsaan 2026',
-      drive:'https://drive.google.com/drive/folders/1NoK_CXISbi8E9xifJzF2bNE4RXtraTHj',
-      imgs: localP('kembara/pis', 5, FALLBACK_GALLERY)
+      vvip:'Encik Jamaluddin Bin Yusoff, Timbalan Pengarah, Sektor Pengembangan Sekolah Agama, Bahagian Pendidikan Islam Kementerian Pendidikan',
+      perihal:'Penampilan sulung yang membanggakan di pentas kebangsaan—mencuri tumpuan ramai termasuk kontinjen dari negeri-negeri lain, sehingga mendapat pengiktirafan dan sebutan khas daripada Pengarah BPI.',
+      drive:'https://drive.google.com/drive/folders/1NoK_CXISbi8E9xifJzF2bNE4RXtraTHj?usp=sharing',
+      useLocalOnly: true,
+      imgs: ['johor1.jpeg','johor2.jpeg','johor3.jpeg','johor4.jpeg','johor5.jpeg','johor6.jpg','johor7.jpeg']
     },
     {
       key:'fahim', lokasi:'Masjid Abdullah Fahim, Kepala Batas, Pulau Pinang', short:'7. Masjid Abdullah Fahim',
-      nama:'Karnival Penghayatan Hadis 40 Imam Nawawi Peringkat Negeri 2026',
-      tarikh:'',
+      nama:'Karnival Jejak Imam Nawawi Peringkat Negeri 2026',
+      tarikh:'28 November 2026, Sabtu',
       vvip:'',
       perihal:'',
-      shieldText:'AKAN DATANG',
-      shieldSub:'Karnival Penghayatan Hadis 40 Imam Nawawi Peringkat Negeri 2026',
-      drive:'https://drive.google.com/drive/folders/1qvb8ARrL8BqD9lihawOS2aHlarbBcqZ0',
+      shieldText:'28 NOVEMBER 2026',
+      shieldSub:'Karnival Jejak Imam Nawawi Peringkat Negeri 2026',
+      drive:'https://drive.google.com/drive/folders/1qvb8ARrL8BqD9lihawOS2aHlarbBcqZ0?usp=sharing',
+      useLocalOnly: true,
       imgs: []
     }
   ],
@@ -2305,10 +2428,10 @@ const CFG = {
     { img:'Nazmi_pp.jpg', quote:'Kita mengharapkan agar inovasi seumpama ini dapat menyemarakkan lagi', nama:'Mohammad Nazmi bin Mohsin', jawatan:'Penolong Pengarah Unit Pembangunan Adab dan Nilai, SPI, JPNPP' },
     { img:'ustazsaf_pp.jpg', quote:'Uishh tak penah ustaz tengok sekolah buat inovasi dekat Roblox', nama:'Ustaz SAF', jawatan:'Guru' },
     { img:'@ssupd14na_pp.jpg', quote:'banyakkan content macam ni 😍😍, saya nak repost banyak2 biar anak muda nampak cara “main” roblox dengan betul 🥰✨🤝', nama:'@ssupd14na', jawatan:'Netizen' },
-    { img:'@putri_aila2016_pp.jpg', quote:'Nak robux boleh 🥰🥰', nama:'@putri_aila2016', jawatan:'Netizen' }
+    { img:'profile_pp.jpg', quote:'Inisiatif menyelitkan Hadis 40 dalam permainan Roblox ini wajar didedahkan seawal prasekolah dan Tahun 1, agar anak-anak tahu permainan di rumah juga boleh membawa nilai yang jauh lebih baik.', nama:'Tuan Haji Omar bin Salleh', jawatan:'Pengarah Bahagian Pendidikan Islam, KPM' }
   ],
 
-  // RAKAN STRATEGIK (8)
+  // RAKAN STRATEGIK (9)
   rakan: [
     { img:'bkp_logo.png', link:'https://www.instagram.com/prokeusmai._/', nama:'BKP PROKEUSMAI' },
     { img:'badar_logo.png', link:'#', nama:'BADAR Al-Irshad' },
@@ -2317,7 +2440,8 @@ const CFG = {
     { img:'prs_logo.png', link:'https://www.instagram.com/airis.prss/', nama:'PRS Al-Irshad' },
     { img:'asda_logo.png', link:'https://www.instagram.com/asda.ulfikr/', nama:'ASDA Ul-Fikr' },
     { img:'airsav_logo.png', link:'#', nama:'AIRSAV' },
-    { img:'alumni_logo.png', link:'https://www.instagram.com/irshadnation_rsydn?dlrf=a2Zxb2JjM2c4NHky', nama:'Alumni Irshad' }
+    { img:'alumni_logo.png', link:'https://www.instagram.com/irshadnation_rsydn?dlrf=a2Zxb2JjM2c4NHky', nama:'Alumni Irshad' },
+    { img:'logo_al_ansori.jpg', link:'#', nama:'Surau Al-Ansori' }
   ],
 
   // HUBUNGI KAMI (SMKA AL-IRSHAD)
@@ -2415,7 +2539,7 @@ const CFG = {
 const MAP = { w:1996, h:670, d:"M71.7 105.9L73.5 101.2L76.0 85.9L77.5 82.8L81.4 81.4L86.1 81.7L94.3 94.9L116.2 103.3L122.7 105.2L131.3 101.9L135.3 104.0L138.9 107.4L141.4 116.8L147.1 125.5L158.6 124.3L162.6 125.5L165.1 125.7L167.2 133.3L168.3 146.7L167.2 154.3L159.0 165.4L157.9 172.9L170.8 186.3L174.4 185.7L178.7 183.1L182.7 176.7L185.2 171.0L215.0 159.2L217.2 159.9L219.7 162.3L224.3 170.5L227.2 172.2L231.5 172.9L238.3 172.0L246.6 167.5L251.3 158.8L253.1 152.1L264.9 140.3L266.4 131.6L269.6 125.8L286.8 129.7L293.3 132.8L312.7 163.7L338.2 185.6L349.0 193.5L357.2 197.5L368.7 209.2L378.8 223.8L400.7 264.9L404.3 283.1L406.1 310.7L401.0 352.4L395.3 373.1L396.4 382.9L404.3 397.9L402.1 412.1L403.5 423.9L402.8 456.7L407.5 466.3L412.9 472.5L440.2 492.0L442.3 499.1L455.6 523.9L480.8 577.7L487.6 601.9L486.9 608.5L484.0 611.1L476.4 613.5L470.3 608.8L468.2 605.3L468.9 601.2L466.4 597.0L460.6 592.1L457.0 587.6L458.1 594.9L458.1 604.5L450.6 605.3L440.5 602.4L428.3 605.0L414.0 616.8L407.1 617.1L401.7 607.1L398.9 600.3L394.6 595.4L349.0 570.8L332.1 564.4L314.1 545.8L273.9 525.1L248.4 505.0L237.6 492.7L211.4 481.6L200.3 468.7L194.5 466.1L189.1 461.4L194.9 448.9L192.4 435.7L189.5 424.6L171.2 402.7L162.2 387.5L144.6 372.4L137.8 363.5L131.3 353.4L135.3 349.8L139.2 347.7L135.6 340.2L125.9 327.4L121.3 312.6L121.3 284.9L107.3 245.6L95.0 191.3L97.2 172.2L94.0 151.5L86.1 131.7L75.7 117.5L71.7 105.9ZM1813.1 332.9L1809.2 332.8L1800.5 330.7L1783.3 320.1L1765.7 316.3L1740.2 315.9L1725.5 314.5L1719.7 316.1L1714.7 316.1L1711.1 314.0L1707.2 313.0L1697.5 319.2L1687.8 314.5L1679.5 313.7L1669.5 314.5L1658.0 321.0L1645.8 315.1L1642.2 315.2L1639.7 316.6L1634.3 324.6L1623.9 330.7L1618.8 341.8L1615.6 352.4L1613.1 356.0L1612.0 376.7L1610.6 386.6L1613.1 399.8L1612.7 405.3L1607.3 415.8L1605.2 429.1L1605.9 432.8L1605.5 437.1L1601.6 446.5L1594.4 449.1L1587.2 450.7L1580.8 447.4L1575.0 452.6L1567.8 460.5L1565.0 465.9L1565.0 471.0L1565.7 474.3L1564.2 477.7L1563.9 481.4L1564.2 486.6L1569.3 488.8L1574.3 493.4L1573.9 497.7L1571.4 500.6L1553.1 514.9L1539.8 523.0L1534.8 525.0L1533.0 528.8L1532.3 533.8L1535.1 544.9L1537.7 548.0L1539.5 552.0L1536.2 560.5L1526.5 564.9L1524.7 568.2L1522.2 581.4L1519.3 588.3L1512.9 598.6L1510.7 603.2L1507.5 604.8L1494.9 599.9L1483.8 602.9L1469.1 604.8L1456.5 604.5L1446.8 606.5L1440.0 611.9L1432.4 618.9L1424.5 623.9L1418.8 626.3L1408.0 619.2L1402.3 619.7L1392.6 617.3L1363.5 606.9L1357.4 606.5L1355.6 604.3L1356.7 600.3L1355.6 595.3L1350.9 593.3L1304.6 594.0L1282.0 602.0L1275.5 606.0L1273.7 616.3L1264.7 635.7L1249.3 638.7L1237.8 648.9L1233.8 650.1L1226.3 648.6L1217.7 647.7L1211.6 650.6L1205.5 650.5L1185.7 645.6L1167.4 644.9L1150.9 648.2L1118.9 662.3L1107.8 663.8L1103.5 661.7L1097.4 656.0L1088.8 650.5L1069.0 631.0L1061.5 626.5L1056.4 621.8L1051.8 616.3L1045.3 610.2L1039.2 606.0L1030.9 597.7L1023.0 588.5L1021.2 572.3L1014.8 569.4L1012.3 565.2L1011.5 560.4L1020.5 547.2L1027.0 561.1L1029.5 564.2L1043.9 573.6L1055.7 578.2L1068.6 580.2L1081.9 580.5L1087.3 579.8L1092.3 578.1L1097.4 580.0L1124.7 595.3L1135.4 597.9L1146.6 596.8L1151.2 598.2L1167.0 609.8L1171.7 611.2L1179.6 610.4L1163.1 601.3L1160.2 594.2L1161.7 586.6L1168.1 581.5L1172.4 576.2L1174.2 559.8L1177.1 551.5L1182.1 543.5L1183.9 536.1L1178.2 530.2L1176.7 520.3L1177.8 512.1L1181.4 506.4L1192.2 513.5L1197.6 513.1L1201.5 511.9L1202.2 507.6L1201.2 500.1L1201.5 486.6L1208.3 475.6L1219.5 468.2L1229.9 464.5L1268.7 458.5L1330.4 443.0L1348.8 436.9L1355.6 433.8L1361.0 429.5L1370.7 415.6L1388.6 393.9L1401.2 376.0L1427.8 349.8L1449.0 325.7L1451.8 321.1L1455.1 308.0L1455.4 301.7L1454.7 295.5L1457.6 292.5L1463.0 290.8L1465.8 293.5L1473.4 297.4L1478.8 302.2L1485.2 314.5L1485.2 319.6L1488.8 323.7L1498.2 324.4L1501.0 329.7L1507.5 338.7L1513.6 345.1L1517.2 347.5L1521.9 346.3L1528.7 340.4L1533.7 333.1L1537.3 323.4L1534.4 321.8L1539.5 314.5L1540.2 310.7L1535.1 303.6L1532.3 283.3L1530.8 278.3L1534.8 274.4L1550.6 264.4L1558.8 260.0L1559.2 267.8L1558.8 280.9L1561.4 291.8L1566.7 310.9L1573.2 313.5L1580.8 315.2L1585.1 314.7L1587.9 313.5L1588.7 311.9L1584.0 304.3L1582.9 286.6L1579.0 275.0L1572.9 263.3L1570.3 260.0L1593.7 256.7L1608.0 245.1L1611.6 240.6L1614.2 230.5L1602.7 224.6L1598.4 217.0L1598.0 208.7L1611.6 193.4L1616.3 189.7L1618.5 195.1L1624.6 196.5L1630.0 196.7L1635.7 196.3L1643.6 188.7L1647.9 177.6L1661.9 161.8L1666.9 149.6L1669.8 137.1L1705.4 97.9L1709.7 91.6L1730.9 52.2L1733.4 51.0L1739.1 54.8L1740.6 67.3L1739.8 72.7L1736.6 80.9L1734.5 89.4L1737.0 89.2L1747.0 84.0L1757.4 70.3L1763.6 58.3L1768.6 53.1L1778.6 56.1L1780.8 58.1L1780.1 66.6L1781.1 71.7L1785.1 82.3L1793.7 88.7L1805.6 92.9L1816.7 98.8L1820.3 102.6L1822.4 107.3L1825.0 115.1L1825.0 122.7L1817.1 130.4L1820.7 142.7L1819.9 149.8L1817.4 155.9L1805.6 161.6L1837.2 155.9L1845.1 152.8L1855.8 144.6L1861.6 151.7L1867.0 163.7L1862.7 166.8L1849.0 171.3L1848.3 173.1L1853.0 179.3L1858.7 178.8L1869.9 174.6L1880.3 168.0L1885.3 168.0L1890.7 169.4L1901.1 173.6L1906.8 177.1L1911.5 181.6L1914.7 190.8L1926.6 194.1L1951.0 207.1L1955.3 208.3L1960.4 208.5L1972.9 206.9L1977.6 208.7L1980.8 213.3L1981.9 219.2L1981.5 225.5L1980.1 230.2L1977.2 234.0L1968.3 239.9L1946.3 247.7L1922.6 253.6L1910.4 253.3L1893.6 248.2L1887.4 248.8L1881.3 251.2L1873.8 267.2L1887.8 283.1L1911.5 299.8L1914.7 304.0L1914.0 309.0L1910.1 312.1L1905.0 313.7L1891.8 316.5L1878.1 318.4L1856.2 325.0L1845.1 323.7L1829.6 316.3L1825.3 315.8L1820.7 319.6L1816.0 330.0L1813.1 332.9ZM481.1 476.9L476.1 477.9L473.6 477.2L471.8 473.2L475.7 464.4L477.2 462.8L481.1 472.5L481.1 476.9ZM88.6 220.5L86.1 223.2L78.9 221.7L80.3 205.4L84.3 203.3L90.7 206.2L93.6 209.0L88.6 220.5ZM44.8 103.4L51.6 114.2L48.4 118.9L46.6 120.3L42.3 118.7L38.3 122.9L34.4 123.6L30.4 116.3L25.7 113.3L24.7 108.1L31.1 107.3L34.7 109.0L41.9 105.5L44.8 103.4ZM1770.0 33.1L1763.9 38.5L1761.8 32.1L1762.1 23.9L1770.4 16.3L1782.2 14.9L1783.7 21.0L1782.2 27.9L1779.7 31.6L1770.0 33.1ZM191.3 451.2L186.3 452.9L187.0 446.7L190.6 443.2L192.4 445.3L191.3 451.2ZM1196.1 508.5L1192.9 509.8L1188.2 506.2L1187.2 475.8L1190.4 473.2L1192.5 473.6L1195.1 479.1L1194.7 492.3L1195.1 504.1L1196.1 508.5ZM1844.0 331.4L1830.0 333.3L1820.3 333.1L1822.1 329.7L1821.7 325.0L1826.4 323.7L1831.8 324.8L1844.0 331.4Z", pins:{"attaqwa":[103.33,197.89],"ipg":[106.91,214.61],"adtec":[105.2,199.1],"fahim":[106.13,197.96],"mufti":[79.83,105.45],"smka":[109,210.22],"pis":[450.72,599.48]} };
 const STATE_BORDERS = ["M75.7 117.5 L94 114 L106 108 L116.2 103.3", "M95 191.3 L112 192 L117 204 L114 218 L104 232", "M104 232 L134 222 L152 204 L174.4 185.7", "M185.2 171 L190 212 L195 256 L202 318 L195 362 L162.2 387.5", "M312.7 163.7 L298 198 L280 232 L262 278 L244 298", "M195 256 L236 264 L268 282 L302 298", "M288 286 L342 308 L374 334 L404.3 352.4", "M195 362 L238 388 L254 422 L232 454 L200.3 468.7", "M232 454 L276 446 L312 468 L288 518 L296 536", "M237.6 492.7 L268 502 L296 536", "M312 468 L354 468 L402.8 456.7", "M1614.2 230.5 L1612 272 L1595 302 L1608 336"];
 
-const $=s=>document.querySelector(s),$$=(s,r)=>[...(r||document).querySelectorAll(s)];
+const $=(s,r)=>(r||document).querySelector(s),$$=(s,r)=>[...(r||document).querySelectorAll(s)];
 const el=(t,c)=>{const n=document.createElement(t);if(c)n.className=c;return n};
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -2518,92 +2642,32 @@ const hdr=$('#hdr');
 })();
 
 /* =====================================================================
-   TOKOH INSPIRASI KAMI (IMAM AN-NAWAWI MODAL SPLIT VIEW)
+   TOKOH INSPIRASI KAMI (IMAM AN-NAWAWI — PAPARAN EDITORIAL TULEN)
    ===================================================================== */
 function openTokohModal(){
   const w = el('div','tk-wrap');
-  const particles = Array.from({length:12}, (_,i)=>
-    `<i style="--lx:${10 + (i*7.1)%80}%;--d:${5.2 + (i%4)*1.3}s;--dl:${-(i*0.65).toFixed(2)}s"></i>`
-  ).join('');
-
   w.innerHTML = `
     <div class="tk-left">
-      <div class="tk-mandala" aria-hidden="true">
-        <svg viewBox="0 0 200 200" fill="none" stroke="#ffc720" stroke-width="1.3">
-          <g transform="translate(100,100)">
-            <rect x="-58" y="-58" width="116" height="116" transform="rotate(0)"/>
-            <rect x="-58" y="-58" width="116" height="116" transform="rotate(45)"/>
-            <rect x="-42" y="-42" width="84" height="84" transform="rotate(22.5)"/>
-            <rect x="-42" y="-42" width="84" height="84" transform="rotate(67.5)"/>
-            <circle cx="0" cy="0" r="82" stroke-dasharray="4 4"/>
-            <circle cx="0" cy="0" r="32"/>
-          </g>
-        </svg>
+      <div class="tk-plaque">
+        <img class="tk-khat-main" src="hadis40dihatiku_khat_gold.png" alt="Khat Hadis 40 Imam Nawawi Di Hatiku" onerror="this.src='hadis40dihatiku_khat.PNG'">
+        <div class="tk-rehal-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M2.5 6.5 12 10l9.5-3.5v8.5L12 18.5 2.5 15z"/>
+            <path d="M12 10v8.5M6 19.5l6-2.5 6 2.5"/>
+          </svg>
+        </div>
+        <div class="tk-caption">IMAM AN-NAWAWI (631H &ndash; 676H)</div>
       </div>
-      <div class="tk-noor" aria-hidden="true"></div>
-      <div class="tk-particles" aria-hidden="true">${particles}</div>
-
-      <!-- Ilustrasi Tokoh Ulama Tanpa Wajah (Jelas & Berkontras Tinggi) + Kitab + Qalam -->
-      <div class="tk-figure" aria-label="Ilustrasi tokoh ulama tanpa wajah sedang menulis kitab">
-        <svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="50%" stop-color="#ffc720"/>
-              <stop offset="100%" stop-color="#e6a800"/>
-            </linearGradient>
-            <linearGradient id="robe" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#2b6ef2"/>
-              <stop offset="55%" stop-color="#1545b5"/>
-              <stop offset="100%" stop-color="#0b256e"/>
-            </linearGradient>
-            <linearGradient id="turban" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="65%" stop-color="#fff3cc"/>
-              <stop offset="100%" stop-color="#f2d279"/>
-            </linearGradient>
-            <linearGradient id="faceSil" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#f5dec0"/>
-              <stop offset="100%" stop-color="#d4b082"/>
-            </linearGradient>
-          </defs>
-          <!-- Bayang bawah -->
-          <ellipse cx="142" cy="276" rx="104" ry="13" fill="rgba(4,15,51,0.55)"/>
-          <!-- Ekor Serban di Belakang -->
-          <path d="M90 78 C76 98, 72 126, 82 150 C92 132, 98 108, 100 84 Z" fill="url(#turban)" stroke="#0a2260" stroke-width="2"/>
-          <!-- Jubah Utama Duduk Bersila (3/4 pandangan) -->
-          <path d="M52 266 C44 230, 60 174, 86 142 C96 128, 118 122, 140 124 C168 126, 188 148, 202 184 L218 254 C218 268, 194 275, 152 275 C102 275, 58 272, 52 266 Z" fill="url(#robe)" stroke="url(#rim)" stroke-width="2.8"/>
-          <!-- Rida' / Selendang Bahu Putih-Emas -->
-          <path d="M88 134 C114 148, 146 152, 168 134 C160 176, 154 206, 166 240 C144 220, 116 220, 92 248 C92 200, 86 164, 88 134 Z" fill="url(#turban)" stroke="#ffc720" stroke-width="2"/>
-          <!-- Bentuk Kepala & Janggut Tanpa Wajah (Siluet Kemas 3/4) -->
-          <path d="M104 80 C104 58, 146 58, 150 84 C152 98, 150 116, 138 128 C124 138, 108 124, 104 102 Z" fill="url(#faceSil)" stroke="#0a2260" stroke-width="2"/>
-          <!-- Janggut Siluet Kemas -->
-          <path d="M114 114 C122 122, 138 122, 148 110 C146 128, 136 140, 126 140 C116 140, 112 128, 114 114 Z" fill="#182a54"/>
-          <!-- Serban Berlapis Putih-Emas -->
-          <path d="M88 76 C82 50, 106 30, 134 32 C158 34, 170 54, 162 76 C148 86, 108 86, 88 76 Z" fill="url(#turban)" stroke="#0a2260" stroke-width="2.4"/>
-          <path d="M92 63 Q126 48 158 63 M96 50 Q126 38 154 50" fill="none" stroke="#d99b00" stroke-width="2"/>
-          <!-- Lengan Kanan & Tangan Menulis -->
-          <path d="M136 148 L186 180 L176 202 L124 176 Z" fill="#1f5cd6" stroke="#ffc720" stroke-width="2"/>
-          <circle cx="185" cy="187" r="7" fill="url(#faceSil)" stroke="#0a2260" stroke-width="1.6"/>
-          <!-- Rehal Kayu Berukir Emas & Kitab Terbuka -->
-          <path d="M148 228 L186 248 L234 224 M190 220 L186 248" fill="none" stroke="#ffc720" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M146 214 L190 200 L240 212 L228 234 L188 222 L154 234 Z" fill="#ffffff" stroke="#0a2260" stroke-width="2.2"/>
-          <path d="M190 200 L188 222" stroke="#d99b00" stroke-width="2"/>
-          <!-- Pena Qalam & Kilauan Cahaya -->
-          <path d="M184 184 L214 156 L220 162 L190 190 Z" fill="#ffc720" stroke="#0a2260" stroke-width="1.4"/>
-          <g class="tk-nib-spark" fill="#fff">
-            <path d="M194 181 L196 191 L206 193 L196 195 L194 205 L192 195 L182 193 L192 191 Z" fill="#ffc720"/>
-            <circle cx="194" cy="193" r="3.2" fill="#ffffff"/>
-          </g>
-        </svg>
+      <div class="tk-meta-list">
+        <div class="tk-meta-row"><b>Lahir</b><span>11 Muharam 631 H</span></div>
+        <div class="tk-meta-row"><b>Asal</b><span>Nawa, Damsyiq, Syam</span></div>
+        <div class="tk-meta-row"><b>Wafat</b><span>Rejab 676 H (45 Tahun)</span></div>
       </div>
-      <div class="tk-caption">Imam Al-Hafiz Muhyiddin An-Nawawi (631H &ndash; 676H)</div>
     </div>
 
     <div class="tk-right">
       <div class="tk-head">
         <button class="x" style="top:12px;right:12px;background:var(--yellow);color:var(--ink)" aria-label="Tutup">${XI}</button>
-        <div class="tk-khat-box"><img src="hadis40dihatiku_khat_gold.png" alt="Khat Hadis 40 Imam Nawawi Di Hatiku" onerror="this.src='hadis40dihatiku_khat.PNG'"></div>
         <div class="tk-head-txt">
           <h3>Tokoh Inspirasi Kami</h3>
           <p>Al-Imam Muhyiddin Abu Zakariya Yahya An-Nawawi</p>
@@ -2611,18 +2675,12 @@ function openTokohModal(){
       </div>
 
       <div class="tk-scroll" id="tkScrollBox" tabindex="0">
-        <div class="tk-pills">
-          <span>Lahir: 11 Muharam 631 H</span>
-          <span>Asal: Nawa, Damsyiq, Syam</span>
-          <span>Wafat: Rejab 676 H (Umur 45 Tahun)</span>
-        </div>
-
-        <div class="tk-sec">
+        <div class="tk-entry">
           <h4>Latar Belakang</h4>
           <p>Nama sebenar beliau ialah <strong>Imam Al-Hafiz Muhyiddin Abu Zakariya Yahya bin Syaraf bin Murri bin Hasan bin Husein bin Muhammad bin Jam'ah bin Hizam An-Nawawi Asy-Syafi'i</strong>. Beliau dilahirkan pada 11 Muharam 631 H di Nawa, sebuah desa di selatan Damsyiq, Wilayah Syam.</p>
         </div>
 
-        <div class="tk-sec">
+        <div class="tk-entry">
           <h4>Kehidupan Semasa Kecil</h4>
           <ul>
             <li>Pada usia sangat muda, beliau telah mempelajari pelbagai ilmu Islam seperti feqah, hadith dan Al-Qur'an daripada guru-guru di sekitar kampungnya.</li>
@@ -2631,7 +2689,7 @@ function openTokohModal(){
           </ul>
         </div>
 
-        <div class="tk-sec">
+        <div class="tk-entry">
           <h4>Perjalanan Menuntut Ilmu</h4>
           <ul>
             <li>Semasa berusia 19 tahun, ibu bapanya menghantar beliau ke Damsyiq untuk mendalami ilmu di Madrasah Rawahiyah dan Madrasah Darul Hadis Al-Asyrafiah.</li>
@@ -2640,7 +2698,7 @@ function openTokohModal(){
           </ul>
         </div>
 
-        <div class="tk-sec">
+        <div class="tk-entry">
           <h4>Sifat &amp; Akhlak Mulia</h4>
           <ul>
             <li>Sentiasa istiqamah menuntut serta menyebarkan ilmu dengan mencontohi amalan salafus soleh.</li>
@@ -2649,21 +2707,21 @@ function openTokohModal(){
           </ul>
         </div>
 
-        <div class="tk-sec">
+        <div class="tk-entry">
           <h4>Sumbangan, Jasa &amp; Kewafatan</h4>
           <p>Sekiranya dihitung setiap helaian kitab yang dikarang berbanding usianya, seolah-olah beliau menulis sebanyak <strong>16 muka surat sehari sejak lahir</strong>—suatu karamah luar biasa kurniaan Allah SWT.</p>
-          <p style="margin-top:6px">Antara karya agung beliau yang kekal diajar sehingga kini ialah <em>Al-Arba'in An-Nawawiyah (Hadis 40)</em>, <em>Riyadh As-Solihin</em>, <em>Al-Minhaaj lisyarhi Sahih Muslim</em>, dan <em>Al-Azkar</em>. Pada hari Rabu bulan Rejab tahun 676 H, beliau wafat pada usia 45 tahun di sisi ibu bapanya dan disemadikan di Nawa, Syam.</p>
+          <p style="margin-top:8px">Antara karya agung beliau yang kekal diajar sehingga kini ialah <em>Al-Arba'in An-Nawawiyah (Hadis 40)</em>, <em>Riyadh As-Solihin</em>, <em>Al-Minhaaj lisyarhi Sahih Muslim</em>, dan <em>Al-Azkar</em>. Pada hari Rabu bulan Rejab tahun 676 H, beliau wafat pada usia 45 tahun di sisi ibu bapanya dan disemadikan di Nawa, Syam.</p>
         </div>
       </div>
     </div>
   `;
 
-  // Sokongan seret (drag-to-scroll) dengan tetikus & sentuhan pada ruangan biodata
+  // Sokongan seret (drag-to-scroll) dengan tetikus pada ruangan biodata
   const sc = $('#tkScrollBox', w);
   if(sc){
     let isDown=false, startY=0, startTop=0;
     sc.addEventListener('pointerdown', e=>{
-      if(e.pointerType==='touch') return; // sentuhan guna native touch scroll
+      if(e.pointerType==='touch') return;
       isDown=true; startY=e.clientY; startTop=sc.scrollTop;
       sc.style.cursor='grabbing';
     });
@@ -2680,6 +2738,44 @@ function openTokohModal(){
   openModal(w,'tokoh-mdl');
 }
 $('#btnTokoh').addEventListener('click', openTokohModal);
+
+/* =====================================================================
+   PEMASA KIRA DETIK ACARA (28 NOV 2026, 8:00 PAGI - 4:00 PETANG)
+   ===================================================================== */
+(function(){
+  const band=$('#countdown');if(!band)return;
+  const startMs=new Date(CFG.eventStart||'2026-11-28T08:00:00+08:00').getTime();
+  const endMs=new Date(CFG.eventEnd||'2026-11-28T16:00:00+08:00').getTime();
+  const E={d:$('#cdD span'),h:$('#cdH span'),m:$('#cdM span'),s:$('#cdS span')},last={};
+  function set(k,v){
+    if(!E[k])return;
+    const t=String(v).padStart(2,'0');
+    if(last[k]===t)return;last[k]=t;
+    E[k].textContent=t;
+  }
+  function upd(){
+    const now=Date.now();
+    if(now>=endMs){
+      band.classList.remove('urgent','live');
+      band.classList.add('done');
+      return;
+    }
+    if(now>=startMs){
+      band.classList.remove('urgent','done');
+      band.classList.add('live');
+      return;
+    }
+    band.classList.remove('live','done');
+    const ms=Math.max(0,startMs-now);
+    band.classList.toggle('urgent', ms<=86400000);
+    const s=Math.floor(ms/1000);
+    set('d',Math.floor(s/86400));
+    set('h',Math.floor(s%86400/3600));
+    set('m',Math.floor(s%3600/60));
+    set('s',s%60);
+  }
+  upd();setInterval(upd,1000);
+})();
 
 /* =====================================================================
    PEMASA KIRA DETIK NOTIS BAIK PULIH (20 NOV 2026, 2:00 PAGI)
@@ -2723,7 +2819,7 @@ $('#btnTokoh').addEventListener('click', openTokohModal);
         <div class="vs-tt-card">
           ${v.bg?`<img class="vs-tt-bg" src="${esc(v.bg)}" alt="" loading="lazy" decoding="async" onerror="this.remove()">`:''}
           <div class="vs-tt-inner">
-            <span class="vs-tt-badge">${ttSvg} TIKTOK RASMI</span>
+            <span class="vs-tt-badge">${ttSvg} TIKTOK</span>
             <h3 style="font:700 clamp(15px,2vw,22px) var(--ff-h);letter-spacing:.06em">${esc(v.title)}</h3>
             <a class="vs-tt-btn" href="${esc(v.url)}" target="_blank" rel="noopener noreferrer">${ttSvg} Tonton di TikTok</a>
           </div>
@@ -2798,37 +2894,86 @@ function closeModal(){
 modal.addEventListener('click',e=>{if(e.target===modal||e.target.closest('.x'))closeModal()});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-function gallery(imgs, driveUrl){
+function gallery(imgs, driveUrl, opts){
   const g=el('div','gal');
+  const o=opts||{};
+  let autoTm=0;
+  const stopAuto=()=>{if(autoTm){clearInterval(autoTm);autoTm=0}};
+  const prevCleanup=window._kpopCleanup;
+  window._kpopCleanup=()=>{stopAuto();if(prevCleanup)prevCleanup()};
+
   const buildGal = arr => {
+    stopAuto();
     const list = Array.isArray(arr) && arr.length ? arr : ['1hero.jpg'];
+    const n = list.length;
+    const thumbsHtml = (o.thumbs && n>1)
+      ? `<div class="gal-thumbs" role="tablist" aria-label="Pilih gambar">${list.map((s,i)=>
+          `<button type="button" class="gal-thumb${i===0?' on':''}" data-gi="${i}" aria-label="Gambar ${i+1}">${makeImgHtml(s,'Pratonton '+(i+1))}<span class="gal-thumb-no">${i+1}</span></button>`
+        ).join('')}</div>`
+      : (n>1 ? '<div class="gal-dots"></div>' : '');
+
     g.innerHTML=`<div class="gal-view"><div class="gal-track">${list.map((s,i)=>`<div class="gal-s slot">${makeImgHtml(s,'Gambar '+(i+1))}</div>`).join('')}</div>
-      ${list.length>1?`<button class="garr prev" aria-label="Gambar sebelum"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button class="garr next" aria-label="Gambar seterusnya"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>`:''}</div>${list.length>1?'<div class="gal-dots"></div>':''}`;
-    const track=$('.gal-track',g),dbox=$('.gal-dots',g),n=list.length;let cur=0;
-    const dots=n>1?list.map((_,i)=>{const d=el('button','dot');d.setAttribute('aria-label','Gambar '+(i+1));d.onclick=()=>go(i);dbox.appendChild(d);return d}):[];
-    function go(i){cur=(i+n)%n;track.style.transform=`translateX(${-cur*100}%)`;dots.forEach((d,k)=>d.classList.toggle('on',k===cur))}
-    if(n>1){
-      $('.prev',g).onclick=()=>go(cur-1);$('.next',g).onclick=()=>go(cur+1);
-      let sx=0;const v=$('.gal-view',g);
-      v.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
-      v.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1))},{passive:true});
+      ${n>1?`<button class="garr prev" aria-label="Gambar sebelum"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="garr next" aria-label="Gambar seterusnya"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>`:''}</div>${thumbsHtml}`;
+
+    const track=$('.gal-track',g),dbox=$('.gal-dots',g),tbox=$('.gal-thumbs',g);
+    let cur=0;
+    const dots=(!o.thumbs && dbox && n>1)?list.map((_,i)=>{const d=el('button','dot');d.setAttribute('aria-label','Gambar '+(i+1));d.onclick=()=>go(i,true);dbox.appendChild(d);return d}):[];
+    const thumbs=tbox?$$('.gal-thumb',tbox):[];
+
+    function go(i, manual){
+      cur=(i+n)%n;
+      track.style.transform=`translateX(${-cur*100}%)`;
+      dots.forEach((d,k)=>d.classList.toggle('on',k===cur));
+      thumbs.forEach((t,k)=>{
+        t.classList.toggle('on',k===cur);
+        if(k===cur && tbox){
+          const left = t.offsetLeft - tbox.clientWidth/2 + t.clientWidth/2;
+          tbox.scrollTo({left:Math.max(0,left),behavior:reduce?'auto':'smooth'});
+        }
+      });
+      if(manual && o.auto && !reduce){ startAuto(); }
     }
-    go(0);
+    function startAuto(){
+      stopAuto();
+      if(o.auto && n>1 && !reduce){
+        autoTm=setInterval(()=>{
+          if(!g.isConnected){stopAuto();return}
+          go(cur+1,false);
+        }, o.interval||3600);
+      }
+    }
+    if(n>1){
+      $('.prev',g).onclick=()=>go(cur-1,true);
+      $('.next',g).onclick=()=>go(cur+1,true);
+      thumbs.forEach(t=>t.addEventListener('click',()=>go(+t.dataset.gi,true)));
+      let sx=0;const v=$('.gal-view',g);
+      v.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;stopAuto()},{passive:true});
+      v.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1),true);else startAuto()},{passive:true});
+      g.addEventListener('pointerenter',stopAuto);
+      g.addEventListener('pointerleave',startAuto);
+    }
+    go(0,false);
+    startAuto();
   };
-  const fid = isReal(driveUrl) ? extractFolderId(driveUrl) : '';
-  const pool = fid && DRIVE_POOLS[fid];
-  const initImgs = (pool && pool.length)
-    ? pool.slice().sort(()=>Math.random()-0.5).slice(0,5).map((id,idx)=>({
-        img: 'https://drive.google.com/thumbnail?id=' + id + '&sz=w1000',
-        fallbackImg: FALLBACK_GALLERY[idx % FALLBACK_GALLERY.length]
-      }))
-    : imgs;
-  buildGal(initImgs);
-  if(isReal(driveUrl)){
-    fetchDriveGallery(driveUrl).then(liveImgs=>{
-      if(liveImgs && liveImgs.length && g.isConnected) buildGal(liveImgs);
-    });
+
+  if(o.localOnly){
+    buildGal(imgs);
+  }else{
+    const fid = isReal(driveUrl) ? extractFolderId(driveUrl) : '';
+    const pool = fid && DRIVE_POOLS[fid];
+    const initImgs = (pool && pool.length)
+      ? pool.slice().sort(()=>Math.random()-0.5).slice(0,5).map((id,idx)=>({
+          img: 'https://drive.google.com/thumbnail?id=' + id + '&sz=w1000',
+          fallbackImg: FALLBACK_GALLERY[idx % FALLBACK_GALLERY.length]
+        }))
+      : imgs;
+    buildGal(initImgs);
+    if(isReal(driveUrl)){
+      fetchDriveGallery(driveUrl).then(liveImgs=>{
+        if(liveImgs && liveImgs.length && g.isConnected) buildGal(liveImgs);
+      });
+    }
   }
   return g;
 }
@@ -2842,7 +2987,7 @@ function openProgram(i){
   if(p.shieldText){
     const wrap=el('div','shield-wrap');
     const blurDiv=el('div','shield-blur');
-    blurDiv.appendChild(gallery(p.imgs && p.imgs.length ? p.imgs : FALLBACK_GALLERY, p.drive));
+    blurDiv.appendChild(gallery(p.imgs && p.imgs.length ? p.imgs : FALLBACK_GALLERY, p.drive, {localOnly:true}));
     blurDiv.insertAdjacentHTML('beforeend',`<div class="info">
       <div>${p.tarikh?`<div class="row"><b>Tarikh</b><p>${esc(p.tarikh)}</p></div>`:''}${p.perihal?`<div class="row"><p>${esc(p.perihal)}</p></div>`:''}</div>
       <div><div class="row"><b>Lokasi</b><p>${esc(p.lokasi)}</p></div></div></div>`);
@@ -2850,7 +2995,7 @@ function openProgram(i){
     wrap.insertAdjacentHTML('beforeend',`<div class="shield-overlay"><div class="shield-stamp">${esc(p.shieldText)}<span class="shield-sub">${esc(p.shieldSub||p.lokasi)}</span></div></div>`);
     body.appendChild(wrap);
   }else{
-    body.appendChild(gallery(p.imgs, p.drive));
+    body.appendChild(gallery(p.imgs, p.drive, {localOnly:!!p.useLocalOnly, thumbs:true, auto:true, interval:3600}));
     body.insertAdjacentHTML('beforeend',`<div class="info">
       <div>
         ${p.tarikh?`<div class="row"><b>Tarikh</b><p>${esc(p.tarikh)}</p></div>`:''}
@@ -3651,10 +3796,57 @@ function openKaderModal(k){
 })();
 
 /* =====================================================================
-   KOLEKSI (6 ITEM + AKAN DATANG), TESTIMONI, RAKAN STRATEGIK
+   KOLEKSI (6 ITEM ZOOMABLE POP-UP + AKAN DATANG MERAH), TESTIMONI, RAKAN STRATEGIK
    ===================================================================== */
+function openKoleksiZoom(k){
+  if(!k)return;
+  const w=el('div');
+  w.innerHTML=head(k.title)+`<div class="kzoom-body">
+    <div class="kzoom-stage" id="kzStage"><img id="kzImg" src="${esc(k.img)}" alt="${esc(k.title)}" decoding="async"></div>
+    <div class="kzoom-ctrl">
+      <button type="button" class="kzoom-btn" id="kzOut" aria-label="Zoom keluar">&minus; Zoom Out</button>
+      <span class="kzoom-lvl" id="kzLvl">100%</span>
+      <button type="button" class="kzoom-btn" id="kzIn" aria-label="Zoom masuk">+ Zoom In</button>
+      <button type="button" class="kzoom-btn" id="kzReset" aria-label="Set semula zoom">Reset</button>
+    </div>
+  </div>`;
+  const st=$('#kzStage',w), im=$('#kzImg',w), lvl=$('#kzLvl',w);
+  let scale=1, tx=0, ty=0, drag=false, sx=0, sy=0, btx=0, bty=0, pDist=0, pScale=1;
+  const apply=()=>{
+    if(scale<=1){scale=1;tx=0;ty=0}
+    im.style.transform=`translate3d(${tx.toFixed(1)}px,${ty.toFixed(1)}px,0) scale(${scale.toFixed(2)})`;
+    lvl.textContent=Math.round(scale*100)+'%';
+  };
+  const setZoom=z=>{scale=clamp(z,1,4);apply()};
+  $('#kzIn',w).onclick=()=>setZoom(scale+0.5);
+  $('#kzOut',w).onclick=()=>setZoom(scale-0.5);
+  $('#kzReset',w).onclick=()=>{scale=1;tx=0;ty=0;apply()};
+  st.addEventListener('wheel',e=>{e.preventDefault();setZoom(scale+(e.deltaY<0?0.3:-0.3))},{passive:false});
+  st.addEventListener('dblclick',()=>setZoom(scale>1.2?1:2.2));
+  st.addEventListener('pointerdown',e=>{if(scale<=1)return;drag=true;sx=e.clientX;sy=e.clientY;btx=tx;bty=ty;st.setPointerCapture(e.pointerId)});
+  st.addEventListener('pointermove',e=>{if(!drag)return;tx=btx+(e.clientX-sx);ty=bty+(e.clientY-sy);apply()});
+  st.addEventListener('pointerup',()=>{drag=false});
+  st.addEventListener('touchstart',e=>{
+    if(e.touches.length===2){
+      pDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+      pScale=scale;
+    }
+  },{passive:true});
+  st.addEventListener('touchmove',e=>{
+    if(e.touches.length===2 && pDist>0){
+      e.preventDefault();
+      const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+      setZoom(pScale*(d/pDist));
+    }
+  },{passive:false});
+  openModal(w,'kzoom-mdl');
+}
+
 (function(){
-  $('#kGrid').innerHTML=CFG.koleksi.map((k,i)=>`<div class="kt k${i+1}" role="figure" aria-label="${esc(k.title)}"><span class="slot">${makeImgHtml(k.img,k.title)}</span><span class="kt-t">${esc(k.title)}</span></div>`).join('');
+  const kGrid=$('#kGrid');
+  kGrid.innerHTML=CFG.koleksi.map((k,i)=>`<div class="kt k${i+1}" role="button" tabindex="0" data-ki="${i}" aria-label="Besarkan ${esc(k.title)}"><span class="slot">${makeImgHtml(k.img,k.title)}</span><span class="kt-t">${esc(k.title)}</span></div>`).join('');
+  kGrid.addEventListener('click',e=>{const el=e.target.closest('.kt');if(el)openKoleksiZoom(CFG.koleksi[+el.dataset.ki])});
+  kGrid.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const el=e.target.closest('.kt');if(el){e.preventDefault();openKoleksiZoom(CFG.koleksi[+el.dataset.ki])}}});
 
   const handleShopSoon = btn => e => {
     e.preventDefault();
@@ -3662,6 +3854,7 @@ function openKaderModal(k){
     btn.classList.remove('shake-err');void btn.offsetWidth;btn.classList.add('shake-err');
     const pop = $('.shop-soon-pop', btn);
     if(pop){
+      pop.textContent='AKAN DATANG';
       pop.classList.add('show');
       clearTimeout(btn._t);
       btn._t = setTimeout(()=>{pop.classList.remove('show');btn.classList.remove('shake-err')}, 2200);
@@ -3681,13 +3874,36 @@ function openKaderModal(k){
   $('#pTrack').innerHTML=pl+pl.replace(/class="pl"/g,'class="pl" aria-hidden="true"');
 })();
 
-/* Video Latar Testimoni & Rakan (video_bg.mp4 automatik berulang tanpa berhenti) */
+/* Video Latar Testimoni & Rakan (video_bg.mp4 automatik berulang di laptop & semua phone) */
 (function(){
   const v=$('#vzVideo');if(!v)return;
-  if('IntersectionObserver' in window)new IntersectionObserver(en=>{
-    if(en[0].isIntersecting)v.play().catch(()=>{});else v.pause();
-  },{threshold:.04}).observe($('#vidzone'));
-  else v.play().catch(()=>{});
+  v.muted=true;
+  v.defaultMuted=true;
+  v.playsInline=true;
+  v.setAttribute('muted','');
+  v.setAttribute('playsinline','');
+  v.setAttribute('webkit-playsinline','');
+  const tryPlay=()=>{
+    v.muted=true;
+    const p=v.play();
+    if(p && p.catch) p.catch(()=>{});
+  };
+  v.addEventListener('loadeddata',tryPlay);
+  v.addEventListener('canplay',tryPlay);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)tryPlay()});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(en=>{
+      if(en[0].isIntersecting)tryPlay();else v.pause();
+    },{threshold:.01}).observe($('#vidzone'));
+  }else{
+    tryPlay();
+  }
+  const unlock=()=>{
+    tryPlay();
+    if(!v.paused)['touchstart','pointerdown','scroll'].forEach(ev=>removeEventListener(ev,unlock,true));
+  };
+  ['touchstart','pointerdown','scroll'].forEach(ev=>addEventListener(ev,unlock,{capture:true,passive:true}));
+  tryPlay();
 })();
 
 /* =====================================================================
