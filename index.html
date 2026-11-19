@@ -8,8 +8,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://i.ytimg.com">
 <title>Platform Hadis 40 Imam Nawawi | Briged Shabab An-Nawawi • SMKA Al-Irshad</title>
-<link rel="icon" type="image/png" href="logo_briged_shabab_an-nawawi.png">
-<link rel="apple-touch-icon" href="logo_briged_shabab_an-nawawi.png">
+<link rel="icon" type="image/png" href="icon_briged_web.png">
+<link rel="apple-touch-icon" href="icon_briged_web.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -479,7 +479,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
   border:2px solid var(--yellow);padding:6px 20px;font:700 11px/1.2 var(--ff-h);letter-spacing:.16em;text-transform:uppercase;text-align:center;
   clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);pointer-events:none}
 .watak-hotspots{position:absolute;inset:0;z-index:4;pointer-events:none}
-.watak-hs{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer}
+.watak-hs{position:absolute;pointer-events:auto;cursor:pointer}
 
 /* Garis Pemisah Geometri & Grid 16 Watak Sampingan (4x4) */
 .watak-div{margin:clamp(22px,3.2vw,36px) 0 clamp(24px,3.6vw,42px);position:relative;height:14px;background:linear-gradient(90deg,var(--blue-d),var(--blue),var(--blue-d));
@@ -931,7 +931,7 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   .mq-track{animation:none!important}.mq{overflow-x:auto}
 }
 /* =========================================================
-   16. PENAMBAHAN V2.1 (HEADER, TOKOH, LIVE COUNTDOWN, PETA, WATAK, KADER, BAHASA, AMBIENT, KAJI SELIDIK)
+   16. PENAMBAHAN V2.1 (HEADER, TOKOH, LIVE COUNTDOWN, PETA, WATAK, KADER, BAHASA, AMBIENT)
    ========================================================= */
 /* Clean Studio Slot (buang garisan silang X di belakang logo/potret lutsinar & pastikan logo tidak terpotong) */
 .logo.slot,.wtab-logo.slot,.wpop-logo.slot,.pl .slot,.ic-logo.slot,.kcard-in.slot,.kmbr-box.slot,.kf-mini.slot,.wcard-in.slot,.tc-ph.slot{background:linear-gradient(145deg,#ffffff 0%,#e9f1ff 100%) !important}
@@ -1084,7 +1084,7 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .yt-mdl-nav button:hover:not(:disabled){background:var(--yellow);color:var(--ink)}
 .yt-mdl-nav button:disabled{opacity:.4;cursor:not-allowed}
 
-/* 8) Footer Hubungi Kami Map + Phone Action Chooser */
+/* 8) Footer Hubungi Kami Map + Portrait Avatar + Clickable Email + Phone Action Chooser */
 .ct-map-card{grid-column:1/-1;position:relative;border:2.5px solid var(--yellow);background:#092161;overflow:hidden;border-radius:4px}
 .ct-map-frame{width:100%;height:190px;border:0;display:block;background:#0e3fa6}
 .ct-map-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:rgba(10,34,96,.92);border-top:2px solid rgba(255,199,32,.45);flex-wrap:wrap}
@@ -1092,6 +1092,15 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .ct-map-go{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);
   font:700 11px var(--ff-h);letter-spacing:.1em;text-transform:uppercase;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);white-space:nowrap}
 .ct-map-go:hover{background:#fff}
+.ct-avatar{flex:none;width:68px;height:68px;background:linear-gradient(145deg,#ffffff 0%,var(--sky) 100%);border:2.5px solid var(--yellow);
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);overflow:hidden;position:relative;box-shadow:3px 3px 0 rgba(10,34,96,.38)}
+.ct-avatar img{width:100%;height:100%;object-fit:cover;object-position:center 24%;transform:scale(1.24);transform-origin:center 36%;display:block}
+.ct-mail-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:rgba(255,255,255,.14);border:2px solid var(--yellow);
+  color:#fff;font:700 14px var(--ff-h);letter-spacing:.04em;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  transition:background .2s,color .2s,transform .2s;text-decoration:none;border-bottom:2px solid var(--yellow);max-width:100%;word-break:break-word}
+.ct-mail-btn svg{flex:none;width:22px;height:22px;fill:none;stroke:var(--yellow);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+.ct-mail-btn:hover{background:var(--yellow);color:var(--ink);transform:translateY(-2px)}
+.ct-mail-btn:hover svg{stroke:var(--ink)}
 .ct-tel-btn{display:inline-flex;align-items:center;gap:6px;margin-top:4px;padding:4px 10px;background:rgba(255,255,255,.14);border:1.5px solid var(--yellow);
   color:#fff;font:700 13px var(--ff-h);letter-spacing:.05em;border-radius:3px;cursor:pointer;transition:background .2s,color .2s}
 .ct-tel-btn:hover{background:var(--yellow);color:var(--ink)}
@@ -1102,30 +1111,61 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .ct-tel-choice a.wa{background:#25D366;color:#052811}
 .ct-tel-choice a.call{background:var(--yellow);color:var(--ink)}
 
-/* 9) Watak 6-Card Grid, Banner Aspect 16:9 & Epic Pop-up */
-.watak-grid{grid-template-columns:repeat(3,1fr) !important;max-width:940px;margin:0 auto}
-.watak-stage-in{height:auto !important;aspect-ratio:16/9;max-height:520px}
-.watak-hs{border:2.5px solid transparent;border-radius:14px;transition:background .25s,border-color .25s,box-shadow .25s;cursor:pointer}
+/* 9) Watak: Tab Logo Besar Terus, Banner 16:9 Tepat, Hotspots Penuh Badan, Grid Tengah & Animasi Terkunci */
+.wtab{height:clamp(62px,7.2vw,84px)}
+.wtab-full{padding:5px 14px}
+.wtab-full:last-child{padding-right:calc(var(--sl) + 10px)}
+.wtab-full-img{width:100%;height:100%;max-height:100%;object-fit:contain;display:block;transition:transform .25s ease,filter .25s ease}
+.wtab-full:hover .wtab-full-img{transform:scale(1.04)}
+.wtab-full.on{background:linear-gradient(135deg,#eaf2ff 0%,#ffffff 55%,#d8e8ff 100%);color:var(--ink)}
+.wtab-full.on::after{background:var(--yellow);height:5px}
+.wtab-full.on .wtab-full-img{filter:drop-shadow(0 2px 6px rgba(10,34,96,.22))}
+.watak-stage-plate{max-width:940px;margin-inline:auto}
+.watak-stage-in{height:auto !important;aspect-ratio:16/9;max-height:none !important;width:100%}
+.watak-stage-in>img{width:100%;height:100%;object-fit:cover;object-position:center}
+.watak-hs{border:2.5px solid transparent;border-radius:14px;transition:background .22s,border-color .22s,box-shadow .22s;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:clamp(6px,1.8%,14px)}
 .watak-hs:hover{background:rgba(255,199,32,.14);border-color:rgba(255,199,32,.85);box-shadow:0 0 24px rgba(255,199,32,.45),inset 0 0 20px rgba(255,199,32,.2)}
-.watak-hs-tag{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--yellow);border:2px solid var(--yellow);
-  padding:4px 14px;font:700 12px var(--ff-h);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;
-  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:3px 3px 0 rgba(0,0,0,.4)}
-.watak-soon-toast{position:absolute;left:50%;bottom:18px;transform:translateX(-50%) translateY(10px);z-index:12;background:var(--yellow);color:var(--ink);
-  border:3px solid var(--ink);padding:8px 24px;font:700 15px var(--ff-h);letter-spacing:.16em;text-transform:uppercase;
-  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:5px 5px 0 var(--ink);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
-.watak-soon-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.watak-hs-tag{position:static;transform:none;background:var(--ink);color:var(--yellow);border:2px solid var(--yellow);
+  padding:clamp(3px,.55vw,5px) clamp(8px,1.5vw,15px);font:700 clamp(9.5px,1.35vw,13px)/1.15 var(--ff-h);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;
+  max-width:94%;overflow:hidden;text-overflow:ellipsis;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:3px 3px 0 rgba(0,0,0,.42);pointer-events:none;transition:background .2s,color .2s,border-color .2s}
+.watak-hs.hs-locked-shake{background:rgba(255,51,71,.34) !important;border-color:#ff3347 !important;
+  box-shadow:0 0 24px rgba(255,51,71,.7),inset 0 0 22px rgba(255,51,71,.35) !important;
+  animation:hsLockedShake .48s cubic-bezier(.36,.07,.19,.97) both}
+.watak-hs.hs-locked-shake .watak-hs-tag{background:var(--red);color:#fff;border-color:#fff}
+@keyframes hsLockedShake{
+  0%,100%{transform:translateX(0)}
+  18%{transform:translateX(-7px) rotate(-1deg)}
+  36%{transform:translateX(7px) rotate(1deg)}
+  54%{transform:translateX(-5px) rotate(-.6deg)}
+  72%{transform:translateX(5px) rotate(.6deg)}
+  88%{transform:translateX(-2px)}
+}
+.watak-hint-bar{display:flex;justify-content:center;align-items:center;margin:clamp(14px,2vw,20px) auto 0;max-width:940px}
+.watak-stage-hint{position:static;left:auto;bottom:auto;transform:none;display:inline-flex;align-items:center;justify-content:center;
+  background:var(--ink);color:var(--yellow);border:2.5px solid var(--yellow);
+  padding:8px clamp(18px,3vw,30px);font:700 clamp(11px,1.35vw,13px)/1.25 var(--ff-h);letter-spacing:.16em;text-transform:uppercase;text-align:center;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:4px 4px 0 var(--blue-d);pointer-events:none;max-width:100%}
+.watak-soon-toast{position:absolute;left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%) scale(.9);z-index:12;background:var(--red);color:#fff;
+  border:3px solid var(--ink);padding:9px 26px;font:700 clamp(13px,1.8vw,16px) var(--ff-h);letter-spacing:.18em;text-transform:uppercase;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:5px 5px 0 var(--ink);opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;white-space:nowrap}
+.watak-soon-toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.watak-grid{display:grid;grid-template-columns:repeat(3,1fr) !important;max-width:940px;margin:0 auto;justify-items:center}
+.watak-grid.watak-grid-4{grid-template-columns:repeat(4,1fr) !important;max-width:940px}
+.watak-grid .wcard{width:100%}
 
 /* Epic Watak Modal Animations */
 .wpop-in{overflow:hidden}
 .wpop-aura{position:absolute;inset:-40px;background:repeating-conic-gradient(from 0deg,rgba(40,119,254,.08) 0deg 8deg,transparent 8deg 18deg);
   animation:tkSpin 28s linear infinite;pointer-events:none;z-index:0}
 .wpop-grid{position:relative;z-index:2}
-.wpop-portrait{position:relative;overflow:visible !important;background:radial-gradient(circle at 50% 60%,rgba(255,199,32,.4),rgba(40,119,254,.18) 65%,transparent) !important;
+.wpop-portrait{position:relative;overflow:hidden !important;background:radial-gradient(circle at 50% 60%,rgba(255,199,32,.32),rgba(40,119,254,.14) 65%,#ffffff) !important;
   transition:transform .25s ease-out;transform-style:preserve-3d}
 .wpop-portrait img{animation:wpopHeroFloat 3.6s ease-in-out infinite,wpopHeroSlam .6s cubic-bezier(.2,1.35,.35,1) both;
-  filter:drop-shadow(0 14px 20px rgba(10,34,96,.42))}
-@keyframes wpopHeroFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.03)}}
-@keyframes wpopHeroSlam{0%{transform:scale(.68) translateY(24px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
+  filter:drop-shadow(0 12px 18px rgba(10,34,96,.32));object-fit:cover;object-position:center top}
+.wpop-portrait.is-png img{object-fit:contain;object-position:center bottom;padding:6px}
+@keyframes wpopHeroFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.02)}}
+@keyframes wpopHeroSlam{0%{transform:scale(.72) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
 .wpop-desc{margin-top:10px;border-left:4px solid var(--blue);background:rgba(255,255,255,.86);padding:14px 16px;box-shadow:4px 4px 0 rgba(40,119,254,.16)}
 
 /* 10) Kader Upgrades: Centered 2026, Blurred Blue Banners, No Empty Boxes, Single Banner Modal, Mobile 2-per-Row */
@@ -1156,52 +1196,36 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 #ambientLayer{position:fixed;inset:0;z-index:950;pointer-events:none;overflow:hidden}
 .amb-spr{position:fixed;left:0;top:0;pointer-events:none;will-change:transform,opacity;filter:drop-shadow(0 6px 12px rgba(10,34,96,.18))}
 
-/* 13) Language Bar (#langBar bottom-left opposite #music) */
-#langBar{position:fixed;z-index:1300;left:clamp(12px,2.4vw,28px);bottom:calc(86px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:4px;padding:4px;
-  background:rgba(10,34,96,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:2.5px solid var(--ink);border-radius:999px;
-  box-shadow:0 6px 18px rgba(10,34,96,.32),3px 3px 0 var(--yellow)}
-.lang-btn{position:relative;display:inline-flex;align-items:center;gap:4px;height:36px;padding:0 11px;border-radius:999px;color:rgba(255,255,255,.8);
-  font:700 12px var(--ff-h);letter-spacing:.05em;transition:background .2s,color .2s,transform .15s;cursor:pointer}
-.lang-btn.on{background:var(--yellow);color:var(--ink)}
-.lang-btn.locked{color:rgba(255,255,255,.72)}
-.lang-btn:hover:not(.on){background:rgba(255,255,255,.12);color:#fff}
-.lang-sym{font-size:13px;line-height:1;display:inline-flex;align-items:center}
-.lang-lock{width:13px;height:13px;fill:none;stroke:var(--yellow);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
-.lang-btn.shake-red .lang-lock{stroke:#ff3838}
-.lang-btn.shake-red{color:#ff6b6b;animation:shakeErr .45s ease}
-.lang-toast{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) translateY(6px);background:#ff2e2e;color:#fff;
-  border:2px solid var(--ink);padding:4px 12px;font:700 11px var(--ff-h);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;
-  box-shadow:3px 3px 0 var(--ink);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
-.lang-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* 14) Side Pull-Out Survey Drawer (#surveyWidget) */
-#surveyWidget{position:fixed;right:0;top:46%;transform:translateY(-50%);z-index:1350;display:flex;align-items:center;pointer-events:none}
-.sv-tab{pointer-events:all;background:var(--yellow);color:var(--ink);border:2.5px solid var(--ink);border-right:0;
-  padding:14px 8px;writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);
-  font:700 12px var(--ff-h);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
-  box-shadow:-4px -4px 0 var(--blue-d);transition:transform .22s,background .22s;clip-path:polygon(0 0,100% 10px,100% calc(100% - 10px),0 100%)}
-.sv-tab:hover{background:#fff}
-.sv-drawer{pointer-events:all;position:fixed;right:0;top:50%;transform:translate(105%,-50%);width:min(360px,90vw);max-height:82dvh;overflow-y:auto;
-  background:#fff;border:3px solid var(--ink);border-right:0;box-shadow:-8px 8px 0 var(--blue-d);z-index:1360;
-  transition:transform .38s cubic-bezier(.2,1.1,.3,1);padding:18px 18px 20px}
-.sv-drawer.open{transform:translate(0,-50%)}
-.sv-head{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:2px solid var(--sky2);padding-bottom:10px;margin-bottom:12px}
-.sv-head h4{font:700 14px var(--ff-h);letter-spacing:.12em;text-transform:uppercase;color:var(--blue-d)}
-.sv-close{width:30px;height:30px;display:grid;place-items:center;background:var(--ink);color:#fff;font:700 16px var(--ff-h);cursor:pointer}
-.sv-step-meta{font:700 11px var(--ff-h);letter-spacing:.12em;color:var(--blue);margin-bottom:6px}
-.sv-q{font:700 14px/1.4 var(--ff-h);color:var(--ink);margin-bottom:12px}
-.sv-opts{display:grid;gap:8px}
-.sv-opt{text-align:left;padding:10px 12px;background:var(--sky);border:2px solid var(--ink);font:600 13px/1.35 var(--ff-b);color:var(--ink);
-  transition:background .2s,transform .15s;cursor:pointer;display:flex;align-items:center;gap:9px}
-.sv-opt:hover{background:var(--yellow);transform:translateX(-3px)}
-.sv-opt::before{content:"";width:12px;height:12px;border:2px solid var(--ink);background:#fff;flex:none}
-.sv-opt.sel{background:var(--yellow)}
-.sv-opt.sel::before{background:var(--blue)}
-.sv-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-.sv-back{font:700 11px var(--ff-h);letter-spacing:.1em;color:var(--blue-d);cursor:pointer;text-transform:uppercase}
-.sv-done{text-align:center;padding:10px 4px}
-.sv-done strong{display:block;font:700 16px var(--ff-h);color:var(--blue-d);margin-bottom:6px}
-.sv-done p{font-size:13px;color:var(--ink);line-height:1.45}
+/* 13) Language Globe Button + Expandable Menu (#langBar bottom-left opposite #music) */
+#langBar{position:fixed;z-index:1300;left:clamp(12px,2.4vw,28px);bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+.lang-globe{width:54px;height:54px;display:grid;place-items:center;background:var(--ink);color:var(--yellow);
+  border:2.5px solid var(--yellow);clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+  box-shadow:0 8px 20px rgba(10,34,96,.32);transition:transform .22s,background .22s,color .22s}
+.lang-globe svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.lang-globe:hover,.lang-bar-open .lang-globe{background:var(--yellow);color:var(--ink);transform:scale(1.06)}
+.lang-globe:active{transform:scale(.93)}
+.lang-menu{position:absolute;left:0;bottom:calc(100% + 10px);min-width:205px;display:flex;flex-direction:column;gap:5px;padding:8px;
+  background:rgba(10,34,96,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:2.5px solid var(--yellow);box-shadow:5px 5px 0 var(--ink),0 14px 28px rgba(10,34,96,.4);
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+  opacity:0;visibility:hidden;transform:translateY(10px) scale(.96);transform-origin:left bottom;
+  transition:opacity .22s ease,transform .22s ease,visibility .22s;pointer-events:none}
+#langBar.lang-bar-open .lang-menu{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.lang-btn{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:9px 12px;
+  color:rgba(255,255,255,.9);font:700 12.5px/1.2 var(--ff-h);letter-spacing:.06em;text-align:left;
+  border:1.5px solid transparent;clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);
+  transition:background .2s,color .2s,border-color .2s;cursor:pointer}
+.lang-btn.on{background:var(--yellow);color:var(--ink);border-color:var(--ink)}
+.lang-btn.locked{color:rgba(255,255,255,.84);background:rgba(255,255,255,.06)}
+.lang-btn:hover:not(.on){background:rgba(255,255,255,.15);color:#fff}
+.lang-lock{width:15px;height:15px;flex:none;fill:none;stroke:var(--yellow);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+.lang-btn.shake-red{background:rgba(255,51,71,.24);border-color:#ff3347;color:#ff8a95}
+.lang-btn.shake-red .lang-lock{stroke:#ff3347;animation:lockShake .52s cubic-bezier(.36,.07,.19,.97) both}
+.lang-toast{position:absolute;left:0;bottom:calc(100% + 10px);background:var(--red);color:#fff;
+  border:2px solid var(--ink);padding:5px 14px;font:700 11px var(--ff-h);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:3px 3px 0 var(--ink);
+  opacity:0;visibility:hidden;transform:translateY(6px);pointer-events:none;transition:opacity .2s,transform .2s,visibility .2s;z-index:5}
+.lang-toast.show{opacity:1;visibility:visible;transform:translateY(0)}
 
 @media (max-width:720px){
   /* no hdr-mob-sub */
@@ -1210,13 +1234,26 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   .tk-wrap{grid-template-columns:1fr;max-height:88dvh;overflow-y:auto}
   .tk-left{min-height:260px;padding:20px 14px 14px}
   .tk-right{overflow:visible}
-  .watak-grid{grid-template-columns:repeat(2,1fr) !important;gap:14px 10px}
+  .wtab{height:58px}
+  .wtab-full{padding:4px 8px}
+  .wtab-full:last-child{padding-right:calc(var(--sl) + 6px)}
+  .watak-grid,.watak-grid.watak-grid-4{grid-template-columns:repeat(2,1fr) !important;gap:16px 12px}
+  .watak-stage-hint{font-size:10.5px;padding:7px 16px;letter-spacing:.12em}
+  .ct-avatar{width:56px;height:56px}
+  .ct-mail-btn{font-size:12.5px;padding:8px 14px}
   .kader-row-grid{grid-template-columns:repeat(2,1fr) !important;gap:18px 12px !important;max-width:100% !important}
   .kader-row-grid>:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:min(260px,70%)}
   .kpop-page{grid-template-columns:repeat(3,1fr) !important;gap:10px 8px !important}
-  #langBar{left:10px;bottom:calc(74px + env(safe-area-inset-bottom,0px));padding:3px}
-  .lang-btn{height:32px;padding:0 9px;font-size:11px}
+  #langBar{left:10px;bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+  .lang-globe{width:46px;height:46px}
+  .lang-globe svg{width:22px;height:22px}
+  .lang-menu{min-width:186px}
+  .lang-btn{padding:8px 10px;font-size:12px}
   #music{right:10px;bottom:calc(74px + env(safe-area-inset-bottom,0px));width:46px;height:46px}
+}
+@media (min-width:1600px){
+  .wrap{width:min(1380px,100% - 2*var(--pad))}
+  .watak-stage-plate,.watak-grid,.watak-grid.watak-grid-4{max-width:1040px}
 }
 
 
@@ -1236,20 +1273,25 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 
 /* 1) Header tunggal tanpa kotak biru tua kedua di bawah + Lencana V.Beta */
 .hdr-mob-sub{display:none !important}
-.hdr-mid{display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:0;overflow:hidden}
-.hdr-mid-t{display:inline-flex;align-items:center;justify-content:center;gap:7px;max-width:100%}
+.hdr-mid{display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:0;overflow:hidden;padding:0 4px}
+.hdr-mid-t{display:flex;align-items:center;justify-content:center;gap:6px;max-width:100%;min-width:0}
+.hdr-mid-t>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hdr-beta{display:inline-block;padding:2px 8px;background:var(--yellow);color:var(--ink);border:1.5px solid var(--ink);font:700 clamp(9px,1vw,11px)/1.1 var(--ff-h);letter-spacing:.08em;text-transform:none;clip-path:polygon(4px 0,100% 0,calc(100% - 4px) 100%,0 100%);text-shadow:none;flex:none}
 @media (max-width:900px){
   .hdr-in{padding:0 16px;gap:6px}
   .slash{display:none}
-  .hdr-mid-t{font-size:clamp(10px,2.4vw,13px);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;gap:5px}
-  .hdr-beta{padding:1.5px 6px;font-size:clamp(8px,1.8vw,10px)}
-  .hdr-mid-s{font-size:clamp(8px,1.9vw,10px);letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .hdr-mid-t{font-size:clamp(9.5px,2.2vw,13px);letter-spacing:.06em;max-width:100%;gap:4px}
+  .hdr-beta{padding:1.5px 5px;font-size:clamp(7.5px,1.7vw,10px)}
+  .hdr-mid-s{font-size:clamp(7.5px,1.8vw,10px);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 }
 @media (max-width:520px){
-  .logo{width:28px;height:28px}
-  .soc{width:28px;height:28px}.soc svg{width:14px;height:14px}
-  .hdr-logos,.hdr-soc{gap:4px}
+  .hdr-in{padding:0 10px;gap:4px;clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 100%,0 100%)}
+  .logo{width:26px;height:26px}
+  .soc{width:26px;height:26px}.soc svg{width:13px;height:13px}
+  .hdr-logos,.hdr-soc{gap:3px;flex:none}
+  .hdr-mid-t{font-size:clamp(8.5px,2.35vw,11px);letter-spacing:.03em;gap:3px}
+  .hdr-beta{padding:1px 4px;font-size:7.5px}
+  .hdr-mid-s{font-size:clamp(7px,1.85vw,9px)}
 }
 
 /* 2) Butang Tokoh Inspirasi Kami (gaya tulen selaras btn-skew) & Modal boleh skrol/seret */
@@ -1413,7 +1455,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
     <span class="slash l" aria-hidden="true"><i></i><i></i></span>
 
     <div class="hdr-logos">
-      <a class="logo slot" href="#" data-page="utama" aria-label="Kementerian Pendidikan Malaysia"><img src="logo_kpm.png" alt="Logo KPM" decoding="async" onerror="this.remove()"></a>
+      <a class="logo slot" href="#" data-page="utama" aria-label="Kementerian Pendidikan Malaysia"><img src="logo_kpm_zoom.png" alt="Logo KPM" decoding="async" onerror="this.remove()"></a>
       <a class="logo slot" href="#" data-page="utama" aria-label="SMKA Al-Irshad"><img src="logo_irshad.png" alt="Logo SMKA Al-Irshad" decoding="async" onerror="this.remove()"></a>
       <a class="logo slot" href="#" data-page="utama" aria-label="Briged Shabab An-Nawawi"><img src="logo_briged_shabab_an-nawawi.png" alt="Logo Briged Shabab An-Nawawi" decoding="async" onerror="this.remove()"></a>
     </div>
@@ -1688,12 +1730,12 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
               </span>
             </button>
 
-            <button class="wtab on" id="wTabTengah" type="button" role="tab" aria-selected="true" data-sub="tengah" aria-label="Watak RoPix Roblox">
-              <span class="wtab-logo slot"><img id="wLogoTengah" src="roblox_hangout_logo.png" alt="Logo Roblox Hangout" loading="lazy" decoding="async" onerror="this.remove()"></span>
+            <button class="wtab wtab-full on" id="wTabTengah" type="button" role="tab" aria-selected="true" data-sub="tengah" aria-label="Watak RoPix Roblox Adventure">
+              <img class="wtab-full-img" id="wLogoTengah" src="roblox_adventure_logo.png" alt="Logo Roblox Adventure" loading="lazy" decoding="async" onerror="this.remove()">
             </button>
 
-            <button class="wtab" id="wTabKanan" type="button" role="tab" aria-selected="false" data-sub="kanan" aria-label="Watak Pixel Trial">
-              <span class="wtab-logo slot"><img id="wLogoKanan" src="pixel_logo.png" alt="Logo Pixel Trial" loading="lazy" decoding="async" onerror="this.remove()"></span>
+            <button class="wtab wtab-full" id="wTabKanan" type="button" role="tab" aria-selected="false" data-sub="kanan" aria-label="Watak The Trial Of Hadith 40">
+              <img class="wtab-full-img" id="wLogoKanan" src="pixel_logo.png" alt="Logo The Trial Of Hadith 40" loading="lazy" decoding="async" onerror="this.remove()">
             </button>
           </div>
         </div>
@@ -1706,10 +1748,12 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
             <div class="watak-stage-in slot" id="watakStageBox">
               <img id="watakStageImg" src="roblox_L&P.jpeg" alt="Gambar Watak Utama" loading="lazy" decoding="async">
               <div class="watak-hotspots" id="watakHotspots"></div>
-              <div class="watak-soon-toast" id="watakSoonToast" role="status">Akan Datang</div>
-              <div class="watak-stage-hint" id="watakStageHint">KLIK WATAK DALAM GAMBAR ATAU KAD DI BAWAH</div>
+              <div class="watak-soon-toast" id="watakSoonToast" role="status" aria-live="polite">AKAN DATANG</div>
             </div>
           </div>
+        </div>
+        <div class="watak-hint-bar">
+          <div class="watak-stage-hint" id="watakStageHint">KLIK UNTUK TEROKA PROFIL</div>
         </div>
 
         <div class="watak-div" aria-hidden="true"></div>
@@ -1779,19 +1823,28 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   </div>
 </footer>
 
-<!-- ===================== BUTANG PILIHAN BAHASA (BAWAH KIRI) ===================== -->
+<!-- ===================== BUTANG PILIHAN BAHASA GLOBE (BAWAH KIRI) ===================== -->
 <div id="langBar" aria-label="Pilihan Bahasa">
-  <div class="lang-toast" id="langToast" role="status" aria-live="polite">Nantikan</div>
-  <button type="button" class="lang-btn on" data-lang="ms" aria-label="Bahasa Melayu (Aktif)" title="Bahasa Melayu">
-    <span class="lang-sym">MY</span>
-  </button>
-  <button type="button" class="lang-btn locked" data-lang="jawi" aria-label="Tulisan Jawi (Terkunci - Nantikan)" title="Jawi">
-    <span class="lang-sym" style="font-size:15px">&#1580;</span>
-    <svg class="lang-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-  </button>
-  <button type="button" class="lang-btn locked" data-lang="en" aria-label="English (Locked - Coming Soon)" title="English">
-    <span class="lang-sym">EN</span>
-    <svg class="lang-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+  <div class="lang-menu" id="langMenu" role="menu" aria-label="Senarai Bahasa">
+    <div class="lang-toast" id="langToast" role="status" aria-live="polite">AKAN DATANG</div>
+    <button type="button" class="lang-btn on" role="menuitemradio" aria-checked="true" data-lang="ms">
+      <span>Bahasa Melayu</span>
+    </button>
+    <button type="button" class="lang-btn locked" role="menuitemradio" aria-checked="false" data-lang="jawi" aria-label="Jawi (Terkunci - Akan Datang)">
+      <span>Jawi</span>
+      <svg class="lang-lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    </button>
+    <button type="button" class="lang-btn locked" role="menuitemradio" aria-checked="false" data-lang="en" aria-label="Bahasa Inggeris (Terkunci - Akan Datang)">
+      <span>Bahasa Inggeris</span>
+      <svg class="lang-lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    </button>
+  </div>
+  <button type="button" class="lang-globe" id="langToggle" aria-label="Pilih Bahasa" aria-expanded="false" aria-controls="langMenu" title="Bahasa">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="9.5"/>
+      <ellipse cx="12" cy="12" rx="4.2" ry="9.5"/>
+      <path d="M2.8 9h18.4M2.8 15h18.4"/>
+    </svg>
   </button>
 </div>
 
@@ -1800,18 +1853,6 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   <svg class="on-i" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="w1" d="M15.500 9a4.500 4.500 0 010 6"/><path class="w2" d="M18.500 6a8.500 8.500 0 010 12"/></svg>
   <svg class="off-i" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9.500l5 5M21 9.500l-5 5"/></svg>
 </button>
-
-<!-- ===================== TAB KAJI SELIDIK SISI SKRIN ===================== -->
-<div id="surveyWidget" aria-label="Borang Kaji Selidik Sisi">
-  <button type="button" class="sv-tab" id="svToggle">Kaji Selidik</button>
-</div>
-<aside class="sv-drawer" id="svDrawer" aria-hidden="true" aria-label="Soalan Kaji Selidik RoPix Universe">
-  <div class="sv-head">
-    <h4>Maklum Balas Pelawat</h4>
-    <button type="button" class="sv-close" id="svClose" aria-label="Tutup kaji selidik">&times;</button>
-  </div>
-  <div id="svBody"></div>
-</aside>
 
 <!-- ===================== PAPAN NAVIGASI ===================== -->
 <nav id="nav" aria-label="Navigasi page">
@@ -1830,17 +1871,8 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
 'use strict';
 
 /* =====================================================================
-   KESELAMATAN, ANALITIK, SOUND EFFECTS & CONFIG UTAMA
+   SOUND EFFECTS & CONFIG UTAMA
    ===================================================================== */
-const STORE_DASH_KEY = 'airis_dashboard_data_v2';
-const CLOUD_CFG_KEY = 'airis_cloud_cfg_v1';
-const CH_NAME = 'airis_dashboard_channel';
-const bc = ('BroadcastChannel' in window) ? new BroadcastChannel(CH_NAME) : null;
-
-// Baca sambungan Google Apps Script jika disimpan menerusi dashboard.html
-function getCloudCfg(){
-  try { return JSON.parse(localStorage.getItem(CLOUD_CFG_KEY) || '{}') || {}; } catch(e){ return {}; }
-}
 function extractFolderId(u){
   const m = String(u||'').match(/folders\/([a-zA-Z0-9_-]+)/);
   return m ? m[1] : '';
@@ -1856,8 +1888,7 @@ const DRIVE_POOLS = {
 };
 
 async function fetchDriveGallery(driveUrl){
-  const cloud = getCloudCfg();
-  const bridge = (CFG && CFG.driveBridgeUrl) || cloud.driveBridgeUrl || '';
+  const bridge = (CFG && CFG.driveBridgeUrl) || '';
   const fid = extractFolderId(driveUrl);
   if(!bridge || !fid) return null;
   try {
@@ -1915,72 +1946,6 @@ document.addEventListener('pointerdown', e => {
   else SFX.click();
 }, {passive:true});
 
-/* ---- Analytics & Survey Storage Helper ---- */
-const DashTracker = (function(){
-  function readStore(){
-    try {
-      const d = JSON.parse(localStorage.getItem(STORE_DASH_KEY) || 'null');
-      if(d && Array.isArray(d.visits) && Array.isArray(d.surveys)) return d;
-    } catch(e){}
-    return { visits: [], surveys: [], webhookUrl: '' };
-  }
-  function saveStore(d){
-    try { localStorage.setItem(STORE_DASH_KEY, JSON.stringify(d)); } catch(e){}
-    if(bc) { try { bc.postMessage({ type:'airis_sync', data:d }); } catch(e){} }
-  }
-  function getWeekKey(dt){
-    const d = new Date(Date.UTC(dt.getFullYear(), dt.getMonth(), dt.getDate()));
-    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
-    const yStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-    const wk = Math.ceil((((d - yStart)/86400000)+1)/7);
-    return d.getUTCFullYear() + '-W' + String(wk).padStart(2,'0');
-  }
-  function devType(){
-    const w = window.innerWidth || 1024;
-    return w <= 720 ? 'Telefon' : (w <= 1050 ? 'Tablet' : 'Komputer');
-  }
-  function logVisit(pg, ev){
-    const now = new Date();
-    const rec = {
-      id: Date.now() + '-' + Math.random().toString(36).slice(2,6),
-      ts: now.toISOString(),
-      date: now.toISOString().slice(0,10),
-      hour: now.getHours(),
-      dow: now.getDay(), // 0=Ahad..6=Sabtu
-      week: getWeekKey(now),
-      month: now.toISOString().slice(0,7),
-      page: pg || 'utama',
-      event: ev || 'view',
-      device: devType()
-    };
-    const d = readStore();
-    d.visits.push(rec);
-    if(d.visits.length > 2500) d.visits = d.visits.slice(-2500);
-    saveStore(d);
-    const wb = (CFG && CFG.dashboardWebhookUrl) || getCloudCfg().dashboardWebhookUrl || '';
-    if(wb) {
-      try { fetch(wb, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify({kind:'visit',...rec}) }); } catch(e){}
-    }
-  }
-  function logSurvey(ans){
-    const now = new Date();
-    const rec = {
-      id: 'sv-' + Date.now(),
-      ts: now.toISOString(),
-      date: now.toISOString().slice(0,10),
-      q1: ans.q1, q2: ans.q2, q3: ans.q3
-    };
-    const d = readStore();
-    d.surveys.push(rec);
-    saveStore(d);
-    const wb = (CFG && CFG.dashboardWebhookUrl) || getCloudCfg().dashboardWebhookUrl || '';
-    if(wb) {
-      try { fetch(wb, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify({kind:'survey',...rec}) }); } catch(e){}
-    }
-  }
-  return { logVisit, logSurvey };
-})();
-
 /* =====================================================================
    PUSAT DATA KONFIGURASI (CFG)
    ===================================================================== */
@@ -2004,9 +1969,8 @@ const CFG = {
   // Sasaran siap baik pulih laman web: 20 November 2026, pukul 2:00 pagi
   target: '2026-11-20T02:00:00+08:00',
 
-  // Pilihan integrasi Google Apps Script (isi URL Web App anda jika ingin pautan langsung ke Google Sheets / Drive Live)
+  // Pilihan integrasi Google Apps Script untuk Drive Live
   driveBridgeUrl: '',
-  dashboardWebhookUrl: '',
 
   videoLatar: 'video_bg.mp4',
   shopee: '#',
@@ -2299,12 +2263,12 @@ const CFG = {
   hubungi: {
     alamat: ['SMKA Al-Irshad', '13200 Kepala Batas, Pulau Pinang'],
     mapQuery: 'SMKA Al-Irshad, 13200 Kepala Batas, Pulau Pinang',
-    orang1: { nama:'TN HAJI KHAIRUL ASFANI BIN NASIR', jawatan:'GURU KANAN PEN. ISLAM', tel:'+60 12-659 4284', wa:'60126594284' },
-    orang2: { nama:'USTAZAH YUSNY BINTI HJ ZAKARIA', jawatan:'TIMB. SETIAUSAHA 1 HADIS 40', tel:'+60 19-476 3844', wa:'60194763844' },
+    orang1: { nama:'TN HAJI KHAIRUL ASFANI BIN NASIR', jawatan:'GURU KANAN PEN. ISLAM', tel:'+60 12-659 4284', wa:'60126594284', img:'army/TN HAJI KHAIRUL ASFANI BIN NASIR.png' },
+    orang2: { nama:'USTAZAH YUSNY BINTI HJ ZAKARIA', jawatan:'TIMB. SETIAUSAHA 1 HADIS 40', tel:'+60 19-476 3844', wa:'60194763844', img:'army/USTAZAH YUSNY BINTI HJ ZAKARIA.png' },
     email: 'sekolah-6151-cm8@moe-dl.edu.my'
   },
 
-  // WATAK (3 TAB: KIRI TERKUNCI, TENGAH ROBLOX 6 KAD + BANNER HOTSPOTS, KANAN PIXEL AKAN DATANG TIADA POP-UP)
+  // WATAK (3 TAB: KIRI TERKUNCI, TENGAH ROBLOX 6 KAD + BANNER HOTSPOTS, KANAN PIXEL 4 KAD + KOKPI & DONAT TERKUNCI)
   watak: {
     kiri: {
       logo: 'kod40_logo.png',
@@ -2312,55 +2276,57 @@ const CFG = {
       mesejKunci: 'Akan Datang 2027'
     },
     tengah: {
-      logo: 'roblox_hangout_logo.png',
+      logo: 'roblox_adventure_logo.png',
       gambarUtama: 'roblox_L&P.jpeg',
-      hintText: 'KLIK WATAK DALAM BANNER ATAU KAD DI BAWAH',
+      hintText: 'KLIK UNTUK TEROKA PROFIL',
       disableModal: false,
       watakDalamGambar: [
         {
-          nama:'Mat RoPix', displayName:'Mat RoPix', x:6, y:4, w:41, h:92,
+          nama:'Mat RoPix', displayName:'Mat RoPix', x:6, y:3, w:41, h:95,
           img:'army/ropix_l.png', popImg:'army/ropix_l.png',
           logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
-          perihal:'Pengembara utama RoPix Universe. Dia membawa pemain meronda Kampung Irshadika dan belajar Hadis 40 melalui misi.'
+          perihal:'Ikon jejaka segak dari RoPix Universe! Sentiasa tampil bergaya dengan baju Melayu dan tanjaknya, dia membawa aura semangat pengembaraan yang tersendiri.'
         },
         {
-          nama:'Srikandi RoPix', displayName:'', x:55, y:14, w:42, h:84,
+          nama:'Srikandi RoPix', displayName:'Srikandi RoPix', x:55, y:17, w:42, h:81,
           img:'army/ropix_p.png', popImg:'army/ropix_p.png',
           logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
-          perihal:'Teman seperjuangan Mat RoPix. Dia ada di sisi sepanjang kembara dan jadi contoh buat srikandi muda.'
+          perihal:'Gadis manis bercermin mata dan ceria dari RoPix Universe! Dengan gaya sopan berbaju kurung serta sifatnya yang penuh keyakinan, dia menjadi lambang srikandi muda yang sentiasa menginspirasi.'
         }
       ],
       sampingan: [
-        { nama:'Ustaz Khairul', img:'Ustaz_Khairul.png', popImg:'Ustaz_Khairul.png', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustaz Khairul', img:'Ustaz_Khairul.jpg', popImg:'Ustaz_Khairul.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Guru pertama anda di Kampung Irshadika memberikan tugas untuk mengutip sampah di sekitar Surau Al-Ansori sambil memberi pengajaran mengenai Hadis 1 [Hadis Niat].' },
-        { nama:'Ustaz Fazli', img:'Ustaz_Fazli.png', popImg:'Ustaz_Fazli.png', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustaz Fazli', img:'Ustaz_Fazli.jpg', popImg:'Ustaz_Fazli.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Khuatir akan status makanan di Pasar Sulaimah dan memohon anda untuk membeli barangan yang Halal dan mengelakkan perkara Syubhah dan Haram sekaligus mendidik tentang Hadis 6 [Hadis Syubhah].' },
-        { nama:'Ustazah Suraida', img:'Ustazah_Suraida.png', popImg:'Ustazah_Suraida.png', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustazah Suraida', img:'Ustazah_Suraida.jpg', popImg:'Ustazah_Suraida.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Tinggal di Lorong Cempaka yang sering dipenuhi dengan pergaduhan yang mengakibatkan suasana tidak tenang. Memohon anda untuk meleraikan pergaduhan dan memberi pengajaran tentang Hadis 16 [Hadis Marah].' },
-        { nama:'Ustaz Mursyid', img:'Ustaz_Mursyid.png', popImg:'Ustaz_Mursyid.png', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustaz Mursyid', img:'Ustaz_Mursyid.jpg', popImg:'Ustaz_Mursyid.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Memohon anda mengalihkan kayu pokok yang tumbang akibat ribut yang berlaku supaya dapat menggunakan jalan hutan dan mengingatkan bahawa mengalihkan perkara di jalan juga sedekah yang berkait dengan Hadis 26 [Hadis Sedekah].' },
-        { nama:'Ustaz Fuad', img:'USTAZ_FUAD_ROBLOX.jpg', fallbackImg:'USTAZ_FUAD_ROBLOX.jpg', popImg:'USTAZ_FUAD_ROBLOX.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustaz Fuad', img:'Ustaz_Fuad.jpg', popImg:'Ustaz_Fuad.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Menunggu anda di kaki Gunung Ilham setelah anda mengalihkan kayu di jalan. Memohon anda menghantar Kitab Hadis 40 kepada Ustazah Yusny di puncak Gunung Ilham dan mengajar ilmu tentang Hadis 36 [Hadis memudahkan urusan].' },
-        { nama:'Ustazah Yusny', img:'Ustazah_Yusny.png', popImg:'Ustazah_Yusny.png', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustazah Yusny', img:'Ustazah_Yusny.jpg', popImg:'Ustazah_Yusny.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
            perihal:'Berada di puncak Gunung Ilham dan menerima Kitab Hadis 40 daripada anda dan memberikan soalan mengenai Hadis 2 [Hadis Islam, Iman dan Ihsan].' }
       ]
     },
     kanan: {
       logo: 'pixel_logo.png',
       gambarUtama: 'Donat_kokpi.jpeg',
-      hintText: 'KLIK MANA-MANA WATAK UNTUK PRATONTON (AKAN DATANG)',
-      disableModal: true,
+      hintText: 'KLIK UNTUK TEROKA PROFIL',
+      disableModal: false,
       watakDalamGambar: [
-        { nama:'Kokpi', displayName:'Kokpi', x:11, y:24, w:35, h:68 },
-        { nama:'Donat', displayName:'Donat', x:55, y:34, w:37, h:55 }
+        { nama:'Kokpi', displayName:'Kokpi', x:12, y:24, w:34, h:66, locked:true },
+        { nama:'Donat', displayName:'Donat', x:56, y:36, w:35, h:53, locked:true }
       ],
       sampingan: [
-        { nama:'Tok', img:'Tok.jpg' },
-        { nama:'Kakti', img:'Kakti.jpg' },
-        { nama:'Kek', img:'Kek.jpg' },
-        { nama:'Mioy', img:'Mioy.jpg' },
-        { nama:'Seri Muka', img:'Seri Muka.jpeg' },
-        { nama:'Mr.Leman', img:'Mr.Leman.png' }
+        { nama:'Tok Imam', img:'tok_imam.jpg', popImg:'tok_imam.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'pixel_logo.png',
+           perihal:'Meminta bantuan anda sebagai Penjelajah Ilmu untuk menyelamatkan umat daripada Makhluk Kegelapan dengan menyerahkan Pedang Hidayah dan menugaskan anda mengumpulkan empat Permata Hadis di setiap peringkat.' },
+        { nama:'Penjelajah Ilmu', img:'penjelajah_ilmu.jpg', popImg:'penjelajah_ilmu.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'pixel_logo.png',
+           perihal:'Pahlawan utama yang diamanahkan membawa Pedang Hidayah, menjawab ujian ilmu untuk mengumpul keempat-empat Permata Hadis, dan menewaskan Naga Kegelapan demi mengembalikan keamanan umat.' },
+        { nama:'Tengkorak Kegelapan', img:'tengkorak_kegelapan.jpg', popImg:'tengkorak_kegelapan.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'pixel_logo.png',
+           perihal:'Penjaga yang menguji anda dengan beberapa soalan sebelum membenarkan anda memiliki Zamrud Niat dan mara ke peringkat yang seterusnya.' },
+        { nama:'Naga Kegelapan', img:'naga_kegelapan.jpg', popImg:'naga_kegelapan.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'pixel_logo.png',
+           perihal:'Musuh terakhir di peringkat akhir yang menindas umat dan hanya boleh ditewaskan setelah anda menyatukan keempat-empat Permata Hadis ke dalam Pedang Hidayah.' }
       ]
     }
   },
@@ -2633,7 +2599,6 @@ function openTokohModal(){
     });
   }
 
-  DashTracker.logVisit('utama','open_tokoh_nawawi');
   openModal(w,'tokoh-mdl');
 }
 $('#btnTokoh').addEventListener('click', openTokohModal);
@@ -2820,7 +2785,6 @@ function openProgram(i){
   if(isReal(p.drive)){
     w.insertAdjacentHTML('beforeend',`<div class="mdl-foot">${driveBtn(p.drive)}</div>`);
   }
-  DashTracker.logVisit('utama','kembara_'+p.key);
   openModal(w,'');
 }
 
@@ -2867,15 +2831,16 @@ function openYtSliderModal(c){
   openModal(w,'');
 }
 
-/* Modal Hubungi Kami dengan Peta Interaktif + Pilihan WhatsApp / Telefon */
+/* Modal Hubungi Kami dengan Peta Interaktif + Foto Sebenar + Pilihan WhatsApp / Telefon + E-mel Boleh Klik */
 function openHubungi(){
   const h=CFG.hubungi,w=el('div');
   const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(h.mapQuery);
   const embedSrc = 'https://maps.google.com/maps?q=' + encodeURIComponent(h.mapQuery) + '&t=&z=15&ie=UTF8&iwloc=&output=embed';
-  const person='<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>';
   const contactCard = (o, idx) => `
     <div class="ct-box">
-      ${person}
+      <div class="ct-avatar">
+        <img src="${esc(o.img)}" alt="${esc(o.nama)}" loading="lazy" decoding="async">
+      </div>
       <div style="min-width:0;flex:1">
         <p style="margin:0"><strong>${esc(o.nama)}</strong><span style="display:block;font-size:11.5px;color:var(--yellow);margin-bottom:4px">${esc(o.jawatan)}</span></p>
         <button type="button" class="ct-tel-btn" data-tel-idx="${idx}" aria-expanded="false">&#128222; ${esc(o.tel)}</button>
@@ -2896,7 +2861,12 @@ function openHubungi(){
     </div>
     ${contactCard(h.orang1, 1)}
     ${contactCard(h.orang2, 2)}
-    <div class="ct-box ct-mail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg><p><a href="mailto:${esc(h.email)}">${esc(h.email)}</a></p></div>
+    <div class="ct-box ct-mail">
+      <a class="ct-mail-btn" href="mailto:${esc(h.email)}" aria-label="Hantar e-mel ke ${esc(h.email)}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg>
+        <span>${esc(h.email)}</span>
+      </a>
+    </div>
   </div>`;
   w.addEventListener('click', e=>{
     const b = e.target.closest('.ct-tel-btn');
@@ -2914,6 +2884,10 @@ $('#btnContact').addEventListener('click',openHubungi);
 function openWatakModal(c){
   if(!c)return;
   const w=el('div','wpop-frame');
+  const logo2Src = c.logo2 || 'roblox_adventure_logo.png';
+  const logo2Title = logo2Src.includes('pixel') ? 'The Trial Of Hadith 40' : 'Roblox Adventure';
+  const popSrc = c.popImg || c.img || '';
+  const isPng = /\.png(\?|$)/i.test(popSrc);
   w.innerHTML=`<div class="wpop-in">
     <div class="wpop-aura" aria-hidden="true"></div>
     <span class="wpop-slash" aria-hidden="true"></span>
@@ -2923,10 +2897,10 @@ function openWatakModal(c){
       <div class="wpop-left">
         <div class="wpop-logos">
           <span class="wpop-logo slot" title="RoPix Universe"><img src="${esc(c.logo1||'Universe_ropix_logo.PNG')}" alt="RoPix Universe" decoding="async"></span>
-          <span class="wpop-logo slot" title="Roblox Adventure"><img src="${esc(c.logo2||'roblox_adventure_logo.png')}" alt="Roblox Adventure" decoding="async"></span>
+          <span class="wpop-logo slot" title="${esc(logo2Title)}"><img src="${esc(logo2Src)}" alt="${esc(logo2Title)}" decoding="async"></span>
         </div>
-        <div class="wpop-portrait slot">
-          ${makeImgHtml(c.popImg||c.img, c.nama, true)}
+        <div class="wpop-portrait slot${isPng?' is-png':''}">
+          ${makeImgHtml(popSrc, c.nama, true)}
         </div>
       </div>
       <div class="wpop-right">
@@ -3282,7 +3256,7 @@ function openKaderModal(k){
 })();
 
 /* =====================================================================
-   PAGE 3 : WATAK (3 TAB, HOTSPOTS INTERAKTIF, 6 KAD SAMPINGAN, TAB 3 AKAN DATANG)
+   PAGE 3 : WATAK (3 TAB, HOTSPOTS PENUH BADAN, KAD SAMPINGAN, KOKPI & DONAT TERKUNCI)
    ===================================================================== */
 (function(){
   const W=CFG.watak;if(!W)return;
@@ -3290,13 +3264,21 @@ function openKaderModal(k){
   const lockMsg=$('#watakLockMsg'),subview=$('#watakSubview'),stageBox=$('#watakStageBox'),stageHint=$('#watakStageHint'),hsBox=$('#watakHotspots'),grid=$('#watakGrid'),soonToast=$('#watakSoonToast');
   let curSub='tengah',msgTimer=0,shakeTimer=0,toastTimer=0;
 
-  function showSoonToast(label){
+  function triggerLockedHotspot(btn){
     SFX.err();
-    if(!soonToast)return;
-    soonToast.textContent = label ? (label + ' — Akan Datang') : 'Akan Datang';
-    soonToast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer=setTimeout(()=>soonToast.classList.remove('show'), 2200);
+    if(btn){
+      btn.classList.remove('hs-locked-shake');
+      void btn.offsetWidth;
+      btn.classList.add('hs-locked-shake');
+      clearTimeout(btn._hsTm);
+      btn._hsTm=setTimeout(()=>btn.classList.remove('hs-locked-shake'), 650);
+    }
+    if(soonToast){
+      soonToast.textContent = 'AKAN DATANG';
+      soonToast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer=setTimeout(()=>soonToast.classList.remove('show'), 2200);
+    }
   }
 
   function renderSub(key,animate){
@@ -3310,6 +3292,7 @@ function openKaderModal(k){
     });
     const doRender=()=>{
       if(stageHint && sub.hintText) stageHint.textContent = sub.hintText;
+      if(soonToast) soonToast.classList.remove('show');
       const oldImg=$('#watakStageImg',stageBox);if(oldImg)oldImg.remove();
       if(sub.gambarUtama){
         const ni=new Image();ni.id='watakStageImg';ni.alt='Gambar Watak Utama';ni.src=sub.gambarUtama;ni.decoding='async';
@@ -3318,11 +3301,13 @@ function openKaderModal(k){
       }
       if(hsBox){
         hsBox.innerHTML=(sub.watakDalamGambar||[]).map((h,i)=>
-          `<button type="button" class="watak-hs" style="left:${h.x}%;top:${h.y}%;width:${h.w}%;height:${h.h}%" data-hs="${i}" aria-label="${esc(h.nama||('Watak '+(i+1)))}">${h.displayName?`<span class="watak-hs-tag">${esc(h.displayName)}</span>`:''}</button>`
+          `<button type="button" class="watak-hs${h.locked?' locked':''}" style="left:${h.x}%;top:${h.y}%;width:${h.w}%;height:${h.h}%" data-hs="${i}" aria-label="${esc(h.nama||('Watak '+(i+1)))}${h.locked?' (Akan Datang)':''}">${h.displayName?`<span class="watak-hs-tag">${esc(h.displayName)}</span>`:''}</button>`
         ).join('');
       }
       if(grid){
-        grid.innerHTML=(sub.sampingan||[]).map((c,i)=>`<article class="wcard" tabindex="0" role="button" data-i="${i}" aria-label="${esc(c.nama)}">
+        const list = sub.sampingan || [];
+        grid.classList.toggle('watak-grid-4', list.length === 4);
+        grid.innerHTML=list.map((c,i)=>`<article class="wcard" tabindex="0" role="button" data-i="${i}" aria-label="${esc(c.nama)}">
           <div class="wcard-plate">
             <div class="wcard-box">
               <div class="wcard-in slot">
@@ -3355,7 +3340,7 @@ function openKaderModal(k){
   if(grid){
     const trig=idx=>{
       const sub=W[curSub];if(!sub||!sub.sampingan||!sub.sampingan[idx])return;
-      if(sub.disableModal) showSoonToast(sub.sampingan[idx].nama);
+      if(sub.disableModal) triggerLockedHotspot(null);
       else openWatakModal(sub.sampingan[idx]);
     };
     grid.addEventListener('click',e=>{const c=e.target.closest('.wcard');if(c)trig(+c.dataset.i)});
@@ -3367,7 +3352,7 @@ function openKaderModal(k){
       const sub=W[curSub];if(!sub||!sub.watakDalamGambar)return;
       const h=sub.watakDalamGambar[+b.dataset.hs];
       if(!h)return;
-      if(sub.disableModal) showSoonToast(h.nama);
+      if(h.locked || sub.disableModal) triggerLockedHotspot(b);
       else openWatakModal(h);
     });
   }
@@ -3617,20 +3602,39 @@ function openKaderModal(k){
 })();
 
 /* =====================================================================
-   BUTANG PILIHAN BAHASA (MELAYU AKTIF, JAWI & ENGLISH TERKUNCI + 'NANTIKAN')
+   BUTANG PILIHAN BAHASA GLOBE (BAHASA MELAYU AKTIF, JAWI & BAHASA INGGERIS TERKUNCI + 'AKAN DATANG')
    ===================================================================== */
 (function(){
-  const bar=$('#langBar'),toast=$('#langToast');if(!bar)return;
+  const bar=$('#langBar'),tog=$('#langToggle'),menu=$('#langMenu'),toast=$('#langToast');
+  if(!bar||!tog||!menu)return;
   let tm=0;
-  bar.addEventListener('click',e=>{
+  function setOpen(on){
+    bar.classList.toggle('lang-bar-open',on);
+    tog.setAttribute('aria-expanded',on?'true':'false');
+    if(!on && toast) toast.classList.remove('show');
+  }
+  tog.addEventListener('click',e=>{
+    e.stopPropagation();
+    setOpen(!bar.classList.contains('lang-bar-open'));
+  });
+  menu.addEventListener('click',e=>{
     const b=e.target.closest('.lang-btn');if(!b)return;
+    e.stopPropagation();
     if(b.classList.contains('locked')){
       SFX.err();
       b.classList.remove('shake-red');void b.offsetWidth;b.classList.add('shake-red');
-      if(toast){toast.textContent='Nantikan';toast.classList.add('show')}
+      if(toast){toast.textContent='AKAN DATANG';toast.classList.add('show')}
       clearTimeout(tm);
       tm=setTimeout(()=>{b.classList.remove('shake-red');if(toast)toast.classList.remove('show')},2200);
+    }else{
+      setOpen(false);
     }
+  });
+  document.addEventListener('click',e=>{
+    if(bar.classList.contains('lang-bar-open') && !bar.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape' && bar.classList.contains('lang-bar-open')) setOpen(false);
   });
 })();
 
@@ -3680,70 +3684,7 @@ function openKaderModal(k){
 })();
 
 /* =====================================================================
-   KAJI SELIDIK SISI SKRIN (3 SOALAN -> DASHBOARD LIVE)
-   ===================================================================== */
-(function(){
-  const tog=$('#svToggle'),drw=$('#svDrawer'),cls=$('#svClose'),body=$('#svBody');
-  if(!tog||!drw||!body)return;
-  const QUESTIONS = [
-    { key:'q1', label:'SOALAN 1 / 3', q:'Sila pilih kategori anda:',
-       opts:['7 - 12 tahun (Sekolah Rendah)','13 - 17 tahun (Sekolah Menengah)','Guru','Orang Awam'] },
-    { key:'q2', label:'SOALAN 2 / 3', q:'Sebelum mencuba inovasi ini, adakah anda rasa belajar dan memahami Hadis 40 melalui kaedah biasa agak mencabar atau kurang menarik?',
-       opts:['Ya, agak sukar dan kurang menarik','Biasa sahaja','Tidak, saya memang mudah faham'] },
-    { key:'q3', label:'SOALAN 3 / 3', q:'Adakah anda bersetuju jika inovasi RoPix Universe ini diperluaskan kepada sekolah-sekolah lain?',
-       opts:['Ya, sangat bersetuju!','Boleh dipertimbangkan','Tidak perlu'] }
-  ];
-  let step=0, ans={};
-  const doneKey='airis-survey-submitted';
-  let submitted=false;
-  try{submitted=sessionStorage.getItem(doneKey)==='1'}catch(e){}
-
-  function render(){
-    if(submitted){
-      body.innerHTML=`<div class="sv-done">
-        <strong>Terima Kasih!</strong>
-        <p>Maklum balas anda telah direkodkan secara langsung ke Sistem Pemantauan Briged Shabab An-Nawawi.</p>
-        <button type="button" class="btn-skew" id="svAgain" style="margin-top:12px;padding:8px 20px;font-size:11px">Isi Semula</button>
-      </div>`;
-      const ag=$('#svAgain',body);
-      if(ag)ag.onclick=()=>{submitted=false;step=0;ans={};try{sessionStorage.removeItem(doneKey)}catch(e){};render()};
-      return;
-    }
-    const item=QUESTIONS[step];
-    body.innerHTML=`
-      <div class="sv-step-meta">${item.label}</div>
-      <div class="sv-q">${esc(item.q)}</div>
-      <div class="sv-opts">${item.opts.map(op=>`<button type="button" class="sv-opt ${ans[item.key]===op?'sel':''}" data-val="${esc(op)}">${esc(op)}</button>`).join('')}</div>
-      <div class="sv-foot">
-        ${step>0?'<button type="button" class="sv-back" id="svBack">&lsaquo; Sebelum</button>':'<span></span>'}
-        <span style="font:600 11px var(--ff-h);color:#4a64a8">Klik pilihan untuk teruskan</span>
-      </div>`;
-    $$('.sv-opt',body).forEach(b=>b.addEventListener('click',()=>{
-      SFX.click();
-      ans[item.key]=b.dataset.val;
-      if(step<QUESTIONS.length-1){step++;render()}
-      else{
-        DashTracker.logSurvey(ans);
-        submitted=true;
-        try{sessionStorage.setItem(doneKey,'1')}catch(e){}
-        SFX.open();
-        render();
-      }
-    }));
-    const bk=$('#svBack',body);if(bk)bk.onclick=()=>{step=Math.max(0,step-1);render()};
-  }
-
-  function setOpen(on){
-    drw.classList.toggle('open',on);
-    drw.setAttribute('aria-hidden',on?'false':'true');
-  }
-  tog.addEventListener('click',()=>setOpen(!drw.classList.contains('open')));
-  cls.addEventListener('click',()=>setOpen(false));
-  render();
-})();
-
-/* =====================================================================
-   PAGE, PERALIHAN CORAK WATAK & REKOD LAWATAN KE DASHBOARD
+   PAGE & PERALIHAN CORAK WATAK
    ===================================================================== */
 const PAGES=['utama','inovasi','watak','kader'];
 let page=PAGES.includes(state.page)?state.page:'utama',busy=false,booted=false;
@@ -3782,7 +3723,7 @@ const run=(e,from,to,delay,dur)=>e.animate([{clipPath:from},{clipPath:to}],{dura
 async function go(name,fromExplore){
   if(busy)return;
   if(name===page){scrollTo({top:0,behavior:reduce?'auto':'smooth'});return}
-  busy=true;save();SFX.nav();DashTracker.logVisit(name,'nav');
+  busy=true;save();SFX.nav();
   if(fromExplore)state.y[name]=0;
   const dir=PAGES.indexOf(name)>PAGES.indexOf(page)?1:-1,m=dir<0;
   const swap=()=>{show(name);scrollTo(0,fromExplore?0:(state.y[name]||0))};
@@ -3806,7 +3747,6 @@ addEventListener('resize',moveInd);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(moveInd);
 
 show(page);
-DashTracker.logVisit(page,'entry');
 
 function glideTo(y,dur){
   let stop=false;const cancel=()=>{stop=true};
