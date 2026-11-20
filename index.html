@@ -341,11 +341,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .sec-rakan{--twd:560px;margin-top:0;padding-top:0;padding-bottom:30px}
 .sec-rakan .sec-bg{background:rgba(255,255,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:-1}
 .sec-rakan .sec-title{margin-top:8px}
-.plogos{padding:6px 0 8px}
-.pl{width:clamp(80px,9vw,116px);height:clamp(80px,9vw,116px);margin-right:clamp(20px,3vw,40px);border-radius:50%;flex:none;display:block;border:4px solid #fff;box-shadow:0 0 0 3px var(--yellow);transition:transform .3s,box-shadow .3s}
-.pl:hover{transform:translateY(-6px) scale(1.06);box-shadow:0 0 0 3px var(--ink),0 12px 22px rgba(10,34,96,.35)}
-.pl .slot{position:absolute;inset:0;border-radius:50%}
-.pl{position:relative}
+.plogos{padding:10px 0 12px;filter:drop-shadow(4px 4px 0 var(--yellow))}
+.pl{position:relative;width:clamp(84px,9.2vw,118px);height:clamp(84px,9.2vw,118px);margin-right:clamp(18px,2.8vw,34px);flex:none;display:block;
+  background:var(--ink);padding:3px;
+  clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),background .28s}
+.pl:hover{transform:translateY(-6px) scale(1.05);background:var(--yellow)}
+.pl .slot{position:relative;width:100%;height:100%;display:block;background:#fff !important;
+  clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+.pl .slot img{padding:8px !important}
 
 /* =========================================================
    11. FOOTER
@@ -775,8 +779,17 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   background:rgba(40,119,254,.38);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);
   opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 #modal.open{opacity:1;visibility:visible}
-.mdl{--a:26px;--b2:12px;--bw:3px;width:min(780px,100%);max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px);overflow:auto;position:relative;
-  transform:translateY(40px) scale(.9);opacity:0;transition:transform .55s cubic-bezier(.2,1.25,.35,1),opacity .3s;-webkit-overflow-scrolling:touch}
+.mdl{--a:26px;--b2:12px;--bw:3px;width:min(780px,100%);max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px);overflow:hidden;position:relative;
+  padding:var(--bw);display:flex;flex-direction:column;
+  transform:translateY(40px) scale(.9);opacity:0;transition:transform .55s cubic-bezier(.2,1.25,.35,1),opacity .3s}
+.mdl.fr::before{display:none}
+.mdl.fr>div{--ca:calc(var(--a) - var(--bw)*.586);--cb:calc(var(--b2) - var(--bw)*.586);
+  background:var(--fill);width:100%;max-height:calc(100vh - 26px);max-height:calc(100dvh - 26px);overflow-y:auto;-webkit-overflow-scrolling:touch;
+  clip-path:polygon(var(--ca) 0,calc(100% - var(--cb)) 0,100% var(--cb),100% calc(100% - var(--ca)),calc(100% - var(--ca)) 100%,var(--cb) 100%,0 calc(100% - var(--cb)),0 var(--ca))}
+.mdl.watak-mdl,.mdl.kader-mdl{padding:0;overflow:visible;display:block}
+.mdl.watak-mdl>div,.mdl.kader-mdl>div{background:transparent;max-height:none;overflow:visible;clip-path:none}
+.vvip-list{margin:0;padding-left:16px;display:grid;gap:4px;font-size:14px;line-height:1.45}
+.vvip-list li{padding-left:2px}
 #modal.open .mdl{transform:none;opacity:1}
 .mdl.sm{width:min(660px,100%)}
 .mdl.blue{--fill:linear-gradient(150deg,var(--blue-d),var(--blue));--line:#fff;color:#fff;width:min(640px,100%)}
@@ -1035,12 +1048,29 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .map-stage .dotp{fill:#000000 !important;stroke:var(--yellow) !important;stroke-width:1.8px !important}
 .pin-pulse{fill:none;stroke:rgba(255,199,32,.65);stroke-width:1.6;animation:pinBeacon 2.6s ease-out infinite;pointer-events:none}
 @keyframes pinBeacon{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.1);opacity:0}}
-.map-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
-.mpill{display:inline-flex;align-items:center;gap:7px;padding:6px 13px 6px 8px;background:rgba(255,255,255,.14);color:#fff;border:2px solid rgba(255,255,255,.45);
-  font:600 11.5px var(--ff-h);letter-spacing:.05em;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .2s,color .2s,border-color .2s,transform .2s;cursor:pointer}
-.mpill i{display:inline-grid;place-items:center;width:20px;height:20px;background:var(--yellow);color:var(--ink);font:700 11px var(--ff-h);border-radius:3px}
+/* Single-Row Interactive Jejak Kembara Rail (jimat ruang, kekal gah) */
+.map-rail-wrap{display:flex;align-items:center;gap:8px;margin-top:14px;padding:7px 10px;
+  background:rgba(10,34,96,.72);border:2.5px solid var(--yellow);
+  clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);box-shadow:5px 5px 0 rgba(7,24,74,.38)}
+.map-rail-arr{flex:none;width:32px;height:34px;display:grid;place-items:center;background:var(--blue);color:var(--yellow);
+  border:2px solid var(--ink);clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);transition:background .2s,color .2s;cursor:pointer}
+.map-rail-arr svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:square}
+.map-rail-arr:hover{background:var(--yellow);color:var(--ink)}
+.map-pills{flex:1;min-width:0;display:flex;flex-wrap:nowrap;align-items:center;gap:8px;overflow-x:auto;scroll-behavior:smooth;
+  scrollbar-width:none;padding:2px 2px}
+.map-pills::-webkit-scrollbar{display:none}
+.mpill{flex:none;display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 8px;background:rgba(255,255,255,.12);color:#fff;
+  border:1.8px solid rgba(255,255,255,.38);font:700 11.5px/1.15 var(--ff-h);letter-spacing:.06em;white-space:nowrap;
+  clip-path:polygon(9px 0,100% 0,calc(100% - 9px) 100%,0 100%);transition:background .2s,color .2s,border-color .2s,transform .2s;cursor:pointer}
+.mpill i{display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 4px;background:var(--yellow);color:var(--ink);
+  font:700 10.5px/1 var(--ff-h);font-style:normal;clip-path:polygon(4px 0,100% 0,calc(100% - 4px) 100%,0 100%)}
 .mpill:hover,.mpill.on{background:var(--yellow);color:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
 .mpill:hover i,.mpill.on i{background:var(--ink);color:var(--yellow)}
+@media (max-width:520px){
+  .map-rail-wrap{padding:6px 6px;gap:5px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+  .map-rail-arr{width:28px;height:30px}
+  .mpill{padding:6px 11px 6px 7px;font-size:11px;gap:6px}
+}
 
 .shield-wrap{position:relative;min-height:260px}
 .shield-blur{filter:blur(10px) saturate(.7);opacity:.42;pointer-events:none;user-select:none}
@@ -1059,13 +1089,14 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .kgrid.kgrid-6 .k4{grid-area:2/3/3/5}
 .kgrid.kgrid-6 .k5{grid-area:3/1/4/3}
 .kgrid.kgrid-6 .k6{grid-area:3/3/4/5}
-.shop{position:relative;overflow:visible}
+.shop-wrap{position:relative;display:inline-flex}
+.shop{position:relative}
 .shop .shop-ico{width:30px;height:30px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none;padding:4px}
 .shop .shop-ico svg{width:100%;height:100%;display:block}
 .shop-soon-pop{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) translateY(6px);background:var(--red);color:#fff;
   border:2px solid var(--ink);padding:5px 14px;font:700 11px var(--ff-h);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
-  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:3px 3px 0 var(--ink);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10}
-.shop-soon-pop.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:3px 3px 0 var(--ink);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s,visibility .2s;z-index:12}
+.shop-soon-pop.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
 @keyframes shakeErr{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
 .shop.shake-err{animation:shakeErr .4s ease}
 
@@ -1319,27 +1350,39 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 #boot .sk{display:none}
 #boot .sk-note{top:50%;bottom:auto;transform:translateY(-50%);font-size:12px;letter-spacing:.2em;opacity:.8}
 
-/* 1) Header tunggal tanpa kotak biru tua kedua di bawah + Lencana V.Beta */
+/* 1) Header tunggal responsif 3 baris (Tajuk penuh di semua peranti, sub-tajuk ikut skrin, V.Beta di bawah) */
+:root{--hdr:72px}
 .hdr-mob-sub{display:none !important}
-.hdr-mid{display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:0;overflow:hidden;padding:0 4px}
-.hdr-mid-t{display:flex;align-items:center;justify-content:center;gap:6px;max-width:100%;min-width:0}
-.hdr-mid-t>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.hdr-beta{display:inline-block;padding:2px 8px;background:var(--yellow);color:var(--ink);border:1.5px solid var(--ink);font:700 clamp(9px,1vw,11px)/1.1 var(--ff-h);letter-spacing:.08em;text-transform:none;clip-path:polygon(4px 0,100% 0,calc(100% - 4px) 100%,0 100%);text-shadow:none;flex:none}
+.hdr-mid{display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;overflow:visible;padding:0 6px}
+.hdr-mid-t{display:block;font:700 clamp(11px,1.25vw,15px)/1.12 var(--ff-h);letter-spacing:.12em;text-transform:uppercase;color:#fff;text-shadow:0 2px 6px rgba(10,34,96,.3);white-space:nowrap;text-align:center}
+.hdr-mid-s{font:500 clamp(9px,.86vw,11px)/1.15 var(--ff-b);letter-spacing:.06em;color:rgba(255,255,255,.92);white-space:nowrap;text-align:center}
+.hdr-mid-s .s-mob{display:none}
+.hdr-beta{display:inline-block;padding:1.5px 9px;background:var(--yellow);color:var(--ink);border:1.5px solid var(--ink);font:700 clamp(8px,.85vw,10px)/1.1 var(--ff-h);letter-spacing:.1em;text-transform:uppercase;clip-path:polygon(5px 0,100% 0,calc(100% - 5px) 100%,0 100%);text-shadow:none;flex:none;margin-top:1px}
 @media (max-width:900px){
   .hdr-in{padding:0 16px;gap:6px}
   .slash{display:none}
-  .hdr-mid-t{font-size:clamp(9.5px,2.2vw,13px);letter-spacing:.06em;max-width:100%;gap:4px}
-  .hdr-beta{padding:1.5px 5px;font-size:clamp(7.5px,1.7vw,10px)}
-  .hdr-mid-s{font-size:clamp(7.5px,1.8vw,10px);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .hdr-mid-t{font-size:clamp(9.5px,2.1vw,13px);letter-spacing:.05em}
+  .hdr-mid-s{font-size:clamp(8px,1.7vw,10px);letter-spacing:.03em}
+}
+@media (max-width:720px){
+  :root{--hdr:66px}
+  .hdr-in{padding:0 12px;gap:5px;clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 100%,0 100%)}
+  .hdr-mid-s .s-desk{display:none}
+  .hdr-mid-s .s-mob{display:inline}
+  .hdr-mid-t{font-size:clamp(8.5px,2.55vw,11.5px);letter-spacing:.02em;white-space:normal;line-height:1.12}
+  .hdr-mid-s{font-size:clamp(8px,2.1vw,10px)}
+  .hdr-beta{padding:1px 7px;font-size:7.5px}
 }
 @media (max-width:520px){
-  .hdr-in{padding:0 10px;gap:4px;clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 100%,0 100%)}
-  .logo{width:26px;height:26px}
-  .soc{width:26px;height:26px}.soc svg{width:13px;height:13px}
+  :root{--hdr:64px}
+  .hdr-in{padding:0 8px;gap:4px;clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 100%,0 100%)}
+  .logo{width:24px;height:24px}
+  .soc{width:24px;height:24px}.soc svg{width:12px;height:12px}
   .hdr-logos,.hdr-soc{gap:3px;flex:none}
-  .hdr-mid-t{font-size:clamp(8.5px,2.35vw,11px);letter-spacing:.03em;gap:3px}
-  .hdr-beta{padding:1px 4px;font-size:7.5px}
-  .hdr-mid-s{font-size:clamp(7px,1.85vw,9px)}
+  .hdr-mid{padding:0 2px;gap:1.5px}
+  .hdr-mid-t{font-size:clamp(8.5px,2.6vw,10.5px);letter-spacing:.01em;line-height:1.1}
+  .hdr-mid-s{font-size:8px}
+  .hdr-beta{padding:1px 6px;font-size:7px}
 }
 
 /* 2) Butang Tokoh Inspirasi Kami (ikon kitab/rehal kiri + bayang kuning + hover lembut) & Modal Editorial Tulen */
@@ -1587,8 +1630,9 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
     </div>
 
     <div class="hdr-mid">
-      <strong class="hdr-mid-t"><span>Platform Hadis 40 Imam Nawawi</span><span class="hdr-beta">V.Beta</span></strong>
-      <span class="hdr-mid-s">Briged Shabab An-Nawawi &bull; SMKA Al-Irshad &bull; Penang</span>
+      <strong class="hdr-mid-t">Platform Digital Hadis 40 Imam Nawawi</strong>
+      <span class="hdr-mid-s"><span class="s-desk">Briged Shabab An-Nawawi &bull; SMKA Al-Irshad &bull; Penang</span><span class="s-mob">SMKA Al-Irshad &bull; Penang</span></span>
+      <span class="hdr-beta">V.Beta</span>
     </div>
 
     <div class="hdr-soc">
@@ -1747,7 +1791,11 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
           <div class="map-hint">CTRL + SKROL / CUBIT UNTUK ZOOM &bull; SERET UNTUK GERAK &bull; PILIH PIN DI BAWAH</div>
         </div>
         <div class="pin-tip" id="pinTip"></div>
-        <div class="map-pills" id="mapPills" aria-label="Senarai Lokasi Kembara"></div>
+        <div class="map-rail-wrap" aria-label="Senarai Lokasi Kembara">
+          <button type="button" class="map-rail-arr" id="mapRailPrev" aria-label="Skrol lokasi kiri"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="map-pills" id="mapPills"></div>
+          <button type="button" class="map-rail-arr" id="mapRailNext" aria-label="Skrol lokasi kanan"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
       </div>
     </div>
   </section>
@@ -1771,20 +1819,24 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
       <div class="kol-cta">
         <p>Teroka Semua</p>
         <div class="shops">
-          <a class="shop sp" id="shopShopee" href="#" aria-label="Shopee (Akan Datang)">
-            <span class="shop-ico" aria-hidden="true">
-              <svg viewBox="0 0 48 48"><path fill="#EE4D2D" d="M38.5 16H33c-.3-5-4.3-9-9-9s-8.7 4-9 9H9.5c-1.4 0-2.4 1.1-2.3 2.5l1.6 18.8C9 39.9 11.2 42 13.8 42h20.4c2.6 0 4.8-2.1 5-4.7l1.6-18.8c.1-1.4-.9-2.5-2.3-2.5zM24 10.5c2.9 0 5.3 2.4 5.5 5.5h-11c.2-3.1 2.6-5.5 5.5-5.5z"/><path fill="#FFF" d="M24.2 35c-3.5 0-5.9-1.6-6.9-3.2l2.3-1.6c.8 1.2 2.4 2.1 4.6 2.1 2 0 3.2-.8 3.2-2.1 0-1.1-.8-1.8-3.7-2.4-3.7-.8-5.7-2.1-5.7-4.8 0-2.9 2.5-4.9 6.1-4.9 3 0 5.2 1.1 6.4 2.8l-2.2 1.6c-.9-1.1-2.2-1.8-4.1-1.8-1.9 0-3 .8-3 1.9 0 1.2.9 1.7 3.9 2.4 3.6.8 5.5 2 5.5 4.8 0 3.1-2.6 5.2-6.4 5.2z"/></svg>
-            </span>
-            <span>Shopee</span>
-            <span class="shop-soon-pop" aria-hidden="true">Akan Datang</span>
-          </a>
-          <a class="shop tt" id="shopTikTok" href="#" aria-label="TikTok Shop (Akan Datang)">
-            <span class="shop-ico" aria-hidden="true">
-              <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#010101"/><path fill="#25F4EE" d="M31.8 17.5a7.2 7.2 0 0 1-4.3-1.4v9.4c0 4.2-3.4 7.6-7.6 7.6a7.6 7.6 0 0 1-7.6-7.6c0-4.2 3.4-7.6 7.6-7.6.4 0 .9 0 1.3.1v3.8c-.4-.1-.8-.2-1.3-.2a3.9 3.9 0 0 0 0 7.8 3.9 3.9 0 0 0 3.9-3.9V10h3.7a4.9 4.9 0 0 0 4.3 4.3v3.2z" transform="translate(-1,-1)"/><path fill="#FE2C55" d="M31.8 17.5a7.2 7.2 0 0 1-4.3-1.4v9.4c0 4.2-3.4 7.6-7.6 7.6a7.6 7.6 0 0 1-7.6-7.6c0-4.2 3.4-7.6 7.6-7.6.4 0 .9 0 1.3.1v3.8c-.4-.1-.8-.2-1.3-.2a3.9 3.9 0 0 0 0 7.8 3.9 3.9 0 0 0 3.9-3.9V10h3.7a4.9 4.9 0 0 0 4.3 4.3v3.2z" transform="translate(1,1)"/><path fill="#FFF" d="M31.8 17.5a7.2 7.2 0 0 1-4.3-1.4v9.4c0 4.2-3.4 7.6-7.6 7.6a7.6 7.6 0 0 1-7.6-7.6c0-4.2 3.4-7.6 7.6-7.6.4 0 .9 0 1.3.1v3.8c-.4-.1-.8-.2-1.3-.2a3.9 3.9 0 0 0 0 7.8 3.9 3.9 0 0 0 3.9-3.9V10h3.7a4.9 4.9 0 0 0 4.3 4.3v3.2z"/></svg>
-            </span>
-            <span>TikTok Shop</span>
-            <span class="shop-soon-pop" aria-hidden="true">Akan Datang</span>
-          </a>
+          <div class="shop-wrap">
+            <a class="shop sp" id="shopShopee" href="#" aria-label="Shopee (Akan Datang)">
+              <span class="shop-ico" aria-hidden="true">
+                <svg viewBox="0 0 48 48"><path fill="#EE4D2D" d="M38.5 16H33c-.3-5-4.3-9-9-9s-8.7 4-9 9H9.5c-1.4 0-2.4 1.1-2.3 2.5l1.6 18.8C9 39.9 11.2 42 13.8 42h20.4c2.6 0 4.8-2.1 5-4.7l1.6-18.8c.1-1.4-.9-2.5-2.3-2.5zM24 10.5c2.9 0 5.3 2.4 5.5 5.5h-11c.2-3.1 2.6-5.5 5.5-5.5z"/><path fill="#FFF" d="M24.2 35c-3.5 0-5.9-1.6-6.9-3.2l2.3-1.6c.8 1.2 2.4 2.1 4.6 2.1 2 0 3.2-.8 3.2-2.1 0-1.1-.8-1.8-3.7-2.4-3.7-.8-5.7-2.1-5.7-4.8 0-2.9 2.5-4.9 6.1-4.9 3 0 5.2 1.1 6.4 2.8l-2.2 1.6c-.9-1.1-2.2-1.8-4.1-1.8-1.9 0-3 .8-3 1.9 0 1.2.9 1.7 3.9 2.4 3.6.8 5.5 2 5.5 4.8 0 3.1-2.6 5.2-6.4 5.2z"/></svg>
+              </span>
+              <span>Shopee</span>
+            </a>
+            <span class="shop-soon-pop" aria-hidden="true">AKAN DATANG</span>
+          </div>
+          <div class="shop-wrap">
+            <a class="shop tt" id="shopTikTok" href="#" aria-label="TikTok Shop (Akan Datang)">
+              <span class="shop-ico" aria-hidden="true">
+                <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#010101"/><path fill="#25F4EE" d="M31.8 17.5a7.2 7.2 0 0 1-4.3-1.4v9.4c0 4.2-3.4 7.6-7.6 7.6a7.6 7.6 0 0 1-7.6-7.6c0-4.2 3.4-7.6 7.6-7.6.4 0 .9 0 1.3.1v3.8c-.4-.1-.8-.2-1.3-.2a3.9 3.9 0 0 0 0 7.8 3.9 3.9 0 0 0 3.9-3.9V10h3.7a4.9 4.9 0 0 0 4.3 4.3v3.2z" transform="translate(-1,-1)"/><path fill="#FE2C55" d="M31.8 17.5a7.2 7.2 0 0 1-4.3-1.4v9.4c0 4.2-3.4 7.6-7.6 7.6a7.6 7.6 0 0 1-7.6-7.6c0-4.2 3.4-7.6 7.6-7.6.4 0 .9 0 1.3.1v3.8c-.4-.1-.8-.2-1.3-.2a3.9 3.9 0 0 0 0 7.8 3.9 3.9 0 0 0 3.9-3.9V10h3.7a4.9 4.9 0 0 0 4.3 4.3v3.2z" transform="translate(1,1)"/><path fill="#FFF" d="M31.8 17.5a7.2 7.2 0 0 1-4.3-1.4v9.4c0 4.2-3.4 7.6-7.6 7.6a7.6 7.6 0 0 1-7.6-7.6c0-4.2 3.4-7.6 7.6-7.6.4 0 .9 0 1.3.1v3.8c-.4-.1-.8-.2-1.3-.2a3.9 3.9 0 0 0 0 7.8 3.9 3.9 0 0 0 3.9-3.9V10h3.7a4.9 4.9 0 0 0 4.3 4.3v3.2z"/></svg>
+              </span>
+              <span>TikTok Shop</span>
+            </a>
+            <span class="shop-soon-pop" aria-hidden="true">AKAN DATANG</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2169,47 +2221,51 @@ const CFG = {
   // KEMBARA KAMI (7 LOKASI TERKINI + GAMBAR TEMPATAN + PAUTAN GOOGLE DRIVE VIEW)
   programs: [
     {
-      key:'attaqwa', lokasi:'Masjid At-Taqwa, Kepala Batas, Pulau Pinang', short:'1. Masjid At-Taqwa',
+      key:'attaqwa', lokasi:'Masjid At-Taqwa, Kepala Batas, Pulau Pinang', short:'Masjid At-Taqwa',
       nama:'Karnival Penghayatan Hadis 40 Imam Nawawi Peringkat Negeri 2025',
       tarikh:'8 November 2025, Sabtu',
-      vvip:'Encik Ishak bin Harun, Ketua Penolong Kanan Pengarah Kanan, Sektor Pendidikan Islam, Jabatan Pendidikan',
-      perihal:'Penampilan sulung yang mencetuskan fenomena—terus tular dan mencuri tumpuan warga maya sejak hari pertama pameran dibuka.',
+      vvip:'Encik Ishak bin Harun, Ketua Penolong Kanan Pengarah Kanan, Sektor Pendidikan Islam, JPNPP',
+      perihal:'Penampilan sulung yang mencetuskan fenomena. Terus tular dan mencuri tumpuan warga maya sejak hari pertama pameran dibuka.',
       drive:'https://drive.google.com/drive/folders/1BC54YqQIFHzH4gtNVaa4ZOegAs9pysFm?usp=sharing',
       useLocalOnly: true,
       imgs: ['taqwa1.jpg','taqwa2.jpg','taqwa3.jpg','taqwa4.jpg','taqwa5.JPG','taqwa6.JPG','taqwa7.JPG']
     },
     {
-      key:'ipg', lokasi:'IPG Tuanku Bainon, Bukit Mertajam, Pulau Pinang', short:'2. IPG Tuanku Bainon',
-      nama:'Pameran Briged Shabab An-Nawawi',
+      key:'ipg', lokasi:'IPG Tuanku Bainon, Bukit Mertajam, Pulau Pinang', short:'IPG Tuanku Bainon',
+      nama:'Bicara Wahyu',
       tarikh:'9 April 2026, Khamis',
-      vvip:'ENCIK MOHAMED ZAMRI BIN BASIR, Ketua Penolong Pengarah, Sektor, Pembangunan Program Adab dan Nilai, Bahagian Pendidikan Islam, KPM',
+      vvip:'Encik Mohamed Zamri bin Basir, Ketua Penolong Pengarah, Sektor, Pembangunan Program Adab dan Nilai, Bahagian Pendidikan Islam, KPM',
       perihal:'Pengiktirafan berterusan, pasukan kami menerima jemputan rasmi untuk mengadakan pameran khas bagi mempamerkan keunikan inovasi ini.',
       drive:'https://drive.google.com/drive/folders/1BaKi3c6VcKainxpJWdWt7w8ogioLWFWr?usp=sharing',
       useLocalOnly: true,
       imgs: ['ipg1.jpg','ipg3.jpg','ipg4.jpg','ipg5.png','ipg6.jpg']
     },
     {
-      key:'adtec', lokasi:'ADTEC JTM Kampus, Kepala Batas, Pulau Pinang', short:'3. ADTEC Kepala Batas',
+      key:'adtec', lokasi:'ADTEC JTM Kampus, Kepala Batas, Pulau Pinang', short:'ADTEC Kepala Batas',
       nama:'SUKSES 5.0',
       tarikh:'28 & 29 April 2026, Selasa & Rabu',
       vvip:'',
-      perihal:'Sambutan luar jangka—dibanjiri maklum balas positif daripada pelajar dan guru-guru sepanjang sesi pameran berlangsung.',
+      perihal:'Sambutan luar jangka. Dibanjiri maklum balas positif daripada pelajar dan guru-guru sepanjang sesi pameran berlangsung.',
       drive:'https://drive.google.com/drive/folders/1Osr9WNDGHwWF0Zf3QrUvA6w7uKC1c_h9?usp=sharing',
       useLocalOnly: true,
       imgs: ['sukses1.jpg','sukses2.JPG','sukses3.JPG','sukses4.png','sukses5.JPG']
     },
     {
-      key:'smka', lokasi:'SMKA Sheikh Tahir Jalaluddin, Bukit Mertajam, Pulau Pinang', short:'4. SMKA Sheikh Tahir',
+      key:'smka', lokasi:'SMKA Sheikh Tahir Jalaluddin, Bukit Mertajam, Pulau Pinang', short:'SMKA Sheikh Tahir',
       nama:'Majlis Perasmian Sekolah Menengah Kebangsaan Agama Sheikh Tahir Jalaluddin',
       tarikh:'25 Julai 2026, Sabtu',
-      vvip:"YAB Dato' Seri Anwar bin Ibrahim , PMX & YB Datuk Seri Fadhlina Binti Sidek, Menteri Pendidikan Malaysia",
+      vvip:[
+        "YAB Dato' Seri Anwar bin Ibrahim, PMX",
+        "YB Datuk Seri Fadhlina Binti Sidek, Menteri Pendidikan Malaysia",
+        "Tuan Haji Omar bin Salleh, Pengarah Bahagian Pendidikan Islam, KPM"
+      ],
       perihal:'Detik bersejarah buat pasukan kami apabila inovasi ini mendapat pengiktirafan dan ditawarkan secara rasmi untuk mewakili negeri ke pentas peringkat kebangsaan.',
       drive:'https://drive.google.com/drive/folders/1-zm-oNcX1Ary-LyD5a3zP-KvKwexpjdA?usp=sharing',
       useLocalOnly: true,
-      imgs: ['anwar_pp.jpg','stj2.jpg','stj3.jpg','stj4.jpg','stj5.jpg','stj6.jpg']
+      imgs: ['stj1.png','stj2.jpg','stj3.jpg','stj4.jpg','stj5.jpg','stj6.jpg']
     },
     {
-      key:'mufti', lokasi:'Kediaman Mufti Perlis, Perlis', short:'5. Kediaman Mufti Perlis',
+      key:'mufti', lokasi:'Kediaman Mufti Perlis, Perlis', short:'Kediaman Mufti Perlis',
       nama:'Jaulah Ilmiah ke Perlis',
       tarikh:'22 Oktober 2026, Khamis',
       vvip:'Dr. MAZA',
@@ -2219,17 +2275,17 @@ const CFG = {
       imgs: ['mufti1.jpg','mufti2.JPG','mufti3.JPG','mufti4.jpg','mufti5.JPG']
     },
     {
-      key:'pis', lokasi:'Politeknik Ibrahim Sultan, Pasir Gudang, Johor', short:'6. Politeknik Ibrahim Sultan',
+      key:'pis', lokasi:'Politeknik Ibrahim Sultan, Pasir Gudang, Johor', short:'Politeknik Ibrahim Sultan',
       nama:'Karnival Jejak Imam Nawawi Kebangsaan 2026',
       tarikh:'14 November 2026, Sabtu',
-      vvip:'Encik Jamaluddin Bin Yusoff, Timbalan Pengarah, Sektor Pengembangan Sekolah Agama, Bahagian Pendidikan Islam Kementerian Pendidikan',
-      perihal:'Penampilan sulung yang membanggakan di pentas kebangsaan—mencuri tumpuan ramai termasuk kontinjen dari negeri-negeri lain, sehingga mendapat pengiktirafan dan sebutan khas daripada Pengarah BPI.',
+      vvip:'Tuan Haji Omar bin Salleh, Pengarah Bahagian Pendidikan Islam, KPM',
+      perihal:'Penampilan sulung yang membanggakan di pentas kebangsaan. Mencuri tumpuan ramai termasuk kontinjen dari negeri-negeri lain, sehingga mendapat pengiktirafan dan sebutan khas daripada Pengarah BPI.',
       drive:'https://drive.google.com/drive/folders/1NoK_CXISbi8E9xifJzF2bNE4RXtraTHj?usp=sharing',
       useLocalOnly: true,
       imgs: ['johor1.jpeg','johor2.jpeg','johor3.jpeg','johor4.jpeg','johor5.jpeg','johor6.jpg','johor7.jpeg']
     },
     {
-      key:'fahim', lokasi:'Masjid Abdullah Fahim, Kepala Batas, Pulau Pinang', short:'7. Masjid Abdullah Fahim',
+      key:'fahim', lokasi:'Masjid Abdullah Fahim, Kepala Batas, Pulau Pinang', short:'Masjid Abdullah Fahim',
       nama:'Karnival Jejak Imam Nawawi Peringkat Negeri 2026',
       tarikh:'28 November 2026, Sabtu',
       vvip:'',
@@ -2432,7 +2488,7 @@ const CFG = {
     { img:'Nazmi_pp.jpg', quote:'Kita mengharapkan agar inovasi seumpama ini dapat menyemarakkan lagi', nama:'Mohammad Nazmi bin Mohsin', jawatan:'Penolong Pengarah Unit Pembangunan Adab dan Nilai, SPI, JPNPP' },
     { img:'ustazsaf_pp.jpg', quote:'Uishh tak penah ustaz tengok sekolah buat inovasi dekat Roblox', nama:'Ustaz SAF', jawatan:'Guru' },
     { img:'@ssupd14na_pp.jpg', quote:'banyakkan content macam ni 😍😍, saya nak repost banyak2 biar anak muda nampak cara “main” roblox dengan betul 🥰✨🤝', nama:'@ssupd14na', jawatan:'Netizen' },
-    { img:'profile_pp.jpg', quote:'Inisiatif menyelitkan Hadis 40 dalam permainan Roblox ini wajar didedahkan seawal prasekolah dan Tahun 1, agar anak-anak tahu permainan di rumah juga boleh membawa nilai yang jauh lebih baik.', nama:'Tuan Haji Omar bin Salleh', jawatan:'Pengarah Bahagian Pendidikan Islam, KPM' }
+    { img:'Omar_pp.png', quote:'Inisiatif Hadis 40 dalam Roblox ini baik didedahkan seawal prasekolah dan Tahun 1 supaya permainan di rumah lebih bermanfaat.', nama:'Tuan Haji Omar bin Salleh', jawatan:'Pengarah Bahagian Pendidikan Islam, KPM' }
   ],
 
   // RAKAN STRATEGIK (9)
@@ -3001,10 +3057,13 @@ function openProgram(i){
     body.appendChild(wrap);
   }else{
     body.appendChild(gallery(p.imgs, p.drive, {localOnly:!!p.useLocalOnly, thumbs:true, auto:true, interval:3600}));
+    const vvipHtml = Array.isArray(p.vvip) && p.vvip.length
+      ? `<div class="row vip"><b>VVIP</b><ul class="vvip-list">${p.vvip.map(v=>`<li>${esc(v)}</li>`).join('')}</ul></div>`
+      : (p.vvip ? `<div class="row vip"><b>VVIP</b><p>${esc(p.vvip)}</p></div>` : '');
     body.insertAdjacentHTML('beforeend',`<div class="info">
       <div>
         ${p.tarikh?`<div class="row"><b>Tarikh</b><p>${esc(p.tarikh)}</p></div>`:''}
-        ${p.vvip?`<div class="row vip"><b>VVIP</b><p>${esc(p.vvip)}</p></div>`:''}
+        ${vvipHtml}
         ${p.perihal?`<div class="row"><p>${esc(p.perihal)}</p></div>`:''}
       </div>
       <div><div class="row"><b>Lokasi</b><p>${esc(p.lokasi)}</p></div></div></div>`);
@@ -3345,7 +3404,7 @@ function openKaderModal(k){
   // Quick Location Pills supaya selesa ditekan walaupun pin Pulau Pinang rapat
   if(pillsBox){
     pillsBox.innerHTML = CFG.programs.map((p,i)=>
-      `<button type="button" class="mpill" data-p="${i}"><i>${i+1}</i><span>${esc(p.short||p.lokasi)}</span></button>`
+      `<button type="button" class="mpill" data-p="${i}"><i>${String(i+1).padStart(2,'0')}</i><span>${esc(p.short||p.lokasi)}</span></button>`
     ).join('');
     pillsBox.addEventListener('click',e=>{
       const b=e.target.closest('.mpill');if(!b)return;
@@ -3355,6 +3414,9 @@ function openKaderModal(k){
       if(o)animateTo(o.x,o.y,Math.max(z,3.6),380);
       openProgram(idx);
     });
+    const rPrev=$('#mapRailPrev'),rNext=$('#mapRailNext');
+    if(rPrev)rPrev.addEventListener('click',()=>pillsBox.scrollBy({left:-220,behavior:reduce?'auto':'smooth'}));
+    if(rNext)rNext.addEventListener('click',()=>pillsBox.scrollBy({left:220,behavior:reduce?'auto':'smooth'}));
   }
 
   stage.addEventListener('wheel',e=>{
@@ -3875,7 +3937,7 @@ function openKoleksiZoom(k){
     e.preventDefault();
     SFX.err();
     btn.classList.remove('shake-err');void btn.offsetWidth;btn.classList.add('shake-err');
-    const pop = $('.shop-soon-pop', btn);
+    const pop = $('.shop-soon-pop', btn.parentElement);
     if(pop){
       pop.textContent='AKAN DATANG';
       pop.classList.add('show');
