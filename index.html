@@ -3405,9 +3405,9 @@ function openKaderModal(k){
   $('#zOut').addEventListener('click',()=>{const t=target(1/1.9);animateTo(t.z<=1.001?MAP.w/2:t.x,t.z<=1.001?MAP.h/2:t.y,t.z)});
   $('#zReset').addEventListener('click',()=>animateTo(MAP.w/2,MAP.h/2,1));
 
-  // Quick Location Pills supaya selesa ditekan walaupun pin Pulau Pinang rapat
+  // Quick Location Pills (susunan menurun: lokasi terbaru dahulu, cth. 07, 06, ...)
   if(pillsBox){
-    pillsBox.innerHTML = CFG.programs.map((p,i)=>
+    pillsBox.innerHTML = CFG.programs.map((p,i)=>({p,i})).reverse().map(({p,i})=>
       `<button type="button" class="mpill" data-p="${i}"><i>${String(i+1).padStart(2,'0')}</i><span>${esc(p.short||p.lokasi)}</span></button>`
     ).join('');
     pillsBox.addEventListener('click',e=>{
@@ -3421,16 +3421,6 @@ function openKaderModal(k){
     const rPrev=$('#mapRailPrev'),rNext=$('#mapRailNext');
     if(rPrev)rPrev.addEventListener('click',()=>pillsBox.scrollBy({left:-220,behavior:reduce?'auto':'smooth'}));
     if(rNext)rNext.addEventListener('click',()=>pillsBox.scrollBy({left:220,behavior:reduce?'auto':'smooth'}));
-    const scrollToLatest=()=>{
-      const prevBehavior=pillsBox.style.scrollBehavior;
-      pillsBox.style.scrollBehavior='auto';
-      pillsBox.scrollLeft=pillsBox.scrollWidth;
-      pillsBox.style.scrollBehavior=prevBehavior;
-    };
-    scrollToLatest();
-    requestAnimationFrame(scrollToLatest);
-    addEventListener('load',scrollToLatest,{once:true});
-    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(scrollToLatest);
   }
 
   stage.addEventListener('wheel',e=>{
