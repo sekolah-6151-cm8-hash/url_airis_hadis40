@@ -176,11 +176,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
    ========================================================= */
 .band{position:relative;isolation:isolate;margin-top:26px;padding:clamp(54px,7vw,84px) 0 calc(var(--n) + clamp(40px,5vw,64px));text-align:center;color:#fff}
 .band::before,.band::after{content:"";position:absolute;inset:0;z-index:-1;clip-path:polygon(0 clamp(14px,2.4vw,30px),100% 0,100% 100%,0 100%)}
-.band::before{background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 3px,transparent 3px 22px),linear-gradient(100deg,var(--blue-d),var(--blue) 55%,#4a90ff)}
-.band::after{background:repeating-linear-gradient(135deg,rgba(255,255,255,.1) 0 3px,transparent 3px 22px),linear-gradient(100deg,var(--red-d),var(--red) 55%,#ff6677);opacity:0;transition:opacity 1s}
+.band::before{background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 3px,transparent 3px 22px),linear-gradient(105deg,rgba(10,34,96,.84),rgba(19,82,216,.76) 52%,rgba(28,97,232,.78)),url('Count1.jpg') center 42%/cover no-repeat}
+.band::after{background:repeating-linear-gradient(135deg,rgba(255,255,255,.1) 0 3px,transparent 3px 22px),linear-gradient(100deg,rgba(196,17,39,.88),rgba(255,51,71,.82) 55%,rgba(255,102,119,.82));opacity:0;transition:opacity 1s}
 .band.urgent::after{opacity:1}
-.band-title{font:700 clamp(19px,3.2vw,38px)/1.15 var(--ff-h);text-transform:uppercase;letter-spacing:.03em;max-width:24ch;margin:0 auto 8px;text-shadow:3px 3px 0 rgba(10,34,96,.35)}
-.band-sub{font:600 clamp(11px,1.4vw,15px) var(--ff-h);letter-spacing:.22em;color:var(--yellow);text-transform:uppercase;margin-bottom:clamp(22px,3vw,36px)}
+.band-title{font:700 clamp(19px,3.2vw,38px)/1.15 var(--ff-h);text-transform:uppercase;letter-spacing:.03em;max-width:24ch;margin:0 auto 8px;text-shadow:0 2px 12px rgba(7,20,64,.6),3px 3px 0 rgba(10,34,96,.55)}
+.band-sub{font:700 clamp(11px,1.4vw,15px)/1.35 var(--ff-h);letter-spacing:.2em;color:var(--yellow);text-transform:uppercase;margin-bottom:clamp(12px,1.8vw,18px);text-shadow:0 2px 8px rgba(7,20,64,.75)}
+.band-booth{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 10px;max-width:min(94%,680px);margin:0 auto clamp(22px,3vw,34px);padding:8px clamp(14px,2.4vw,26px);background:rgba(10,34,96,.74);border:2px solid rgba(255,199,32,.88);color:#fff;font:700 clamp(10.5px,1.35vw,14.5px)/1.4 var(--ff-h);letter-spacing:.12em;text-transform:uppercase;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:0 6px 18px rgba(7,20,64,.35)}
+.band-booth .bdot{color:var(--yellow)}
 .band.urgent .band-sub{color:#fff}
 .urgent-tag{display:none;margin:0 auto 18px;width:max-content;max-width:100%;font:700 12px var(--ff-h);letter-spacing:.2em;background:#fff;color:var(--red-d);padding:6px 16px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);animation:blink 1s steps(2) infinite}
 .band.urgent .urgent-tag,.band.over .urgent-tag{display:block}
@@ -195,9 +197,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 @keyframes pulse{50%{transform:scale(1.045)}}
 .cd-n.tick span{display:inline-block;animation:flip .45s ease}
 @keyframes flip{from{transform:translateY(-40%);opacity:0}to{transform:none;opacity:1}}
-.cd-l{font:600 clamp(11px,1.4vw,15px) var(--ff-h);letter-spacing:.2em;text-transform:uppercase}
-.colon{font:700 clamp(30px,6vw,70px)/1 var(--ff-h);color:var(--yellow);padding-top:clamp(10px,1.6vw,18px)}
+.cd-l{font:700 clamp(11px,1.4vw,15px) var(--ff-h);letter-spacing:.2em;text-transform:uppercase;text-shadow:0 2px 6px rgba(7,20,64,.8)}
+.colon{font:700 clamp(30px,6vw,70px)/1 var(--ff-h);color:var(--yellow);padding-top:clamp(10px,1.6vw,18px);text-shadow:0 2px 8px rgba(7,20,64,.75)}
 .band.urgent .colon{color:#fff}
+.band.done .band-booth{display:none}
 
 /* =========================================================
    6. VIDEO RASMI
@@ -1729,11 +1732,12 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   <!-- PEMASA KIRA DETIK ACARA (28 NOV 2026, 8:00 PAGI - 4:00 PETANG) -->
   <section class="band" id="countdown" aria-label="Kira detik program">
     <div class="wrap">
-      <div class="upcoming-badge" id="cdUpcomingBadge">AKAN DATANG</div>
+      <div class="upcoming-badge" id="cdUpcomingBadge">28 NOVEMBER 2026</div>
       <div class="urgent-tag" id="cdUrgentTag">KURANG 24 JAM LAGI</div>
       <div class="cd-live-badge" id="cdLiveBadge"><i class="live-dot" aria-hidden="true"></i><span>SEDANG BERLANGSUNG // LIVE AT VENUE</span></div>
       <h2 class="band-title">KARNIVAL JEJAK IMAM NAWAWI PERINGKAT NEGERI 2026</h2>
       <p class="band-sub">MASJID ABDULLAH FAHIM, KEPALA BATAS, PULAU PINANG</p>
+      <p class="band-booth"><span>KUNJUNGI RERUAI PAMERAN KAMI</span><span class="bdot" aria-hidden="true">&bull;</span><span>8:00 PAGI &ndash; 4:00 PETANG</span></p>
       <div class="clock" id="cdClock" aria-label="Kira detik ke 28 November 2026, 8 pagi">
         <div class="cd"><div class="cd-n" id="cdD"><span>00</span></div><div class="cd-l">Hari</div></div>
         <div class="colon">:</div>
@@ -2471,11 +2475,11 @@ const CFG = {
 
   // KOLEKSI EKSKLUSIF (6 ITEM)
   koleksi: [
-    { title:'Keychain Ropix', img:'keychain_ropix.JPG' },
-    { title:'Sticker RoPx', img:'sticker_ropix.JPG' },
-    { title:'Button RoPix', img:'button_ropix.JPG' },
-    { title:'Stand RoPix', img:'stand_ropix.JPG' },
-    { title:'Mug RoPix', img:'mug_ropix.JPG' },
+    { title:'Rantai Kunci RoPix', img:'keychain_ropix.JPG' },
+    { title:'Pelekat RoPix', img:'sticker_ropix.JPG' },
+    { title:'Lencana RoPix', img:'button_ropix.JPG' },
+    { title:'Plak RoPix', img:'stand_ropix.JPG' },
+    { title:'Cawan RoPix', img:'mug_ropix.JPG' },
     { title:'Koleksi Lengkap RoPix', img:'lengkap_ropix.JPG' }
   ],
 
@@ -3417,6 +3421,16 @@ function openKaderModal(k){
     const rPrev=$('#mapRailPrev'),rNext=$('#mapRailNext');
     if(rPrev)rPrev.addEventListener('click',()=>pillsBox.scrollBy({left:-220,behavior:reduce?'auto':'smooth'}));
     if(rNext)rNext.addEventListener('click',()=>pillsBox.scrollBy({left:220,behavior:reduce?'auto':'smooth'}));
+    const scrollToLatest=()=>{
+      const prevBehavior=pillsBox.style.scrollBehavior;
+      pillsBox.style.scrollBehavior='auto';
+      pillsBox.scrollLeft=pillsBox.scrollWidth;
+      pillsBox.style.scrollBehavior=prevBehavior;
+    };
+    scrollToLatest();
+    requestAnimationFrame(scrollToLatest);
+    addEventListener('load',scrollToLatest,{once:true});
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(scrollToLatest);
   }
 
   stage.addEventListener('wheel',e=>{
