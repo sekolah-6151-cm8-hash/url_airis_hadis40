@@ -1527,8 +1527,8 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 }
 .maint-wrap{position:fixed;top:0;left:0;right:0;z-index:1250;width:100%;margin:0;background:#fff;border-bottom:3.5px solid var(--yellow);box-shadow:0 5px 16px rgba(10,34,96,.18)}
 .maint-wrap::after{content:"";display:block;height:2.5px;background:var(--ink)}
-.maint-bar{width:min(1380px,100% - 2*var(--pad));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;padding:10px 0}
-.maint-info{display:flex;align-items:center;gap:11px;flex:1 1 340px;min-width:0}
+.maint-bar{width:min(1380px,100% - 2*var(--pad));margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px 20px;flex-wrap:wrap;padding:9px 0}
+.maint-info{display:flex;align-items:center;justify-content:center;gap:11px;flex:0 1 auto;min-width:0;flex-wrap:wrap;text-align:center}
 .maint-ico{flex:none;width:36px;height:36px;display:grid;place-items:center;background:var(--ink);color:var(--yellow);border:2px solid var(--ink);
   clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%)}
 .maint-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
@@ -1606,17 +1606,8 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
       <span class="maint-ico" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
       </span>
-      <span class="maint-tag"><i class="maint-dot" aria-hidden="true"></i><span>SEDANG DIBAIKI</span></span>
-      <p class="maint-txt">Laman web sedang dibaik pulih, siap pada <strong>20 Nov 2026, 8:00 malam</strong>.</p>
-    </div>
-    <div class="maint-cd" aria-label="Kira detik siap dibaiki">
-      <div class="maint-box"><b id="mtD">00</b><span>Hari</span></div>
-      <i class="maint-sep">:</i>
-      <div class="maint-box"><b id="mtH">00</b><span>Jam</span></div>
-      <i class="maint-sep">:</i>
-      <div class="maint-box"><b id="mtM">00</b><span>Minit</span></div>
-      <i class="maint-sep">:</i>
-      <div class="maint-box"><b id="mtS">00</b><span>Saat</span></div>
+      <span class="maint-tag"><i class="maint-dot" aria-hidden="true"></i><span>SEDANG DIKEMASKINI</span></span>
+      <p class="maint-txt">Laman web sedang dibaik pulih dan <strong>akan disiapkan dalam masa terdekat</strong>.</p>
     </div>
   </div>
 </div>
