@@ -1690,11 +1690,17 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
 .gal-s>img{position:relative !important;inset:auto !important;width:100% !important;height:100% !important;object-fit:contain !important;transform-origin:center center;transition:transform .12s ease-out;pointer-events:none;will-change:transform}
 .krono-stage{aspect-ratio:16/10 !important;max-height:58dvh;touch-action:pan-y;user-select:none}
 .krono-stage img{transform-origin:center center;transition:transform .12s ease-out;pointer-events:none;will-change:transform}
-.gal-zctrl{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px;flex-wrap:wrap}
-.gal-zbtn{padding:7px 16px;background:var(--blue);color:#fff;border:2px solid var(--yellow);font:700 13px var(--ff-h);letter-spacing:.1em;text-transform:uppercase;
-  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);cursor:pointer;transition:background .2s,color .2s}
-.gal-zbtn:hover{background:var(--yellow);color:var(--ink)}
-.gal-zlvl{font:700 13px var(--ff-h);letter-spacing:.12em;color:var(--blue-dd);min-width:54px;text-align:center}
+.gal-zctrl,.kzoom-ctrl{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+.gal-zbtn,.kzoom-btn{padding:5px 13px;background:var(--ink);color:#fff;border:1.8px solid var(--ink);font:700 13px/1.1 var(--ff-h);letter-spacing:.08em;text-transform:uppercase;
+  clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);cursor:pointer;transition:background .18s,color .18s}
+.kzoom-btn{border-color:var(--yellow)}
+.gal-zbtn:hover,.kzoom-btn:hover{background:var(--yellow);color:var(--ink)}
+.gal-zlvl{font:700 12.5px var(--ff-h);letter-spacing:.1em;color:var(--blue-dd);min-width:46px;text-align:center}
+.kzoom-lvl{font:700 12.5px var(--ff-h);letter-spacing:.1em;color:var(--yellow);min-width:46px;text-align:center}
+.inov-motto{margin:16px auto 0;text-align:center;font:700 clamp(16px,2.1vw,23px)/1.3 var(--ff-h);letter-spacing:.08em;color:var(--ink);
+  display:block;width:max-content;max-width:100%;padding:6px 22px;background:rgba(255,255,255,.85);
+  border-bottom:3.5px solid var(--yellow);border-left:4px solid var(--blue);
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);box-shadow:4px 4px 0 rgba(10,34,96,.14)}
 @media (max-width:600px){
   .gal-view,.krono-stage{aspect-ratio:4/3 !important;max-height:50dvh}
 }
@@ -2004,6 +2010,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
           </div>
         </div>
       </div>
+      <p class="inov-motto">&ldquo;Daripada pelajar, untuk pelajar.&rdquo;</p>
     </div>
   </section>
 
@@ -3404,10 +3411,10 @@ function gallery(imgs, driveUrl, opts){
       ${n>1?`<button class="garr prev" aria-label="Gambar sebelum"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <button class="garr next" aria-label="Gambar seterusnya"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>`:''}</div>
       <div class="gal-zctrl" aria-label="Kawalan zum gambar">
-        <button type="button" class="gal-zbtn" data-z="out" aria-label="Zoom keluar">&minus; Zoom Out</button>
+        <button type="button" class="gal-zbtn" data-z="out" aria-label="Zum keluar">&minus;</button>
         <span class="gal-zlvl">100%</span>
-        <button type="button" class="gal-zbtn" data-z="in" aria-label="Zoom masuk">+ Zoom In</button>
-        <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zoom">Reset</button>
+        <button type="button" class="gal-zbtn" data-z="in" aria-label="Zum masuk">+</button>
+        <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zum">Reset</button>
       </div>${thumbsHtml}`;
 
     const track=$('.gal-track',g),dbox=$('.gal-dots',g),tbox=$('.gal-thumbs',g),v=$('.gal-view',g),zctrl=$('.gal-zctrl',g);
@@ -3555,10 +3562,10 @@ function openKronologiModal(k){
       <div class="krono-yr-badge" id="kronoBadge"></div>
     </div>
     <div class="gal-zctrl" id="kronoZCtrl" aria-label="Kawalan zum gambar">
-      <button type="button" class="gal-zbtn" data-z="out" aria-label="Zoom keluar">&minus; Zoom Out</button>
+      <button type="button" class="gal-zbtn" data-z="out" aria-label="Zum keluar">&minus;</button>
       <span class="gal-zlvl">100%</span>
-      <button type="button" class="gal-zbtn" data-z="in" aria-label="Zoom masuk">+ Zoom In</button>
-      <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zoom">Reset</button>
+      <button type="button" class="gal-zbtn" data-z="in" aria-label="Zum masuk">+</button>
+      <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zum">Reset</button>
     </div>
     <div class="krono-substrip" id="kronoSub"></div>
     ${k.perihal?`<div class="info one" style="margin-top:14px"><div class="row"><p style="font-size:15px;line-height:1.6">${esc(k.perihal)}</p></div></div>`:''}
@@ -4505,10 +4512,10 @@ function openKoleksiZoom(k){
   w.innerHTML=head(k.title)+`<div class="kzoom-body">
     <div class="kzoom-stage" id="kzStage"><img id="kzImg" src="${esc(k.img)}" alt="${esc(k.title)}" decoding="async"></div>
     <div class="kzoom-ctrl">
-      <button type="button" class="kzoom-btn" id="kzOut" aria-label="Zoom keluar">&minus; Zoom Out</button>
+      <button type="button" class="kzoom-btn" id="kzOut" aria-label="Zum keluar">&minus;</button>
       <span class="kzoom-lvl" id="kzLvl">100%</span>
-      <button type="button" class="kzoom-btn" id="kzIn" aria-label="Zoom masuk">+ Zoom In</button>
-      <button type="button" class="kzoom-btn" id="kzReset" aria-label="Set semula zoom">Reset</button>
+      <button type="button" class="kzoom-btn" id="kzIn" aria-label="Zum masuk">+</button>
+      <button type="button" class="kzoom-btn" id="kzReset" aria-label="Set semula zum">Reset</button>
     </div>
   </div>`;
   const st=$('#kzStage',w), im=$('#kzImg',w), lvl=$('#kzLvl',w);
