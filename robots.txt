@@ -1,0 +1,39 @@
+# robots.txt - Platform Digital Rasmi Hadis 40 Imam Nawawi
+# Briged Shabab An-Nawawi | SMKA Al-Irshad, Pulau Pinang
+
+User-agent: *
+Allow: /
+
+# Enjin Carian Utama & Google Images
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Perangkak Carian AI & Chatbot (Google AI, ChatGPT, Perplexity, Claude)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+Sitemap: https://shabab-nawawi-airis-penang.github.io/rasmi_hadis40/sitemap.xml
