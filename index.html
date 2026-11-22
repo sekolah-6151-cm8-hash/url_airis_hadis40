@@ -55,7 +55,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{
-  font-family:var(--ff-b);color:var(--ink);line-height:1.5;overflow-x:hidden;
+  font-family:var(--ff-b);color:var(--ink);line-height:1.5;overflow-x:clip;
   background:var(--sky);
   background-image:repeating-linear-gradient(135deg,rgba(40,119,254,.05) 0 2px,transparent 2px 16px);
 }
@@ -186,7 +186,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
    ========================================================= */
 .band{position:relative;isolation:isolate;margin-top:26px;padding:clamp(54px,7vw,84px) 0 calc(var(--n) + clamp(40px,5vw,64px));text-align:center;color:#fff}
 .band::before,.band::after{content:"";position:absolute;inset:0;z-index:-1;clip-path:polygon(0 clamp(14px,2.4vw,30px),100% 0,100% 100%,0 100%)}
-.band::before{background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 3px,transparent 3px 22px),linear-gradient(105deg,rgba(10,34,96,.84),rgba(19,82,216,.76) 52%,rgba(28,97,232,.78)),url('Count1.jpg') center 42%/cover no-repeat}
+.band::before{background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 3px,transparent 3px 22px),linear-gradient(105deg,rgba(10,34,96,.84),rgba(19,82,216,.76) 52%,rgba(28,97,232,.78)),url('Count1.webp') center 42%/cover no-repeat}
 .band::after{background:repeating-linear-gradient(135deg,rgba(255,255,255,.1) 0 3px,transparent 3px 22px),linear-gradient(100deg,rgba(196,17,39,.88),rgba(255,51,71,.82) 55%,rgba(255,102,119,.82));opacity:0;transition:opacity 1s}
 .band.urgent::after{opacity:1}
 .band-title{font:700 clamp(19px,3.2vw,38px)/1.15 var(--ff-h);text-transform:uppercase;letter-spacing:.03em;max-width:24ch;margin:0 auto 8px;text-shadow:0 2px 12px rgba(7,20,64,.6),3px 3px 0 rgba(10,34,96,.55)}
@@ -1295,7 +1295,7 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .mdl-foot.hidden-foot{display:none}
 
 /* 11) Character Tile Wipe Transition (#wipe) */
-.wp-b{background-image:url('simbol_watak_tile.png'),linear-gradient(125deg,rgba(14,63,166,.92),rgba(40,119,254,.92)) !important;
+.wp-b{background-image:url('simbol_watak_tile.webp'),linear-gradient(125deg,rgba(14,63,166,.92),rgba(40,119,254,.92)) !important;
   background-size:132px auto,100% 100% !important;background-repeat:repeat,no-repeat !important;background-blend-mode:normal !important}
 .wp-b::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(10,34,96,.2),rgba(10,34,96,.52));pointer-events:none}
 .wp-b span{position:relative;z-index:2}
@@ -1459,20 +1459,20 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .btn-tokoh-arr{font:700 28px/1 var(--ff-h);color:var(--yellow);flex:none;transition:transform .24s cubic-bezier(.2,.8,.2,1)}
 .btn-tokoh:hover .btn-tokoh-arr{transform:translateX(5px)}
 
-.mdl.tokoh-mdl{width:min(960px,96vw);height:min(640px,86dvh);max-height:86dvh;overflow:hidden;display:flex;flex-direction:column}
-.tk-wrap{display:grid;grid-template-columns:36% 64%;grid-template-rows:minmax(0,1fr);height:100%;max-height:100%;min-height:0;width:100%;overflow:hidden;background:#fff}
-.tk-left{min-height:0;height:100%;justify-content:center;align-items:center;padding:28px 22px;gap:16px;
+.mdl.tokoh-mdl{width:min(960px,96vw);height:min(640px,86dvh);max-height:86dvh;overflow:hidden !important;display:flex !important;flex-direction:column !important}
+.mdl.tokoh-mdl>.tk-wrap{display:grid;grid-template-columns:36% 64%;grid-template-rows:minmax(0,1fr);height:100%;max-height:100% !important;min-height:0;width:100%;overflow:hidden !important;background:#fff}
+.tk-left{min-height:0;height:100%;display:flex;flex-direction:column;justify-content:safe center;align-items:center;padding:24px 20px;gap:14px;overflow-y:auto;-webkit-overflow-scrolling:touch;
   background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 2px,transparent 2px 16px),linear-gradient(160deg,var(--ink) 0%,var(--blue-dd) 58%,#1348bd 100%);
   border-right:3px solid var(--yellow);text-align:center}
-.tk-plaque{width:100%;max-width:260px;padding:22px 18px;border:2px solid rgba(255,199,32,.6);background:rgba(10,34,96,.42);
+.tk-plaque{width:100%;max-width:260px;padding:18px 16px;border:2px solid rgba(255,199,32,.6);background:rgba(10,34,96,.42);
   clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
-  display:flex;flex-direction:column;align-items:center;gap:14px}
-.tk-khat-main{width:100%;max-width:190px;height:auto;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
-.tk-rehal-mark{width:46px;height:46px;display:grid;place-items:center;color:var(--yellow);border-top:1.5px solid rgba(255,199,32,.4);border-bottom:1.5px solid rgba(255,199,32,.4)}
-.tk-rehal-mark svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  display:flex;flex-direction:column;align-items:center;gap:12px;flex:0 0 auto}
+.tk-khat-main{width:100%;max-width:175px;height:auto;object-fit:contain;display:block;flex:0 0 auto;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+.tk-rehal-mark{width:44px;height:44px;display:grid;place-items:center;color:var(--yellow);border-top:1.5px solid rgba(255,199,32,.4);border-bottom:1.5px solid rgba(255,199,32,.4);flex:0 0 auto}
+.tk-rehal-mark svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .tk-caption{margin:0;padding:7px 14px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);
   font:700 12.5px/1.25 var(--ff-h);letter-spacing:.12em;text-transform:uppercase;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
-.tk-meta-list{width:100%;max-width:260px;display:grid;gap:8px;text-align:left;margin-top:2px}
+.tk-meta-list{width:100%;max-width:260px;display:grid;gap:8px;text-align:left;margin-top:2px;flex:0 0 auto}
 .tk-meta-row{display:flex;justify-content:space-between;gap:10px;padding:6px 10px;background:rgba(255,255,255,.08);border-left:3px solid var(--yellow);font-size:12px;color:#eaf2ff}
 .tk-meta-row b{font:700 11px var(--ff-h);letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);flex:none}
 .tk-right{display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden;background:#fff}
@@ -1488,12 +1488,13 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .tk-entry p,.tk-entry li{font-size:14px;line-height:1.68;color:#172a57}
 .tk-entry ul{padding-left:18px;display:grid;gap:6px}
 @media (max-width:760px){
-  .mdl.tokoh-mdl{height:auto;max-height:88dvh;overflow-y:auto !important;display:block}
-  .tk-wrap{display:flex;flex-direction:column;height:auto;max-height:none;overflow:visible}
-  .tk-left{min-height:auto;height:auto;padding:22px 16px 18px;border-right:0;border-bottom:3px solid var(--yellow)}
-  .tk-right{height:auto;overflow:visible}
-  .tk-head{padding:14px 54px 12px 16px}
-  .tk-scroll{overflow:visible !important;height:auto;max-height:none;padding:16px 18px 22px}
+  .mdl.tokoh-mdl{height:auto !important;max-height:88dvh !important;overflow:hidden !important;display:flex !important;flex-direction:column !important}
+  .mdl.tokoh-mdl>.tk-wrap{display:flex !important;flex-direction:column !important;height:auto !important;max-height:calc(88dvh - 8px) !important;overflow-y:auto !important;overflow-x:hidden !important;-webkit-overflow-scrolling:touch}
+  .mdl.tokoh-mdl .tk-left{flex:0 0 auto !important;min-height:auto !important;height:auto !important;overflow:visible !important;justify-content:flex-start !important;padding:22px 16px 18px !important;border-right:0;border-bottom:3px solid var(--yellow)}
+  .mdl.tokoh-mdl .tk-khat-main{max-width:160px}
+  .mdl.tokoh-mdl .tk-right{flex:0 0 auto !important;height:auto !important;overflow:visible !important}
+  .mdl.tokoh-mdl .tk-head{padding:14px 54px 12px 16px}
+  .mdl.tokoh-mdl .tk-scroll{overflow:visible !important;height:auto !important;max-height:none !important;padding:16px 18px 22px}
 }
 
 /* 2b) Countdown 28 Nov 2026 (Normal, 24 Jam Terakhir Berkelip Merah, Sedang Berlangsung ikut Gambar 2, Tamat) */
@@ -1591,43 +1592,37 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .maint-box b{font:700 19px/1 var(--ff-h);font-variant-numeric:tabular-nums;color:var(--blue-dd)}
 .maint-box span{font:600 11px/1 var(--ff-h);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 .maint-sep{font:700 18px/1 var(--ff-h);font-style:normal;color:var(--blue-d)}
-#hdr{top:calc(var(--maint,64px) + 8px) !important}
-#hdr.hide{transform:translateY(calc(-100% - var(--maint,64px) - 24px)) !important}
-.hero-zone{padding-top:calc(var(--hdr) + var(--maint,64px) + 24px) !important}
-.inov-hero-zone{padding-top:calc(var(--hdr) + var(--maint,64px) + 28px) !important}
-.watak-top{padding-top:calc(var(--hdr) + var(--maint,64px) + clamp(14px,2.2vw,24px)) !important}
-.kader-page-wrap{padding-top:calc(var(--hdr) + var(--maint,64px) + clamp(14px,2vw,24px)) !important}
-.kader-float-bar{top:calc(var(--hdr) + var(--maint,64px) + 10px) !important}
-body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !important}
+#hdr{top:6px !important}
+#hdr.hide{transform:translateY(calc(-100% - 20px)) !important}
+.hero-zone{padding-top:calc(var(--hdr) + 18px) !important}
+.inov-hero-zone{padding-top:calc(var(--hdr) + 20px) !important}
+.watak-top{padding-top:calc(var(--hdr) + clamp(14px,2vw,22px)) !important}
+.kader-page-wrap{padding-top:calc(var(--hdr) + 12px) !important}
+.kader-float-bar{top:calc(var(--hdr) + 12px) !important}
+body.hdr-hidden .kader-float-bar,
+body:has(#hdr.hide) .kader-float-bar{top:8px !important}
 .upcoming-badge{display:inline-block;margin:0 auto 14px;padding:6px 22px;background:var(--yellow);color:var(--ink);border:2.5px solid var(--ink);
   font:700 clamp(12px,1.5vw,15px) var(--ff-h);letter-spacing:.18em;text-transform:uppercase;
   clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:4px 4px 0 rgba(10,34,96,.28)}
 #countdown .band-title{max-width:30ch}
 .band-sub.band-sub-mb0{margin-bottom:0}
 @media (max-width:720px){
-  :root{--maint:88px}
-  .maint-bar{width:calc(100% - 20px);padding:9px 0;gap:8px}
-  .maint-info{gap:8px;flex-basis:100%}
-  .maint-ico{width:30px;height:30px}
-  .maint-ico svg{width:16px;height:16px}
-  .maint-tag{padding:4px 10px;font-size:11px;gap:5px}
-  .maint-dot{width:8px;height:8px}
-  .maint-txt{font-size:13px;line-height:1.35}
-  .maint-cd{width:100%;justify-content:center;gap:5px}
-  .maint-box{flex:1;justify-content:center;min-width:0;padding:5px 6px;gap:4px}
-  .maint-box b{font-size:16px}
-  .maint-box span{font-size:10px}
-  .maint-sep{font-size:15px}
+  :root{--maint:0px}
 }
 
 /* 5) Kemas kini v2.0: Tag Label Kad, Riben Status Senget Biru, Nota Reruai, Testimoni Seret, KPM, Kronologi, Muzik & Pembaca Buku */
 .icard{overflow:hidden}
-.ic-label{position:absolute;left:68px;top:17px;z-index:3;pointer-events:none;
-  padding:4px 10px;background:rgba(10,34,96,.84);color:#fff;border:1.5px solid rgba(255,255,255,.75);
-  font:700 10px/1.1 var(--ff-h);letter-spacing:.1em;text-transform:uppercase;
+.ic-label{position:absolute;left:64px;top:17px;z-index:3;pointer-events:none;
+  padding:4px 10px;background:rgba(10,34,96,.88);color:#fff;border:1.5px solid rgba(255,255,255,.8);
+  font:700 9.5px/1.15 var(--ff-h);letter-spacing:.07em;text-transform:uppercase;
   clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);
-  max-width:calc(100% - 140px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.icard.no-logo .ic-label{left:12px;top:14px;max-width:calc(100% - 110px)}
+  max-width:calc(100% - 116px);white-space:nowrap;overflow:visible;text-overflow:clip}
+.icard.no-logo .ic-label{left:10px;top:12px;max-width:calc(100% - 86px)}
+@media (max-width:960px){
+  .ic-logo{width:40px;height:40px;left:10px;top:10px;border-width:2.5px}
+  .ic-label{left:10px;top:56px;max-width:calc(100% - 20px);width:max-content;white-space:normal;overflow:visible;text-overflow:clip;font-size:9px;padding:3.5px 9px;letter-spacing:.06em}
+  .icard.no-logo .ic-label{left:10px;top:12px;max-width:calc(100% - 78px)}
+}
 .ic-status{display:block !important;position:absolute;top:18px;right:-36px;z-index:4;width:144px;text-align:center;
   padding:5px 0;background:linear-gradient(135deg,var(--blue-dd),var(--blue));color:#fff;
   border-top:2px solid var(--yellow);border-bottom:2px solid var(--yellow);
@@ -1707,10 +1702,12 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
 .gal-zbtn:hover,.kzoom-btn:hover{background:var(--yellow);color:var(--ink)}
 .gal-zlvl{font:700 12.5px var(--ff-h);letter-spacing:.1em;color:var(--blue-dd);min-width:46px;text-align:center}
 .kzoom-lvl{font:700 12.5px var(--ff-h);letter-spacing:.1em;color:var(--yellow);min-width:46px;text-align:center}
-.inov-motto{margin:16px auto 0;text-align:center;font:700 clamp(16px,2.1vw,23px)/1.3 var(--ff-h);letter-spacing:.08em;color:var(--ink);
-  display:block;width:max-content;max-width:100%;padding:6px 22px;background:rgba(255,255,255,.85);
-  border-bottom:3.5px solid var(--yellow);border-left:4px solid var(--blue);
-  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);box-shadow:4px 4px 0 rgba(10,34,96,.14)}
+.inov-motto{position:relative;margin:18px auto 4px;padding:0 12px 12px;text-align:center;
+  display:block;width:auto;max-width:min(700px,94%);
+  font:700 clamp(17px,2.3vw,26px)/1.3 var(--ff-h);letter-spacing:.07em;color:var(--ink);
+  text-shadow:0 2px 0 rgba(255,255,255,.85);background:none;border:0;clip-path:none;box-shadow:none}
+.inov-motto::after{content:"";display:block;width:72px;height:4px;margin:8px auto 0;
+  background:linear-gradient(90deg,var(--blue),var(--yellow));border-radius:99px}
 .mdl-foot.bts-foot{flex-direction:column;align-items:center;gap:8px;padding-top:12px;border-top:2px dashed var(--sky2);margin-top:4px}
 .bts-head{text-align:center;line-height:1.25}
 .bts-head strong{display:block;font:700 13.5px var(--ff-h);letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dd)}
@@ -1820,6 +1817,99 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   .k25-group.khas .k25-cards .kcard{width:calc(33.33% - 6px);min-width:74px;max-width:104px}
   .k24-name{flex:0 1 calc(33.33% - 6px) !important;padding:7px 6px !important;font-size:11px !important}
 }
+
+/* 8) Sistem Carta Organisasi Rasmi (Garisan 100% tepat di tengah setiap kad untuk 2024, 2025, 2026 & 2027) */
+.org-v{width:3px;height:clamp(18px,2.4vw,28px);background:var(--ink);margin:0 auto;flex-shrink:0}
+.org-dash-wrap{position:relative;width:100%;height:40px;display:flex;align-items:center;justify-content:center;margin:0}
+.org-dash-line{width:100%;border-top:3px dashed rgba(10,34,96,.68)}
+.org-dash-drops{position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);background:var(--ink);pointer-events:none}
+.org-dash-drops::before,.org-dash-drops::after{display:none !important}
+.org-dash-pill{position:relative;z-index:2;padding:3px 14px;background:var(--sky);border:2px solid var(--ink);
+  font:700 10.5px/1.1 var(--ff-h);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+
+.org-tree{display:grid;gap:0 !important;width:100%;margin:0 auto;align-items:stretch}
+.org-tree.cols-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:540px}
+.org-tree.cols-2.wide{max-width:940px}
+.org-tree.cols-3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1040px}
+.org-tree.cols-3.guru-3{max-width:780px}
+.org-tree.cols-1{grid-template-columns:minmax(0,340px);justify-content:center;max-width:1040px}
+
+.org-node{position:relative;display:flex;flex-direction:column;align-items:center;padding:0 clamp(5px,1.2vw,14px);min-width:0}
+.org-tree.has-top>.org-node{padding-top:22px}
+.org-tree.has-top>.org-node::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--ink)}
+.org-tree.has-top>.org-node:first-child::before{left:calc(50% - 1.5px);right:0}
+.org-tree.has-top>.org-node:last-child::before{left:0;right:calc(50% - 1.5px)}
+.org-tree.has-top>.org-node:only-child::before{display:none}
+.org-tree.has-top>.org-node::after{content:"";position:absolute;top:0;left:50%;width:3px;height:22px;transform:translateX(-50%);background:var(--ink)}
+
+.org-tail{display:none;width:3px;min-height:20px;flex:1 0 20px;background:var(--ink);margin:0 auto}
+.org-brail{display:none;position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--ink);pointer-events:none}
+.org-tree.has-bot>.org-node>.org-tail{display:block}
+.org-tree.has-bot>.org-node>.org-brail{display:block}
+.org-tree.has-bot>.org-node:first-child>.org-brail{left:calc(50% - 1.5px);right:0}
+.org-tree.has-bot>.org-node:last-child>.org-brail{left:0;right:calc(50% - 1.5px)}
+.org-tree.has-bot>.org-node:only-child>.org-brail{display:none}
+
+/* Kotak Kad Jabatan Kader (jelas, kemas & tersusun seperti carta organisasi rasmi) */
+.kunit,.k25-box,.k24-box{
+  position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;
+  background:rgba(255,255,255,.92);border:2.5px solid var(--ink);
+  box-shadow:5px 5px 0 rgba(26,94,224,.22);
+  padding:clamp(10px,1.5vw,16px) clamp(8px,1.2vw,14px) clamp(12px,1.6vw,18px);
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+}
+.kunit.kunit-hero{width:min(760px,100%);margin:0 auto;height:auto}
+.k25-box.khas{width:min(580px,100%);margin:0 auto;height:auto}
+.k24-box{width:min(940px,100%);margin:0 auto;height:auto;padding:clamp(16px,2.4vw,26px)}
+.kunit-title{width:100%;max-width:100%;min-height:40px;margin-bottom:0 !important;padding:5px 10px;
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.kunit-line{display:block;width:3px;height:14px;background:var(--ink);margin:0 auto;flex:0 0 14px}
+.kunit-line.grow{flex:1 0 14px;min-height:14px;height:auto}
+.kunit-dirs{margin-bottom:0 !important;width:100%;display:flex;justify-content:center;align-items:flex-start;gap:clamp(6px,1vw,12px)}
+.kunit .kfolder-plate{margin-top:0 !important;width:min(220px,100%) !important}
+.kunit.kunit-hero .kunit-dirs{display:grid !important;grid-template-columns:repeat(4,minmax(0,140px));justify-content:center;gap:clamp(8px,1.4vw,18px);max-width:640px;margin-bottom:0 !important}
+.kunit.kunit-hero .kfolder-plate{width:min(240px,100%) !important}
+.k25-box .k25-cards{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(8px,1.4vw,18px);width:100%}
+.k25-box .k25-cards .kcard{width:clamp(100px,12vw,146px)}
+.k24-box .k24-head{margin-bottom:0 !important}
+.k24-box .k24-grid{margin-top:4px;width:100%}
+
+@media (max-width:720px){
+  .org-node{padding:0 5px}
+  .org-tree.cols-3.guru-3 .kcard{width:100%;max-width:104px}
+  .org-tree.cols-3.guru-3 .kcard-role{font-size:8px;padding:2px 4px;letter-spacing:.03em}
+  .org-tree.cols-3.guru-3 .kcard-name{font-size:9px;padding:2px 4px}
+  .org-tree.cols-2 .kcard{width:100%;max-width:136px}
+  .org-tree.cols-2 .kcard-role{font-size:9px;padding:2px 6px}
+  .org-tree.cols-2 .kcard-name{font-size:10.5px;padding:2px 7px}
+
+  /* Di phone: 3 kader menjadi 2 sebaris (cabang atas & gabung bawah tepat) + kader ke-3 di tengah tersambung penuh */
+  .org-tree.cols-3.kader-3{grid-template-columns:repeat(2,minmax(0,1fr)) !important;max-width:100% !important}
+  .org-tree.cols-3.kader-3>.org-node:nth-child(1)::before{left:calc(50% - 1.5px) !important;right:0 !important}
+  .org-tree.cols-3.kader-3>.org-node:nth-child(2)::before{left:0 !important;right:calc(50% - 1.5px) !important}
+  .org-tree.cols-3.kader-3>.org-node:nth-child(1)>.org-tail,
+  .org-tree.cols-3.kader-3>.org-node:nth-child(2)>.org-tail{display:block !important}
+  .org-tree.cols-3.kader-3>.org-node:nth-child(1)>.org-brail{display:block !important;left:calc(50% - 1.5px) !important;right:0 !important}
+  .org-tree.cols-3.kader-3>.org-node:nth-child(2)>.org-brail{display:block !important;left:0 !important;right:calc(50% - 1.5px) !important}
+  .org-tree.cols-3.kader-3>.org-node:nth-child(3){grid-column:1 / -1 !important;width:min(270px,78%) !important;justify-self:center !important;padding-top:22px !important}
+  .org-tree.cols-3.kader-3>.org-node:nth-child(3)::before{display:none !important}
+  .org-tree.cols-3.kader-3>.org-node:nth-child(3)::after{display:block !important}
+  .org-tree.cols-3.kader-3>.org-node:nth-child(3)>.org-brail{display:none !important}
+  .org-tree.cols-3.kader-3.has-bot>.org-node:nth-child(3)>.org-tail{display:block !important;flex:0 0 20px !important}
+  .org-tree.cols-3.kader-3:not(.has-bot)>.org-node:nth-child(3)>.org-tail{display:none !important}
+
+  .kunit,.k25-box{padding:8px 6px 10px}
+  .kunit-title{min-height:36px;font-size:10px;padding:4px 6px;letter-spacing:.04em}
+  .kunit-dirs .kcard{width:100%;max-width:110px}
+  .kunit.kunit-hero .kunit-dirs{grid-template-columns:repeat(2,minmax(0,132px)) !important;gap:8px 10px}
+  .kunit.kunit-hero .kfolder-plate{width:min(200px,68%) !important}
+  .k25-box .k25-cards{gap:6px}
+  .k25-box .k25-cards .kcard{width:calc(50% - 4px);max-width:96px}
+  .k25-box .k25-cards .kcard-role{font-size:7.8px;padding:2px 4px;letter-spacing:.03em}
+  .k25-box .k25-cards .kcard-name{font-size:9px;padding:2px 4px}
+  .k25-box.khas .k25-cards .kcard{width:calc(33.33% - 6px);max-width:104px}
+}
 </style>
 </head>
 <body>
@@ -1853,9 +1943,9 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
     <span class="slash l" aria-hidden="true"><i></i><i></i></span>
 
     <div class="hdr-logos">
-      <a class="logo slot" href="#" data-page="utama" aria-label="Kementerian Pendidikan Malaysia"><img src="logo_kpm_zoom.png" alt="Logo KPM" decoding="async" onerror="this.remove()"></a>
-      <a class="logo slot" href="#" data-page="utama" aria-label="SMKA Al-Irshad"><img src="logo_irshad.png" alt="Logo SMKA Al-Irshad" decoding="async" onerror="this.remove()"></a>
-      <a class="logo slot" href="#" data-page="utama" aria-label="Briged Shabab An-Nawawi"><img src="logo_briged_shabab_an-nawawi.png" alt="Logo Briged Shabab An-Nawawi" decoding="async" onerror="this.remove()"></a>
+      <a class="logo slot" href="#" data-page="utama" aria-label="Kementerian Pendidikan Malaysia"><img src="logo_kpm_zoom.webp" alt="Logo KPM" decoding="async" onerror="this.remove()"></a>
+      <a class="logo slot" href="#" data-page="utama" aria-label="SMKA Al-Irshad"><img src="logo_irshad.webp" alt="Logo SMKA Al-Irshad" decoding="async" onerror="this.remove()"></a>
+      <a class="logo slot" href="#" data-page="utama" aria-label="Briged Shabab An-Nawawi"><img src="logo_briged_shabab_an-nawawi.webp" alt="Logo Briged Shabab An-Nawawi" decoding="async" onerror="this.remove()"></a>
     </div>
 
     <div class="hdr-mid">
@@ -1885,7 +1975,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
       <div class="hero" id="hero">
 
         <article class="slide on" style="--c1:#0e3fa6;--c2:#2877fe">
-          <div class="slide-bg"><img src="5hero.jpg" alt="Revolusi Dakwah Gen Alpha" decoding="async" fetchpriority="high" onerror="this.remove()"></div>
+          <div class="slide-bg"><img src="5hero.webp" alt="Revolusi Dakwah Gen Alpha" decoding="async" fetchpriority="high" onerror="this.remove()"></div>
           <div class="slide-shade"></div>
           <div class="slide-copy">
             <h2>Revolusi Dakwah Gen Alpha</h2>
@@ -1894,7 +1984,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
         </article>
 
         <article class="slide" style="--c1:#1a5ee0;--c2:#0a2260">
-          <div class="slide-bg"><img src="4hero.jpg" alt="Melangkah ke Pentas Kebangsaan!" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="slide-bg"><img src="4hero.webp" alt="Melangkah ke Pentas Kebangsaan!" loading="lazy" decoding="async" onerror="this.remove()"></div>
           <div class="slide-shade"></div>
           <div class="slide-copy">
             <h2>Melangkah ke Pentas Kebangsaan!</h2>
@@ -1903,7 +1993,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
         </article>
 
         <article class="slide" style="--c1:#0e3fa6;--c2:#2877fe">
-          <div class="slide-bg"><img src="1hero.jpg" alt="Inovasi Cita Rasa Gen Alpha" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="slide-bg"><img src="1hero.webp" alt="Inovasi Cita Rasa Gen Alpha" loading="lazy" decoding="async" onerror="this.remove()"></div>
           <div class="slide-shade"></div>
           <div class="slide-copy">
             <h2>Inovasi Cita Rasa Gen Alpha</h2>
@@ -1912,7 +2002,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
         </article>
 
         <article class="slide" style="--c1:#1a5ee0;--c2:#0a2260">
-          <div class="slide-bg"><img src="2hero.png" alt="Kami Terus Berjuang!" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="slide-bg"><img src="2hero.webp" alt="Kami Terus Berjuang!" loading="lazy" decoding="async" onerror="this.remove()"></div>
           <div class="slide-shade"></div>
           <div class="slide-copy">
             <h2>Kami Terus Berjuang!</h2>
@@ -1921,7 +2011,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
         </article>
 
         <article class="slide" style="--c1:#2877fe;--c2:#0e3fa6">
-          <div class="slide-bg"><img src="3hero.jpeg" alt="Terokai RoPix Universe!" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="slide-bg"><img src="3hero.webp" alt="Terokai RoPix Universe!" loading="lazy" decoding="async" onerror="this.remove()"></div>
           <div class="slide-shade"></div>
           <div class="slide-copy">
             <h2>Terokai RoPix Universe!</h2>
@@ -2108,7 +2198,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
       <div class="inov-banner-plate">
         <div class="inov-banner">
           <div class="inov-banner-in slot">
-            <img src="shabab_an-nawawi_brigade_banner.jpg" alt="Briged Shabab An-Nawawi Banner" style="width:100%;height:100%;object-fit:cover;display:block" decoding="async">
+            <img src="shabab_an-nawawi_brigade_banner.webp" alt="Briged Shabab An-Nawawi Banner" style="width:100%;height:100%;object-fit:cover;display:block" decoding="async">
           </div>
         </div>
       </div>
@@ -2121,7 +2211,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
     <div class="sec-bg"></div>
     <div class="wrap rv">
       <div class="sec-ropix-head">
-        <img class="sec-ropix-logo" src="Universe_ropix_logo.PNG" alt="RoPix Universe Logo" loading="lazy" decoding="async">
+        <img class="sec-ropix-logo" src="Universe_ropix_logo.webp" alt="RoPix Universe Logo" loading="lazy" decoding="async">
         <div class="sec-ropix-title-wrap">
           <h2 class="sec-title">RoPix Universe</h2>
           <span class="sec-ropix-sub">Modul Gamifikasi &amp; Ekosistem Utama</span>
@@ -2145,7 +2235,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
     <div class="sec-bg"></div>
     <div class="wrap rv">
       <div class="sec-ropix-head">
-        <img class="sec-ropix-logo" src="logo_kpm_zoom.png" alt="Logo KPM" loading="lazy" decoding="async">
+        <img class="sec-ropix-logo" src="logo_kpm_zoom.webp" alt="Logo KPM" loading="lazy" decoding="async">
         <div class="sec-ropix-title-wrap">
           <h2 class="sec-title">Bahan Rasmi KPM</h2>
         </div>
@@ -2183,7 +2273,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
         <div class="watak-bar-plate">
           <div class="watak-bar" role="tablist" aria-label="Sub-page Watak">
             <button class="wtab wtab-full locked" id="wTabKiri" type="button" data-sub="kiri" aria-label="Sub-page Kod 40 (Terkunci - Akan Datang 2027)">
-              <img class="wtab-full-img" id="wLogoKiri" src="kod40_logo.png" alt="Logo Kod 40" loading="lazy" decoding="async" onerror="this.remove()">
+              <img class="wtab-full-img" id="wLogoKiri" src="kod40_logo.webp" alt="Logo Kod 40" loading="lazy" decoding="async" onerror="this.remove()">
               <span class="wtab-lock" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path class="lock-shackle" d="M10 14V10a6 6 0 0 1 12 0v4"/><rect x="6" y="14" width="20" height="15" rx="2" fill="rgba(255,199,32,.18)"/><circle cx="16" cy="20.5" r="1.8" fill="currentColor" stroke="none"/><path d="M16 22v3"/></svg>
               </span>
@@ -2191,13 +2281,13 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
 
             <button class="wtab wtab-full on" id="wTabTengah" type="button" role="tab" aria-selected="true" data-sub="tengah" aria-label="Watak RoPix Roblox">
               <span class="wtab-cycle" id="wCycleTengah">
-                <img class="wtab-full-img show" src="roblox_adventure_logo.png" alt="Logo Roblox Adventure" loading="lazy" decoding="async" onerror="this.remove()">
-                <img class="wtab-full-img" src="roblox_hangout_logo2.png" alt="Logo Roblox Hangout" loading="lazy" decoding="async" onerror="this.remove()">
+                <img class="wtab-full-img show" src="roblox_adventure_logo.webp" alt="Logo Roblox Adventure" loading="lazy" decoding="async" onerror="this.remove()">
+                <img class="wtab-full-img" src="roblox_hangout_logo2.webp" alt="Logo Roblox Hangout" loading="lazy" decoding="async" onerror="this.remove()">
               </span>
             </button>
 
             <button class="wtab wtab-full" id="wTabKanan" type="button" role="tab" aria-selected="false" data-sub="kanan" aria-label="Watak The Trial Of Hadith 40">
-              <img class="wtab-full-img" id="wLogoKanan" src="pixel_logo.png" alt="Logo The Trial Of Hadith 40" loading="lazy" decoding="async" onerror="this.remove()">
+              <img class="wtab-full-img" id="wLogoKanan" src="pixel_logo.webp" alt="Logo The Trial Of Hadith 40" loading="lazy" decoding="async" onerror="this.remove()">
             </button>
           </div>
         </div>
@@ -2210,7 +2300,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
       </div>
 
       <div class="watak-brand-head">
-        <img class="watak-brand-logo" src="Universe_ropix_logo.PNG" alt="Logo RoPix Universe" decoding="async">
+        <img class="watak-brand-logo" src="Universe_ropix_logo.webp" alt="Logo RoPix Universe" decoding="async">
         <h2 class="watak-brand-title">ROPIX UNIVERSE</h2>
       </div>
 
@@ -2218,7 +2308,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
         <div class="watak-stage-plate">
           <div class="watak-stage">
             <div class="watak-stage-in slot" id="watakStageBox">
-              <img id="watakStageImg" src="roblox_L&P.jpeg" alt="Gambar Watak Utama" loading="lazy" decoding="async">
+              <img id="watakStageImg" src="roblox_L&P.webp" alt="Gambar Watak Utama" loading="lazy" decoding="async">
               <div class="watak-hotspots" id="watakHotspots"></div>
               <div class="watak-soon-toast" id="watakSoonToast" role="status" aria-live="polite">AKAN DATANG</div>
             </div>
@@ -2263,7 +2353,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
       <div class="kader-banner-plate">
         <div class="kader-banner">
           <div class="kader-banner-in slot" id="kaderBannerBox">
-            <img id="kaderBannerImg" src="2g2026.jpg" alt="Carta Organisasi 2026" loading="lazy" decoding="async" onerror="this.remove()">
+            <img id="kaderBannerImg" src="2g2026.webp" alt="Carta Organisasi 2026" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="kader-banner-overlay">
               <div class="kader-banner-title">CARTA ORGANISASI</div>
               <div class="kader-banner-yr" id="kaderBannerYr">2026</div>
@@ -2277,6 +2367,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
         <div class="org-dash-wrap" aria-hidden="true">
           <div class="org-dash-line"></div>
           <div class="org-dash-drops"></div>
+          <span class="org-dash-pill">Barisan Pelajar</span>
         </div>
         <div class="org-subview" id="kaderPelajarRoot"></div>
       </div>
@@ -2431,7 +2522,7 @@ const localP = (folder, count, fallbacks) => {
   for(let i=1;i<=count;i++) out.push({ local:'img/'+folder+'/P'+i+'.jpg', localPng:'img/'+folder+'/P'+i+'.png', fallback:(fallbacks[(i-1)%fallbacks.length]) });
   return out;
 };
-const FALLBACK_GALLERY = ['1hero.jpg','2hero.png','3hero.jpeg','herob_2(1).jpeg','herob_2(2).jpeg'];
+const FALLBACK_GALLERY = ['1hero.webp','2hero.webp','3hero.webp','herob_2(1).jpeg','herob_2(2).jpeg'];
 const HANGOUT_GALLERY = [
   'WhatsApp Image 2026-11-13 at 9.18.25 PM.jpeg',
   'WhatsApp Image 2026-11-13 at 9.18.58 PM.jpeg',
@@ -2460,7 +2551,7 @@ const CFG = {
   videos: [
     { type:'yt', id:'Z3ROGujJYXg', url:'https://youtu.be/Z3ROGujJYXg?si=z60qZ6oXiKlX-XsU', title:'Video Rasmi 1: Briged Shabab An-Nawawi' },
     { type:'yt', id:'SuPJnfpD-6I', url:'https://youtu.be/SuPJnfpD-6I?si=x0EJiKqTHqPxbH3u', title:'Video Rasmi 2: Hadis 40 Imam Nawawi AIRIS' },
-    { type:'tiktok', id:'', url:'https://vt.tiktok.com/ZSpxRU3vY/', bg:'2hero.png', title:'Perkongsian di TikTok' },
+    { type:'tiktok', id:'', url:'https://vt.tiktok.com/ZSpxRU3vY/', bg:'2hero.webp', title:'Perkongsian di TikTok' },
     { type:'yt', id:'Lkyvbrv-plE', url:'https://youtu.be/Lkyvbrv-plE?si=xtGVdZyZx9_x00p4', title:'Video Rasmi 4: Sorotan Inovasi RoPix' }
   ],
 
@@ -2474,7 +2565,7 @@ const CFG = {
       perihal:'Penampilan sulung yang mencetuskan fenomena. Terus tular dan mencuri tumpuan warga maya sejak hari pertama pameran dibuka.',
       drive:'https://drive.google.com/drive/folders/1BC54YqQIFHzH4gtNVaa4ZOegAs9pysFm?usp=sharing',
       useLocalOnly: true,
-      imgs: ['taqwa1.jpg','taqwa2.jpg','taqwa3.jpg','taqwa4.jpg','taqwa5.JPG','taqwa6.JPG','taqwa7.JPG']
+      imgs: ['taqwa1.webp','taqwa2.webp','taqwa3.webp','taqwa4.webp','taqwa5.webp','taqwa6.webp','taqwa7.webp']
     },
     {
       key:'ipg', lokasi:'IPG Tuanku Bainon, Bukit Mertajam, Pulau Pinang', short:'IPG Tuanku Bainon',
@@ -2484,7 +2575,7 @@ const CFG = {
       perihal:'Pengiktirafan berterusan, pasukan kami menerima jemputan rasmi untuk mengadakan pameran khas bagi mempamerkan keunikan inovasi ini.',
       drive:'https://drive.google.com/drive/folders/1BaKi3c6VcKainxpJWdWt7w8ogioLWFWr?usp=sharing',
       useLocalOnly: true,
-      imgs: ['ipg1.jpg','ipg3.jpg','ipg4.jpg','ipg5.png','ipg6.jpg']
+      imgs: ['ipg1.webp','ipg3.webp','ipg4.webp','ipg5.webp','ipg6.webp']
     },
     {
       key:'adtec', lokasi:'ADTEC JTM Kampus, Kepala Batas, Pulau Pinang', short:'ADTEC Kepala Batas',
@@ -2494,7 +2585,7 @@ const CFG = {
       perihal:'Sambutan luar jangka. Dibanjiri maklum balas positif daripada pelajar dan guru-guru sepanjang sesi pameran berlangsung.',
       drive:'https://drive.google.com/drive/folders/1Osr9WNDGHwWF0Zf3QrUvA6w7uKC1c_h9?usp=sharing',
       useLocalOnly: true,
-      imgs: ['sukses1.jpg','sukses2.JPG','sukses3.JPG','sukses4.png','sukses5.JPG']
+      imgs: ['sukses1.webp','sukses2.webp','sukses3.webp','sukses4.webp','sukses5.webp']
     },
     {
       key:'smka', lokasi:'SMKA Sheikh Tahir Jalaluddin, Bukit Mertajam, Pulau Pinang', short:'SMKA Sheikh Tahir',
@@ -2508,7 +2599,7 @@ const CFG = {
       perihal:'Detik bersejarah buat pasukan kami apabila inovasi ini mendapat pengiktirafan dan ditawarkan secara rasmi untuk mewakili negeri ke pentas peringkat kebangsaan.',
       drive:'https://drive.google.com/drive/folders/1-zm-oNcX1Ary-LyD5a3zP-KvKwexpjdA?usp=sharing',
       useLocalOnly: true,
-      imgs: ['stj1.png','stj2.jpg','stj3.jpg','stj4.jpg','stj5.jpg','stj6.jpg']
+      imgs: ['stj1.webp','stj2.webp','stj3.webp','stj4.webp','stj5.webp','stj6.webp']
     },
     {
       key:'mufti', lokasi:'Kediaman Mufti Perlis, Perlis', short:'Kediaman Mufti Perlis',
@@ -2518,7 +2609,7 @@ const CFG = {
       perihal:"Berpeluang membentangkan dan memperkenalkan sendiri inovasi Hadis 40 Imam Nawawi secara eksklusif kepada Sahibus Samahah Dato' Arif Perkasa Dr. Mohd Asri bin Zainul Abidin (Dr. MAZA), Mufti Negeri Perlis.",
       drive:'https://drive.google.com/drive/folders/1n0o8gsekc6WzKF5Gc0v4H1B3FgFwaBqI?usp=sharing',
       useLocalOnly: true,
-      imgs: ['mufti1.jpg','mufti2.JPG','mufti3.JPG','mufti4.jpg','mufti5.JPG']
+      imgs: ['mufti1.webp','mufti2.webp','mufti3.webp','mufti4.webp','mufti5.webp']
     },
     {
       key:'pis', lokasi:'Politeknik Ibrahim Sultan, Pasir Gudang, Johor', short:'Politeknik Ibrahim Sultan',
@@ -2528,7 +2619,7 @@ const CFG = {
       perihal:'Penampilan sulung yang membanggakan di pentas kebangsaan. Mencuri tumpuan ramai termasuk kontinjen dari negeri-negeri lain, sehingga mendapat pengiktirafan dan sebutan khas daripada Pengarah BPI.',
       drive:'https://drive.google.com/drive/folders/1NoK_CXISbi8E9xifJzF2bNE4RXtraTHj?usp=sharing',
       useLocalOnly: true,
-      imgs: ['johor1.jpeg','johor2.jpeg','johor3.jpeg','johor4.jpeg','johor5.jpeg','johor6.jpg','johor7.jpeg']
+      imgs: ['johor1.webp','johor2.webp','johor3.webp','johor4.webp','johor5.webp','johor6.webp','johor7.webp']
     },
     {
       key:'fahim', lokasi:'Masjid Abdullah Fahim, Kepala Batas, Pulau Pinang', short:'Masjid Abdullah Fahim',
@@ -2547,9 +2638,9 @@ const CFG = {
   // 1) ROPIX UNIVERSE (6 KAD - 3 TERATAS SAMA DI UTAMA)
   inovasi: [
     {
-      logo:'roblox_adventure_logo.png', label:'Permainan Video', status:'BAHARU',
+      logo:'roblox_adventure_logo.webp', label:'Permainan Video', status:'BAHARU',
       title:'Hadis 40 Imam Nawawi Adventure',
-      img:'cover_advanture.jpeg', btn:'MAIN',
+      img:'cover_advanture.webp', btn:'MAIN',
       link:'https://www.roblox.com/games/109343572682634/Hadis-40-Imam-Nawawi-Adventure',
       info:{
         nama:'Hadis 40 Imam Nawawi Adventure',
@@ -2560,27 +2651,27 @@ const CFG = {
       }
     },
     {
-      logo:'roblox_hangout_logo2.png', label:'Permainan Video', status:'POPULAR',
+      logo:'roblox_hangout_logo2.webp', label:'Permainan Video', status:'POPULAR',
       title:'Hadis 40 Imam Nawawi Hangout',
-      img:'hangout_frame.png', btn:'MAIN',
+      img:'hangout_frame.webp', btn:'MAIN',
       link:'https://www.roblox.com/share?code=17d256245b361c498342f08044678b3a&type=ExperienceDetails&stamp=1794608159497',
       info:{
         nama:'Hadis 40 Imam Nawawi Hangout',
         useLocalOnly:true,
-        imgs: ['hangout1.webp','hangout2.webp','hangout3.webp','hangout4.webp','hangout5.jpg'],
+        imgs: ['hangout1.webp','hangout2.webp','hangout3.webp','hangout4.webp','hangout5.webp'],
         perihal:'Tenangkan fikiran dan segarkan jiwa anda dengan Hadis 40 Imam Nawawi! Hadis 40 Imam Nawawi Hangout ialah permainan santai dan pendidikan. Jawab kuiz dan berinteraksi dengan pemain lain!',
         drive:'https://drive.google.com/drive/folders/1VVS5iuPW6MBAX6JmLY2nSWfB9N3tAklb?usp=sharing'
       }
     },
     {
-      logo:'pixel_logo.png', label:'Permainan Video', status:'UNDERRATED',
+      logo:'pixel_logo.webp', label:'Permainan Video', status:'UNDERRATED',
       title:'The Trial Of Hadith 40 Imam Nawawi',
-      img:'pixel_frame.png', btn:'MAIN',
+      img:'pixel_frame.webp', btn:'MAIN',
       link:'https://view.genially.com/68fde7a1c119d647f8b72a3f',
       info:{
         nama:'The Trial Of Hadith 40 Imam Nawawi',
         useLocalOnly:true,
-        imgs: ['pixel1.png','pixel2.png','pixel3.png','pixel4.png','pixel5.png'],
+        imgs: ['pixel1.webp','pixel2.webp','pixel3.webp','pixel4.webp','pixel5.webp'],
         perihal:'Sertai pengembaraan sebagai Penjelajah Ilmu yang diamanahkan membawa Pedang Hidayah! Uji kefahaman anda mengenai Hadis 40 Imam Nawawi di setiap peringkat untuk mengumpul keempat-empat Permata Hadis, seterusnya menewaskan Naga Kegelapan dan mengembalikan keamanan umat.',
         drive:'https://drive.google.com/drive/folders/17oeOcL4KqDqTa73MyfF7fOfApQqLKuYq?usp=sharing'
       }
@@ -2589,44 +2680,44 @@ const CFG = {
 
   ropixExtra: [
     {
-      logo:'Universe_ropix_logo.PNG', label:'Maskot', status:'BAHARU',
+      logo:'Universe_ropix_logo.webp', label:'Maskot', status:'BAHARU',
       title:'Mat RoPix',
-      img:'mat_ropix.jpg?v=2', btn:'KRONOLOGI', noInfo:true, link:'#',
+      img:'mat_ropix.webp', btn:'KRONOLOGI', noInfo:true, link:'#',
       kronologi:{
         nama:'Mat RoPix',
         defaultIdx:1,
         perihal:'Ikon dan penyeri utama di setiap reruai pameran kami! Maskot robotik Mat RoPix ini menarik perhatian pengunjung dengan rekaan unik bertanjak serta kod QR terus ke laman web rasmi.',
         drive:'https://drive.google.com/drive/folders/1NDXUhg0kUhIcT-ba23oan6b_AMuiOopm?usp=sharing',
         versions:[
-          { tab:'Versi 4 • 2027', badge:'Versi 4 | Akan Datang 2027', imgs:['matropixv4.jpg'] },
-          { tab:'Versi 3 • 2026', badge:'Versi 3 | 2026', imgs:['matropixv3.jpg'] },
-          { tab:'Versi 2 • 2026', badge:'Versi 2 | 2026', imgs:['matropixv2.jpg'] },
-          { tab:'Versi 1 • 2025', badge:'Versi 1 | 2025', imgs:['matropixv1.jpg'] },
-          { tab:'Versi Cosplay', badge:'Versi Cosplay | Maskot Sebenar', imgs:['maskotropixv1.jpg'] }
+          { tab:'Versi 4 • 2027', badge:'Versi 4 | Akan Datang 2027', imgs:['matropixv4.webp'] },
+          { tab:'Versi 3 • 2026', badge:'Versi 3 | 2026', imgs:['matropixv3.webp'] },
+          { tab:'Versi 2 • 2026', badge:'Versi 2 | 2026', imgs:['matropixv2.webp'] },
+          { tab:'Versi 1 • 2025', badge:'Versi 1 | 2025', imgs:['matropixv1.webp'] },
+          { tab:'Versi Cosplay', badge:'Versi Cosplay | Maskot Sebenar', imgs:['maskotropixv1.webp'] }
         ]
       }
     },
     {
-      logo:'Universe_ropix_logo.PNG', label:'Cenderamata', status:'BAHARU',
+      logo:'Universe_ropix_logo.webp', label:'Cenderamata', status:'BAHARU',
       title:'RoPix Merchandise',
-      img:'lengkap_ropix.JPG?v=2', btn:'DAPATKAN', scrollKoleksi:true, link:'#koleksi',
+      img:'lengkap_ropix.webp', btn:'DAPATKAN', scrollKoleksi:true, link:'#koleksi',
       info:{
         nama:'RoPix Merchandise',
         useLocalOnly:true,
-        imgs:['button_ropix.JPG?v=2','keychain_ropix.JPG?v=2','sticker_ropix.JPG?v=2','stand_ropix.JPG?v=2','mug_ropix.JPG?v=2'],
+        imgs:['button_ropix.webp','keychain_ropix.webp','sticker_ropix.webp','stand_ropix.webp','mug_ropix.webp'],
         perihal:'Cenderamata rasmi RoPix yang comel dan eksklusif. Dihiasi watak ikonik serta mesej Hadis 40! Sesuai untuk kegunaan harian, koleksi peribadi, atau dijadikan hadiah istimewa buat yang tersayang.',
         drive:'https://drive.google.com/drive/folders/1feskjyM4TIeibos3O4HB85vrizI9VqF1?usp=sharing'
       }
     },
     {
-      logo:'Universe_ropix_logo.PNG', label:'Infografik', status:'',
+      logo:'Universe_ropix_logo.webp', label:'Infografik', status:'',
       title:'Buku Hafalan Hadis 40 : RoPix',
-      img:'hafalanropixcover.jpg', fallbackImg: BOOK_ROPIX_URI, btn:'HAFAZ',
+      img:'hafalanropixcover.webp', fallbackImg: BOOK_ROPIX_URI, btn:'HAFAZ',
       link:'https://drive.google.com/file/d/15r7A2weD7pW9ezQTQuBDZnwhAXjEukkv/view?usp=sharing',
       info:{
         nama:'Buku Hafalan Hadis 40 : RoPix',
         useLocalOnly:true,
-        imgs:['hafalanropix1.jpg','hafalanropix2.jpg','hafalanropix3.jpg','hafalanropix4.jpg','hafalanropix5.jpg'],
+        imgs:['hafalanropix1.webp','hafalanropix2.webp','hafalanropix3.webp','hafalanropix4.webp','hafalanropix5.webp'],
         perihal:'Himpunan lengkap Hadis 40 Imam Nawawi dalam bentuk visual santai bersama watak-watak RoPix. Lengkap dengan teks Arab dan terjemahan ringkas agar mudah dibaca, difahami, serta dekat di hati generasi muda.',
         drive:'https://drive.google.com/drive/folders/15Cv9OVnn00EKRwrJ3_Mls7U56K_bwP1O?usp=sharing'
       }
@@ -2638,13 +2729,13 @@ const CFG = {
     {
       hideLogo:true, label:'Buku Hafazan', status:'POPULAR',
       title:"Buku Hafalan Hadis 40 : Irsyadus Solihin Fi Hifzil Arba'in",
-      img:'cover_buku_irsyad.jpg', fallbackImg: BOOK_IRSYAD_URI,
+      img:'cover_buku_irsyad.webp', fallbackImg: BOOK_IRSYAD_URI,
       btn:'HAFAZ',
       link:'https://drive.google.com/file/d/1LzJU6raatrlNp0eWWWHEZPOTc06Fc_8l/view?usp=sharing',
       info:{
         nama:"Buku Hafalan Hadis 40 : Irsyadus Solihin Fi Hifzil Arba'in",
         useLocalOnly:true,
-        imgs:['buku_hafazan_h40_1.png','buku_hafazan_h40_2.png','buku_hafazan_h40_3.jpg','buku_hafazan_h40_4.jpg','buku_hafazan_h40_5.jpg'],
+        imgs:['buku_hafazan_h40_1.webp','buku_hafazan_h40_2.webp','buku_hafazan_h40_3.webp','buku_hafazan_h40_4.webp','buku_hafazan_h40_5.webp'],
         perihal:"Buku hafazan Hadis 40 yang ringan, ringkas dan terus kepada isi. Lengkap dengan rekod tasmi' bagi membantu pelajar menghafal kesemua hadis tanpa beban serta mengamalkannya secara spontan dalam peperiksaan dan kehidupan harian.",
         drive:'https://drive.google.com/drive/folders/1SQNR1gT-gaKqwizFQn0G59cb1Z4-wDO6?usp=sharing'
       }
@@ -2652,14 +2743,14 @@ const CFG = {
     {
       hideLogo:true, label:'Muzik', status:'BAHARU',
       title:'Muzik Video',
-      img:'musicvideo_cover.jpg', btn:'TONTON',
+      img:'musicvideo_cover.webp', btn:'TONTON',
       link:'https://youtube.com/playlist?list=PLO8Wqbvc52jE&si=00cWecHUUT9_R7c0',
       musicModal:{
         nama:'Muzik Video',
         perihal:'Koleksi lagu rasmi dan karya muzik asal Briged Shabab An-Nawawi. Dicipta untuk menyemai semangat perjuangan pasukan serta menghayati nilai Hadis 40 melalui alunan irama.',
         drive:'https://drive.google.com/drive/folders/1-rZSSpBbB3MMQYDXc3av8PkIAB3pLpJK?usp=sharing',
         tracks:[
-          { title:'Muzik 1 — Lagu Rasmi Briged', ytId:'Z3ROGujJYXg', cover:'music_1.jpg', status:'RASMI' },
+          { title:'Muzik 1 — Lagu Rasmi Briged', ytId:'Z3ROGujJYXg', cover:'music_1.webp', status:'RASMI' },
           { title:'Muzik 2', soon:true, status:'AKAN DATANG' },
           { title:'Muzik 3', soon:true, status:'AKAN DATANG' }
         ]
@@ -2668,27 +2759,27 @@ const CFG = {
     {
       hideLogo:true, label:'PORTAL RASMI', status:'BAHARU',
       title:'Platform Digital Hadis 40 Imam Nawawi',
-      img:'website_cover.png', btn:'KRONOLOGI', noInfo:true, link:'#',
+      img:'website_cover.webp', btn:'KRONOLOGI', noInfo:true, link:'#',
       kronologi:{
         nama:'Platform Digital Hadis 40 Imam Nawawi',
         defaultIdx:0,
         perihal:'Pintu utama rasmi Briged Shabab An-Nawawi. Menghimpunkan seluruh ekosistem digital, inovasi, dan bahan Hadis 40 dalam satu paparan moden yang segar dan mesra generasi muda.',
         drive:'https://drive.google.com/drive/folders/1vl03YqeKVZDzs9pnKAnh5tqEhsd64qdx?usp=sharing',
         versions:[
-          { tab:'Versi 2.0 • 2026 (Terkini)', badge:'Versi 2.0 | 2026 (Sedang Digunakan)', imgs:['websitev2.1.png','website2.2.png','website2.3.png','website2.4.png','website2.5.png','website2.6.png'] },
-          { tab:'Versi 1.0 • 2025', badge:'Versi 1.0 | 2025 (Versi Terawal)', imgs:['websitev1.png'] }
+          { tab:'Versi 2.0 • 2026 (Terkini)', badge:'Versi 2.0 | 2026 (Sedang Digunakan)', imgs:['websitev2.1.webp','website2.2.webp','website2.3.webp','website2.4.webp','website2.5.webp','website2.6.webp'] },
+          { tab:'Versi 1.0 • 2025', badge:'Versi 1.0 | 2025 (Versi Terawal)', imgs:['websitev1.webp'] }
         ]
       }
     },
     {
       hideLogo:true, label:'Slaid Interaktif', status:'',
       title:'Galeri Hadis An-Nawawi',
-      img:'galeriannawawi1.png', fallbackImg: CANVA_GAL_URI, btn:'TEROKA',
+      img:'galeriannawawi1.webp', fallbackImg: CANVA_GAL_URI, btn:'TEROKA',
       link:'https://cartaorgirshad.my.canva.site/galeri-hadis-an-nawawi',
       info:{
         nama:'Galeri Hadis An-Nawawi',
         useLocalOnly:true,
-        imgs:['galeriannawawi2.png','galeriannawawi3.png','galeriannawawi4.png'],
+        imgs:['galeriannawawi2.webp','galeriannawawi3.webp','galeriannawawi4.webp'],
         perihal:'Galeri digital interaktif Hadis 40 Imam Nawawi. Memuatkan teks Arab, terjemahan serta pengajaran setiap hadis dalam paparan slaid yang kemas dan mudah diteroka.',
         drive:''
       }
@@ -2696,13 +2787,13 @@ const CFG = {
     {
       hideLogo:true, label:'Papan Tanda', status:'',
       title:'Canva Signage Hadis 40',
-      img:'canva_cover.jpg', fallbackImg: SIGNAGE_URI,
+      img:'canva_cover.webp', fallbackImg: SIGNAGE_URI,
       btn:'TEROKA',
       link:'https://drive.google.com/drive/folders/1Z6-88qTDkk_z6VypE_KyyvMbbBXejT-h?usp=sharing',
       info:{
         nama:'Canva Signage Hadis 40',
         useLocalOnly:true,
-        imgs:['canva1.jpg','canva2.jpg','canva3.jpg'],
+        imgs:['canva1.webp','canva2.webp','canva3.webp'],
         perihal:'42 papan tanda Hadis 40 hasil rekaan kreatif pelajar. Dipasang di sepanjang tiang laluan menuju ke surau agar bacaan dan penghayatan hadis sentiasa menemani langkah warga sekolah.',
         drive:''
       }
@@ -2713,7 +2804,7 @@ const CFG = {
   bahanKpm: [
     {
       title:'Modul Penghayatan Hadis 40 Imam Nawawi',
-      img:'modul_hadis_cover.png',
+      img:'modul_hadis_cover.webp',
       link:'https://drive.google.com/file/d/1tyTHjjzgfyAt1sV0UwxP5K4DJn4z_D82/view?usp=sharing'
     },
     {
@@ -2727,10 +2818,10 @@ const CFG = {
   inisiatif: [
     {
       title:'Anugerah Tokoh Imam An-Nawawi',
-      img:'tokoh1.jpg',
+      img:'tokoh1.webp',
       info:{
         nama:'Anugerah Tokoh Imam An-Nawawi', useLocalOnly:true,
-        imgs:['tokoh1.jpg','tokoh2.jpg'],
+        imgs:['tokoh1.webp','tokoh2.webp'],
         meta:[{ k:'Kategori', v:'Pengiktirafan Tertinggi Murid' }],
         perihal:'Pelajar yang menerima anugerah ini dijadikan contoh teladan kepada rakan-rakan.',
         drive:'https://drive.google.com/drive/folders/16GWLfzfXb-Nhp1FSTiyDTWdwdbxfXyux?usp=sharing'
@@ -2738,10 +2829,10 @@ const CFG = {
     },
     {
       title:'Marmarru Hadis 40 | Laluan Hadis 40',
-      img:'laluan1.jpg',
+      img:'laluan1.webp',
       info:{
         nama:'Marmarru Hadis 40 | Laluan Hadis 40', useLocalOnly:true,
-        imgs:['laluan1.jpg','laluan2.jpg','laluan3.jpg','laluan5.jpg','laluan6.jpg','laluan7.jpg'],
+        imgs:['laluan1.webp','laluan2.webp','laluan3.webp','laluan5.webp','laluan6.webp','laluan7.webp'],
         meta:[
           { k:'Tarikh', v:'17 Ogos 2024 (Sabtu)' },
           { k:'Masa', v:'8:00 pagi – 12:00 tengah hari' },
@@ -2753,10 +2844,10 @@ const CFG = {
     },
     {
       title:'Majlis Pelancaran Platform Digital Hadis 40 Imam Nawawi (2026)',
-      img:'webjohor1.jpg',
+      img:'webjohor1.webp',
       info:{
         nama:'Majlis Pelancaran Platform Digital Hadis 40 Imam Nawawi (2026)', useLocalOnly:true,
-        imgs:['webjohor1.jpg','webjohor2.jpg','webjohor3.jpg','webjohor4.jpg'],
+        imgs:['webjohor1.webp','webjohor2.webp','webjohor3.webp','webjohor4.webp'],
         meta:[
           { k:'Tahun', v:'2026' },
           { k:'Kategori', v:'Pelancaran Utama' }
@@ -2767,10 +2858,10 @@ const CFG = {
     },
     {
       title:'Perasmian Peluncuran Modul Hafazan Irshadus Solihin Fi Hifzi Arbain & Airis Digital Platform An-Nawawi (2025)',
-      img:'webtaqwa1.jpg',
+      img:'webtaqwa1.webp',
       info:{
         nama:'Perasmian Peluncuran Modul Hafazan Irshadus Solihin Fi Hifzi Arbain & Airis Digital Platform An-Nawawi (2025)', useLocalOnly:true,
-        imgs:['webtaqwa1.jpg','webtaqwa2.jpg','webtaqwa3.jpg','webtaqwa4.jpg','webtaqwa5.jpg','webtaqwa6.jpg','webtaqwa7.jpg','webtaqwa8.jpg','webtaqwa9.jpg'],
+        imgs:['webtaqwa1.webp','webtaqwa2.webp','webtaqwa3.webp','webtaqwa4.webp','webtaqwa5.webp','webtaqwa6.webp','webtaqwa7.webp','webtaqwa8.webp','webtaqwa9.webp'],
         meta:[
           { k:'Tahun', v:'2025' },
           { k:'Kategori', v:'Pelancaran Utama' }
@@ -2781,10 +2872,10 @@ const CFG = {
     },
     {
       title:'Peluncuran Ruwaq An Nawawi & Briged Shabab An-Nawawi (2024)',
-      img:'rasmi1.jpg',
+      img:'rasmi1.webp',
       info:{
         nama:'Peluncuran Ruwaq An Nawawi & Briged Shabab An-Nawawi (2024)', useLocalOnly:true,
-        imgs:['rasmi1.jpg','rasmi2.jpg','rasmi3.jpg','rasmi4.jpg','rasmi5.jpg'],
+        imgs:['rasmi1.webp','rasmi2.webp','rasmi3.webp','rasmi4.webp','rasmi5.webp'],
         meta:[
           { k:'Tahun', v:'2024' },
           { k:'Kategori', v:'Pelancaran & Penubuhan' }
@@ -2795,10 +2886,10 @@ const CFG = {
     },
     {
       title:'Tasmik Hadis 40',
-      img:'tasmik1.jpg',
+      img:'tasmik1.webp',
       info:{
         nama:'Tasmik Hadis 40', useLocalOnly:true,
-        imgs:['tasmik1.jpg','tasmik2.jpg','tasmik3.jpg','tasmik4.jpg'],
+        imgs:['tasmik1.webp','tasmik2.webp','tasmik3.webp','tasmik4.webp'],
         meta:[{ k:'Kategori', v:'Penilaian & Pengiktirafan Hafazan' }],
         perihal:'Pelajar yang berjaya menghafal kesemua 40 Hadis diberi pengiktirafan dan hadiah.',
         drive:'https://drive.google.com/drive/folders/1aydTzWD7B4ai0SmF5igPL6m8QIAz3l2r?usp=sharing'
@@ -2806,10 +2897,10 @@ const CFG = {
     },
     {
       title:'Tausiyah Penghayatan Hadis 40',
-      img:'tausiyah1.png',
+      img:'tausiyah1.webp',
       info:{
         nama:'Tausiyah Penghayatan Hadis 40', useLocalOnly:true,
-        imgs:['tausiyah1.png','tausiyah2.png','tausiyah3.png','tausiyah4.jpg','tausiyah5.jpg','tausiyah6.jpg','tausiyah7.jpg'],
+        imgs:['tausiyah1.webp','tausiyah2.webp','tausiyah3.webp','tausiyah4.webp','tausiyah5.webp','tausiyah6.webp','tausiyah7.webp'],
         meta:[
           { k:'Kekerapan', v:'Setiap 2 minggu sekali (hari Jumaat)' },
           { k:'Masa', v:'7:30 pagi – 8:00 pagi' }
@@ -2820,10 +2911,10 @@ const CFG = {
     },
     {
       title:'Bersamamu Hadis 40',
-      img:'bersamamu1.jpg',
+      img:'bersamamu1.webp',
       info:{
         nama:'Bersamamu Hadis 40', useLocalOnly:true,
-        imgs:['bersamamu1.jpg','bersamamu2.jpg','bersamamu3.jpg','bersamamu4.jpg','bersamamu5.jpg'],
+        imgs:['bersamamu1.webp','bersamamu2.webp','bersamamu3.webp','bersamamu4.webp','bersamamu5.webp'],
         meta:[
           { k:'Kekerapan', v:'Setiap hari Jumaat' },
           { k:'Masa', v:'7:45 pagi – 8:00 pagi' },
@@ -2836,10 +2927,10 @@ const CFG = {
     },
     {
       title:'Kultim Hadis 40',
-      img:'kultim1.jpg',
+      img:'kultim1.webp',
       info:{
         nama:'Kultim Hadis 40', useLocalOnly:true,
-        imgs:['kultim1.jpg','kultim2.jpg','kultim3.jpg','kultim4.jpg'],
+        imgs:['kultim1.webp','kultim2.webp','kultim3.webp','kultim4.webp'],
         meta:[
           { k:'Kekerapan', v:'Setiap hari Selasa hingga Khamis' },
           { k:'Masa', v:'7:15 pagi – 7:30 pagi' },
@@ -2851,10 +2942,10 @@ const CFG = {
     },
     {
       title:'Bedtime Reading Hadis 40',
-      img:'bedtime1.jpg',
+      img:'bedtime1.webp',
       info:{
         nama:'Bedtime Reading Hadis 40', useLocalOnly:true,
-        imgs:['bedtime1.jpg','bedtime2.jpg','bedtime3.jpg'],
+        imgs:['bedtime1.webp','bedtime2.webp','bedtime3.webp'],
         meta:[
           { k:'Kekerapan', v:'Setiap malam' },
           { k:'Masa', v:'11:00 malam – 11:10 malam' },
@@ -2866,10 +2957,10 @@ const CFG = {
     },
     {
       title:'Bacaan Hadis 40 Berkumpulan',
-      img:'berkumpulan1.jpg',
+      img:'berkumpulan1.webp',
       info:{
         nama:'Bacaan Hadis 40 Berkumpulan', useLocalOnly:true,
-        imgs:['berkumpulan1.jpg','berkumpulan2.jpg','berkumpulan3.jpg','berkumpulan4.jpg'],
+        imgs:['berkumpulan1.webp','berkumpulan2.webp','berkumpulan3.webp','berkumpulan4.webp'],
         meta:[{ k:'Kekerapan', v:'Setiap 2 minggu sekali' }],
         perihal:'Pelajar menghafal Hadis 40 secara berkumpulan bersama Naqib dan Naqibah.',
         drive:'https://drive.google.com/drive/folders/1fkf-_kQabY4kA1lLQg4u1FtKR3w0CfW-?usp=sharing'
@@ -2877,10 +2968,10 @@ const CFG = {
     },
     {
       title:'Usrah Hadis 40',
-      img:'usrah2.jpg',
+      img:'usrah2.webp',
       info:{
         nama:'Usrah Hadis 40', useLocalOnly:true,
-        imgs:['usrah2.jpg','usrah3.jpg','usrah4.jpg'],
+        imgs:['usrah2.webp','usrah3.webp','usrah4.webp'],
         meta:[{ k:'Sasaran', v:'Naqib dan Naqibah Hadis 40' }],
         perihal:'Taklimat awal dan bimbingan kepimpinan kepada para Naqib dan Naqibah.',
         drive:'https://drive.google.com/drive/folders/1vjcuIPNdohGFY-5WvAjODI6MpUrnR2Sj?usp=sharing'
@@ -2888,10 +2979,10 @@ const CFG = {
     },
     {
       title:'Daurah Hadis 40',
-      img:'daurah1.jpg',
+      img:'daurah1.webp',
       info:{
         nama:'Daurah Hadis 40', useLocalOnly:true,
-        imgs:['daurah1.jpg','daurah2.jpg','daurah3.jpg'],
+        imgs:['daurah1.webp','daurah2.webp','daurah3.webp'],
         meta:[
           { k:'Kekerapan', v:'Setiap pagi (sempena cuti penggiliran SPM)' },
           { k:'Masa', v:'7:30 pagi – 8:30 pagi' },
@@ -2903,10 +2994,10 @@ const CFG = {
     },
     {
       title:'Mukhayyam Madani Hadis 40',
-      img:'sharepair1.jpg',
+      img:'sharepair1.webp',
       info:{
         nama:'Mukhayyam Madani Hadis 40', useLocalOnly:true,
-        imgs:['sharepair1.jpg','sharepair2.jpg','sharepair3.jpg','sharepair4.jpg'],
+        imgs:['sharepair1.webp','sharepair2.webp','sharepair3.webp','sharepair4.webp'],
         meta:[
           { k:'Kekerapan', v:'Setiap pagi (30 minit)' },
           { k:'Kaedah', v:'Teknik Pair & Share' }
@@ -2917,10 +3008,10 @@ const CFG = {
     },
     {
       title:'Program Maal Hijrah Hadis 01: Jom Berhijrah, Jom Berubah',
-      img:'maal_hijrah2.jpg',
+      img:'maal_hijrah2.webp',
       info:{
         nama:'Program Maal Hijrah Hadis 01: Jom Berhijrah, Jom Berubah', useLocalOnly:true,
-        imgs:['maal_hijrah2.jpg','maal_hijrah1.jpg','maal_hijrah3.jpg'],
+        imgs:['maal_hijrah2.webp','maal_hijrah1.webp','maal_hijrah3.webp'],
         meta:[
           { k:'Tarikh', v:'5 Julai 2024 (Jumaat)' },
           { k:'Penyampai', v:'Tn. Hj. Khairul Asfani bin Nasir' },
@@ -2934,45 +3025,45 @@ const CFG = {
 
   // 5) AKAN DATANG (4 KOTAK)
   akanDatang: [
-    { tahun:'2027', img:'soon1.jpg' },
-    { tahun:'2027', img:'soon2.jpg?v=2' },
-    { tahun:'2028', img:'soon3.jpg?v=2' },
-    { tahun:'2028', img:'soon4.jpg?v=2' }
+    { tahun:'2027', img:'soon1.webp' },
+    { tahun:'2027', img:'soon2.webp' },
+    { tahun:'2028', img:'soon3.webp' },
+    { tahun:'2028', img:'soon4.webp' }
   ],
 
   // KOLEKSI EKSKLUSIF (6 ITEM)
   koleksi: [
-    { title:'Rantai Kunci RoPix', img:'keychain_ropix.JPG?v=2' },
-    { title:'Pelekat RoPix', img:'sticker_ropix.JPG?v=2' },
-    { title:'Lencana RoPix', img:'button_ropix.JPG?v=2' },
-    { title:'Plak RoPix', img:'stand_ropix.JPG?v=2' },
-    { title:'Cawan RoPix', img:'mug_ropix.JPG?v=2' },
-    { title:'Koleksi Lengkap RoPix', img:'lengkap_ropix.JPG?v=2' }
+    { title:'Rantai Kunci RoPix', img:'keychain_ropix.webp' },
+    { title:'Pelekat RoPix', img:'sticker_ropix.webp' },
+    { title:'Lencana RoPix', img:'button_ropix.webp' },
+    { title:'Plak RoPix', img:'stand_ropix.webp' },
+    { title:'Cawan RoPix', img:'mug_ropix.webp' },
+    { title:'Koleksi Lengkap RoPix', img:'lengkap_ropix.webp' }
   ],
 
   // TESTIMONI (8)
   testimoni: [
-    { img:'anwar_pp.jpg', quote:'Game ni bagus untuk budak², bagus² teruskan lagi.', nama:"YAB Dato' Seri Anwar bin Ibrahim", jawatan:'PMX' },
-    { img:'profile_pp.jpg', quote:'Inovasi sekolah u jadi oo anak murid saya minat', nama:'Guru bangsa Cina', jawatan:'Pendidik' },
-    { img:'hora_pp.jpe', quote:'Terbaik Horangi sokong korang... Roblox di tangan yan Selamat', nama:'Horangi99', jawatan:'Gaming Influencer' },
-    { img:'zyd_pp.jpe', quote:'Cikgu suka konsep pendidikan yang dibawa', nama:'Cikgu Zyd Gaming', jawatan:'Gaming Influencer' },
-    { img:'Nazmi_pp.jpg', quote:'Kita mengharapkan agar inovasi seumpama ini dapat menyemarakkan lagi', nama:'Mohammad Nazmi bin Mohsin', jawatan:'Penolong Pengarah Unit Pembangunan Adab dan Nilai, SPI, JPNPP' },
-    { img:'ustazsaf_pp.jpg', quote:'Uishh tak penah ustaz tengok sekolah buat inovasi dekat Roblox', nama:'Ustaz SAF', jawatan:'Guru' },
-    { img:'@ssupd14na_pp.jpg', quote:'banyakkan content macam ni 😍😍, saya nak repost banyak2 biar anak muda nampak cara “main” roblox dengan betul 🥰✨🤝', nama:'@ssupd14na', jawatan:'Netizen' },
-    { img:'Omar_pp.png', quote:'Inisiatif Hadis 40 dalam Roblox ini baik didedahkan seawal prasekolah dan Tahun 1 supaya permainan di rumah lebih bermanfaat.', nama:'Tuan Haji Omar bin Salleh', jawatan:'Pengarah Bahagian Pendidikan Islam, KPM' }
+    { img:'anwar_pp.webp', quote:'Game ni bagus untuk budak², bagus² teruskan lagi.', nama:"YAB Dato' Seri Anwar bin Ibrahim", jawatan:'PMX' },
+    { img:'profile_pp.webp', quote:'Inovasi sekolah u jadi oo anak murid saya minat', nama:'Guru bangsa Cina', jawatan:'Pendidik' },
+    { img:'hora_pp.webp', quote:'Terbaik Horangi sokong korang... Roblox di tangan yan Selamat', nama:'Horangi99', jawatan:'Gaming Influencer' },
+    { img:'zyd_pp.webp', quote:'Cikgu suka konsep pendidikan yang dibawa', nama:'Cikgu Zyd Gaming', jawatan:'Gaming Influencer' },
+    { img:'Nazmi_pp.webp', quote:'Kita mengharapkan agar inovasi seumpama ini dapat menyemarakkan lagi', nama:'Mohammad Nazmi bin Mohsin', jawatan:'Penolong Pengarah Unit Pembangunan Adab dan Nilai, SPI, JPNPP' },
+    { img:'ustazsaf_pp.webp', quote:'Uishh tak penah ustaz tengok sekolah buat inovasi dekat Roblox', nama:'Ustaz SAF', jawatan:'Guru' },
+    { img:'@ssupd14na_pp.webp', quote:'banyakkan content macam ni 😍😍, saya nak repost banyak2 biar anak muda nampak cara “main” roblox dengan betul 🥰✨🤝', nama:'@ssupd14na', jawatan:'Netizen' },
+    { img:'Omar_pp.webp', quote:'Inisiatif Hadis 40 dalam Roblox ini baik didedahkan seawal prasekolah dan Tahun 1 supaya permainan di rumah lebih bermanfaat.', nama:'Tuan Haji Omar bin Salleh', jawatan:'Pengarah Bahagian Pendidikan Islam, KPM' }
   ],
 
   // RAKAN STRATEGIK (9)
   rakan: [
-    { img:'bkp_logo.png', link:'https://www.instagram.com/prokeusmai._/', nama:'BKP PROKEUSMAI' },
-    { img:'badar_logo.png', link:'#', nama:'BADAR Al-Irshad' },
-    { img:'bka_logo.png', link:'#', nama:'BKA Al-Irshad' },
-    { img:'tvpss_logo.png', link:'https://www.tiktok.com/@tvpss.al.irshad', nama:'TVPSS Al-Irshad' },
-    { img:'prs_logo.png', link:'https://www.instagram.com/airis.prss/', nama:'PRS Al-Irshad' },
-    { img:'asda_logo.png', link:'https://www.instagram.com/asda.ulfikr/', nama:'ASDA Ul-Fikr' },
-    { img:'airsav_logo.png', link:'#', nama:'AIRSAV' },
-    { img:'alumni_logo.png', link:'https://www.instagram.com/irshadnation_rsydn?dlrf=a2Zxb2JjM2c4NHky', nama:'Alumni Irshad' },
-    { img:'logo_al_ansori.jpg', link:'#', nama:'Surau Al-Ansori' }
+    { img:'bkp_logo.webp', link:'https://www.instagram.com/prokeusmai._/', nama:'BKP PROKEUSMAI' },
+    { img:'badar_logo.webp', link:'#', nama:'BADAR Al-Irshad' },
+    { img:'bka_logo.webp', link:'#', nama:'BKA Al-Irshad' },
+    { img:'tvpss_logo.webp', link:'https://www.tiktok.com/@tvpss.al.irshad', nama:'TVPSS Al-Irshad' },
+    { img:'prs_logo.webp', link:'https://www.instagram.com/airis.prss/', nama:'PRS Al-Irshad' },
+    { img:'asda_logo.webp', link:'https://www.instagram.com/asda.ulfikr/', nama:'ASDA Ul-Fikr' },
+    { img:'airsav_logo.webp', link:'#', nama:'AIRSAV' },
+    { img:'alumni_logo.webp', link:'https://www.instagram.com/irshadnation_rsydn?dlrf=a2Zxb2JjM2c4NHky', nama:'Alumni Irshad' },
+    { img:'logo_al_ansori.webp', link:'#', nama:'Surau Al-Ansori' }
   ],
 
   // HUBUNGI KAMI (SMKA AL-IRSHAD)
@@ -2987,59 +3078,59 @@ const CFG = {
   // WATAK (3 TAB: KIRI TERKUNCI, TENGAH ROBLOX 6 KAD + BANNER HOTSPOTS, KANAN PIXEL 4 KAD + KOKPI & DONAT TERKUNCI)
   watak: {
     kiri: {
-      logo: 'kod40_logo.png',
+      logo: 'kod40_logo.webp',
       terkunci: true,
       mesejKunci: 'Akan Datang 2027'
     },
     tengah: {
-      logo: 'roblox_adventure_logo.png',
-      gambarUtama: 'roblox_L&P.jpeg',
+      logo: 'roblox_adventure_logo.webp',
+      gambarUtama: 'roblox_L&P.webp',
       hintText: 'KLIK UNTUK TEROKA PROFIL',
       disableModal: false,
       watakDalamGambar: [
         {
           nama:'Mat RoPix', displayName:'Mat RoPix', x:6, y:3, w:41, h:95,
-          img:'army/ropix_l.png', popImg:'army/ropix_l.png', bigPortrait:true,
-          logo1:'Universe_ropix_logo.PNG', logo2:'',
+          img:'army/ropix_l.webp', popImg:'army/ropix_l.webp', bigPortrait:true,
+          logo1:'Universe_ropix_logo.webp', logo2:'',
           perihal:'Ikon jejaka segak dari RoPix Universe! Sentiasa tampil bergaya dengan baju Melayu dan tanjaknya, dia membawa aura semangat pengembaraan yang tersendiri.'
         },
         {
           nama:'Srikandi RoPix', displayName:'Srikandi RoPix', x:55, y:17, w:42, h:81,
-          img:'army/ropix_p.png', popImg:'army/ropix_p.png', bigPortrait:true,
-          logo1:'Universe_ropix_logo.PNG', logo2:'',
+          img:'army/ropix_p.webp', popImg:'army/ropix_p.webp', bigPortrait:true,
+          logo1:'Universe_ropix_logo.webp', logo2:'',
           perihal:'Gadis manis bercermin mata dan ceria dari RoPix Universe! Dengan gaya sopan berbaju kurung serta sifatnya yang penuh keyakinan, dia menjadi lambang srikandi muda yang sentiasa menginspirasi.'
         }
       ],
       actions: {
         play: [
-          { logo:'roblox_adventure_logo.png', alt:'Hadis 40 Imam Nawawi Adventure', label:'MAIN SEKARANG', link:'https://www.roblox.com/share?code=ebfde8ed2e83d74c85d79503d207410a&type=ExperienceDetails&stamp=1795089049391' },
-          { logo:'roblox_hangout_logo2.png', alt:'Hadis 40 Imam Nawawi Hangout', label:'MAIN SEKARANG', link:'https://www.roblox.com/share?code=17d256245b361c498342f08044678b3a&type=ExperienceDetails&stamp=1795088968268' }
+          { logo:'roblox_adventure_logo.webp', alt:'Hadis 40 Imam Nawawi Adventure', label:'MAIN SEKARANG', link:'https://www.roblox.com/share?code=ebfde8ed2e83d74c85d79503d207410a&type=ExperienceDetails&stamp=1795089049391' },
+          { logo:'roblox_hangout_logo2.webp', alt:'Hadis 40 Imam Nawawi Hangout', label:'MAIN SEKARANG', link:'https://www.roblox.com/share?code=17d256245b361c498342f08044678b3a&type=ExperienceDetails&stamp=1795088968268' }
         ],
         community: {
           top:'SERTAI KOMUNITI',
           title:'ROPIX UNIVERSE AIRIS',
-          logo:'Universe_ropix_logo.PNG',
+          logo:'Universe_ropix_logo.webp',
           link:'https://www.roblox.com/share/g/35741702'
         }
       },
       sampingan: [
-        { nama:'Ustaz Khairul', img:'Ustaz_Khairul.jpg', popImg:'Ustaz_Khairul.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustaz Khairul', img:'Ustaz_Khairul.webp', popImg:'Ustaz_Khairul.webp', logo1:'Universe_ropix_logo.webp', logo2:'roblox_adventure_logo.webp',
            perihal:'Guru pertama anda di Kampung Irshadika memberikan tugas untuk mengutip sampah di sekitar Surau Al-Ansori sambil memberi pengajaran mengenai Hadis 1 [Hadis Niat].' },
-        { nama:'Ustaz Fazli', img:'Ustaz_Fazli.jpg', popImg:'Ustaz_Fazli.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustaz Fazli', img:'Ustaz_Fazli.webp', popImg:'Ustaz_Fazli.webp', logo1:'Universe_ropix_logo.webp', logo2:'roblox_adventure_logo.webp',
            perihal:'Khuatir akan status makanan di Pasar Sulaimah dan memohon anda untuk membeli barangan yang Halal dan mengelakkan perkara Syubhah dan Haram sekaligus mendidik tentang Hadis 6 [Hadis Syubhah].' },
-        { nama:'Ustazah Suraida', img:'Ustazah_Suraida.jpg', popImg:'Ustazah_Suraida.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustazah Suraida', img:'Ustazah_Suraida.webp', popImg:'Ustazah_Suraida.webp', logo1:'Universe_ropix_logo.webp', logo2:'roblox_adventure_logo.webp',
            perihal:'Tinggal di Lorong Cempaka yang sering dipenuhi dengan pergaduhan yang mengakibatkan suasana tidak tenang. Memohon anda untuk meleraikan pergaduhan dan memberi pengajaran tentang Hadis 16 [Hadis Marah].' },
-        { nama:'Ustaz Mursyid', img:'Ustaz_Mursyid.jpg', popImg:'Ustaz_Mursyid.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustaz Mursyid', img:'Ustaz_Mursyid.webp', popImg:'Ustaz_Mursyid.webp', logo1:'Universe_ropix_logo.webp', logo2:'roblox_adventure_logo.webp',
            perihal:'Memohon anda mengalihkan kayu pokok yang tumbang akibat ribut yang berlaku supaya dapat menggunakan jalan hutan dan mengingatkan bahawa mengalihkan perkara di jalan juga sedekah yang berkait dengan Hadis 26 [Hadis Sedekah].' },
-        { nama:'Ustaz Fuad', img:'Ustaz_Fuad.jpg', popImg:'Ustaz_Fuad.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustaz Fuad', img:'Ustaz_Fuad.webp', popImg:'Ustaz_Fuad.webp', logo1:'Universe_ropix_logo.webp', logo2:'roblox_adventure_logo.webp',
            perihal:'Menunggu anda di kaki Gunung Ilham setelah anda mengalihkan kayu di jalan. Memohon anda menghantar Kitab Hadis 40 kepada Ustazah Yusny di puncak Gunung Ilham dan mengajar ilmu tentang Hadis 36 [Hadis memudahkan urusan].' },
-        { nama:'Ustazah Yusny', img:'Ustazah_Yusny.jpg', popImg:'Ustazah_Yusny.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'roblox_adventure_logo.png',
+        { nama:'Ustazah Yusny', img:'Ustazah_Yusny.webp', popImg:'Ustazah_Yusny.webp', logo1:'Universe_ropix_logo.webp', logo2:'roblox_adventure_logo.webp',
            perihal:'Berada di puncak Gunung Ilham dan menerima Kitab Hadis 40 daripada anda dan memberikan soalan mengenai Hadis 2 [Hadis Islam, Iman dan Ihsan].' }
       ]
     },
     kanan: {
-      logo: 'pixel_logo.png',
-      gambarUtama: 'Donat_kokpi.jpeg',
+      logo: 'pixel_logo.webp',
+      gambarUtama: 'Donat_kokpi.webp',
       hintText: 'KLIK UNTUK TEROKA PROFIL',
       disableModal: false,
       watakDalamGambar: [
@@ -3048,23 +3139,23 @@ const CFG = {
       ],
       actions: {
         play: [
-          { logo:'pixel_logo.png', alt:'The Trial Of Hadith 40 Imam Nawawi', label:'MAIN SEKARANG', link:'https://view.genially.com/68fde7a1c119d647f8b72a3f' }
+          { logo:'pixel_logo.webp', alt:'The Trial Of Hadith 40 Imam Nawawi', label:'MAIN SEKARANG', link:'https://view.genially.com/68fde7a1c119d647f8b72a3f' }
         ]
       },
       sampingan: [
-        { nama:'Tok Imam', img:'tok_imam.jpg', popImg:'tok_imam.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'pixel_logo.png',
+        { nama:'Tok Imam', img:'tok_imam.webp', popImg:'tok_imam.webp', logo1:'Universe_ropix_logo.webp', logo2:'pixel_logo.webp',
            perihal:'Meminta bantuan anda sebagai Penjelajah Ilmu untuk menyelamatkan umat daripada Makhluk Kegelapan dengan menyerahkan Pedang Hidayah dan menugaskan anda mengumpulkan empat Permata Hadis di setiap peringkat.' },
-        { nama:'Penjelajah Ilmu', img:'penjelajah_ilmu.jpg', popImg:'penjelajah_ilmu.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'pixel_logo.png',
+        { nama:'Penjelajah Ilmu', img:'penjelajah_ilmu.webp', popImg:'penjelajah_ilmu.webp', logo1:'Universe_ropix_logo.webp', logo2:'pixel_logo.webp',
            perihal:'Pahlawan utama yang diamanahkan membawa Pedang Hidayah, menjawab ujian ilmu untuk mengumpul keempat-empat Permata Hadis, dan menewaskan Naga Kegelapan demi mengembalikan keamanan umat.' },
-        { nama:'Tengkorak Kegelapan', img:'tengkorak_kegelapan.jpg', popImg:'tengkorak_kegelapan.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'pixel_logo.png',
+        { nama:'Tengkorak Kegelapan', img:'tengkorak_kegelapan.webp', popImg:'tengkorak_kegelapan.webp', logo1:'Universe_ropix_logo.webp', logo2:'pixel_logo.webp',
            perihal:'Penjaga yang menguji anda dengan beberapa soalan sebelum membenarkan anda memiliki Zamrud Niat dan mara ke peringkat yang seterusnya.' },
-        { nama:'Naga Kegelapan', img:'naga_kegelapan.jpg', popImg:'naga_kegelapan.jpg', logo1:'Universe_ropix_logo.PNG', logo2:'pixel_logo.png',
+        { nama:'Naga Kegelapan', img:'naga_kegelapan.webp', popImg:'naga_kegelapan.webp', logo1:'Universe_ropix_logo.webp', logo2:'pixel_logo.webp',
            perihal:'Musuh terakhir di peringkat akhir yang menindas umat dan hanya boleh ditewaskan setelah anda menyatukan keempat-empat Permata Hadis ke dalam Pedang Hidayah.' }
       ]
     }
   },
 
-  kader: {"banner": {"2027": "g2027.jpg", "2026": "2g2026.jpg", "2025": "g2025.jpg", "2024": "g2024.png"}, "guru": {"pengetua": {"jawatan": "PENGETUA", "nama": "USTAZ MOHD FAZLI BIN YUNUS", "img": "army/USTAZ MOHD FAZLI BIN YUNUS.png"}, "pkHem": {"jawatan": "PK HEM", "nama": "PUAN AZIZAH BINTI ISMAIL", "img": "army/PUAN AZIZAH BINTI ISMAIL.png"}, "gkpi": {"jawatan": "GURU KANAN PEN. ISLAM", "nama": "TN HAJI KHAIRUL ASFANI BIN NASIR", "img": "army/TN HAJI KHAIRUL ASFANI BIN NASIR.png"}, "setiausaha": [{"jawatan": "SETIAUSAHA HADIS 40", "nama": "TN HAJI MUHAMMAD FUAD BIN HUSIN", "img": "army/TN HAJI MUHAMMAD FUAD BIN HUSIN.png"}, {"jawatan": "TIMB. SETIAUSAHA 1 HADIS 40", "nama": "USTAZAH YUSNY BINTI HJ ZAKARIA", "img": "army/USTAZAH YUSNY BINTI HJ ZAKARIA.png"}, {"jawatan": "TIMB. SETIAUSAHA 2 HADIS 40", "nama": "USTAZAH SURAIDAA BINTI YUSOF", "img": "army/USTAZAH SURAIDAA BINTI YUSOF.png"}]}, "y2026": {"baris1": [{"no": 1, "jawatan": "BRIGED CHIEF", "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.png"}, {"no": 2, "jawatan": "DEPUTY BRIGED CHIEF", "nama": "Irfan", "link": "", "img": "army/Irfan.png"}], "baris2": [{"no": 3, "jawatan": "BRIGED COMMANDER", "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.png"}, {"no": 4, "jawatan": "BRIGED COMMANDER", "nama": "MRIF", "link": "https://www.instagram.com/mrif_39/", "img": "army/MRIF.png"}], "kaders": [{"id": "game-programmer", "namaKader": "KADER GAME PROGRAMMER", "bannerImg": "game.jpg", "drive": "https://drive.google.com/drive/folders/1CxMMpc00JLgYHNV-WVwmVBkS0I0PCz4Y?usp=sharing", "directors": [{"no": 4, "jawatan": "CAPTAIN", "nama": "MRIF", "link": "https://www.instagram.com/mrif_39/", "img": "army/MRIF.png"}], "ahli": [{"no": 76, "nama": "Raiff", "link": "https://www.instagram.com/racap.17?rpxt=bnluZzU3MXp4OXA0", "img": "army/Raiff.png"}, {"no": 77, "nama": "Danial Wafi", "link": "https://www.instagram.com/dnlwfi_?cplk=N3BoMjRlMnA3cDYx", "img": "army/DANIAL WAFI.png"}, {"no": 1, "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.png"}, {"no": 2, "nama": "Irfan", "link": "", "img": "army/Irfan.png"}, {"no": 78, "nama": "Ammar Aqil", "link": "", "img": "army/AMMAR AQIL.png"}, {"no": 79, "nama": "Aidid", "link": "", "img": "army/Aidid.png"}]}, {"id": "creative-entrepreneur", "namaKader": "KADER CREATIVE ENTREPRENEUR", "bannerImg": "creative.jpg", "drive": "https://drive.google.com/drive/folders/1OSvJMxfCYQI9V0HU6GIbDzTTX9Ha1xsO?usp=sharing", "directors": [{"no": 18, "jawatan": "CAPTAIN", "nama": "Aidid", "link": "", "img": "army/Aidid.png"}], "ahli": [{"no": 19, "nama": "Widad", "link": "", "img": "army/ropix_l.png"}, {"no": 20, "nama": "Ai-ris", "link": "https://youtube.com/@paixy_draws?si=AEiNKP9X60yTGXxC", "img": "army/Ai-ris.png"}, {"no": 21, "nama": "Ayuni", "link": "", "img": "army/Ayuni.png"}, {"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.png"}, {"no": 1, "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.png"}, {"no": 17, "nama": "Ammar Aqil", "link": "", "img": "army/AMMAR AQIL.png"}]}, {"id": "roboticist", "namaKader": "KADER ROBOTICIST", "bannerImg": "robotic.jpg", "drive": "https://drive.google.com/drive/folders/138img0u8c1O3BBNPpCc7hH22uQvRCWzJ?usp=sharing", "directors": [{"no": 81, "jawatan": "CAPTAIN", "nama": "Jazli", "link": "https://www.tiktok.com/@jazli116?_r=1&_t=ZS-9BFJa10eUQa", "img": "army/Jazli.png"}], "ahli": [{"no": 82, "nama": "Idham", "link": "", "img": "army/Idham.png"}, {"no": 83, "nama": "Najmi", "link": "", "img": "army/ropix_l.png"}, {"no": 84, "nama": "Ummar", "link": "", "img": "army/ropix_l.png"}, {"no": 85, "nama": "Hayyin", "link": "", "img": "army/Hayyin.png"}]}, {"id": "graphic-designer", "namaKader": "KADER GRAPHIC DESIGNER", "bannerImg": "visual.jpg", "drive": "https://drive.google.com/drive/folders/1ZOG7otF15YZBtSunuV1Gl13xyxADL7cp?usp=sharing", "directors": [{"no": 5, "jawatan": "CAPTAIN", "nama": "Aqilah", "link": "", "img": "army/Aqilah.png"}, {"no": 6, "jawatan": "CAPTAIN", "nama": "Balqis", "link": "", "img": "army/ropix_p.png"}, {"no": 7, "jawatan": "CAPTAIN", "nama": "Noufal", "link": "", "img": "army/ropix_l.png"}, {"no": 8, "jawatan": "CAPTAIN", "nama": "Jauza", "link": "", "img": "army/Jauza.png"}], "ahli": [{"no": 9, "nama": "Huzaifah", "link": "https://www.tiktok.com/@tripleh_130515?_r=1&_t=ZS-9BDqSmhjBZd", "img": "army/Huzaifah.png"}, {"no": 10, "nama": "Firash", "link": "", "img": "army/ropix_l.png"}, {"no": 11, "nama": "Baihaqi", "link": "https://www.tiktok.com/@haqqi.jpeg", "img": "army/Baihaqi.png"}, {"no": 12, "nama": "Anisa", "link": "", "img": "army/Anisa.png"}, {"no": 13, "nama": "Alisha", "link": "https://www.instagram.com/nslshaa?psln=MW1rYndreWg3Nzc5NQ%3D%3D&utm_source=qr", "img": "army/Alisha.png"}, {"no": 14, "nama": "Nadira", "link": "https://www.instagram.com/nhdira13?mdxt=djNyejJvbDhhZ3F0", "img": "army/Nadira.png"}, {"no": 15, "nama": "Luqman", "link": "", "img": "army/Luqman.png"}, {"no": 16, "nama": "Alisa", "link": "https://www.instagram.com/naito_ningyo?cplk=MTN4djR1Y2V0MjZlcQ==", "img": "army/Alisa.png"}, {"no": 1, "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.png"}, {"no": 2, "nama": "Irfan", "link": "", "img": "army/Irfan.png"}, {"no": 17, "nama": "Ammar Aqil", "link": "", "img": "army/AMMAR AQIL.png"}, {"no": 18, "nama": "Aidid", "link": "", "img": "army/Aidid.png"}]}, {"id": "programmer", "namaKader": "KADER PROGRAMMER", "bannerImg": "programmer.jpg", "drive": "https://drive.google.com/drive/folders/1fhOjP78zvk1UwF6fDf1uSICW-U94QjMj?usp=sharing", "directors": [{"no": 73, "jawatan": "CAPTAIN", "nama": "Afiah", "link": "", "img": "army/Afiah.png"}], "ahli": [{"no": 74, "nama": "Arissa", "link": "https://www.tiktok.com/@alyarssaa", "img": "army/Arissa.png"}, {"no": 75, "nama": "Nafisah", "link": "", "img": "army/Nafisah.png"}, {"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.png"}]}, {"id": "composer", "namaKader": "KADER COMPOSER", "bannerImg": "composer.jpg", "drive": "https://drive.google.com/drive/folders/1Zr802MrfTDLI6d3_fi6WVhH-gMaEoT61?usp=sharing", "directors": [{"no": 2, "jawatan": "CAPTAIN", "nama": "Irfan", "link": "", "img": "army/Irfan.png"}], "ahli": [{"no": 86, "nama": "Akmal", "link": "", "img": "army/Akmal.png"}]}, {"id": "band-vocalist", "namaKader": "KADER BAND VOCALIST", "bannerImg": "vocal.jpg", "drive": "https://drive.google.com/drive/folders/1IXUooD-yJy4IfeyTFE2uDnI9GaH0aNpx?usp=sharing", "directors": [{"no": 87, "jawatan": "CAPTAIN", "nama": "Musthaqim", "link": "https://www.instagram.com/musthqimmm?rpxt=Z3R1Nmp3cXU5ZHkw", "img": "army/Musthaqim.png"}], "ahli": [{"no": 88, "nama": "Anas", "link": "", "img": "army/Anas.png"}, {"no": 86, "nama": "Akmal", "link": "", "img": "army/Akmal.png"}, {"no": 89, "nama": "Rayyan", "link": "https://www.instagram.com/mrif_39/", "img": "army/ropix_l.png"}, {"no": 90, "nama": "Danish", "link": "", "img": "army/Danish.png"}, {"no": 91, "nama": "Qisth", "link": "", "img": "army/Qisth.png"}]}]}, "y2025": {"baris1": [{"no": 1, "jawatan": "BRIGED CHIEF", "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.png"}, {"no": 2, "jawatan": "DEPUTY BRIGED CHIEF", "nama": "Salsabila", "link": "", "img": "army/ropix_p.png"}], "kaderRoblox": {"namaKader": "KADER ROBLOX", "ahli": [{"no": 1, "jawatan": "KADER ROBLOX", "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.png"}, {"no": 3, "jawatan": "KADER ROBLOX", "nama": "Irfan", "link": "", "img": "army/Irfan.png"}]}, "kaderPixel": {"namaKader": "KADER PIXEL", "ahli": [{"no": 4, "jawatan": "KADER PIXEL", "nama": "Ammar", "link": "", "img": "army/ropix_l.png"}, {"no": 5, "jawatan": "KADER PIXEL", "nama": "Aidid", "link": "", "img": "army/Aidid.png"}]}, "kaderKhas": {"namaKader": "KADER KHAS", "ahli": [{"no": 6, "jawatan": "KADER KHAS", "nama": "Muaz", "link": "", "img": "army/ropix_l.png"}, {"no": 7, "jawatan": "KADER KHAS", "nama": "Adib", "link": "", "img": "army/ropix_l.png"}, {"no": 8, "jawatan": "KADER KHAS", "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.png"}]}}, "y2024": {"baris1": [{"no": 1, "jawatan": "BRIGED CHIEF", "nama": "Muadz", "link": "", "img": "army/ropix_l.png"}, {"no": 2, "jawatan": "DEPUTY BRIGED CHIEF", "nama": "Syamimi", "link": "", "img": "army/ropix_p.png"}], "ahliNamaPentas": ["Alya", "Aisyah", "Syamimi", "Aleesya", "Solahuddin", "Hameeza", "Hidayah", "Hanis", "Azwalieza", "Fareeha", "Izzati", "Nisa", "Aufa", "Nurhana", "Maisarah", "Qaisara", "Nizar", "Aneesah", "Auna", "Faris", "Balqis", "Afif", "Asma", "Athirah", "Nasuha", "Irfan", "Mursyida", "Auni", "Audadi", "Iffah", "Nabihah", "Insyirah", "Izzati", "Wardah", "Syazwani", "Sofea", "Nurain", "Qistina", "Aina", "Najihah", "Arif", "Afiq", "Muadz"]}, "y2027": {"baris1": [{"no": 1, "jawatan": "BRIGED CHIEF", "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.png"}, {"no": 2, "jawatan": "DEPUTY BRIGED CHIEF", "nama": "Irfan", "link": "", "img": "army/Irfan.png"}], "baris2": [{"no": 3, "jawatan": "PROJECT DIRECTOR", "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.png"}, {"no": 4, "jawatan": "PROJECT DIRECTOR", "nama": "MRIF", "link": "https://www.instagram.com/mrif_39/", "img": "army/MRIF.png"}], "kaders": [{"id": "content", "namaKader": "KADER CONTENT", "bannerImg": "content.jpg", "drive": "https://drive.google.com/drive/folders/1tpMEzfx7LABqZ3c0v6-WMMQA7oa5Acm4", "directors": [{"no": 5, "jawatan": "CAPTAIN", "nama": "Anna", "link": "https://www.tiktok.com/@anna.althafunnisa35?_r=1&_t=ZS-9BFY4rquFjI", "img": "army/Anna.png"}, {"no": 6, "jawatan": "CAPTAIN", "nama": "Rabiyya", "link": "", "img": "army/Rabiyya.png"}], "ahli": [{"no": 7, "nama": "Daniyal", "link": "https://www.instagram.com/dnyl.niyal?vrfl=MTNzeXZrMGJxbGNpaA%3D%3D&utm_source=qr", "img": "army/Daniyal.png"}, {"no": 8, "nama": "Rahman", "link": "", "img": "army/ropix_l.png"}, {"no": 9, "nama": "Adhwaa'", "link": "", "img": "army/Adhwaa’.png"}, {"no": 10, "nama": "Fateehah", "link": "", "img": "army/Fateehah.png"}, {"no": 11, "nama": "Khayla", "link": "", "img": "army/Khayla.png"}, {"no": 12, "nama": "Tuah", "link": "https://www.instagram.com/luckytuahcol?obrf=dnNkeXBxc3R4Nmtr", "img": "army/ropix_l.png"}, {"no": 13, "nama": "Irdina", "link": "", "img": "army/ropix_p.png"}, {"no": 14, "nama": "Aufa", "link": "https://www.instagram.com/avvyyfq/", "img": "army/ropix_p.png"}, {"no": 15, "nama": "Danial", "link": "", "img": "army/ropix_l.png"}, {"no": 16, "nama": "Rabiyya", "link": "", "img": "army/Rabiyya.png"}, {"no": 17, "nama": "Hafizuddin", "link": "", "img": "army/Hafizuddin.png"}, {"no": 18, "nama": "Ainul", "link": "", "img": "army/Ainul.png"}, {"no": 19, "nama": "Firash", "link": "https://www.instagram.com/mhdfh_13?dlrf=bnV5a3F4a2k3OHpm", "img": "army/ropix_l.png"}, {"no": 20, "nama": "Syahfizrie", "link": "https://www.instagram.com/timahkeren?mdxt=MTBkaWxxNDBkMDNkMQ==", "img": "army/Syahfizrie.png"}, {"no": 21, "nama": "Fatimah", "link": "https://www.instagram.com/timahkeren?mdxt=MTBkaWxxNDBkMDNkMQ==", "img": "army/Fatimah.png"}, {"no": 22, "nama": "Sarah", "link": "", "img": "army/ropix_p.png"}, {"no": 23, "nama": "Ammar", "link": "", "img": "army/ropix_l.png"}, {"no": 24, "nama": "Siti", "link": "", "img": "army/ropix_p.png"}, {"no": 25, "nama": "Amani", "link": "https://www.instagram.com/ainnnhsna", "img": "army/ropix_p.png"}, {"no": 26, "nama": "Ain", "link": "https://www.instagram.com/ainnnhsna", "img": "army/Ain.png"}, {"no": 27, "nama": "Asfa", "link": "", "img": "army/ropix_p.png"}, {"no": 28, "nama": "Ariana", "link": "", "img": "army/ropix_p.png"}, {"no": 29, "nama": "Qaireen", "link": "", "img": "army/Qaireen.png"}]}, {"id": "visual", "namaKader": "KADER VISUAL", "bannerImg": "visual.jpg", "drive": "https://drive.google.com/drive/folders/1ZOG7otF15YZBtSunuV1Gl13xyxADL7cp", "directors": [{"no": 30, "jawatan": "CAPTAIN", "nama": "Aqilah", "link": "", "img": "army/Aqilah.png"}, {"no": 31, "jawatan": "CAPTAIN", "nama": "Balqis", "link": "", "img": "army/ropix_p.png"}], "ahli": [{"no": 32, "nama": "Firdaus", "link": "", "img": "army/ropix_l.png"}, {"no": 33, "nama": "Luqman", "link": "", "img": "army/Luqman.png"}, {"no": 34, "nama": "Ayyash", "link": "", "img": "army/Ayyash.png"}, {"no": 35, "nama": "Naqib", "link": "", "img": "army/ropix_l.png"}, {"no": 36, "nama": "Musa", "link": "", "img": "army/ropix_l.png"}, {"no": 37, "nama": "Afiq", "link": "", "img": "army/Afiq.png"}, {"no": 38, "nama": "Haikal", "link": "", "img": "army/Haikal.png"}, {"no": 39, "nama": "Najwan", "link": "", "img": "army/ropix_l.png"}, {"no": 40, "nama": "Faqeeha", "link": "", "img": "army/Faqeeha.png"}, {"no": 41, "nama": "Dinie", "link": "https://www.instagram.com/niekuy0?psln=d3AxbGtxdjV0eXlw", "img": "army/Dinie.png"}, {"no": 42, "nama": "Qasrina", "link": "", "img": "army/Qasrina.png"}, {"no": 43, "nama": "Atiya", "link": "", "img": "army/ropix_p.png"}, {"no": 44, "nama": "Dhia", "link": "https://www.tiktok.com/@ni.dhia.kan", "img": "army/Dhia.png"}, {"no": 45, "nama": "Imtiyaz", "link": "https://www.instagram.com/visualairis?xtok=azRuOGtuZmJsZDNl", "img": "army/ropix_p.png"}, {"no": 46, "nama": "Ai-ris", "link": "https://youtube.com/@paixy_draws?si=AEiNKP9X60yTGXxC", "img": "army/Ai-ris.png"}, {"no": 47, "nama": "Rania", "link": "https://www.tiktok.com/@eugle.jjj_xo?_r=1&_t=ZS-9BCyaWr4ENR", "img": "army/Rania.png"}, {"no": 48, "nama": "Ayuni", "link": "", "img": "army/Ayuni.png"}, {"no": 49, "nama": "Elena", "link": "", "img": "army/Elena.png"}, {"no": 50, "nama": "Alisa", "link": "https://www.instagram.com/naito_ningyo?cplk=MTN4djR1Y2V0MjZlcQ==", "img": "army/Alisa.png"}, {"no": 51, "nama": "Dina", "link": "", "img": "army/ropix_p.png"}, {"no": 52, "nama": "Muhaimin", "link": "", "img": "army/Muhaimin.png"}, {"no": 53, "nama": "Naufal", "link": "https://www.tiktok.com/@aisynaufal._", "img": "army/ropix_l.png"}, {"no": 54, "nama": "Hariz", "link": "", "img": "army/Hariz.png"}, {"no": 55, "nama": "Faqehah", "link": "", "img": "army/Faqeeha (2).png"}, {"no": 56, "nama": "Amni", "link": "https://www.tiktok.com/@skyiez92?_r=1&_t=ZS-9BDbWla0oYm", "img": "army/Amni.png"}, {"no": 57, "nama": "Fateh", "link": "", "img": "army/Fateh.png"}, {"no": 58, "nama": "Abqarie", "link": "", "img": "army/ropix_l.png"}, {"no": 59, "nama": "Chinta", "link": "", "img": "army/Chinta.png"}, {"no": 60, "nama": "Aleesya", "link": "", "img": "army/Aleesya.png"}, {"no": 61, "nama": "Ardini", "link": "https://www.instagram.com/din1eez?exln=MWUzZWhpOGUyNjcxcA==", "img": "army/ropix_p.png"}, {"no": 62, "nama": "Maryam", "link": "https://www.instagram.com/mrymzhara_", "img": "army/Maryam.png"}]}, {"id": "media", "namaKader": "KADER MEDIA", "bannerImg": "media.jpg", "drive": "https://drive.google.com/drive/folders/1K8_yXZrYTnayapoc3KR3mtS5kEYi4K8I", "directors": [{"no": 63, "jawatan": "CAPTAIN", "nama": "Noufal", "link": "", "img": "army/ropix_l.png"}, {"no": 64, "jawatan": "CAPTAIN", "nama": "Jauza", "link": "", "img": "army/Jauza.png"}], "ahli": [{"no": 65, "nama": "Huzaifah", "link": "https://www.tiktok.com/@tripleh_130515?_r=1&_t=ZS-9BDqSmhjBZd", "img": "army/Huzaifah.png"}, {"no": 66, "nama": "Firash", "link": "https://www.instagram.com/mhdfh_13?dlrf=bnV5a3F4a2k3OHpm", "img": "army/ropix_l.png"}, {"no": 67, "nama": "Baihaqi", "link": "https://www.tiktok.com/@haqqi.jpeg", "img": "army/Baihaqi.png"}, {"no": 68, "nama": "Anisa", "link": "", "img": "army/Anisa.png"}, {"no": 69, "nama": "Alisha", "link": "https://www.instagram.com/nslshaa?psln=MW1rYndreWg3Nzc5NQ%3D%3D&utm_source=qr", "img": "army/Alisha.png"}, {"no": 70, "nama": "Nadira", "link": "https://www.instagram.com/nhdira13?mdxt=djNyejJvbDhhZ3F0", "img": "army/Nadira.png"}, {"no": 71, "nama": "Hawa", "link": "", "img": "army/Hawa.png"}, {"no": 72, "nama": "Aisy", "link": "https://www.tiktok.com/@aisynaufal._", "img": "army/ropix_l.png"}]}, {"id": "programmer", "namaKader": "KADER PROGRAMMER", "bannerImg": "programmer.jpg", "drive": "https://drive.google.com/drive/folders/1fhOjP78zvk1UwF6fDf1uSICW-U94QjMj", "directors": [{"no": 74, "jawatan": "CAPTAIN", "nama": "Afiah", "link": "", "img": "army/Afiah.png"}], "ahli": [{"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.png"}, {"no": 75, "nama": "Arissa", "link": "https://www.tiktok.com/@alyarssaa", "img": "army/Arissa.png"}, {"no": 76, "nama": "Nafisah", "link": "", "img": "army/Nafisah.png"}]}, {"id": "game-programmer", "namaKader": "KADER GAME PROGRAMMER", "bannerImg": "game.jpg", "drive": "https://drive.google.com/drive/folders/1CxMMpc00JLgYHNV-WVwmVBkS0I0PCz4Y", "directors": [{"no": 4, "jawatan": "CAPTAIN", "nama": "MRIF", "link": "https://www.instagram.com/mrif_39/", "img": "army/MRIF.png"}], "ahli": [{"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.png"}, {"no": 77, "nama": "Raiff", "link": "https://www.instagram.com/racap.17?rpxt=bnluZzU3MXp4OXA0", "img": "army/Raiff.png"}, {"no": 78, "nama": "DANIAL WAFI", "link": "https://www.instagram.com/dnlwfi_?cplk=N3BoMjRlMnA3cDYx", "img": "army/DANIAL WAFI.png"}, {"no": 1, "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.png"}, {"no": 2, "nama": "Irfan", "link": "", "img": "army/Irfan.png"}, {"no": 79, "nama": "AMMAR AQIL", "link": "", "img": "army/AMMAR AQIL.png"}, {"no": 80, "nama": "Aidid", "link": "", "img": "army/Aidid.png"}]}, {"id": "creative-entrepreneur", "namaKader": "KADER CREATIVE ENTREPRENEUR", "bannerImg": "creative.jpg", "drive": "https://drive.google.com/drive/folders/1OSvJMxfCYQI9V0HU6GIbDzTTX9Ha1xsO", "directors": [{"no": 80, "jawatan": "CAPTAIN", "nama": "Aidid", "link": "", "img": "army/Aidid.png"}], "ahli": [{"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.png"}, {"no": 81, "nama": "Widad", "link": "", "img": "army/ropix_p.png"}]}, {"id": "roboticist", "namaKader": "KADER ROBOTICIST", "bannerImg": "robotic.jpg", "drive": "https://drive.google.com/drive/folders/138img0u8c1O3BBNPpCc7hH22uQvRCWzJ", "directors": [{"no": 82, "jawatan": "CAPTAIN", "nama": "Jazli", "link": "https://www.tiktok.com/@jazli116?_r=1&_t=ZS-9BFJa10eUQa", "img": "army/Jazli.png"}], "ahli": [{"no": 83, "nama": "Idham", "link": "", "img": "army/Idham.png"}, {"no": 84, "nama": "Najmi", "link": "", "img": "army/ropix_l.png"}, {"no": 85, "nama": "Ummar", "link": "", "img": "army/ropix_l.png"}, {"no": 86, "nama": "Hayyin", "link": "", "img": "army/Hayyin.png"}]}, {"id": "composer", "namaKader": "KADER COMPOSER", "bannerImg": "composer.jpg", "drive": "https://drive.google.com/drive/folders/1Zr802MrfTDLI6d3_fi6WVhH-gMaEoT61", "directors": [{"no": 2, "jawatan": "CAPTAIN", "nama": "Irfan", "link": "", "img": "army/Irfan.png"}], "ahli": [{"no": 87, "nama": "Akmal", "link": "", "img": "army/Akmal.png"}]}, {"id": "band-vocalist", "namaKader": "KADER BAND VOCALIST", "bannerImg": "vocal.jpg", "drive": "https://drive.google.com/drive/folders/1IXUooD-yJy4IfeyTFE2uDnI9GaH0aNpx", "directors": [{"no": 88, "jawatan": "CAPTAIN", "nama": "Musthaqim", "link": "https://www.instagram.com/musthqimmm?rpxt=Z3R1Nmp3cXU5ZHkw", "img": "army/Musthaqim.png"}], "ahli": [{"no": 89, "nama": "Anas", "link": "", "img": "army/Anas.png"}, {"no": 87, "nama": "Akmal", "link": "", "img": "army/Akmal.png"}, {"no": 90, "nama": "Rayyan", "link": "https://www.instagram.com/mrif_39/", "img": "army/ropix_l.png"}, {"no": 91, "nama": "Danish", "link": "", "img": "army/Danish.png"}, {"no": 92, "nama": "Qisth", "link": "", "img": "army/Qisth.png"}]}], "blur": true, "mesej": "Generasi pelapis 2027 telah pun mula digerakkan sejak Ogos 2026. Bermula dengan hanya beberapa orang penggerak pada tahun 2025, kini jumlah pelapis pemuda dan pemudi Briged Shabab An-Nawawi, SMKA Al-Irshad terus berkembang. Dibimbing oleh barisan senior unit media sekolah, mereka tampil memikul amanah menyambung legasi serta membawa projek baharu. Perjuangan dakwah menyampaikan Hadis 40 ini tidak akan terhenti ditelan zaman, kerana perjalanan masih panjang."}}
+  kader: {"banner": {"2027": "g2027.webp", "2026": "2g2026.webp", "2025": "g2025.webp", "2024": "g2024.webp"}, "guru": {"pengetua": {"jawatan": "PENGETUA", "nama": "USTAZ MOHD FAZLI BIN YUNUS", "img": "army/USTAZ MOHD FAZLI BIN YUNUS.png"}, "pkHem": {"jawatan": "PK HEM", "nama": "PUAN AZIZAH BINTI ISMAIL", "img": "army/PUAN AZIZAH BINTI ISMAIL.png"}, "gkpi": {"jawatan": "GURU KANAN PEN. ISLAM", "nama": "TN HAJI KHAIRUL ASFANI BIN NASIR", "img": "army/TN HAJI KHAIRUL ASFANI BIN NASIR.png"}, "setiausaha": [{"jawatan": "SETIAUSAHA HADIS 40", "nama": "TN HAJI MUHAMMAD FUAD BIN HUSIN", "img": "army/TN HAJI MUHAMMAD FUAD BIN HUSIN.png"}, {"jawatan": "TIMB. SETIAUSAHA 1 HADIS 40", "nama": "USTAZAH YUSNY BINTI HJ ZAKARIA", "img": "army/USTAZAH YUSNY BINTI HJ ZAKARIA.png"}, {"jawatan": "TIMB. SETIAUSAHA 2 HADIS 40", "nama": "USTAZAH SURAIDAA BINTI YUSOF", "img": "army/USTAZAH SURAIDAA BINTI YUSOF.png"}]}, "y2026": {"baris1": [{"no": 1, "jawatan": "BRIGED CHIEF", "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.webp"}, {"no": 2, "jawatan": "DEPUTY BRIGED CHIEF", "nama": "Irfan", "link": "", "img": "army/Irfan.webp"}], "baris2": [{"no": 3, "jawatan": "BRIGED COMMANDER", "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.webp"}, {"no": 4, "jawatan": "BRIGED COMMANDER", "nama": "MRIF", "link": "https://www.instagram.com/mrif_39/", "img": "army/MRIF.webp"}], "kaders": [{"id": "game-programmer", "namaKader": "KADER GAME PROGRAMMER", "bannerImg": "game.webp", "drive": "https://drive.google.com/drive/folders/1CxMMpc00JLgYHNV-WVwmVBkS0I0PCz4Y?usp=sharing", "directors": [{"no": 4, "jawatan": "CAPTAIN", "nama": "MRIF", "link": "https://www.instagram.com/mrif_39/", "img": "army/MRIF.webp"}], "ahli": [{"no": 76, "nama": "Raiff", "link": "https://www.instagram.com/racap.17?rpxt=bnluZzU3MXp4OXA0", "img": "army/Raiff.webp"}, {"no": 77, "nama": "Danial Wafi", "link": "https://www.instagram.com/dnlwfi_?cplk=N3BoMjRlMnA3cDYx", "img": "army/DANIAL WAFI.png"}, {"no": 1, "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.webp"}, {"no": 2, "nama": "Irfan", "link": "", "img": "army/Irfan.webp"}, {"no": 78, "nama": "Ammar Aqil", "link": "", "img": "army/AMMAR AQIL.png"}, {"no": 79, "nama": "Aidid", "link": "", "img": "army/Aidid.webp"}]}, {"id": "creative-entrepreneur", "namaKader": "KADER CREATIVE ENTREPRENEUR", "bannerImg": "creative.webp", "drive": "https://drive.google.com/drive/folders/1OSvJMxfCYQI9V0HU6GIbDzTTX9Ha1xsO?usp=sharing", "directors": [{"no": 18, "jawatan": "CAPTAIN", "nama": "Aidid", "link": "", "img": "army/Aidid.webp"}], "ahli": [{"no": 19, "nama": "Widad", "link": "", "img": "army/ropix_l.webp"}, {"no": 20, "nama": "Ai-ris", "link": "https://youtube.com/@paixy_draws?si=AEiNKP9X60yTGXxC", "img": "army/Ai-ris.webp"}, {"no": 21, "nama": "Ayuni", "link": "", "img": "army/Ayuni.webp"}, {"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.webp"}, {"no": 1, "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.webp"}, {"no": 17, "nama": "Ammar Aqil", "link": "", "img": "army/AMMAR AQIL.png"}]}, {"id": "roboticist", "namaKader": "KADER ROBOTICIST", "bannerImg": "robotic.webp", "drive": "https://drive.google.com/drive/folders/138img0u8c1O3BBNPpCc7hH22uQvRCWzJ?usp=sharing", "directors": [{"no": 81, "jawatan": "CAPTAIN", "nama": "Jazli", "link": "https://www.tiktok.com/@jazli116?_r=1&_t=ZS-9BFJa10eUQa", "img": "army/Jazli.webp"}], "ahli": [{"no": 82, "nama": "Idham", "link": "", "img": "army/Idham.webp"}, {"no": 83, "nama": "Najmi", "link": "", "img": "army/ropix_l.webp"}, {"no": 84, "nama": "Ummar", "link": "", "img": "army/ropix_l.webp"}, {"no": 85, "nama": "Hayyin", "link": "", "img": "army/Hayyin.webp"}]}, {"id": "graphic-designer", "namaKader": "KADER GRAPHIC DESIGNER", "bannerImg": "visual.webp", "drive": "https://drive.google.com/drive/folders/1ZOG7otF15YZBtSunuV1Gl13xyxADL7cp?usp=sharing", "directors": [{"no": 5, "jawatan": "CAPTAIN", "nama": "Aqilah", "link": "", "img": "army/Aqilah.webp"}, {"no": 6, "jawatan": "CAPTAIN", "nama": "Balqis", "link": "", "img": "army/ropix_p.webp"}, {"no": 7, "jawatan": "CAPTAIN", "nama": "Noufal", "link": "", "img": "army/ropix_l.webp"}, {"no": 8, "jawatan": "CAPTAIN", "nama": "Jauza", "link": "", "img": "army/Jauza.webp"}], "ahli": [{"no": 9, "nama": "Huzaifah", "link": "https://www.tiktok.com/@tripleh_130515?_r=1&_t=ZS-9BDqSmhjBZd", "img": "army/Huzaifah.webp"}, {"no": 10, "nama": "Firash", "link": "", "img": "army/ropix_l.webp"}, {"no": 11, "nama": "Baihaqi", "link": "https://www.tiktok.com/@haqqi.jpeg", "img": "army/Baihaqi.webp"}, {"no": 12, "nama": "Anisa", "link": "", "img": "army/Anisa.webp"}, {"no": 13, "nama": "Alisha", "link": "https://www.instagram.com/nslshaa?psln=MW1rYndreWg3Nzc5NQ%3D%3D&utm_source=qr", "img": "army/Alisha.webp"}, {"no": 14, "nama": "Nadira", "link": "https://www.instagram.com/nhdira13?mdxt=djNyejJvbDhhZ3F0", "img": "army/Nadira.webp"}, {"no": 15, "nama": "Luqman", "link": "", "img": "army/Luqman.webp"}, {"no": 16, "nama": "Alisa", "link": "https://www.instagram.com/naito_ningyo?cplk=MTN4djR1Y2V0MjZlcQ==", "img": "army/Alisa.webp"}, {"no": 1, "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.webp"}, {"no": 2, "nama": "Irfan", "link": "", "img": "army/Irfan.webp"}, {"no": 17, "nama": "Ammar Aqil", "link": "", "img": "army/AMMAR AQIL.png"}, {"no": 18, "nama": "Aidid", "link": "", "img": "army/Aidid.webp"}]}, {"id": "programmer", "namaKader": "KADER PROGRAMMER", "bannerImg": "programmer.webp", "drive": "https://drive.google.com/drive/folders/1fhOjP78zvk1UwF6fDf1uSICW-U94QjMj?usp=sharing", "directors": [{"no": 73, "jawatan": "CAPTAIN", "nama": "Afiah", "link": "", "img": "army/Afiah.webp"}], "ahli": [{"no": 74, "nama": "Arissa", "link": "https://www.tiktok.com/@alyarssaa", "img": "army/Arissa.webp"}, {"no": 75, "nama": "Nafisah", "link": "", "img": "army/Nafisah.webp"}, {"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.webp"}]}, {"id": "composer", "namaKader": "KADER COMPOSER", "bannerImg": "composer.webp", "drive": "https://drive.google.com/drive/folders/1Zr802MrfTDLI6d3_fi6WVhH-gMaEoT61?usp=sharing", "directors": [{"no": 2, "jawatan": "CAPTAIN", "nama": "Irfan", "link": "", "img": "army/Irfan.webp"}], "ahli": [{"no": 86, "nama": "Akmal", "link": "", "img": "army/Akmal.webp"}]}, {"id": "band-vocalist", "namaKader": "KADER BAND VOCALIST", "bannerImg": "vocal.webp", "drive": "https://drive.google.com/drive/folders/1IXUooD-yJy4IfeyTFE2uDnI9GaH0aNpx?usp=sharing", "directors": [{"no": 87, "jawatan": "CAPTAIN", "nama": "Musthaqim", "link": "https://www.instagram.com/musthqimmm?rpxt=Z3R1Nmp3cXU5ZHkw", "img": "army/Musthaqim.webp"}], "ahli": [{"no": 88, "nama": "Anas", "link": "", "img": "army/Anas.webp"}, {"no": 86, "nama": "Akmal", "link": "", "img": "army/Akmal.webp"}, {"no": 89, "nama": "Rayyan", "link": "https://www.instagram.com/mrif_39/", "img": "army/ropix_l.webp"}, {"no": 90, "nama": "Danish", "link": "", "img": "army/Danish.webp"}, {"no": 91, "nama": "Qisth", "link": "", "img": "army/Qisth.webp"}]}]}, "y2025": {"baris1": [{"no": 1, "jawatan": "BRIGED CHIEF", "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.webp"}, {"no": 2, "jawatan": "DEPUTY BRIGED CHIEF", "nama": "Salsabila", "link": "", "img": "army/ropix_p.webp"}], "kaderRoblox": {"namaKader": "KADER ROBLOX", "ahli": [{"no": 1, "jawatan": "KADER ROBLOX", "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.webp"}, {"no": 3, "jawatan": "KADER ROBLOX", "nama": "Irfan", "link": "", "img": "army/Irfan.webp"}]}, "kaderPixel": {"namaKader": "KADER PIXEL", "ahli": [{"no": 4, "jawatan": "KADER PIXEL", "nama": "Ammar", "link": "", "img": "army/ropix_l.webp"}, {"no": 5, "jawatan": "KADER PIXEL", "nama": "Aidid", "link": "", "img": "army/Aidid.webp"}]}, "kaderKhas": {"namaKader": "KADER KHAS", "ahli": [{"no": 6, "jawatan": "KADER KHAS", "nama": "Muaz", "link": "", "img": "army/ropix_l.webp"}, {"no": 7, "jawatan": "KADER KHAS", "nama": "Adib", "link": "", "img": "army/ropix_l.webp"}, {"no": 8, "jawatan": "KADER KHAS", "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.webp"}]}}, "y2024": {"baris1": [{"no": 1, "jawatan": "BRIGED CHIEF", "nama": "Muadz", "link": "", "img": "army/ropix_l.webp"}, {"no": 2, "jawatan": "DEPUTY BRIGED CHIEF", "nama": "Syamimi", "link": "", "img": "army/ropix_p.webp"}], "ahliNamaPentas": ["Alya", "Aisyah", "Syamimi", "Aleesya", "Solahuddin", "Hameeza", "Hidayah", "Hanis", "Azwalieza", "Fareeha", "Izzati", "Nisa", "Aufa", "Nurhana", "Maisarah", "Qaisara", "Nizar", "Aneesah", "Auna", "Faris", "Balqis", "Afif", "Asma", "Athirah", "Nasuha", "Irfan", "Mursyida", "Auni", "Audadi", "Iffah", "Nabihah", "Insyirah", "Izzati", "Wardah", "Syazwani", "Sofea", "Nurain", "Qistina", "Aina", "Najihah", "Arif", "Afiq", "Muadz"]}, "y2027": {"baris1": [{"no": 1, "jawatan": "BRIGED CHIEF", "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.webp"}, {"no": 2, "jawatan": "DEPUTY BRIGED CHIEF", "nama": "Irfan", "link": "", "img": "army/Irfan.webp"}], "baris2": [{"no": 3, "jawatan": "PROJECT DIRECTOR", "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.webp"}, {"no": 4, "jawatan": "PROJECT DIRECTOR", "nama": "MRIF", "link": "https://www.instagram.com/mrif_39/", "img": "army/MRIF.webp"}], "kaders": [{"id": "content", "namaKader": "KADER CONTENT", "bannerImg": "content.webp", "drive": "https://drive.google.com/drive/folders/1tpMEzfx7LABqZ3c0v6-WMMQA7oa5Acm4", "directors": [{"no": 5, "jawatan": "CAPTAIN", "nama": "Anna", "link": "https://www.tiktok.com/@anna.althafunnisa35?_r=1&_t=ZS-9BFY4rquFjI", "img": "army/Anna.webp"}, {"no": 6, "jawatan": "CAPTAIN", "nama": "Rabiyya", "link": "", "img": "army/Rabiyya.webp"}], "ahli": [{"no": 7, "nama": "Daniyal", "link": "https://www.instagram.com/dnyl.niyal?vrfl=MTNzeXZrMGJxbGNpaA%3D%3D&utm_source=qr", "img": "army/Daniyal.webp"}, {"no": 8, "nama": "Rahman", "link": "", "img": "army/ropix_l.webp"}, {"no": 9, "nama": "Adhwaa'", "link": "", "img": "army/Adhwaa’.webp"}, {"no": 10, "nama": "Fateehah", "link": "", "img": "army/Fateehah.webp"}, {"no": 11, "nama": "Khayla", "link": "", "img": "army/Khayla.webp"}, {"no": 12, "nama": "Tuah", "link": "https://www.instagram.com/luckytuahcol?obrf=dnNkeXBxc3R4Nmtr", "img": "army/ropix_l.webp"}, {"no": 13, "nama": "Irdina", "link": "", "img": "army/ropix_p.webp"}, {"no": 14, "nama": "Aufa", "link": "https://www.instagram.com/avvyyfq/", "img": "army/ropix_p.webp"}, {"no": 15, "nama": "Danial", "link": "", "img": "army/ropix_l.webp"}, {"no": 16, "nama": "Rabiyya", "link": "", "img": "army/Rabiyya.webp"}, {"no": 17, "nama": "Hafizuddin", "link": "", "img": "army/Hafizuddin.webp"}, {"no": 18, "nama": "Ainul", "link": "", "img": "army/Ainul.webp"}, {"no": 19, "nama": "Firash", "link": "https://www.instagram.com/mhdfh_13?dlrf=bnV5a3F4a2k3OHpm", "img": "army/ropix_l.webp"}, {"no": 20, "nama": "Syahfizrie", "link": "https://www.instagram.com/timahkeren?mdxt=MTBkaWxxNDBkMDNkMQ==", "img": "army/Syahfizrie.webp"}, {"no": 21, "nama": "Fatimah", "link": "https://www.instagram.com/timahkeren?mdxt=MTBkaWxxNDBkMDNkMQ==", "img": "army/Fatimah.webp"}, {"no": 22, "nama": "Sarah", "link": "", "img": "army/ropix_p.webp"}, {"no": 23, "nama": "Ammar", "link": "", "img": "army/ropix_l.webp"}, {"no": 24, "nama": "Siti", "link": "", "img": "army/ropix_p.webp"}, {"no": 25, "nama": "Amani", "link": "https://www.instagram.com/ainnnhsna", "img": "army/ropix_p.webp"}, {"no": 26, "nama": "Ain", "link": "https://www.instagram.com/ainnnhsna", "img": "army/Ain.webp"}, {"no": 27, "nama": "Asfa", "link": "", "img": "army/ropix_p.webp"}, {"no": 28, "nama": "Ariana", "link": "", "img": "army/ropix_p.webp"}, {"no": 29, "nama": "Qaireen", "link": "", "img": "army/Qaireen.webp"}]}, {"id": "visual", "namaKader": "KADER VISUAL", "bannerImg": "visual.webp", "drive": "https://drive.google.com/drive/folders/1ZOG7otF15YZBtSunuV1Gl13xyxADL7cp", "directors": [{"no": 30, "jawatan": "CAPTAIN", "nama": "Aqilah", "link": "", "img": "army/Aqilah.webp"}, {"no": 31, "jawatan": "CAPTAIN", "nama": "Balqis", "link": "", "img": "army/ropix_p.webp"}], "ahli": [{"no": 32, "nama": "Firdaus", "link": "", "img": "army/ropix_l.webp"}, {"no": 33, "nama": "Luqman", "link": "", "img": "army/Luqman.webp"}, {"no": 34, "nama": "Ayyash", "link": "", "img": "army/Ayyash.webp"}, {"no": 35, "nama": "Naqib", "link": "", "img": "army/ropix_l.webp"}, {"no": 36, "nama": "Musa", "link": "", "img": "army/ropix_l.webp"}, {"no": 37, "nama": "Afiq", "link": "", "img": "army/Afiq.webp"}, {"no": 38, "nama": "Haikal", "link": "", "img": "army/Haikal.webp"}, {"no": 39, "nama": "Najwan", "link": "", "img": "army/ropix_l.webp"}, {"no": 40, "nama": "Faqeeha", "link": "", "img": "army/Faqeeha.webp"}, {"no": 41, "nama": "Dinie", "link": "https://www.instagram.com/niekuy0?psln=d3AxbGtxdjV0eXlw", "img": "army/Dinie.webp"}, {"no": 42, "nama": "Qasrina", "link": "", "img": "army/Qasrina.webp"}, {"no": 43, "nama": "Atiya", "link": "", "img": "army/ropix_p.webp"}, {"no": 44, "nama": "Dhia", "link": "https://www.tiktok.com/@ni.dhia.kan", "img": "army/Dhia.webp"}, {"no": 45, "nama": "Imtiyaz", "link": "https://www.instagram.com/visualairis?xtok=azRuOGtuZmJsZDNl", "img": "army/ropix_p.webp"}, {"no": 46, "nama": "Ai-ris", "link": "https://youtube.com/@paixy_draws?si=AEiNKP9X60yTGXxC", "img": "army/Ai-ris.webp"}, {"no": 47, "nama": "Rania", "link": "https://www.tiktok.com/@eugle.jjj_xo?_r=1&_t=ZS-9BCyaWr4ENR", "img": "army/Rania.webp"}, {"no": 48, "nama": "Ayuni", "link": "", "img": "army/Ayuni.webp"}, {"no": 49, "nama": "Elena", "link": "", "img": "army/Elena.webp"}, {"no": 50, "nama": "Alisa", "link": "https://www.instagram.com/naito_ningyo?cplk=MTN4djR1Y2V0MjZlcQ==", "img": "army/Alisa.webp"}, {"no": 51, "nama": "Dina", "link": "", "img": "army/ropix_p.webp"}, {"no": 52, "nama": "Muhaimin", "link": "", "img": "army/Muhaimin.webp"}, {"no": 53, "nama": "Naufal", "link": "https://www.tiktok.com/@aisynaufal._", "img": "army/ropix_l.webp"}, {"no": 54, "nama": "Hariz", "link": "", "img": "army/Hariz.webp"}, {"no": 55, "nama": "Faqehah", "link": "", "img": "army/Faqeeha (2).png"}, {"no": 56, "nama": "Amni", "link": "https://www.tiktok.com/@skyiez92?_r=1&_t=ZS-9BDbWla0oYm", "img": "army/Amni.webp"}, {"no": 57, "nama": "Fateh", "link": "", "img": "army/Fateh.webp"}, {"no": 58, "nama": "Abqarie", "link": "", "img": "army/ropix_l.webp"}, {"no": 59, "nama": "Chinta", "link": "", "img": "army/Chinta.webp"}, {"no": 60, "nama": "Aleesya", "link": "", "img": "army/Aleesya.webp"}, {"no": 61, "nama": "Ardini", "link": "https://www.instagram.com/din1eez?exln=MWUzZWhpOGUyNjcxcA==", "img": "army/ropix_p.webp"}, {"no": 62, "nama": "Maryam", "link": "https://www.instagram.com/mrymzhara_", "img": "army/Maryam.webp"}]}, {"id": "media", "namaKader": "KADER MEDIA", "bannerImg": "media.webp", "drive": "https://drive.google.com/drive/folders/1K8_yXZrYTnayapoc3KR3mtS5kEYi4K8I", "directors": [{"no": 63, "jawatan": "CAPTAIN", "nama": "Noufal", "link": "", "img": "army/ropix_l.webp"}, {"no": 64, "jawatan": "CAPTAIN", "nama": "Jauza", "link": "", "img": "army/Jauza.webp"}], "ahli": [{"no": 65, "nama": "Huzaifah", "link": "https://www.tiktok.com/@tripleh_130515?_r=1&_t=ZS-9BDqSmhjBZd", "img": "army/Huzaifah.webp"}, {"no": 66, "nama": "Firash", "link": "https://www.instagram.com/mhdfh_13?dlrf=bnV5a3F4a2k3OHpm", "img": "army/ropix_l.webp"}, {"no": 67, "nama": "Baihaqi", "link": "https://www.tiktok.com/@haqqi.jpeg", "img": "army/Baihaqi.webp"}, {"no": 68, "nama": "Anisa", "link": "", "img": "army/Anisa.webp"}, {"no": 69, "nama": "Alisha", "link": "https://www.instagram.com/nslshaa?psln=MW1rYndreWg3Nzc5NQ%3D%3D&utm_source=qr", "img": "army/Alisha.webp"}, {"no": 70, "nama": "Nadira", "link": "https://www.instagram.com/nhdira13?mdxt=djNyejJvbDhhZ3F0", "img": "army/Nadira.webp"}, {"no": 71, "nama": "Hawa", "link": "", "img": "army/Hawa.webp"}, {"no": 72, "nama": "Aisy", "link": "https://www.tiktok.com/@aisynaufal._", "img": "army/ropix_l.webp"}]}, {"id": "programmer", "namaKader": "KADER PROGRAMMER", "bannerImg": "programmer.webp", "drive": "https://drive.google.com/drive/folders/1fhOjP78zvk1UwF6fDf1uSICW-U94QjMj", "directors": [{"no": 74, "jawatan": "CAPTAIN", "nama": "Afiah", "link": "", "img": "army/Afiah.webp"}], "ahli": [{"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.webp"}, {"no": 75, "nama": "Arissa", "link": "https://www.tiktok.com/@alyarssaa", "img": "army/Arissa.webp"}, {"no": 76, "nama": "Nafisah", "link": "", "img": "army/Nafisah.webp"}]}, {"id": "game-programmer", "namaKader": "KADER GAME PROGRAMMER", "bannerImg": "game.webp", "drive": "https://drive.google.com/drive/folders/1CxMMpc00JLgYHNV-WVwmVBkS0I0PCz4Y", "directors": [{"no": 4, "jawatan": "CAPTAIN", "nama": "MRIF", "link": "https://www.instagram.com/mrif_39/", "img": "army/MRIF.webp"}], "ahli": [{"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.webp"}, {"no": 77, "nama": "Raiff", "link": "https://www.instagram.com/racap.17?rpxt=bnluZzU3MXp4OXA0", "img": "army/Raiff.webp"}, {"no": 78, "nama": "DANIAL WAFI", "link": "https://www.instagram.com/dnlwfi_?cplk=N3BoMjRlMnA3cDYx", "img": "army/DANIAL WAFI.png"}, {"no": 1, "nama": "Mifzal", "link": "https://www.instagram.com/realmfzl/", "img": "army/Mifzal.webp"}, {"no": 2, "nama": "Irfan", "link": "", "img": "army/Irfan.webp"}, {"no": 79, "nama": "AMMAR AQIL", "link": "", "img": "army/AMMAR AQIL.png"}, {"no": 80, "nama": "Aidid", "link": "", "img": "army/Aidid.webp"}]}, {"id": "creative-entrepreneur", "namaKader": "KADER CREATIVE ENTREPRENEUR", "bannerImg": "creative.webp", "drive": "https://drive.google.com/drive/folders/1OSvJMxfCYQI9V0HU6GIbDzTTX9Ha1xsO", "directors": [{"no": 80, "jawatan": "CAPTAIN", "nama": "Aidid", "link": "", "img": "army/Aidid.webp"}], "ahli": [{"no": 3, "nama": "Sulaiman", "link": "https://www.instagram.com/muhammadsulaiman_4/", "img": "army/Sulaiman.webp"}, {"no": 81, "nama": "Widad", "link": "", "img": "army/ropix_p.webp"}]}, {"id": "roboticist", "namaKader": "KADER ROBOTICIST", "bannerImg": "robotic.webp", "drive": "https://drive.google.com/drive/folders/138img0u8c1O3BBNPpCc7hH22uQvRCWzJ", "directors": [{"no": 82, "jawatan": "CAPTAIN", "nama": "Jazli", "link": "https://www.tiktok.com/@jazli116?_r=1&_t=ZS-9BFJa10eUQa", "img": "army/Jazli.webp"}], "ahli": [{"no": 83, "nama": "Idham", "link": "", "img": "army/Idham.webp"}, {"no": 84, "nama": "Najmi", "link": "", "img": "army/ropix_l.webp"}, {"no": 85, "nama": "Ummar", "link": "", "img": "army/ropix_l.webp"}, {"no": 86, "nama": "Hayyin", "link": "", "img": "army/Hayyin.webp"}]}, {"id": "composer", "namaKader": "KADER COMPOSER", "bannerImg": "composer.webp", "drive": "https://drive.google.com/drive/folders/1Zr802MrfTDLI6d3_fi6WVhH-gMaEoT61", "directors": [{"no": 2, "jawatan": "CAPTAIN", "nama": "Irfan", "link": "", "img": "army/Irfan.webp"}], "ahli": [{"no": 87, "nama": "Akmal", "link": "", "img": "army/Akmal.webp"}]}, {"id": "band-vocalist", "namaKader": "KADER BAND VOCALIST", "bannerImg": "vocal.webp", "drive": "https://drive.google.com/drive/folders/1IXUooD-yJy4IfeyTFE2uDnI9GaH0aNpx", "directors": [{"no": 88, "jawatan": "CAPTAIN", "nama": "Musthaqim", "link": "https://www.instagram.com/musthqimmm?rpxt=Z3R1Nmp3cXU5ZHkw", "img": "army/Musthaqim.webp"}], "ahli": [{"no": 89, "nama": "Anas", "link": "", "img": "army/Anas.webp"}, {"no": 87, "nama": "Akmal", "link": "", "img": "army/Akmal.webp"}, {"no": 90, "nama": "Rayyan", "link": "https://www.instagram.com/mrif_39/", "img": "army/ropix_l.webp"}, {"no": 91, "nama": "Danish", "link": "", "img": "army/Danish.webp"}, {"no": 92, "nama": "Qisth", "link": "", "img": "army/Qisth.webp"}]}], "blur": true, "mesej": "Generasi pelapis 2027 telah pun mula digerakkan sejak Ogos 2026. Bermula dengan hanya beberapa orang penggerak pada tahun 2025, kini jumlah pelapis pemuda dan pemudi Briged Shabab An-Nawawi, SMKA Al-Irshad terus berkembang. Dibimbing oleh barisan senior unit media sekolah, mereka tampil memikul amanah menyambung legasi serta membawa projek baharu. Perjuangan dakwah menyampaikan Hadis 40 ini tidak akan terhenti ditelan zaman, kerana perjalanan masih panjang."}}
 };
 
 const MAP = { w:1996, h:670, d:"M71.7 105.9L73.5 101.2L76.0 85.9L77.5 82.8L81.4 81.4L86.1 81.7L94.3 94.9L116.2 103.3L122.7 105.2L131.3 101.9L135.3 104.0L138.9 107.4L141.4 116.8L147.1 125.5L158.6 124.3L162.6 125.5L165.1 125.7L167.2 133.3L168.3 146.7L167.2 154.3L159.0 165.4L157.9 172.9L170.8 186.3L174.4 185.7L178.7 183.1L182.7 176.7L185.2 171.0L215.0 159.2L217.2 159.9L219.7 162.3L224.3 170.5L227.2 172.2L231.5 172.9L238.3 172.0L246.6 167.5L251.3 158.8L253.1 152.1L264.9 140.3L266.4 131.6L269.6 125.8L286.8 129.7L293.3 132.8L312.7 163.7L338.2 185.6L349.0 193.5L357.2 197.5L368.7 209.2L378.8 223.8L400.7 264.9L404.3 283.1L406.1 310.7L401.0 352.4L395.3 373.1L396.4 382.9L404.3 397.9L402.1 412.1L403.5 423.9L402.8 456.7L407.5 466.3L412.9 472.5L440.2 492.0L442.3 499.1L455.6 523.9L480.8 577.7L487.6 601.9L486.9 608.5L484.0 611.1L476.4 613.5L470.3 608.8L468.2 605.3L468.9 601.2L466.4 597.0L460.6 592.1L457.0 587.6L458.1 594.9L458.1 604.5L450.6 605.3L440.5 602.4L428.3 605.0L414.0 616.8L407.1 617.1L401.7 607.1L398.9 600.3L394.6 595.4L349.0 570.8L332.1 564.4L314.1 545.8L273.9 525.1L248.4 505.0L237.6 492.7L211.4 481.6L200.3 468.7L194.5 466.1L189.1 461.4L194.9 448.9L192.4 435.7L189.5 424.6L171.2 402.7L162.2 387.5L144.6 372.4L137.8 363.5L131.3 353.4L135.3 349.8L139.2 347.7L135.6 340.2L125.9 327.4L121.3 312.6L121.3 284.9L107.3 245.6L95.0 191.3L97.2 172.2L94.0 151.5L86.1 131.7L75.7 117.5L71.7 105.9ZM1813.1 332.9L1809.2 332.8L1800.5 330.7L1783.3 320.1L1765.7 316.3L1740.2 315.9L1725.5 314.5L1719.7 316.1L1714.7 316.1L1711.1 314.0L1707.2 313.0L1697.5 319.2L1687.8 314.5L1679.5 313.7L1669.5 314.5L1658.0 321.0L1645.8 315.1L1642.2 315.2L1639.7 316.6L1634.3 324.6L1623.9 330.7L1618.8 341.8L1615.6 352.4L1613.1 356.0L1612.0 376.7L1610.6 386.6L1613.1 399.8L1612.7 405.3L1607.3 415.8L1605.2 429.1L1605.9 432.8L1605.5 437.1L1601.6 446.5L1594.4 449.1L1587.2 450.7L1580.8 447.4L1575.0 452.6L1567.8 460.5L1565.0 465.9L1565.0 471.0L1565.7 474.3L1564.2 477.7L1563.9 481.4L1564.2 486.6L1569.3 488.8L1574.3 493.4L1573.9 497.7L1571.4 500.6L1553.1 514.9L1539.8 523.0L1534.8 525.0L1533.0 528.8L1532.3 533.8L1535.1 544.9L1537.7 548.0L1539.5 552.0L1536.2 560.5L1526.5 564.9L1524.7 568.2L1522.2 581.4L1519.3 588.3L1512.9 598.6L1510.7 603.2L1507.5 604.8L1494.9 599.9L1483.8 602.9L1469.1 604.8L1456.5 604.5L1446.8 606.5L1440.0 611.9L1432.4 618.9L1424.5 623.9L1418.8 626.3L1408.0 619.2L1402.3 619.7L1392.6 617.3L1363.5 606.9L1357.4 606.5L1355.6 604.3L1356.7 600.3L1355.6 595.3L1350.9 593.3L1304.6 594.0L1282.0 602.0L1275.5 606.0L1273.7 616.3L1264.7 635.7L1249.3 638.7L1237.8 648.9L1233.8 650.1L1226.3 648.6L1217.7 647.7L1211.6 650.6L1205.5 650.5L1185.7 645.6L1167.4 644.9L1150.9 648.2L1118.9 662.3L1107.8 663.8L1103.5 661.7L1097.4 656.0L1088.8 650.5L1069.0 631.0L1061.5 626.5L1056.4 621.8L1051.8 616.3L1045.3 610.2L1039.2 606.0L1030.9 597.7L1023.0 588.5L1021.2 572.3L1014.8 569.4L1012.3 565.2L1011.5 560.4L1020.5 547.2L1027.0 561.1L1029.5 564.2L1043.9 573.6L1055.7 578.2L1068.6 580.2L1081.9 580.5L1087.3 579.8L1092.3 578.1L1097.4 580.0L1124.7 595.3L1135.4 597.9L1146.6 596.8L1151.2 598.2L1167.0 609.8L1171.7 611.2L1179.6 610.4L1163.1 601.3L1160.2 594.2L1161.7 586.6L1168.1 581.5L1172.4 576.2L1174.2 559.8L1177.1 551.5L1182.1 543.5L1183.9 536.1L1178.2 530.2L1176.7 520.3L1177.8 512.1L1181.4 506.4L1192.2 513.5L1197.6 513.1L1201.5 511.9L1202.2 507.6L1201.2 500.1L1201.5 486.6L1208.3 475.6L1219.5 468.2L1229.9 464.5L1268.7 458.5L1330.4 443.0L1348.8 436.9L1355.6 433.8L1361.0 429.5L1370.7 415.6L1388.6 393.9L1401.2 376.0L1427.8 349.8L1449.0 325.7L1451.8 321.1L1455.1 308.0L1455.4 301.7L1454.7 295.5L1457.6 292.5L1463.0 290.8L1465.8 293.5L1473.4 297.4L1478.8 302.2L1485.2 314.5L1485.2 319.6L1488.8 323.7L1498.2 324.4L1501.0 329.7L1507.5 338.7L1513.6 345.1L1517.2 347.5L1521.9 346.3L1528.7 340.4L1533.7 333.1L1537.3 323.4L1534.4 321.8L1539.5 314.5L1540.2 310.7L1535.1 303.6L1532.3 283.3L1530.8 278.3L1534.8 274.4L1550.6 264.4L1558.8 260.0L1559.2 267.8L1558.8 280.9L1561.4 291.8L1566.7 310.9L1573.2 313.5L1580.8 315.2L1585.1 314.7L1587.9 313.5L1588.7 311.9L1584.0 304.3L1582.9 286.6L1579.0 275.0L1572.9 263.3L1570.3 260.0L1593.7 256.7L1608.0 245.1L1611.6 240.6L1614.2 230.5L1602.7 224.6L1598.4 217.0L1598.0 208.7L1611.6 193.4L1616.3 189.7L1618.5 195.1L1624.6 196.5L1630.0 196.7L1635.7 196.3L1643.6 188.7L1647.9 177.6L1661.9 161.8L1666.9 149.6L1669.8 137.1L1705.4 97.9L1709.7 91.6L1730.9 52.2L1733.4 51.0L1739.1 54.8L1740.6 67.3L1739.8 72.7L1736.6 80.9L1734.5 89.4L1737.0 89.2L1747.0 84.0L1757.4 70.3L1763.6 58.3L1768.6 53.1L1778.6 56.1L1780.8 58.1L1780.1 66.6L1781.1 71.7L1785.1 82.3L1793.7 88.7L1805.6 92.9L1816.7 98.8L1820.3 102.6L1822.4 107.3L1825.0 115.1L1825.0 122.7L1817.1 130.4L1820.7 142.7L1819.9 149.8L1817.4 155.9L1805.6 161.6L1837.2 155.9L1845.1 152.8L1855.8 144.6L1861.6 151.7L1867.0 163.7L1862.7 166.8L1849.0 171.3L1848.3 173.1L1853.0 179.3L1858.7 178.8L1869.9 174.6L1880.3 168.0L1885.3 168.0L1890.7 169.4L1901.1 173.6L1906.8 177.1L1911.5 181.6L1914.7 190.8L1926.6 194.1L1951.0 207.1L1955.3 208.3L1960.4 208.5L1972.9 206.9L1977.6 208.7L1980.8 213.3L1981.9 219.2L1981.5 225.5L1980.1 230.2L1977.2 234.0L1968.3 239.9L1946.3 247.7L1922.6 253.6L1910.4 253.3L1893.6 248.2L1887.4 248.8L1881.3 251.2L1873.8 267.2L1887.8 283.1L1911.5 299.8L1914.7 304.0L1914.0 309.0L1910.1 312.1L1905.0 313.7L1891.8 316.5L1878.1 318.4L1856.2 325.0L1845.1 323.7L1829.6 316.3L1825.3 315.8L1820.7 319.6L1816.0 330.0L1813.1 332.9ZM481.1 476.9L476.1 477.9L473.6 477.2L471.8 473.2L475.7 464.4L477.2 462.8L481.1 472.5L481.1 476.9ZM88.6 220.5L86.1 223.2L78.9 221.7L80.3 205.4L84.3 203.3L90.7 206.2L93.6 209.0L88.6 220.5ZM44.8 103.4L51.6 114.2L48.4 118.9L46.6 120.3L42.3 118.7L38.3 122.9L34.4 123.6L30.4 116.3L25.7 113.3L24.7 108.1L31.1 107.3L34.7 109.0L41.9 105.5L44.8 103.4ZM1770.0 33.1L1763.9 38.5L1761.8 32.1L1762.1 23.9L1770.4 16.3L1782.2 14.9L1783.7 21.0L1782.2 27.9L1779.7 31.6L1770.0 33.1ZM191.3 451.2L186.3 452.9L187.0 446.7L190.6 443.2L192.4 445.3L191.3 451.2ZM1196.1 508.5L1192.9 509.8L1188.2 506.2L1187.2 475.8L1190.4 473.2L1192.5 473.6L1195.1 479.1L1194.7 492.3L1195.1 504.1L1196.1 508.5ZM1844.0 331.4L1830.0 333.3L1820.3 333.1L1822.1 329.7L1821.7 325.0L1826.4 323.7L1831.8 324.8L1844.0 331.4Z", pins:{"attaqwa":[103.33,197.89],"ipg":[106.91,214.61],"adtec":[105.2,199.1],"fahim":[106.13,197.96],"mufti":[79.83,105.45],"smka":[109,210.22],"pis":[450.72,599.48]} };
@@ -3084,7 +3175,7 @@ function makeImgHtml(item, alt, eager){
   const loadAttr = eager ? 'fetchpriority="high"' : 'loading="lazy"';
   if(typeof item === 'object' && item && item.local){
     const f1 = esc(item.localPng || item.local);
-    const f2 = esc(item.fallback || '1hero.jpg');
+    const f2 = esc(item.fallback || '1hero.webp');
     return `<img src="${esc(item.local)}" alt="${esc(alt)}" ${loadAttr} decoding="async" onerror="if(!this._s1){this._s1=1;this.src='${f1}'}else if(!this._s2){this._s2=1;this.src='${f2}'}else{this.remove()}">`;
   }
   const src = typeof item === 'string' ? item : (item && item.img ? item.img : '');
@@ -3129,9 +3220,9 @@ const hdr=$('#hdr');
     if(tick)return;tick=true;
     requestAnimationFrame(()=>{
       const y=scrollY,d=y-last;
-      if(y<80)hdr.classList.remove('hide');
-      else if(d>6)hdr.classList.add('hide');
-      else if(d<-6)hdr.classList.remove('hide');
+      if(y<80){hdr.classList.remove('hide');document.body.classList.remove('hdr-hidden')}
+      else if(d>6){hdr.classList.add('hide');document.body.classList.add('hdr-hidden')}
+      else if(d<-6){hdr.classList.remove('hide');document.body.classList.remove('hdr-hidden')}
       last=y;tick=false;
     });
   },{passive:true});
@@ -3180,7 +3271,7 @@ function openTokohModal(){
   w.innerHTML = `
     <div class="tk-left">
       <div class="tk-plaque">
-        <img class="tk-khat-main" src="hadis40dihatiku_khat_gold.png" alt="Khat Hadis 40 Imam Nawawi Di Hatiku" onerror="this.src='hadis40dihatiku_khat.PNG'">
+        <img class="tk-khat-main" src="hadis40dihatiku_khat_gold.webp" alt="Khat Hadis 40 Imam Nawawi Di Hatiku" onerror="this.src='hadis40dihatiku_khat.webp'">
         <div class="tk-rehal-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24">
             <path d="M2.5 6.5 12 10l9.5-3.5v8.5L12 18.5 2.5 15z"/>
@@ -3502,7 +3593,7 @@ function gallery(imgs, driveUrl, opts){
 
   const buildGal = arr => {
     stopAuto();
-    const list = Array.isArray(arr) && arr.length ? arr : ['1hero.jpg'];
+    const list = Array.isArray(arr) && arr.length ? arr : ['1hero.webp'];
     const n = list.length;
     const thumbsHtml = (o.thumbs && n>1)
       ? `<div class="gal-thumbs" role="tablist" aria-label="Pilih gambar">${list.map((s,i)=>
@@ -3686,7 +3777,7 @@ function openKronologiModal(k){
   function draw(){
     kZoom.reset();
     const ver=k.versions[vIdx];
-    const imgs=ver.imgs && ver.imgs.length ? ver.imgs : ['1hero.jpg'];
+    const imgs=ver.imgs && ver.imgs.length ? ver.imgs : ['1hero.webp'];
     sIdx=clamp(sIdx, 0, imgs.length-1);
     im.src=imgs[sIdx];
     im.alt=k.nama+' - '+ver.badge;
@@ -3885,7 +3976,7 @@ function openWatakModal(c){
   if(!c)return;
   const w=el('div','wpop-frame');
   const hasLogo2 = typeof c.logo2 === 'string' ? c.logo2.trim() !== '' : true;
-  const logo2Src = hasLogo2 ? (c.logo2 || 'roblox_adventure_logo.png') : '';
+  const logo2Src = hasLogo2 ? (c.logo2 || 'roblox_adventure_logo.webp') : '';
   const logo2Title = logo2Src.includes('pixel') ? 'The Trial Of Hadith 40' : 'Roblox Adventure';
   const popSrc = c.popImg || c.img || '';
   const isHero = !!c.bigPortrait;
@@ -3897,7 +3988,7 @@ function openWatakModal(c){
     <div class="wpop-grid">
       <div class="wpop-left">
         <div class="wpop-logos">
-          <span class="wpop-logo slot" title="RoPix Universe"><img src="${esc(c.logo1||'Universe_ropix_logo.PNG')}" alt="RoPix Universe" decoding="async"></span>
+          <span class="wpop-logo slot" title="RoPix Universe"><img src="${esc(c.logo1||'Universe_ropix_logo.webp')}" alt="RoPix Universe" decoding="async"></span>
           ${hasLogo2 ? `<span class="wpop-logo slot" title="${esc(logo2Title)}"><img src="${esc(logo2Src)}" alt="${esc(logo2Title)}" decoding="async"></span>` : ''}
         </div>
         <div class="wpop-portrait slot${isHero?' is-hero':''}">
@@ -3951,7 +4042,7 @@ function openKaderModal(k){
   const w=el('div','kpop-frame');
   w.innerHTML=`<div class="kpop-in">
     <div class="kpop-banner">
-      <div class="kpop-banner-single"><img src="${esc(k.bannerImg||'g2026.jpg')}" alt="${esc(k.namaKader)}" decoding="async"></div>
+      <div class="kpop-banner-single"><img src="${esc(k.bannerImg||'g2026.webp')}" alt="${esc(k.namaKader)}" decoding="async"></div>
       <div class="kpop-banner-shade"></div>
       <h3 class="kpop-banner-title">${esc(k.namaKader)}</h3>
       <button class="x kpop-x" aria-label="Tutup">${XI}</button>
@@ -4522,8 +4613,18 @@ function openKaderModal(k){
       : `<article class="kcard" aria-label="${esc(p.jawatan)} - ${esc(p.nama)} (No. ${esc(String(p.no))})">${inner}</article>`;
   }
 
+  function wrapOrgNodes(itemsHtml, opts){
+    const cls = ['org-tree', opts.cols||'cols-2'];
+    if(opts.extra) cls.push(opts.extra);
+    if(opts.top!==false) cls.push('has-top');
+    if(opts.bot) cls.push('has-bot');
+    const tail = (opts.bot || opts.kader3) ? '<i class="org-tail" aria-hidden="true"></i><i class="org-brail" aria-hidden="true"></i>' : '';
+    return `<div class="${cls.join(' ')}">${itemsHtml.map(h=>`<div class="org-node">${h}${tail}</div>`).join('')}</div>`;
+  }
+
   if(guruRoot&&K.guru){
     const G=K.guru;
+    const suCards=(G.setiausaha||[]).map(renderGuruCard);
     guruRoot.innerHTML=`
       <div class="org-row-1">${renderGuruCard(G.pengetua)}</div>
       <div class="org-v"></div>
@@ -4531,9 +4632,7 @@ function openKaderModal(k){
       <div class="org-v"></div>
       <div class="org-row-1">${renderGuruCard(G.gkpi)}</div>
       <div class="org-v"></div>
-      <div class="org-branch3-top"><span></span><span></span></div>
-      <div class="org-row-3">${(G.setiausaha||[]).map(renderGuruCard).join('')}</div>
-      <div class="org-branch3-bot"><span></span><span></span></div>
+      ${wrapOrgNodes(suCards, {cols:'cols-3', extra:'guru-3', top:true, bot:true})}
     `;
   }
 
@@ -4546,7 +4645,9 @@ function openKaderModal(k){
     const plusHtml=extra>0?`<span class="kf-plus">+${extra}</span>`:'';
     return `<div class="kunit${isHero?' kunit-hero':''}">
       <div class="kunit-title">${esc(k.namaKader)}</div>
+      <i class="kunit-line" aria-hidden="true"></i>
       <div class="kunit-dirs">${dirs.map(renderStudentCard).join('')}</div>
+      <i class="kunit-line grow" aria-hidden="true"></i>
       <div class="kfolder-plate">
         <div role="button" tabindex="${locked?'-1':'0'}" class="kfolder" ${locked?'':'data-kidx="'+idx+'"'} aria-label="Buka senarai ahli ${esc(k.namaKader)} (${ahli.length} ahli)">
           <div class="kfolder-in">
@@ -4565,35 +4666,33 @@ function openKaderModal(k){
     const ks=Y.kaders||[];
     let treeBody='';
     if(ks.length===7 && (ks[3].directors||[]).length>2){
-      // Susunan Seimbang 3, 1 (Kader Graphic Designer di tengah), 3 dengan garisan 100% bersambung
-      const tier1 = ks.slice(0,3).map((k,i)=>renderKaderUnit2026(k, i, locked, false)).join('');
+      // Susunan Seimbang 3, 1 (Kader Graphic Designer di tengah), 3 dengan garisan carta organisasi 100% bersambung
+      const tier1 = ks.slice(0,3).map((k,i)=>renderKaderUnit2026(k, i, locked, false));
       const tier2 = renderKaderUnit2026(ks[3], 3, locked, true);
-      const tier3 = ks.slice(4,7).map((k,i)=>renderKaderUnit2026(k, i+4, locked, false)).join('');
+      const tier3 = ks.slice(4,7).map((k,i)=>renderKaderUnit2026(k, i+4, locked, false));
       treeBody = `
-        <div class="kader-row-branch"><span></span><span></span></div>
-        <div class="kader-row-grid">${tier1}</div>
-        <div class="kader-row-join"><span></span><span></span></div>
+        ${wrapOrgNodes(tier1, {cols:'cols-3', extra:'kader-3', top:true, bot:true, kader3:true})}
         <div class="org-v"></div>
         ${tier2}
         <div class="org-v"></div>
-        <div class="kader-row-branch"><span></span><span></span></div>
-        <div class="kader-row-grid">${tier3}</div>`;
+        ${wrapOrgNodes(tier3, {cols:'cols-3', extra:'kader-3', top:true, bot:false, kader3:true})}`;
     }else{
       const chunks=[];
       for(let i=0;i<ks.length;i+=3) chunks.push({items:ks.slice(i,i+3), offset:i});
       treeBody = chunks.map((ch,ci)=>{
-        const isSingle = ch.items.length===1;
-        const topLine = isSingle ? '' : `<div class="kader-row-branch"><span></span><span></span></div>`;
-        const joinLine = (ci>0 && chunks[ci-1].items.length===3) ? `<div class="kader-row-join"><span></span><span></span></div>` : '';
-        const sep = ci>0 ? `${joinLine}<div class="org-v"></div>` : '';
-        return `${sep}${topLine}<div class="kader-row-grid${isSingle?' single':''}">${ch.items.map((k,i)=>renderKaderUnit2026(k,ch.offset+i,locked,false)).join('')}</div>`;
+        const hasNext = ci < chunks.length - 1;
+        const cards = ch.items.map((k,i)=>renderKaderUnit2026(k,ch.offset+i,locked,false));
+        const colCls = ch.items.length===1 ? 'cols-1' : ch.items.length===2 ? 'cols-2 wide' : 'cols-3';
+        const isK3 = ch.items.length===3;
+        return `${ci>0?'<div class="org-v"></div>':''}${wrapOrgNodes(cards, {cols:colCls, extra:isK3?'kader-3':'', top:true, bot:hasNext, kader3:isK3})}`;
       }).join('');
     }
+    const r1=(Y.baris1||[]).map(renderStudentCard);
+    const r2=(Y.baris2||[]).map(renderStudentCard);
     return `
-      <div class="org-row-2">${(Y.baris1||[]).map(renderStudentCard).join('')}</div>
-      <div class="org-pair-bridge"><span class="l"></span><span class="r"></span></div>
-      <div class="org-row-2">${(Y.baris2||[]).map(renderStudentCard).join('')}</div>
-      <div class="org-pair-to-tree"><span class="l"></span><span class="r"></span></div>
+      ${wrapOrgNodes(r1, {cols:'cols-2', top:true, bot:true})}
+      <div class="org-v"></div>
+      ${wrapOrgNodes(r2, {cols:'cols-2', top:true, bot:true})}
       <div class="org-v"></div>
       <div class="kader-tree-sec">${treeBody}</div>`;
   }
@@ -4619,27 +4718,25 @@ function openKaderModal(k){
     }
     if(yr===2025){
       const Y=K.y2025;
+      const r1=(Y.baris1||[]).map(renderStudentCard);
+      const boxRoblox=`<div class="k25-box"><div class="kunit-title">${esc(Y.kaderRoblox.namaKader)}</div><i class="kunit-line" aria-hidden="true"></i><div class="k25-cards">${(Y.kaderRoblox.ahli||[]).map(renderStudentCard).join('')}</div></div>`;
+      const boxPixel=`<div class="k25-box"><div class="kunit-title">${esc(Y.kaderPixel.namaKader)}</div><i class="kunit-line" aria-hidden="true"></i><div class="k25-cards">${(Y.kaderPixel.ahli||[]).map(renderStudentCard).join('')}</div></div>`;
       return `
-        <div class="org-row-2">${(Y.baris1||[]).map(renderStudentCard).join('')}</div>
-        <div class="org-pair-to-tree"><span class="l"></span><span class="r"></span></div>
+        ${wrapOrgNodes(r1, {cols:'cols-2', top:true, bot:true})}
         <div class="org-v"></div>
-        <div class="k25-top-branch"><span class="l"></span><span class="m"></span><span class="r"></span></div>
-        <div class="k25-row2">
-          <div class="k25-group"><div class="kunit-title">${esc(Y.kaderRoblox.namaKader)}</div><div class="k25-cards">${(Y.kaderRoblox.ahli||[]).map(renderStudentCard).join('')}</div></div>
-          <div class="k25-group"><div class="kunit-title">${esc(Y.kaderPixel.namaKader)}</div><div class="k25-cards">${(Y.kaderPixel.ahli||[]).map(renderStudentCard).join('')}</div></div>
-        </div>
-        <div class="k25-bot-wrap"><div class="org-v"></div>
-          <div class="k25-group khas"><div class="kunit-title">${esc(Y.kaderKhas.namaKader)}</div><div class="k25-cards">${(Y.kaderKhas.ahli||[]).map(renderStudentCard).join('')}</div></div>
-        </div>`;
+        ${wrapOrgNodes([boxRoblox, boxPixel], {cols:'cols-2', extra:'wide', top:true, bot:true})}
+        <div class="org-v"></div>
+        <div class="k25-box khas"><div class="kunit-title">${esc(Y.kaderKhas.namaKader)}</div><i class="kunit-line" aria-hidden="true"></i><div class="k25-cards">${(Y.kaderKhas.ahli||[]).map(renderStudentCard).join('')}</div></div>`;
     }
     const Y=K.y2024;
+    const r1=(Y.baris1||[]).map(renderStudentCard);
     const list24=Y.ahliNamaPentas||[];
     return `
-      <div class="org-row-2">${(Y.baris1||[]).map(renderStudentCard).join('')}</div>
-      <div class="org-pair-to-tree"><span class="l"></span><span class="r"></span></div>
+      ${wrapOrgNodes(r1, {cols:'cols-2', top:true, bot:true})}
       <div class="org-v"></div>
-      <div class="k24-panel">
+      <div class="k24-box">
         <div class="k24-head"><span>KADER CANVA</span></div>
+        <i class="kunit-line" aria-hidden="true"></i>
         <div class="k24-grid">${list24.map(nm=>`<div class="k24-name">${esc(nm)}</div>`).join('')}</div>
       </div>`;
   }
@@ -4919,7 +5016,7 @@ function openKoleksiZoom(k){
   function spawnSprite(){
     if(document.hidden)return;
     const im=new Image();
-    im.src='simbol_watak_trans.png';
+    im.src='simbol_watak_trans.webp';
     im.className='amb-spr';
     im.alt='';
     const size=Math.round(52 + Math.random()*44); // 52px..96px
