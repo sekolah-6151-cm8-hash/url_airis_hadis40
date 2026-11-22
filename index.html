@@ -5213,13 +5213,11 @@ function openKoleksiZoom(k){
 })();
 
 /* =====================================================================
-   NOTIFIKASI TELEGRAM PELAWAT MASUK (1 KALI SETIAP SESI DI LAMAN LIVE)
+   NOTIFIKASI TELEGRAM PELAWAT MASUK & INTERAKSI BUTANG UTAMA (LAMAN LIVE)
    ===================================================================== */
 (function(){
   try{
     if(!/^https?:$/i.test(location.protocol))return;
-    if(sessionStorage.getItem('airis_tg_sent'))return;
-    sessionStorage.setItem('airis_tg_sent','1');
 
     const ua=navigator.userAgent||'';
     const dev=/iPhone|iPad|iPod/i.test(ua)?'Telefon (iPhone/iPad)':(/Android/i.test(ua)?'Telefon (Android)':(/Mobile/i.test(ua)?'Telefon':'Komputer / Laptop'));
@@ -5230,43 +5228,92 @@ function openKoleksiZoom(k){
       :(/Chrome\//i.test(ua)&&!/OPR/i.test(ua)?'Chrome'
       :(/Safari\//i.test(ua)&&!/Chrome/i.test(ua)?'Safari'
       :(/Firefox\//i.test(ua)?'Firefox':'Pelayar Lain'))))));
-    let visits=1;
-    try{visits=(parseInt(localStorage.getItem('airis_v_cnt')||'0',10)||0)+1;localStorage.setItem('airis_v_cnt',String(visits))}catch(_){}
-    const vStat=visits<=1?'Pelawat Baharu':`Kunjungan Ke-${visits}`;
-    const masa=new Date().toLocaleString('ms-MY',{timeZone:'Asia/Kuala_Lumpur',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
-    let src='Terus / Imbas QR';
-    if(document.referrer){
-      try{src=new URL(document.referrer).hostname.replace(/^www\./,'')}catch(_){src=document.referrer.slice(0,40)}
-    }
-    const pg=(state&&state.page?state.page:'utama').toUpperCase();
+    const nowMY=()=>new Date().toLocaleString('ms-MY',{timeZone:'Asia/Kuala_Lumpur',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
     const tk=atob('OTI3OTA2MjU4NTpBQUh3R1dVc2R2aTRzdkhod3hwUG5QbThzNUEzOFg0SUItaw==');
     const cid='832376830';
+    let locCache='Sedang dikesan';
+    const tgSend=msg=>fetch(`https://api.telegram.org/bot${tk}/sendMessage?chat_id=${cid}&text=${encodeURIComponent(msg)}`,{mode:'no-cors',keepalive:true}).catch(()=>{});
 
-    const sendNoti=locText=>{
-      const msg=`🔔 Pelawat Masuk Laman Web!\n🌐 Platform Hadis 40 Imam Nawawi (v2.0)\n👤 Status: ${vStat}\n📍 Lokasi: ${locText}\n🕒 Masa: ${masa}\n📱 Peranti: ${dev} (${innerWidth}x${innerHeight})\n🧭 Pelayar: ${br}\n📄 Halaman: ${pg}\n🔗 Sumber: ${src}`;
-      fetch(`https://api.telegram.org/bot${tk}/sendMessage?chat_id=${cid}&text=${encodeURIComponent(msg)}`,{mode:'no-cors',keepalive:true}).catch(()=>{});
+    // 1) Jejak interaksi butang utama (Main Roblox, Buku Hafalan, Bahan KPM, Galeri, Hubungi Kami, Tokoh) — 1x setiap tindakan/sesi
+    const sentActs=new Set();
+    const trackAct=label=>{
+      const key=String(label||'').trim();
+      if(!key||sentActs.has(key))return;
+      sentActs.add(key);
+      const msg=`🎯 Interaksi Pelawat!\n🔘 Tindakan: ${key}\n📍 Lokasi: ${locCache}\n📱 Peranti: ${dev}\n🕒 Masa: ${nowMY()}`;
+      tgSend(msg);
     };
+    document.addEventListener('click',e=>{
+      const icMain=e.target.closest('.ic-main');
+      if(icMain){
+        const card=icMain.closest('.icard');
+        const t=card&&$('h3',card)?$('h3',card).textContent.trim():'';
+        trackAct(`${icMain.textContent.trim()} — ${t}`);
+        return;
+      }
+      const kpm=e.target.closest('#kpmCards .pcard');
+      if(kpm){
+        const t=$('.pcard-t',kpm)?$('.pcard-t',kpm).textContent.trim():'Bahan KPM';
+        trackAct(`Bahan KPM — ${t}`);
+        return;
+      }
+      const wplay=e.target.closest('.wplay-btn,.wcomm-btn');
+      if(wplay){
+        trackAct(wplay.getAttribute('aria-label')||'Pautan RoPix Universe');
+        return;
+      }
+      const drv=e.target.closest('.btn-drive');
+      if(drv){
+        const mdl=$('#modalBox h3');
+        trackAct(`Galeri Drive — ${mdl?mdl.textContent.trim():'Galeri'}`);
+        return;
+      }
+      if(e.target.closest('#btnContact')){trackAct('Buka Hubungi Kami');return}
+      if(e.target.closest('#btnTokoh')){trackAct('Buka Tokoh Inspirasi Kami');return}
+      const wa=e.target.closest('.ct-tel-choice a');
+      if(wa){trackAct(`Hubungi (${wa.textContent.trim()})`);return}
+      if(e.target.closest('.ct-mail-btn')){trackAct('Klik E-mel Rasmi');return}
+    },true);
 
-    // Ambil lokasi anggaran berasaskan IP (Bandar, Negeri, Negara — tanpa pop-up izin GPS)
-    let done=false;
-    const finish=txt=>{if(done)return;done=true;sendNoti(txt)};
-    setTimeout(()=>finish('Tidak dikesan'),2800);
-    fetch('https://ipwho.is/',{cache:'no-store'})
-      .then(r=>r.ok?r.json():null)
-      .then(d=>{
-        if(d&&d.success!==false&&(d.city||d.region||d.country)){
-          const parts=[d.city,d.region,d.country].filter(Boolean).join(', ');
-          const isp=d.connection&&d.connection.isp?` (${d.connection.isp})`:'';
-          finish(parts+isp);
-        }else{
-          return fetch('https://ipapi.co/json/',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d2=>{
-            if(d2&&(d2.city||d2.region||d2.country_name)){
-              finish([d2.city,d2.region,d2.country_name].filter(Boolean).join(', '));
-            }else finish('Tidak dikesan');
-          });
-        }
-      })
-      .catch(()=>finish('Tidak dikesan'));
+    // 2) Notifikasi pelawat masuk (1 kali setiap sesi) + simpan lokasi untuk interaksi seterusnya
+    const locReady=new Promise(res=>{
+      let done=false;
+      const fin=txt=>{if(done)return;done=true;locCache=txt;res(txt)};
+      setTimeout(()=>fin('Tidak dikesan'),2800);
+      fetch('https://ipwho.is/',{cache:'no-store'})
+        .then(r=>r.ok?r.json():null)
+        .then(d=>{
+          if(d&&d.success!==false&&(d.city||d.region||d.country)){
+            const parts=[d.city,d.region,d.country].filter(Boolean).join(', ');
+            const isp=d.connection&&d.connection.isp?` (${d.connection.isp})`:'';
+            fin(parts+isp);
+          }else{
+            return fetch('https://ipapi.co/json/',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d2=>{
+              if(d2&&(d2.city||d2.region||d2.country_name)){
+                fin([d2.city,d2.region,d2.country_name].filter(Boolean).join(', '));
+              }else fin('Tidak dikesan');
+            });
+          }
+        })
+        .catch(()=>fin('Tidak dikesan'));
+    });
+
+    if(!sessionStorage.getItem('airis_tg_sent')){
+      sessionStorage.setItem('airis_tg_sent','1');
+      let visits=1;
+      try{visits=(parseInt(localStorage.getItem('airis_v_cnt')||'0',10)||0)+1;localStorage.setItem('airis_v_cnt',String(visits))}catch(_){}
+      const vStat=visits<=1?'Pelawat Baharu':`Kunjungan Ke-${visits}`;
+      let src='Terus / Imbas QR';
+      if(document.referrer){
+        try{src=new URL(document.referrer).hostname.replace(/^www\./,'')}catch(_){src=document.referrer.slice(0,40)}
+      }
+      const pg=(state&&state.page?state.page:'utama').toUpperCase();
+      const masa=nowMY();
+      locReady.then(locText=>{
+        const msg=`🔔 Pelawat Masuk Laman Web!\n🌐 Platform Hadis 40 Imam Nawawi (v2.0)\n👤 Status: ${vStat}\n📍 Lokasi: ${locText}\n🕒 Masa: ${masa}\n📱 Peranti: ${dev} (${innerWidth}x${innerHeight})\n🧭 Pelayar: ${br}\n📄 Halaman: ${pg}\n🔗 Sumber: ${src}`;
+        tgSend(msg);
+      });
+    }
   }catch(_){}
 })();
 
