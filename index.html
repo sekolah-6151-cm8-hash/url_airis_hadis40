@@ -1706,8 +1706,8 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
   display:block;width:auto;max-width:min(700px,94%);
   font:700 clamp(17px,2.3vw,26px)/1.3 var(--ff-h);letter-spacing:.07em;color:var(--ink);
   text-shadow:0 2px 0 rgba(255,255,255,.85);background:none;border:0;clip-path:none;box-shadow:none}
-.inov-motto::after{content:"";display:block;width:72px;height:4px;margin:8px auto 0;
-  background:linear-gradient(90deg,var(--blue),var(--yellow));border-radius:99px}
+.inov-motto::after{content:"";display:block;width:68px;height:4px;margin:8px auto 0;
+  background:var(--blue);border-radius:0}
 .mdl-foot.bts-foot{flex-direction:column;align-items:center;gap:8px;padding-top:12px;border-top:2px dashed var(--sky2);margin-top:4px}
 .bts-head{text-align:center;line-height:1.25}
 .bts-head strong{display:block;font:700 13.5px var(--ff-h);letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dd)}
@@ -1818,32 +1818,30 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
   .k24-name{flex:0 1 calc(33.33% - 6px) !important;padding:7px 6px !important;font-size:11px !important}
 }
 
-/* 8) Sistem Carta Organisasi Rasmi (Garisan 100% tepat di tengah setiap kad untuk 2024, 2025, 2026 & 2027) */
-.org-v{width:3px;height:clamp(18px,2.4vw,28px);background:var(--ink);margin:0 auto;flex-shrink:0}
-.org-dash-wrap{position:relative;width:100%;height:44px;display:flex;align-items:center;justify-content:center;margin:0;overflow:hidden}
-.org-dash-line{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);border-top:3px dashed rgba(10,34,96,.68)}
-.org-dash-drops{position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);background:var(--ink);pointer-events:none}
+/* 8) Sistem Carta Organisasi Rasmi (Susunan konsisten di laptop & phone, lapang tanpa kotak putih, garisan 100% tepat) */
+.org-v{width:3px;height:clamp(14px,2.2vw,26px);background:var(--ink);margin:0 auto;flex-shrink:0}
+.org-dash-wrap{position:relative;width:100%;height:34px;display:flex;align-items:center;justify-content:center;margin:0;overflow:hidden}
+.org-dash-line{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);border-top:3px dashed rgba(10,34,96,.72)}
+.org-dash-drops{position:absolute;top:0;bottom:0;left:50%;width:3px !important;max-width:3px !important;margin:0 !important;transform:translateX(-50%);background:var(--ink);pointer-events:none}
 .org-dash-drops::before,.org-dash-drops::after{display:none !important}
-.org-dash-pill{position:relative;z-index:2;padding:4px 16px;background:var(--sky);border:2px solid var(--ink);
-  font:700 10.5px/1.1 var(--ff-h);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
-  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
 
 .org-tree{display:grid;gap:0 !important;width:100%;margin:0 auto;align-items:stretch}
-.org-tree.cols-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:540px}
-.org-tree.cols-2.wide{max-width:940px}
-.org-tree.cols-3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1040px}
-.org-tree.cols-3.guru-3{max-width:780px}
-.org-tree.cols-1{grid-template-columns:minmax(0,340px);justify-content:center;max-width:1040px}
+.org-tree.cols-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:520px}
+.org-tree.cols-2.wide{max-width:920px}
+.org-tree.cols-3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1020px}
+.org-tree.cols-3.guru-3{max-width:740px}
+.org-tree.cols-4{grid-template-columns:repeat(4,minmax(0,1fr));max-width:680px}
+.org-tree.cols-1{grid-template-columns:minmax(0,320px);justify-content:center;max-width:1020px}
 
-.org-node{position:relative;display:flex;flex-direction:column;align-items:center;padding:0 clamp(5px,1.2vw,14px);min-width:0}
-.org-tree.has-top>.org-node{padding-top:22px}
+.org-node{position:relative;display:flex;flex-direction:column;align-items:center;padding:0 clamp(4px,1.1vw,14px);min-width:0}
+.org-tree.has-top>.org-node{padding-top:20px}
 .org-tree.has-top>.org-node::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--ink)}
 .org-tree.has-top>.org-node:first-child::before{left:calc(50% - 1.5px);right:0}
 .org-tree.has-top>.org-node:last-child::before{left:0;right:calc(50% - 1.5px)}
 .org-tree.has-top>.org-node:only-child::before{display:none}
-.org-tree.has-top>.org-node::after{content:"";position:absolute;top:0;left:50%;width:3px;height:22px;transform:translateX(-50%);background:var(--ink)}
+.org-tree.has-top>.org-node::after{content:"";position:absolute;top:0;left:50%;width:3px;height:20px;transform:translateX(-50%);background:var(--ink)}
 
-.org-tail{display:none;width:3px;min-height:20px;flex:1 0 20px;background:var(--ink);margin:0 auto}
+.org-tail{display:none;width:3px;min-height:18px;flex:1 0 18px;background:var(--ink);margin:0 auto}
 .org-brail{display:none;position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--ink);pointer-events:none}
 .org-tree.has-bot>.org-node>.org-tail{display:block}
 .org-tree.has-bot>.org-node>.org-brail{display:block}
@@ -1851,64 +1849,98 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
 .org-tree.has-bot>.org-node:last-child>.org-brail{left:0;right:calc(50% - 1.5px)}
 .org-tree.has-bot>.org-node:only-child>.org-brail{display:none}
 
-/* Kotak Kad Jabatan Kader (jelas, kemas & tersusun seperti carta organisasi rasmi) */
+/* Lapang tanpa kotak putih keliling kader — fokus pada hierarki & garisan carta organisasi */
 .kunit,.k25-box,.k24-box{
   position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;
-  background:rgba(255,255,255,.92);border:2.5px solid var(--ink);
-  box-shadow:5px 5px 0 rgba(26,94,224,.22);
-  padding:clamp(10px,1.5vw,16px) clamp(8px,1.2vw,14px) clamp(12px,1.6vw,18px);
-  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+  background:transparent !important;border:0 !important;box-shadow:none !important;
+  clip-path:none !important;padding:0 !important;
 }
 .kunit.kunit-hero{width:min(760px,100%);margin:0 auto;height:auto}
 .k25-box.khas{width:min(580px,100%);margin:0 auto;height:auto}
-.k24-box{width:min(940px,100%);margin:0 auto;height:auto;padding:clamp(16px,2.4vw,26px)}
-.kunit-title{width:100%;max-width:100%;min-height:40px;margin-bottom:0 !important;padding:5px 10px;
+.k24-box{width:min(940px,100%);margin:0 auto;height:auto}
+.kunit-title{width:100%;max-width:250px;min-height:38px;margin-bottom:0 !important;padding:5px 10px;
   display:flex;align-items:center;justify-content:center;text-align:center}
 .kunit-line{display:block;width:3px;height:14px;background:var(--ink);margin:0 auto;flex:0 0 14px}
 .kunit-line.grow{flex:1 0 14px;min-height:14px;height:auto}
 .kunit-dirs{margin-bottom:0 !important;width:100%;display:flex;justify-content:center;align-items:flex-start;gap:clamp(6px,1vw,12px)}
-.kunit .kfolder-plate{margin-top:0 !important;width:min(220px,100%) !important}
+.kunit .kfolder-plate{margin-top:0 !important;width:min(210px,100%) !important}
+.kunit.kunit-hero .kunit-title{max-width:340px}
 .kunit.kunit-hero .kunit-dirs{display:grid !important;grid-template-columns:repeat(4,minmax(0,140px));justify-content:center;gap:clamp(8px,1.4vw,18px);max-width:640px;margin-bottom:0 !important}
-.kunit.kunit-hero .kfolder-plate{width:min(240px,100%) !important}
-.k25-box .k25-cards{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(8px,1.4vw,18px);width:100%}
+.kunit.kunit-hero .kfolder-plate{width:min(220px,100%) !important}
+.k25-box .k25-cards{display:flex;justify-content:center;flex-wrap:nowrap;gap:clamp(8px,1.4vw,18px);width:100%}
 .k25-box .k25-cards .kcard{width:clamp(100px,12vw,146px)}
 .k24-box .k24-head{margin-bottom:0 !important}
 .k24-box .k24-grid{margin-top:4px;width:100%}
 
 @media (max-width:720px){
-  .org-node{padding:0 5px}
-  .org-tree.cols-3.guru-3 .kcard{width:100%;max-width:104px}
-  .org-tree.cols-3.guru-3 .kcard-role{font-size:8px;padding:2px 4px;letter-spacing:.03em}
-  .org-tree.cols-3.guru-3 .kcard-name{font-size:9px;padding:2px 4px}
-  .org-tree.cols-2 .kcard{width:100%;max-width:136px}
-  .org-tree.cols-2 .kcard-role{font-size:9px;padding:2px 6px}
-  .org-tree.cols-2 .kcard-name{font-size:10.5px;padding:2px 7px}
+  /* Di phone: KEKAL susunan carta organisasi sama seperti laptop (padat, seragam & senang dilihat sekali pandang) */
+  .kader-page-wrap .wrap{width:calc(100% - 14px)}
+  .org-v{width:2px;height:14px}
+  .org-dash-wrap{height:24px}
+  .org-dash-line{border-top-width:2px}
+  .org-dash-drops{width:2px !important;max-width:2px !important}
+  .org-node{padding:0 3px}
+  .org-tree.has-top>.org-node{padding-top:14px}
+  .org-tree.has-top>.org-node::before{height:2px}
+  .org-tree.has-top>.org-node:first-child::before{left:calc(50% - 1px);right:0}
+  .org-tree.has-top>.org-node:last-child::before{left:0;right:calc(50% - 1px)}
+  .org-tree.has-top>.org-node::after{width:2px;height:14px}
+  .org-tail{width:2px;min-height:14px;flex:1 0 14px}
+  .org-brail{height:2px}
+  .org-tree.has-bot>.org-node:first-child>.org-brail{left:calc(50% - 1px);right:0}
+  .org-tree.has-bot>.org-node:last-child>.org-brail{left:0;right:calc(50% - 1px)}
+  .kunit-line{width:2px;height:10px;flex:0 0 10px}
+  .kunit-line.grow{flex:1 0 10px;min-height:10px}
 
-  /* Di phone: 3 kader menjadi 2 sebaris (cabang atas & gabung bawah tepat) + kader ke-3 di tengah tersambung penuh */
-  .org-tree.cols-3.kader-3{grid-template-columns:repeat(2,minmax(0,1fr)) !important;max-width:100% !important}
-  .org-tree.cols-3.kader-3>.org-node:nth-child(1)::before{left:calc(50% - 1.5px) !important;right:0 !important}
-  .org-tree.cols-3.kader-3>.org-node:nth-child(2)::before{left:0 !important;right:calc(50% - 1.5px) !important}
-  .org-tree.cols-3.kader-3>.org-node:nth-child(1)>.org-tail,
-  .org-tree.cols-3.kader-3>.org-node:nth-child(2)>.org-tail{display:block !important}
-  .org-tree.cols-3.kader-3>.org-node:nth-child(1)>.org-brail{display:block !important;left:calc(50% - 1.5px) !important;right:0 !important}
-  .org-tree.cols-3.kader-3>.org-node:nth-child(2)>.org-brail{display:block !important;left:0 !important;right:calc(50% - 1.5px) !important}
-  .org-tree.cols-3.kader-3>.org-node:nth-child(3){grid-column:1 / -1 !important;width:min(270px,78%) !important;justify-self:center !important;padding-top:22px !important}
-  .org-tree.cols-3.kader-3>.org-node:nth-child(3)::before{display:none !important}
-  .org-tree.cols-3.kader-3>.org-node:nth-child(3)::after{display:block !important}
-  .org-tree.cols-3.kader-3>.org-node:nth-child(3)>.org-brail{display:none !important}
-  .org-tree.cols-3.kader-3.has-bot>.org-node:nth-child(3)>.org-tail{display:block !important;flex:0 0 20px !important}
-  .org-tree.cols-3.kader-3:not(.has-bot)>.org-node:nth-child(3)>.org-tail{display:none !important}
+  /* Saiz kad seragam di seluruh carta phone (tiada zoom melampau) */
+  .org-row-1 .kcard{width:88px}
+  .org-row-1 .kcard-role{font-size:7px;padding:1.5px 5px;letter-spacing:.04em}
+  .org-row-1 .kcard-name{font-size:8px;padding:1.5px 5px;line-height:1.18}
+  .org-tree.cols-3.guru-3{max-width:310px}
+  .org-tree.cols-3.guru-3 .kcard{width:100%;max-width:82px}
+  .org-tree.cols-3.guru-3 .kcard-role{font-size:6.5px;padding:1.5px 3px;letter-spacing:.02em}
+  .org-tree.cols-3.guru-3 .kcard-name{font-size:7.5px;padding:1.5px 3px;line-height:1.15}
+  .org-tree.cols-2:not(.wide){max-width:230px}
+  .org-tree.cols-2:not(.wide) .kcard{width:100%;max-width:84px}
+  .org-tree.cols-2:not(.wide) .kcard-role{font-size:7px;padding:1.5px 5px;letter-spacing:.04em}
+  .org-tree.cols-2:not(.wide) .kcard-name{font-size:8.2px;padding:1.5px 5px}
+  .kcard-meta{margin-top:4px;gap:1.5px}
+  .kcard-soc-badge{width:16px;height:16px;right:3px;top:3px;border-width:1.4px}
+  .kcard-soc-badge svg{width:9px;height:9px}
 
-  .kunit,.k25-box{padding:8px 6px 10px}
-  .kunit-title{min-height:36px;font-size:10px;padding:4px 6px;letter-spacing:.04em}
-  .kunit-dirs .kcard{width:100%;max-width:110px}
-  .kunit.kunit-hero .kunit-dirs{grid-template-columns:repeat(2,minmax(0,132px)) !important;gap:8px 10px}
-  .kunit.kunit-hero .kfolder-plate{width:min(200px,68%) !important}
-  .k25-box .k25-cards{gap:6px}
-  .k25-box .k25-cards .kcard{width:calc(50% - 4px);max-width:96px}
-  .k25-box .k25-cards .kcard-role{font-size:7.8px;padding:2px 4px;letter-spacing:.03em}
-  .k25-box .k25-cards .kcard-name{font-size:9px;padding:2px 4px}
-  .k25-box.khas .k25-cards .kcard{width:calc(33.33% - 6px);max-width:104px}
+  /* 2026 & 2027: KEKAL 3 lajur sebaris + 4 Kapten sebaris sama seperti laptop */
+  .org-tree.cols-3.kader-3{grid-template-columns:repeat(3,minmax(0,1fr)) !important;max-width:100% !important}
+  .kunit-title{min-height:28px;font-size:7.5px;line-height:1.15;padding:3px 4px;letter-spacing:.03em;border-width:1.8px;box-shadow:2px 2px 0 var(--ink)}
+  .kunit-dirs .kcard{width:100%;max-width:72px}
+  .kunit-dirs .kcard-role{font-size:6.5px;padding:1.5px 4px;letter-spacing:.03em}
+  .kunit-dirs .kcard-name{font-size:7.8px;padding:1.5px 4px}
+  .kunit .kfolder-plate{width:min(94px,100%) !important;filter:drop-shadow(3px 3px 0 var(--blue-d))}
+  .kunit .kfolder{--kf:8px;padding:2px}
+  .kunit .kfolder-in{inset:2px !important;padding:4px !important;gap:2.5px !important}
+  .kunit .kf-expand{border-width:1.2px}
+  .kunit .kf-plus{font-size:7px;padding:1px 2.5px;right:2px;bottom:1px;border-width:1px}
+  .kunit.kunit-hero .kunit-title{max-width:210px}
+  .org-tree.cols-4{max-width:340px}
+  .org-tree.cols-4 .kcard{width:100%;max-width:72px}
+  .org-tree.cols-4 .kcard-role{font-size:6.5px;padding:1.5px 4px;letter-spacing:.03em}
+  .org-tree.cols-4 .kcard-name{font-size:7.8px;padding:1.5px 4px}
+  .kunit.kunit-hero .kfolder-plate{width:min(98px,100%) !important}
+
+  /* 2025: KEKAL 2 kumpulan (Roblox & Pixel) sebaris + 3 ahli Kader Khas sebaris, saiz seragam */
+  .org-tree.cols-2.wide{max-width:100%}
+  .k25-box .kunit-title{max-width:140px}
+  .k25-box .org-tree.cols-2{max-width:100%}
+  .k25-box .org-tree.cols-2 .kcard{max-width:72px}
+  .k25-box .org-tree.cols-2 .kcard-role{font-size:6.2px;padding:1.5px 3px;letter-spacing:.02em}
+  .k25-box .org-tree.cols-2 .kcard-name{font-size:7.6px;padding:1.5px 3px}
+  .k25-box.khas{max-width:270px}
+  .k25-box.khas .org-tree.cols-3 .kcard{max-width:74px}
+  .k25-box.khas .org-tree.cols-3 .kcard-role{font-size:6.2px;padding:1.5px 3px;letter-spacing:.02em}
+  .k25-box.khas .org-tree.cols-3 .kcard-name{font-size:7.6px;padding:1.5px 3px}
+
+  /* 2024: KEKAL lapang & kemas */
+  .k24-head span{font-size:11px;padding:4px 14px;border-width:2px}
+  .k24-name{flex:0 1 calc(25% - 6px) !important;padding:5px 4px !important;font-size:8.5px !important;border-width:1.5px !important;box-shadow:2px 2px 0 var(--blue) !important}
 }
 </style>
 </head>
@@ -2367,7 +2399,6 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
         <div class="org-dash-wrap" aria-hidden="true">
           <div class="org-dash-line"></div>
           <div class="org-dash-drops"></div>
-          <span class="org-dash-pill">Barisan Pelajar</span>
         </div>
         <div class="org-subview" id="kaderPelajarRoot"></div>
       </div>
@@ -4643,10 +4674,14 @@ function openKaderModal(k){
     const shown = ahli.slice(0,8).map(m=>`<div class="kf-mini slot">${makeImgHtml(m.img,m.nama)}</div>`).join('');
     const extra=Math.max(0,ahli.length-8);
     const plusHtml=extra>0?`<span class="kf-plus">+${extra}</span>`:'';
+    const dirCards = dirs.map(renderStudentCard);
+    const dirsHtml = dirs.length > 1
+      ? wrapOrgNodes(dirCards, {cols: dirs.length===4?'cols-4':dirs.length===3?'cols-3':'cols-2', top:true, bot:true})
+      : `<div class="kunit-dirs">${dirCards.join('')}</div>`;
     return `<div class="kunit${isHero?' kunit-hero':''}">
       <div class="kunit-title">${esc(k.namaKader)}</div>
       <i class="kunit-line" aria-hidden="true"></i>
-      <div class="kunit-dirs">${dirs.map(renderStudentCard).join('')}</div>
+      ${dirsHtml}
       <i class="kunit-line grow" aria-hidden="true"></i>
       <div class="kfolder-plate">
         <div role="button" tabindex="${locked?'-1':'0'}" class="kfolder" ${locked?'':'data-kidx="'+idx+'"'} aria-label="Buka senarai ahli ${esc(k.namaKader)} (${ahli.length} ahli)">
@@ -4719,14 +4754,17 @@ function openKaderModal(k){
     if(yr===2025){
       const Y=K.y2025;
       const r1=(Y.baris1||[]).map(renderStudentCard);
-      const boxRoblox=`<div class="k25-box"><div class="kunit-title">${esc(Y.kaderRoblox.namaKader)}</div><i class="kunit-line" aria-hidden="true"></i><div class="k25-cards">${(Y.kaderRoblox.ahli||[]).map(renderStudentCard).join('')}</div></div>`;
-      const boxPixel=`<div class="k25-box"><div class="kunit-title">${esc(Y.kaderPixel.namaKader)}</div><i class="kunit-line" aria-hidden="true"></i><div class="k25-cards">${(Y.kaderPixel.ahli||[]).map(renderStudentCard).join('')}</div></div>`;
+      const rblx=(Y.kaderRoblox.ahli||[]).map(renderStudentCard);
+      const pxl=(Y.kaderPixel.ahli||[]).map(renderStudentCard);
+      const khs=(Y.kaderKhas.ahli||[]).map(renderStudentCard);
+      const boxRoblox=`<div class="k25-box"><div class="kunit-title">${esc(Y.kaderRoblox.namaKader)}</div><i class="kunit-line" aria-hidden="true"></i>${wrapOrgNodes(rblx,{cols:'cols-2',top:true,bot:true})}</div>`;
+      const boxPixel=`<div class="k25-box"><div class="kunit-title">${esc(Y.kaderPixel.namaKader)}</div><i class="kunit-line" aria-hidden="true"></i>${wrapOrgNodes(pxl,{cols:'cols-2',top:true,bot:true})}</div>`;
       return `
         ${wrapOrgNodes(r1, {cols:'cols-2', top:true, bot:true})}
         <div class="org-v"></div>
         ${wrapOrgNodes([boxRoblox, boxPixel], {cols:'cols-2', extra:'wide', top:true, bot:true})}
         <div class="org-v"></div>
-        <div class="k25-box khas"><div class="kunit-title">${esc(Y.kaderKhas.namaKader)}</div><i class="kunit-line" aria-hidden="true"></i><div class="k25-cards">${(Y.kaderKhas.ahli||[]).map(renderStudentCard).join('')}</div></div>`;
+        <div class="k25-box khas"><div class="kunit-title">${esc(Y.kaderKhas.namaKader)}</div><i class="kunit-line" aria-hidden="true"></i>${wrapOrgNodes(khs,{cols:'cols-3',top:true,bot:false})}</div>`;
     }
     const Y=K.y2024;
     const r1=(Y.baris1||[]).map(renderStudentCard);
