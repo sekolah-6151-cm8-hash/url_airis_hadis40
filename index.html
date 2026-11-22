@@ -1701,6 +1701,10 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   display:block;width:max-content;max-width:100%;padding:6px 22px;background:rgba(255,255,255,.85);
   border-bottom:3.5px solid var(--yellow);border-left:4px solid var(--blue);
   clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);box-shadow:4px 4px 0 rgba(10,34,96,.14)}
+.mdl-foot.bts-foot{flex-direction:column;align-items:center;gap:8px;padding-top:12px;border-top:2px dashed var(--sky2);margin-top:4px}
+.bts-head{text-align:center;line-height:1.25}
+.bts-head strong{display:block;font:700 13.5px var(--ff-h);letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dd)}
+.bts-head span{display:block;font:500 12px var(--ff-b);color:#4a64a8;margin-top:2px}
 @media (max-width:600px){
   .gal-view,.krono-stage{aspect-ratio:4/3 !important;max-height:50dvh}
 }
@@ -3486,6 +3490,7 @@ function gallery(imgs, driveUrl, opts){
   return g;
 }
 const driveBtn=u=>isReal(u)?`<a class="btn-drive" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${DRV_ICON}Galeri</a>`:'';
+const btsDriveFoot=u=>isReal(u)?`<div class="mdl-foot bts-foot"><div class="bts-head"><strong>Di Sebalik Tabir</strong><span>Apa yang orang tak nampak</span></div>${driveBtn(u)}</div>`:'';
 const head=t=>`<div class="mdl-head"><h3>${esc(t)}</h3><button class="x" aria-label="Tutup">${XI}</button></div>`;
 
 function openProgram(i){
@@ -3522,8 +3527,9 @@ function openProgram(i){
   openModal(w,'');
 }
 
-function openInfoObj(c){
+function openInfoObj(c, opts){
   if(!c)return;
+  const o=opts||{};
   const w=el('div');
   w.innerHTML=head(c.nama);
   const body=el('div','mdl-body');
@@ -3538,7 +3544,7 @@ function openInfoObj(c){
     body.insertAdjacentHTML('beforeend',`<div class="info one">${metaHtml}${perihalHtml}</div>`);
   }
   w.appendChild(body);
-  if(isReal(c.drive)) w.insertAdjacentHTML('beforeend',`<div class="mdl-foot">${driveBtn(c.drive)}</div>`);
+  if(isReal(c.drive)) w.insertAdjacentHTML('beforeend', o.bts ? btsDriveFoot(c.drive) : `<div class="mdl-foot">${driveBtn(c.drive)}</div>`);
   openModal(w,'');
 }
 
@@ -3572,10 +3578,7 @@ function openKronologiModal(k){
   `;
   w.appendChild(body);
 
-  const footBtns=[];
-  if(isReal(k.drive)) footBtns.push(driveBtn(k.drive));
-  if(isReal(k.extraLink)) footBtns.push(`<a class="btn-drive" style="background:var(--ink)" href="${esc(k.extraLink)}" target="_blank" rel="noopener noreferrer">${esc(k.extraLabel||'Pautan Rasmi')}</a>`);
-  if(footBtns.length) w.insertAdjacentHTML('beforeend',`<div class="mdl-foot" style="gap:10px;flex-wrap:wrap">${footBtns.join('')}</div>`);
+  if(isReal(k.drive)) w.insertAdjacentHTML('beforeend', btsDriveFoot(k.drive));
 
   const im=$('#kronoImg',body), badge=$('#kronoBadge',body), sub=$('#kronoSub',body), kStage=$('#kronoStage',body), kZCtrl=$('#kronoZCtrl',body);
   const kZoom = attachSlideZoom(kStage, () => im, kZCtrl);
@@ -3653,7 +3656,7 @@ function openMusicModal(m){
   body.appendChild(listEl);
   if(m.perihal) body.insertAdjacentHTML('beforeend',`<div class="info one" style="margin-top:14px"><div class="row"><p style="font-size:15px;line-height:1.6">${esc(m.perihal)}</p></div></div>`);
   w.appendChild(body);
-  if(isReal(m.drive)) w.insertAdjacentHTML('beforeend',`<div class="mdl-foot">${driveBtn(m.drive)}</div>`);
+  if(isReal(m.drive)) w.insertAdjacentHTML('beforeend', btsDriveFoot(m.drive));
   listEl.addEventListener('click',e=>{const b=e.target.closest('.mv-item');if(!b)return;cur=+b.dataset.ti;draw()});
   draw();
   openModal(w,'');
@@ -4102,7 +4105,7 @@ function openKaderModal(k){
         if(item.musicModal) openMusicModal(item.musicModal);
         else if(item.ytPlaylist) openYtSliderModal(item);
         else if(item.kronologi) openKronologiModal(item.kronologi);
-        else openInfoObj(item.info);
+        else openInfoObj(item.info, {bts:true});
         return;
       }
       const krBtn=e.target.closest('[data-krono]');
@@ -4130,7 +4133,7 @@ function openKaderModal(k){
       else if(item.ytPlaylist){openYtSliderModal(item);}
       else if(isReal(item.link)){window.open(item.link,'_blank','noopener,noreferrer');}
       else if(item.musicModal){openMusicModal(item.musicModal);}
-      else if(item.info){openInfoObj(item.info);}
+      else if(item.info){openInfoObj(item.info, {bts:true});}
     });
   }
 
