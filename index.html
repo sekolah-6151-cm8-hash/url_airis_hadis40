@@ -1416,6 +1416,7 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
   .hdr-mid-s .s-desk{display:none}
   .hdr-mid-s .s-mob{display:inline}
   .hdr-mid-t{font-size:clamp(8.5px,2.55vw,11.5px);letter-spacing:.02em;white-space:normal;line-height:1.12}
+  .hdr-t-sub{display:block}
   .hdr-mid-s{font-size:clamp(8px,2.1vw,10px)}
   .hdr-beta{padding:1px 7px;font-size:7.5px}
 }
@@ -1631,9 +1632,9 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
 .kol-booth-note{margin-top:16px;font:600 clamp(13px,1.4vw,15.5px)/1.45 var(--ff-b);color:var(--ink);
   display:inline-block;padding:6px 18px;background:rgba(255,255,255,.78);border:2px solid var(--blue-d);
   clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
-.tcards{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.tcards.dragging{cursor:grabbing}
-.tcards .mq-track{animation:none !important;will-change:transform}
+.tcards,.plogos{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.tcards.dragging,.plogos.dragging{cursor:grabbing}
+.tcards .mq-track,.plogos .mq-track{animation:none !important;will-change:transform}
 .ct-mail{flex-direction:column !important;gap:8px !important;text-align:center}
 .ct-mail-lbl{font:700 12px/1.2 var(--ff-h);letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}
 .sec-kpm{--bg:var(--sky);--twd:460px}
@@ -1982,7 +1983,7 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
     </div>
 
     <div class="hdr-mid">
-      <strong class="hdr-mid-t">Platform Digital Hadis 40 Imam Nawawi</strong>
+      <strong class="hdr-mid-t">Platform Digital Hadis 40 <span class="hdr-t-sub">Imam Nawawi</span></strong>
       <span class="hdr-mid-s"><span class="s-desk">Briged Shabab An-Nawawi &bull; SMKA Al-Irshad &bull; Penang</span><span class="s-mob">SMKA Al-Irshad &bull; Penang</span></span>
     </div>
 
@@ -4913,44 +4914,53 @@ function openKoleksiZoom(k){
   const tWrap=$('#tcards'), tTrack=$('#tTrack');
   tTrack.innerHTML=tc+tc.replace(/<article class="tc fr">/g,'<article class="tc fr" aria-hidden="true">');
 
-  // Testimoni boleh seret kiri & kanan (tetikus & sentuhan) sambil kekal berjalan automatik
-  if(tWrap && tTrack){
-    let pos=0, dragging=false, hovered=false, startX=0, startPos=0, lastT=performance.now();
+  // Testimoni & Rakan Strategik boleh seret kiri & kanan (tetikus & sentuhan) sambil kekal berjalan automatik
+  function initDraggableMarquee(wrap, track, speed){
+    if(!wrap || !track)return;
+    let pos=0, dragging=false, moved=false, hovered=false, startX=0, startPos=0, lastT=performance.now();
     const wrapPos=(v,half)=>half>0?(((v%half)+half)%half)-half:0;
     function step(now){
       const dt=Math.min(0.05,(now-lastT)/1000);
       lastT=now;
-      const half=tTrack.scrollWidth/2;
+      const half=track.scrollWidth/2;
       if(half>0){
-        if(!dragging && !hovered && !reduce) pos+=38*dt;
+        if(!dragging && !hovered && !reduce) pos+=speed*dt;
         pos=wrapPos(pos,half);
-        tTrack.style.transform=`translate3d(${pos.toFixed(1)}px,0,0)`;
+        track.style.transform=`translate3d(${pos.toFixed(1)}px,0,0)`;
       }
       requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
-    tWrap.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hovered=true});
-    tWrap.addEventListener('pointerleave',()=>{hovered=false;dragging=false;tWrap.classList.remove('dragging')});
-    tWrap.addEventListener('pointerdown',e=>{
-      dragging=true;startX=e.clientX;startPos=pos;
-      tWrap.classList.add('dragging');
-      if(tWrap.setPointerCapture)try{tWrap.setPointerCapture(e.pointerId)}catch(_){}
+    wrap.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hovered=true});
+    wrap.addEventListener('pointerleave',()=>{hovered=false;dragging=false;wrap.classList.remove('dragging')});
+    wrap.addEventListener('pointerdown',e=>{
+      dragging=true;moved=false;startX=e.clientX;startPos=pos;
+      wrap.classList.add('dragging');
+      if(wrap.setPointerCapture)try{wrap.setPointerCapture(e.pointerId)}catch(_){}
     });
-    tWrap.addEventListener('pointermove',e=>{
+    wrap.addEventListener('pointermove',e=>{
       if(!dragging)return;
-      pos=startPos+(e.clientX-startX);
+      const dx=e.clientX-startX;
+      if(Math.abs(dx)>5)moved=true;
+      pos=startPos+dx;
     });
-    const endDrag=()=>{dragging=false;tWrap.classList.remove('dragging')};
-    tWrap.addEventListener('pointerup',endDrag);
-    tWrap.addEventListener('pointercancel',endDrag);
+    const endDrag=()=>{dragging=false;wrap.classList.remove('dragging')};
+    wrap.addEventListener('pointerup',endDrag);
+    wrap.addEventListener('pointercancel',endDrag);
+    wrap.addEventListener('click',e=>{if(moved){e.preventDefault();moved=false}},true);
   }
+
+  initDraggableMarquee(tWrap, tTrack, 38);
+
   const pl=CFG.rakan.map(r=>{
     const inner=`<span class="slot">${img(r.img,r.nama)}</span>`;
     return isReal(r.link)
       ? `<a class="pl" href="${esc(r.link)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(r.nama)}">${inner}</a>`
       : `<div class="pl" aria-label="${esc(r.nama)}">${inner}</div>`;
   }).join('');
-  $('#pTrack').innerHTML=pl+pl.replace(/class="pl"/g,'class="pl" aria-hidden="true"');
+  const pWrap=$('#plogos'), pTrack=$('#pTrack');
+  pTrack.innerHTML=pl+pl.replace(/class="pl"/g,'class="pl" aria-hidden="true"');
+  initDraggableMarquee(pWrap, pTrack, -34);
 })();
 
 /* Video Latar Testimoni & Rakan (video_bg.mp4 automatik berulang di laptop & semua phone) */
