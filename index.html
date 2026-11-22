@@ -1690,11 +1690,11 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
 .gal-s>img{position:relative !important;inset:auto !important;width:100% !important;height:100% !important;object-fit:contain !important;transform-origin:center center;transition:transform .12s ease-out;pointer-events:none;will-change:transform}
 .krono-stage{aspect-ratio:16/10 !important;max-height:58dvh;touch-action:pan-y;user-select:none}
 .krono-stage img{transform-origin:center center;transition:transform .12s ease-out;pointer-events:none;will-change:transform}
-.gal-zctrl{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap}
-.gal-zbtn{padding:4px 12px;background:var(--ink);color:#fff;border:1.8px solid var(--ink);font:700 12px/1.1 var(--ff-h);letter-spacing:.08em;text-transform:uppercase;
-  clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);cursor:pointer;transition:background .18s,color .18s}
+.gal-zctrl{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.gal-zbtn{padding:7px 16px;background:var(--blue);color:#fff;border:2px solid var(--yellow);font:700 13px var(--ff-h);letter-spacing:.1em;text-transform:uppercase;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);cursor:pointer;transition:background .2s,color .2s}
 .gal-zbtn:hover{background:var(--yellow);color:var(--ink)}
-.gal-zlvl{font:700 11.5px var(--ff-h);letter-spacing:.1em;color:var(--blue-dd);min-width:44px;text-align:center}
+.gal-zlvl{font:700 13px var(--ff-h);letter-spacing:.12em;color:var(--blue-dd);min-width:54px;text-align:center}
 @media (max-width:600px){
   .gal-view,.krono-stage{aspect-ratio:4/3 !important;max-height:50dvh}
 }
@@ -3404,10 +3404,10 @@ function gallery(imgs, driveUrl, opts){
       ${n>1?`<button class="garr prev" aria-label="Gambar sebelum"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <button class="garr next" aria-label="Gambar seterusnya"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>`:''}</div>
       <div class="gal-zctrl" aria-label="Kawalan zum gambar">
-        <button type="button" class="gal-zbtn" data-z="out" aria-label="Zum keluar">&minus;</button>
+        <button type="button" class="gal-zbtn" data-z="out" aria-label="Zoom keluar">&minus; Zoom Out</button>
         <span class="gal-zlvl">100%</span>
-        <button type="button" class="gal-zbtn" data-z="in" aria-label="Zum masuk">+</button>
-        <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zum">Reset</button>
+        <button type="button" class="gal-zbtn" data-z="in" aria-label="Zoom masuk">+ Zoom In</button>
+        <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zoom">Reset</button>
       </div>${thumbsHtml}`;
 
     const track=$('.gal-track',g),dbox=$('.gal-dots',g),tbox=$('.gal-thumbs',g),v=$('.gal-view',g),zctrl=$('.gal-zctrl',g);
@@ -3555,10 +3555,10 @@ function openKronologiModal(k){
       <div class="krono-yr-badge" id="kronoBadge"></div>
     </div>
     <div class="gal-zctrl" id="kronoZCtrl" aria-label="Kawalan zum gambar">
-      <button type="button" class="gal-zbtn" data-z="out" aria-label="Zum keluar">&minus;</button>
+      <button type="button" class="gal-zbtn" data-z="out" aria-label="Zoom keluar">&minus; Zoom Out</button>
       <span class="gal-zlvl">100%</span>
-      <button type="button" class="gal-zbtn" data-z="in" aria-label="Zum masuk">+</button>
-      <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zum">Reset</button>
+      <button type="button" class="gal-zbtn" data-z="in" aria-label="Zoom masuk">+ Zoom In</button>
+      <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zoom">Reset</button>
     </div>
     <div class="krono-substrip" id="kronoSub"></div>
     ${k.perihal?`<div class="info one" style="margin-top:14px"><div class="row"><p style="font-size:15px;line-height:1.6">${esc(k.perihal)}</p></div></div>`:''}
