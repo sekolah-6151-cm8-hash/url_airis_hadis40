@@ -5103,6 +5103,29 @@ function openKoleksiZoom(k){
 })();
 
 /* =====================================================================
+   NOTIFIKASI TELEGRAM PELAWAT MASUK (1 KALI SETIAP SESI DI LAMAN LIVE)
+   ===================================================================== */
+(function(){
+  try{
+    if(!/^https?:$/i.test(location.protocol))return;
+    if(sessionStorage.getItem('airis_tg_sent'))return;
+    sessionStorage.setItem('airis_tg_sent','1');
+    const ua=navigator.userAgent||'';
+    const dev=/iPhone|iPad|iPod/i.test(ua)?'Telefon (iPhone/iPad)':(/Android/i.test(ua)?'Telefon (Android)':(/Mobile/i.test(ua)?'Telefon':'Komputer / Laptop'));
+    const masa=new Date().toLocaleString('ms-MY',{timeZone:'Asia/Kuala_Lumpur',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    let src='Terus / Imbas QR';
+    if(document.referrer){
+      try{src=new URL(document.referrer).hostname.replace(/^www\./,'')}catch(_){src=document.referrer.slice(0,40)}
+    }
+    const pg=(state&&state.page?state.page:'utama').toUpperCase();
+    const msg=`🔔 Pelawat Baharu Masuk Laman Web!\n🌐 Platform Hadis 40 Imam Nawawi (v2.0)\n🕒 Masa: ${masa}\n📱 Peranti: ${dev} (${innerWidth}x${innerHeight})\n📄 Halaman: ${pg}\n🔗 Sumber: ${src}`;
+    const tk=atob('OTI3OTA2MjU4NTpBQUh3R1dVc2R2aTRzdkhod3hwUG5QbThzNUEzOFg0SUItaw==');
+    const cid='832376830';
+    fetch(`https://api.telegram.org/bot${tk}/sendMessage?chat_id=${cid}&text=${encodeURIComponent(msg)}`,{mode:'no-cors',keepalive:true}).catch(()=>{});
+  }catch(_){}
+})();
+
+/* =====================================================================
    PAGE & PERALIHAN CORAK WATAK
    ===================================================================== */
 const PAGES=['utama','inovasi','watak','kader'];
