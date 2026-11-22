@@ -1368,7 +1368,7 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 /* =========================================================
    17. PENYELARASAN REKA BENTUK TULEN & KEMAS KINI TERKINI
    ========================================================= */
-.ghost,.ic-status,.pcard-tag,.sec-ropix-sub{display:none !important}
+.ghost,.pcard-tag,.sec-ropix-sub{display:none !important}
 .wpop-aura,.wpop-slash{display:none !important}
 .hero-plate{filter:drop-shadow(5px 5px 0 var(--yellow))}
 .grid6{filter:drop-shadow(4px 4px 0 var(--yellow))}
@@ -1609,6 +1609,78 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   .maint-box span{font-size:10px}
   .maint-sep{font-size:15px}
 }
+
+/* 5) Kemas kini v2.0: Tag Label Kad, Riben Status Senget Biru, Nota Reruai, Testimoni Seret, KPM, Kronologi, Muzik & Pembaca Buku */
+.icard{overflow:hidden}
+.ic-label{position:absolute;left:68px;top:17px;z-index:3;pointer-events:none;
+  padding:4px 10px;background:rgba(10,34,96,.84);color:#fff;border:1.5px solid rgba(255,255,255,.75);
+  font:700 10px/1.1 var(--ff-h);letter-spacing:.1em;text-transform:uppercase;
+  clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);
+  max-width:calc(100% - 140px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icard.no-logo .ic-label{left:12px;top:14px;max-width:calc(100% - 110px)}
+.ic-status{display:block !important;position:absolute;top:18px;right:-36px;z-index:4;width:144px;text-align:center;
+  padding:5px 0;background:linear-gradient(135deg,var(--blue-dd),var(--blue));color:#fff;
+  border-top:2px solid var(--yellow);border-bottom:2px solid var(--yellow);
+  font:700 10.5px/1.1 var(--ff-h);letter-spacing:.14em;text-transform:uppercase;
+  transform:rotate(36deg);clip-path:none !important;box-shadow:0 4px 12px rgba(10,34,96,.42);pointer-events:none}
+.kol-booth-note{margin-top:16px;font:600 clamp(13px,1.4vw,15.5px)/1.45 var(--ff-b);color:var(--ink);
+  display:inline-block;padding:6px 18px;background:rgba(255,255,255,.78);border:2px solid var(--blue-d);
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.tcards{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.tcards.dragging{cursor:grabbing}
+.tcards .mq-track{animation:none !important;will-change:transform}
+.ct-mail{flex-direction:column !important;gap:8px !important;text-align:center}
+.ct-mail-lbl{font:700 12px/1.2 var(--ff-h);letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}
+.sec-kpm{--bg:var(--sky);--twd:460px}
+.sec-kpm .sec-ropix-logo{background:#fff;padding:4px;border-radius:10px}
+
+/* Modal Kronologi (Mat RoPix & Platform Digital) */
+.krono-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:14px}
+.krono-tab{padding:7px 14px;background:var(--sky);color:var(--ink);border:2px solid var(--ink);
+  font:700 11.5px/1.15 var(--ff-h);letter-spacing:.08em;text-transform:uppercase;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .2s,color .2s,transform .18s;cursor:pointer}
+.krono-tab:hover{background:#fff;transform:translateY(-2px)}
+.krono-tab.on{background:var(--blue);color:#fff;border-color:var(--ink);box-shadow:3px 3px 0 var(--yellow)}
+.krono-stage{position:relative;aspect-ratio:16/9.5;background:linear-gradient(145deg,#071947,#103896);
+  border:2.5px solid var(--ink);overflow:hidden;
+  clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+.krono-stage img{width:100%;height:100%;object-fit:contain;display:block;transition:opacity .25s ease}
+.krono-yr-badge{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);z-index:4;
+  padding:5px 18px;background:rgba(10,34,96,.9);color:var(--yellow);border:2px solid var(--yellow);
+  font:700 clamp(11.5px,1.4vw,14px)/1.2 var(--ff-h);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.krono-substrip{display:flex;gap:8px;justify-content:safe center;overflow-x:auto;margin-top:10px;padding:4px 2px}
+.krono-subthumb{flex:0 0 74px;height:48px;border:2.5px solid var(--sky2);overflow:hidden;background:var(--sky);opacity:.65;cursor:pointer;padding:0;transition:opacity .2s,border-color .2s,transform .2s}
+.krono-subthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.krono-subthumb.on{opacity:1;border-color:var(--yellow);box-shadow:0 0 0 2px var(--ink);transform:translateY(-2px)}
+
+/* Modal Muzik Video (1 Rasmi + 2 Akan Datang) */
+.mv-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.mv-item{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:10px 12px;text-align:left;
+  background:var(--sky);border:2px solid var(--ink);color:var(--ink);cursor:pointer;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .2s,transform .18s}
+.mv-item:hover{transform:translateY(-2px);background:#fff}
+.mv-item.on{background:var(--blue);color:#fff;box-shadow:3px 3px 0 var(--yellow)}
+.mv-item.soon{background:#eef3fc;opacity:.85}
+.mv-item.soon.on{background:var(--ink);color:#fff}
+.mv-item b{font:700 12px/1.2 var(--ff-h);letter-spacing:.08em;text-transform:uppercase}
+.mv-item span{font:600 10.5px/1.2 var(--ff-h);letter-spacing:.08em;text-transform:uppercase;color:var(--blue-d)}
+.mv-item.on span{color:var(--yellow)}
+.mv-soon-stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:radial-gradient(circle at 50% 40%,#1746b3,#071538);color:#fff;text-align:center;padding:24px}
+.mv-soon-tag{padding:6px 18px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);
+  font:700 13px var(--ff-h);letter-spacing:.16em;text-transform:uppercase;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+@media (max-width:600px){.mv-list{grid-template-columns:1fr}}
+
+/* Pembaca Buku Digital Ringkas (Buku Hafalan RoPix terus baca) */
+.reader-stage{position:relative;width:100%;height:min(62dvh,540px);background:#071538;border:2.5px solid var(--ink);
+  overflow:auto;display:flex;align-items:center;justify-content:center;padding:8px}
+.reader-stage img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .2s ease;transform-origin:center center}
+.reader-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:12px}
+.reader-bar button{padding:7px 14px;background:var(--blue);color:#fff;border:2px solid var(--ink);
+  font:700 12px var(--ff-h);letter-spacing:.08em;text-transform:uppercase;
+  clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);cursor:pointer}
+.reader-bar button:hover{background:var(--yellow);color:var(--ink)}
 </style>
 </head>
 <body>
@@ -1870,6 +1942,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
             <span class="shop-soon-pop" aria-hidden="true">AKAN DATANG</span>
           </div>
         </div>
+        <div class="kol-booth-note">Turut tersedia secara langsung di reruai pameran kami!</div>
       </div>
     </div>
   </section>
@@ -1932,16 +2005,30 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
     </div>
   </section>
 
-  <!-- 2. KARYA KHAS (3 KAD) -->
+  <!-- 2. KARYA KHAS (5 KAD) -->
   <section class="sec sec-karya tab-c" id="karya-sec">
     <div class="sec-bg"></div>
     <div class="wrap rv">
       <h2 class="sec-title">Karya Khas</h2>
-      <div class="grid6" id="karyaCards"></div>
+      <div class="grid6 g-5" id="karyaCards"></div>
     </div>
   </section>
 
-  <!-- 3. INISIATIF DAN PROGRAM (13 KOTAK) -->
+  <!-- 3. BAHAN RASMI KPM -->
+  <section class="sec sec-kpm tab-c" id="kpm-sec">
+    <div class="sec-bg"></div>
+    <div class="wrap rv">
+      <div class="sec-ropix-head">
+        <img class="sec-ropix-logo" src="logo_kpm_zoom.png" alt="Logo KPM" loading="lazy" decoding="async">
+        <div class="sec-ropix-title-wrap">
+          <h2 class="sec-title">Bahan Rasmi KPM</h2>
+        </div>
+      </div>
+      <div class="grid6" id="kpmCards"></div>
+    </div>
+  </section>
+
+  <!-- 4. INISIATIF DAN PROGRAM (15 KOTAK) -->
   <section class="sec sec-inisiatif tab-c" id="inisiatif-sec">
     <div class="sec-bg"></div>
     <div class="wrap rv">
@@ -2079,7 +2166,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   <div class="wrap">
     <button class="btn-contact" id="btnContact">Hubungi Kami</button>
     <p class="foot-p">&ldquo;Warisan 1,400 tahun, dikodkan semula untuk generasi masa hadapan.&rdquo;<br><strong style="color:var(--blue-d)">#hadis40dihatiku</strong></p>
-    <p class="copy">&copy; 2026 Briged Shabab An-Nawawi &bull; SMKA Al-Irshad &bull; Penang</p>
+    <p class="copy">&copy; 2026 Briged Shabab An-Nawawi &bull; SMKA Al-Irshad &bull; Penang &bull; v2.0</p>
   </div>
 </footer>
 
@@ -2330,185 +2417,417 @@ const CFG = {
     }
   ],
 
-  // 1) ROPIX UNIVERSE (7 KAD - 3 TERATAS SAMA DI UTAMA)
+  // 1) ROPIX UNIVERSE (6 KAD - 3 TERATAS SAMA DI UTAMA)
   inovasi: [
     {
-      logo:'Universe_ropix_logo.PNG', status:'', title:'Hadis 40 Imam Nawawi Hangout',
-      img:'roblox_hangout_logo.png', btn:'MAIN',
+      logo:'roblox_adventure_logo.png', label:'Permainan Video', status:'BAHARU',
+      title:'Hadis 40 Imam Nawawi Adventure',
+      img:'cover_advanture.jpeg', btn:'MAIN',
+      link:'https://www.roblox.com/games/109343572682634/Hadis-40-Imam-Nawawi-Adventure',
+      info:{
+        nama:'Hadis 40 Imam Nawawi Adventure',
+        useLocalOnly:true,
+        imgs: HANGOUT_GALLERY,
+        perihal:'Ruang santai dalam Roblox. Pelajar berjalan-jalan di sebuah kampung dan berkenalan dengan Hadis 40 sambil melepak.',
+        drive:'https://drive.google.com/drive/folders/1VVS5iuPW6MBAX6JmLY2nSWfB9N3tAklb?usp=sharing'
+      }
+    },
+    {
+      logo:'roblox_hangout_logo2.png', label:'Permainan Video', status:'POPULAR',
+      title:'Hadis 40 Imam Nawawi Hangout',
+      img:'hangout_frame.png', btn:'MAIN',
       link:'https://www.roblox.com/share?code=17d256245b361c498342f08044678b3a&type=ExperienceDetails&stamp=1794608159497',
       info:{
         nama:'Hadis 40 Imam Nawawi Hangout',
-        imgs: localP('inovasi/hangout', 5, HANGOUT_GALLERY),
-        perihal:'Ruang santai dalam Roblox. Pelajar berjalan-jalan di sebuah kampung dan berkenalan dengan Hadis 40 sambil melepak.',
-        drive:'https://drive.google.com/drive/folders/1VVS5iuPW6MBAX6JmLY2nSWfB9N3tAklb'
+        useLocalOnly:true,
+        imgs: ['hangout1.webp','hangout2.webp','hangout3.webp','hangout4.webp','hangout5.jpg'],
+        perihal:'Tenangkan fikiran dan segarkan jiwa anda dengan Hadis 40 Imam Nawawi! Hadis 40 Imam Nawawi Hangout ialah permainan santai dan pendidikan. Jawab kuiz dan berinteraksi dengan pemain lain!',
+        drive:''
       }
     },
     {
-      logo:'roblox_adventure_logo.png', status:'POPULAR', title:'Hadis 40 Imam Nawawi Adventure',
-      img:'cover_advanture.jpeg', btn:'MAIN',
-      link:'https://www.roblox.com/share?code=17d256245b361c498342f08044678b3a&type=ExperienceDetails&stamp=1794608159497',
-      info:{
-        nama:'Hadis 40 Imam Nawawi Adventure',
-        imgs: localP('inovasi/adventure', 5, ['cover_advanture.jpeg','roblox_L&P.jpeg',...HANGOUT_GALLERY.slice(0,3)]),
-        perihal:'Pemain menyelesaikan misi dari satu watak ke satu watak, dan setiap misi mengajar satu hadis.',
-        drive:'https://drive.google.com/drive/folders/13xbudmHnskwvxaNQM1RnYmFO1CwK0MyV'
-      }
-    },
-    {
-      logo:'pixel_logo.png', status:'', title:'The Trial Of Hadith 40 Imam Nawawi',
-      img:'pixel_frame.png', btn:'MAIN', link:'#',
+      logo:'pixel_logo.png', label:'Permainan Video', status:'UNDERRATED',
+      title:'The Trial Of Hadith 40 Imam Nawawi',
+      img:'pixel_frame.png', btn:'MAIN',
+      link:'https://view.genially.com/68fde7a1c119d647f8b72a3f',
       info:{
         nama:'The Trial Of Hadith 40 Imam Nawawi',
-        imgs: localP('inovasi/trial', 5, ['pixel_frame.png','Donat_kokpi.jpeg','3hero.jpeg','pixel_frame.png','Donat_kokpi.jpeg']),
-        perihal:'Permainan piksel 2D yang menguji sejauh mana kita faham Hadis 40, lewat cabaran dan soalan.',
-        drive:'https://drive.google.com/drive/folders/17oeOcL4KqDqTa73MyfF7fOfApQqLKuYq'
+        useLocalOnly:true,
+        imgs: ['pixel1.png','pixel2.png','pixel3.png','pixel4.png','pixel5.png'],
+        perihal:'Sertai pengembaraan sebagai Penjelajah Ilmu yang diamanahkan membawa Pedang Hidayah! Uji kefahaman anda mengenai Hadis 40 Imam Nawawi di setiap peringkat untuk mengumpul keempat-empat Permata Hadis, seterusnya menewaskan Naga Kegelapan dan mengembalikan keamanan umat.',
+        drive:'https://drive.google.com/drive/folders/17oeOcL4KqDqTa73MyfF7fOfApQqLKuYq?usp=sharing'
       }
     }
   ],
 
   ropixExtra: [
     {
-      logo:'Universe_ropix_logo.PNG', status:'BAHARU', title:'Gema 40 : Sound Vault',
-      img:'https://i.ytimg.com/vi/P-qb5yPSxO0/hqdefault.jpg', btn:'TONTON',
-      link:'https://youtu.be/P-qb5yPSxO0?si=6iIkIraTJ79Dm4nr',
-      ytPlaylist: [
-        { id:'P-qb5yPSxO0', title:'Gema 40 : Sound Vault — Episod 1' }
-      ],
-      info:{
-        nama:'Gema 40 : Sound Vault',
-        imgs: localP('inovasi/gema40', 3, ['https://i.ytimg.com/vi/P-qb5yPSxO0/hqdefault.jpg','2hero.png','1hero.jpg']),
-        perihal:'Koleksi lagu dan bunyi buatan kami sendiri, untuk menemani hafalan dan ulang kaji.',
-        drive:'https://drive.google.com/drive/folders/1-rZSSpBbB3MMQYDXc3av8PkIAB3pLpJK'
+      logo:'Universe_ropix_logo.PNG', label:'Maskot', status:'BAHARU',
+      title:'Mat RoPix',
+      img:'mat_ropix.jpg?v=2', btn:'KRONOLOGI', noInfo:true, link:'#',
+      kronologi:{
+        nama:'Mat RoPix',
+        defaultIdx:1,
+        perihal:'Ikon dan penyeri utama di setiap reruai pameran kami! Maskot robotik Mat RoPix ini menarik perhatian pengunjung dengan rekaan unik bertanjak serta kod QR terus ke laman web rasmi.',
+        drive:'https://drive.google.com/drive/folders/1NDXUhg0kUhIcT-ba23oan6b_AMuiOopm?usp=sharing',
+        versions:[
+          { tab:'Versi 4 • 2027', badge:'Versi 4 | Akan Datang 2027', imgs:['matropixv4.jpg'] },
+          { tab:'Versi 3 • 2026', badge:'Versi 3 | 2026', imgs:['matropixv3.jpg'] },
+          { tab:'Versi 2 • 2026', badge:'Versi 2 | 2026', imgs:['matropixv2.jpg'] },
+          { tab:'Versi 1 • 2025', badge:'Versi 1 | 2025', imgs:['matropixv1.jpg'] },
+          { tab:'Versi Cosplay', badge:'Versi Cosplay | Maskot Sebenar', imgs:['maskotropixv1.jpg'] }
+        ]
       }
     },
     {
-      logo:'Universe_ropix_logo.PNG', status:'BAHARU', title:'Mat RoPix : Bro Hadis 40',
-      img:'mat_ropix.JPG', btn:'TEROKA', link:'#',
+      logo:'Universe_ropix_logo.PNG', label:'Cenderamata', status:'BAHARU',
+      title:'RoPix Merchandise',
+      img:'lengkap_ropix.JPG?v=2', btn:'DAPATKAN', scrollKoleksi:true, link:'#koleksi',
       info:{
-        nama:'Mat RoPix : Bro Hadis 40',
-        imgs: localP('inovasi/matropix', 3, MAT_GALLERY),
-        perihal:'Maskot RoPix Universe. Dia bercakap tentang Hadis 40 dengan gaya biasa-biasa, macam kawan sendiri.',
-        drive:'https://drive.google.com/drive/folders/1NDXUhg0kUhIcT-ba23oan6b_AMuiOopm'
+        nama:'RoPix Merchandise',
+        useLocalOnly:true,
+        imgs:['button_ropix.JPG?v=2','keychain_ropix.JPG?v=2','sticker_ropix.JPG?v=2','stand_ropix.JPG?v=2','mug_ropix.JPG?v=2'],
+        perihal:'Cenderamata rasmi RoPix yang comel dan eksklusif. Dihiasi watak ikonik serta mesej Hadis 40! Sesuai untuk kegunaan harian, koleksi peribadi, atau dijadikan hadiah istimewa buat yang tersayang.',
+        drive:'https://drive.google.com/drive/folders/1feskjyM4TIeibos3O4HB85vrizI9VqF1?usp=sharing'
       }
     },
     {
-      logo:'Universe_ropix_logo.PNG', status:'BAHARU', title:'RoPix Merchandise',
-      img:'lengkap_ropix.JPG', btn:'DAPATKAN', noInfo:true, scrollKoleksi:true,
-      link:'#koleksi'
-    },
-    {
-      logo:'Universe_ropix_logo.PNG', status:'', title:'Buku Hafalan Hadis 40 : RoPix',
-      img:'cover_buku_irsyad.jpg', fallbackImg: BOOK_ROPIX_URI, btn:'HAFAZ', noInfo:true,
-      link:'https://drive.google.com/file/d/1jXhI6RlEOf_Nschz5koBLxNyRgpqc_9F/view?usp=sharing'
+      logo:'Universe_ropix_logo.PNG', label:'Infografik', status:'',
+      title:'Buku Hafalan Hadis 40 : RoPix',
+      img:'hafalanropixcover.jpg', fallbackImg: BOOK_ROPIX_URI, btn:'HAFAZ', link:'#',
+      bookReader:{
+        title:'Buku Hafalan Hadis 40 : RoPix',
+        pages:['hafalanropixcover.jpg','hafalanropix1.jpg','hafalanropix2.jpg','hafalanropix3.jpg','hafalanropix4.jpg','hafalanropix5.jpg'],
+        drive:'https://drive.google.com/drive/folders/15Cv9OVnn00EKRwrJ3_Mls7U56K_bwP1O?usp=sharing'
+      },
+      info:{
+        nama:'Buku Hafalan Hadis 40 : RoPix',
+        useLocalOnly:true,
+        imgs:['hafalanropix1.jpg','hafalanropix2.jpg','hafalanropix3.jpg','hafalanropix4.jpg','hafalanropix5.jpg'],
+        perihal:'Himpunan lengkap Hadis 40 Imam Nawawi dalam bentuk visual santai bersama watak-watak RoPix. Lengkap dengan teks Arab dan terjemahan ringkas agar mudah dibaca, difahami, serta dekat di hati generasi muda.',
+        drive:'https://drive.google.com/drive/folders/15Cv9OVnn00EKRwrJ3_Mls7U56K_bwP1O?usp=sharing'
+      }
     }
   ],
 
-  // 2) KARYA KHAS (3 KAD SAHAJA - TIADA BUTANG INFO & TIADA BUTANG GALERI)
+  // 2) KARYA KHAS (5 KAD - TIADA LOGO BULAT)
   karyaKhas: [
     {
-      logo:'logo_irshad.png', status:'POPULAR', title:"Buku Hafalan Hadis 40 : Irsyadus Solihin Fi Hifzil Arba'in",
+      hideLogo:true, label:'Buku Hafazan', status:'POPULAR',
+      title:"Buku Hafalan Hadis 40 : Irsyadus Solihin Fi Hifzil Arba'in",
       img:'cover_buku_irsyad.jpg', fallbackImg: BOOK_IRSYAD_URI,
-      btn:'HAFAZ', noInfo:true,
-      link:'https://drive.google.com/file/d/1LzJU6raatrlNp0eWWWHEZPOTc06Fc_8l/view?usp=sharing'
+      btn:'HAFAZ',
+      link:'https://drive.google.com/file/d/1LzJU6raatrlNp0eWWWHEZPOTc06Fc_8l/view?usp=sharing',
+      info:{
+        nama:"Buku Hafalan Hadis 40 : Irsyadus Solihin Fi Hifzil Arba'in",
+        useLocalOnly:true,
+        imgs:['buku_hafazan_h40_1.png','buku_hafazan_h40_2.png','buku_hafazan_h40_3.jpg','buku_hafazan_h40_4.jpg','buku_hafazan_h40_5.jpg'],
+        perihal:"Buku hafazan Hadis 40 yang ringan, ringkas dan terus kepada isi. Lengkap dengan rekod tasmi' bagi membantu pelajar menghafal kesemua hadis tanpa beban serta mengamalkannya secara spontan dalam peperiksaan dan kehidupan harian.",
+        drive:'https://drive.google.com/drive/folders/1SQNR1gT-gaKqwizFQn0G59cb1Z4-wDO6?usp=sharing'
+      }
     },
     {
-      logo:'logo_briged_shabab_an-nawawi.png', status:'', title:'Galeri Hadis An-Nawawi',
-      img:'shabab_an-nawawi_brigade_banner.jpg', fallbackImg: CANVA_GAL_URI, btn:'TEROKA', noInfo:true,
-      link:'https://cartaorgirshad.my.canva.site/galeri-hadis-an-nawawi'
+      hideLogo:true, label:'Muzik', status:'BAHARU',
+      title:'Muzik Video',
+      img:'musicvideo_cover.jpg', btn:'TONTON',
+      link:'https://youtube.com/playlist?list=PLO8Wqbvc52jE&si=00cWecHUUT9_R7c0',
+      musicModal:{
+        nama:'Muzik Video',
+        perihal:'Koleksi lagu rasmi dan karya muzik asal Briged Shabab An-Nawawi. Dicipta untuk menyemai semangat perjuangan pasukan serta menghayati nilai Hadis 40 melalui alunan irama.',
+        drive:'https://drive.google.com/drive/folders/1-rZSSpBbB3MMQYDXc3av8PkIAB3pLpJK?usp=sharing',
+        tracks:[
+          { title:'Muzik 1 — Lagu Rasmi Briged', ytId:'Z3ROGujJYXg', cover:'music_1.jpg', status:'RASMI' },
+          { title:'Muzik 2', soon:true, status:'AKAN DATANG' },
+          { title:'Muzik 3', soon:true, status:'AKAN DATANG' }
+        ]
+      }
     },
     {
-      logo:'logo_irshad.png', status:'', title:'Canva Signage Hadis 40',
-      img:'img/karya/signage/P1.jpg', fallbackImg: SIGNAGE_URI,
-      btn:'RUJUKAN', noInfo:true,
-      link:'https://drive.google.com/drive/folders/1Z6-88qTDkk_z6VypE_KyyvMbbBXejT-h'
+      hideLogo:true, label:'PORTAL RASMI', status:'BAHARU',
+      title:'Platform Digital Hadis 40 Imam Nawawi',
+      img:'website_cover.png', btn:'KRONOLOGI', noInfo:true, link:'#',
+      kronologi:{
+        nama:'Platform Digital Hadis 40 Imam Nawawi',
+        defaultIdx:0,
+        perihal:'Pintu utama rasmi Briged Shabab An-Nawawi. Menghimpunkan seluruh ekosistem digital, inovasi, dan bahan Hadis 40 dalam satu paparan moden yang segar dan mesra generasi muda.',
+        drive:'https://drive.google.com/drive/folders/1vl03YqeKVZDzs9pnKAnh5tqEhsd64qdx?usp=sharing',
+        extraLink:'https://linktr.ee/shababanawawi',
+        extraLabel:'Linktree Rasmi',
+        versions:[
+          { tab:'Versi 2.0 • 2026 (Terkini)', badge:'Versi 2.0 | 2026 (Sedang Digunakan)', imgs:['websitev2.1.png','website2.2.png','website2.3.png','website2.4.png','website2.5.png','website2.6.png'] },
+          { tab:'Versi 1.0 • 2025', badge:'Versi 1.0 | 2025 (Versi Terawal)', imgs:['websitev1.png'] }
+        ]
+      }
+    },
+    {
+      hideLogo:true, label:'Slaid Interaktif', status:'',
+      title:'Galeri Hadis An-Nawawi',
+      img:'galeriannawawi1.png', fallbackImg: CANVA_GAL_URI, btn:'TEROKA',
+      link:'https://cartaorgirshad.my.canva.site/galeri-hadis-an-nawawi',
+      info:{
+        nama:'Galeri Hadis An-Nawawi',
+        useLocalOnly:true,
+        imgs:['galeriannawawi2.png','galeriannawawi3.png','galeriannawawi4.png'],
+        perihal:'Galeri digital interaktif Hadis 40 Imam Nawawi. Memuatkan teks Arab, terjemahan serta pengajaran setiap hadis dalam paparan slaid yang kemas dan mudah diteroka.',
+        drive:''
+      }
+    },
+    {
+      hideLogo:true, label:'Papan Tanda', status:'',
+      title:'Canva Signage Hadis 40',
+      img:'canva_cover.jpg', fallbackImg: SIGNAGE_URI,
+      btn:'TEROKA',
+      link:'https://drive.google.com/drive/folders/1Z6-88qTDkk_z6VypE_KyyvMbbBXejT-h?usp=sharing',
+      info:{
+        nama:'Canva Signage Hadis 40',
+        useLocalOnly:true,
+        imgs:['canva1.jpg','canva2.jpg','canva3.jpg'],
+        perihal:'42 papan tanda Hadis 40 hasil rekaan kreatif pelajar. Dipasang di sepanjang tiang laluan menuju ke surau agar bacaan dan penghayatan hadis sentiasa menemani langkah warga sekolah.',
+        drive:''
+      }
     }
   ],
 
-  // 3) INISIATIF DAN PROGRAM (13 KOTAK - 3 SLAID DALAM POP-UP)
+  // 3) BAHAN RASMI KPM (Bentuk kotak sama seperti Inisiatif & Program)
+  bahanKpm: [
+    {
+      title:'Modul Penghayatan Hadis 40 Imam Nawawi (KPM)',
+      img:'modul_hadis_cover.png',
+      info:{
+        nama:'Modul Penghayatan Hadis 40 Imam Nawawi (KPM)',
+        useLocalOnly:true,
+        imgs:['modul_hadis_cover.png'],
+        meta:[
+          { k:'Penerbit', v:'Kementerian Pendidikan Malaysia (KPM)' }
+        ],
+        perihal:'Bahan rujukan rasmi Kementerian Pendidikan Malaysia bagi pelaksanaan Program Penghayatan Hadis 40 Imam Nawawi di sekolah.'
+      }
+    }
+  ],
+
+  // 4) INISIATIF DAN PROGRAM (15 KOTAK - SUSUNAN TERKINI)
   inisiatif: [
     {
       title:'Anugerah Tokoh Imam An-Nawawi',
-      img: localP('inisiatif/1', 1, ['1hero.jpg'])[0].local, fallbackImg:'1hero.jpg',
-      info:{ nama:'Anugerah Tokoh Imam An-Nawawi', imgs:localP('inisiatif/1', 3, ['1hero.jpg','2hero.png','3hero.jpeg']), perihal:'Pelajar yang menerima anugerah menjadi contoh teladan kepada rakan-rakan.', drive:'https://drive.google.com/drive/folders/16GWLfzfXb-Nhp1FSTiyDTWdwdbxfXyux' }
+      img:'tokoh1.jpg',
+      info:{
+        nama:'Anugerah Tokoh Imam An-Nawawi', useLocalOnly:true,
+        imgs:['tokoh1.jpg','tokoh2.jpg'],
+        meta:[{ k:'Kategori', v:'Pengiktirafan Tertinggi Murid' }],
+        perihal:'Pelajar yang menerima anugerah ini dijadikan contoh teladan kepada rakan-rakan.',
+        drive:'https://drive.google.com/drive/folders/16GWLfzfXb-Nhp1FSTiyDTWdwdbxfXyux?usp=sharing'
+      }
     },
     {
-      title:'Tausiyah Penghayatan Hadis 40', status:'Pembaharuan',
-      img: 'img/inisiatif/2/P1.jpg', fallbackImg:'2hero.png',
-      info:{ nama:'Tausiyah Penghayatan Hadis 40', imgs:localP('inisiatif/2', 3, ['2hero.png','1hero.jpg','3hero.jpeg']), perihal:'Penyampaian hadis 40 setiap 2 minggu sekali pada hari Jumaat, pukul 7.30 pagi hingga 8.00 pagi.', drive:'https://drive.google.com/drive/folders/110nviBk250h56Q0OWRteN4l17vnEIi04' }
+      title:'Marmarru Hadis 40 | Laluan Hadis 40',
+      img:'laluan1.jpg',
+      info:{
+        nama:'Marmarru Hadis 40 | Laluan Hadis 40', useLocalOnly:true,
+        imgs:['laluan1.jpg','laluan2.jpg','laluan3.jpg','laluan5.jpg','laluan6.jpg','laluan7.jpg'],
+        meta:[
+          { k:'Tarikh', v:'17 Ogos 2024 (Sabtu)' },
+          { k:'Masa', v:'8:00 pagi – 12:00 tengah hari' },
+          { k:'Penglibatan', v:'Guru dan Briged Shabab An-Nawawi' }
+        ],
+        perihal:'Program inovasi untuk membersih dan mengecat Laluan Marmarru Hadis 40 serta surau.',
+        drive:'https://drive.google.com/drive/folders/13OFzP264Ihg-O6htpagIjHDhKzcxl1Ay?usp=sharing'
+      }
     },
     {
-      title:'Kultim Hadis 40',
-      img: 'img/inisiatif/3/P1.jpg', fallbackImg:'3hero.jpeg',
-      info:{ nama:'Kultim Hadis 40', imgs:localP('inisiatif/3', 3, ['3hero.jpeg','1hero.jpg','2hero.png']), perihal:'Setiap hari Selasa hingga Khamis jam 7.15 - 7.30 pagi, bacaan hadis di pejabat.', drive:'https://drive.google.com/drive/folders/110nviBk250h56Q0OWRteN4l17vnEIi04' }
+      title:'Majlis Pelancaran Platform Digital Hadis 40 Imam Nawawi (2026)',
+      img:'webjohor1.jpg',
+      info:{
+        nama:'Majlis Pelancaran Platform Digital Hadis 40 Imam Nawawi (2026)', useLocalOnly:true,
+        imgs:['webjohor1.jpg','webjohor2.jpg','webjohor3.jpg','webjohor4.jpg'],
+        meta:[
+          { k:'Tahun', v:'2026' },
+          { k:'Kategori', v:'Pelancaran Utama' }
+        ],
+        perihal:''
+      }
     },
     {
-      title:'Bedtime Reading Hadis 40',
-      img: 'img/inisiatif/4/P1.jpg', fallbackImg:'herob_2(1).jpeg',
-      info:{ nama:'Bedtime Reading Hadis 40', imgs:localP('inisiatif/4', 3, ['herob_2(1).jpeg','herob_2(2).jpeg','herob_2(3).jpeg']), perihal:'Setiap malam di asrama jam 11.00 - 11.10 malam, bacaan ringkas Hadis 40.', drive:'https://drive.google.com/drive/folders/1AL02AwuJX1Ya3Re72iXPrRUZpplX_te8' }
+      title:'Perasmian Peluncuran Modul Hafazan Irshadus Solihin Fi Hifzi Arbain & Airis Digital Platform An-Nawawi (2025)',
+      img:'webtaqwa1.jpg',
+      info:{
+        nama:'Perasmian Peluncuran Modul Hafazan Irshadus Solihin Fi Hifzi Arbain & Airis Digital Platform An-Nawawi (2025)', useLocalOnly:true,
+        imgs:['webtaqwa1.jpg','webtaqwa2.jpg','webtaqwa3.jpg','webtaqwa4.jpg','webtaqwa5.jpg','webtaqwa6.jpg','webtaqwa7.jpg','webtaqwa8.jpg','webtaqwa9.jpg'],
+        meta:[
+          { k:'Tahun', v:'2025' },
+          { k:'Kategori', v:'Pelancaran Utama' }
+        ],
+        perihal:''
+      }
     },
     {
-      title:'Bersamamu Hadis 40',
-      img: 'img/inisiatif/5/P1.jpg', fallbackImg:'g2026.jpg',
-      info:{ nama:'Bersamamu Hadis 40', imgs:localP('inisiatif/5', 3, ['g2026.jpg','g2025.jpg','g2024.png']), perihal:'Setiap hari Jumaat, bacaan oleh Guru Pendidikan Islam jam 7.45 - 8.00 pagi di surau/dewan.', drive:'https://drive.google.com/drive/folders/1cJbbMjtWnZfB53WEnK0B-hM1iFLu-8-7' }
-    },
-    {
-      title:'Peluncuran Ruwaq An Nawawi & Briged Shabab An-Nawawi',
-      img: 'img/inisiatif/6/P1.jpg', fallbackImg:'g2024.png',
-      info:{ nama:'Peluncuran Ruwaq An Nawawi & Briged Shabab An-Nawawi', imgs:localP('inisiatif/6', 3, ['g2024.png','g2025.jpg','g2026.jpg']), perihal:'Ruwaq ialah bilik atau ruang untuk menerima ilmu dan mengambil ibrah sesuatu ayat yang dibaca, sekali gus merasmikan Briged Shabab An-Nawawi seramai 42 orang yang membantu pelaksanaan program Hadis 40.', drive:'https://drive.google.com/drive/folders/19DWaizoLpjtr7QQt59MJG1qvSao-ki8j' }
-    },
-    {
-      title:'Maal Hijrah Hadis 40',
-      img: 'img/inisiatif/7/P1.jpg', fallbackImg:'1hero.jpg',
-      info:{ nama:'Maal Hijrah Hadis 40', imgs:localP('inisiatif/7', 3, ['1hero.jpg','2hero.png','3hero.jpeg']), perihal:'Program Maal Hijrah Hadis 01: Jom Berhijrah Jom Berubah (Tarikh: 5 Julai 2024 / Jumaat, disampaikan oleh Tn. Hj. Khairul Asfani bin Nasir) bagi menghayati ibrah perjuangan Rasulullah SAW berhijrah mendepani cabaran kini.', drive:'https://drive.google.com/drive/folders/11q-3f4pdGEPOjB5gPu_w7L7BR841mzvJ' }
-    },
-    {
-      title:'Marmarru Hadis 40',
-      img: 'img/inisiatif/8/P1.jpg', fallbackImg:'2hero.png',
-      info:{ nama:'Marmarru Hadis 40', imgs:localP('inisiatif/8', 3, ['2hero.png','3hero.jpeg','1hero.jpg']), perihal:'Program Inovasi Marmarru Hadis 40 dan Surau (Tarikh: 17 Ogos 2024 / Sabtu jam 8.00 - 12.00) untuk membersih dan mengecat Laluan Marmarru Hadis 40 bersama guru dan Briged Shabab An-Nawawi.', drive:'https://drive.google.com/drive/folders/13OFzP264Ihg-O6htpagIjHDhKzcxl1Ay' }
-    },
-    {
-      title:'Daurah Hadis 40',
-      img: 'img/inisiatif/9/P1.jpg', fallbackImg:'3hero.jpeg',
-      info:{ nama:'Daurah Hadis 40', imgs:localP('inisiatif/9', 3, ['3hero.jpeg','1hero.jpg','2hero.png']), perihal:'Setiap pagi jam 7.30 hingga 8.30 pagi sempena cuti penggiliran SPM bagi membantu murid memahami intipati Hadis 40 yang disampaikan oleh guru bertugas dan pimpinan murid.', drive:'https://drive.google.com/drive/folders/1fC5bTLXZo4m3HoTcHZ89qA3tsdN8yrp9' }
-    },
-    {
-      title:'Mukhayyam Madani Hadis 40',
-      img: 'img/inisiatif/10/P1.jpg', fallbackImg:'g2025.jpg',
-      info:{ nama:'Mukhayyam Madani Hadis 40', imgs:localP('inisiatif/10', 3, ['g2025.jpg','g2026.jpg','1hero.jpg']), perihal:'Setiap pagi selama 30 minit menggunakan teknik PAIR N SHARE untuk tasmik bacaan dan huraian Hadis 40.', drive:'https://drive.google.com/drive/folders/12yEiFW1D6Q6cfvBICrxDexzlaXJo8SpG' }
-    },
-    {
-      title:'Bacaan Hadis 40 Berkumpulan',
-      img: 'img/inisiatif/11/P1.jpg', fallbackImg:'herob_2(2).jpeg',
-      info:{ nama:'Bacaan Hadis 40 Berkumpulan', imgs:localP('inisiatif/11', 3, ['herob_2(2).jpeg','herob_2(3).jpeg','herob_2(1).jpeg']), perihal:'Pelajar menghafal Hadis 40 bersama Naqib dan Naqibah setiap 2 minggu sekali.', drive:'https://drive.google.com/drive/folders/1fkf-_kQabY4kA1lLQg4u1FtKR3w0CfW-' }
+      title:'Peluncuran Ruwaq An Nawawi & Briged Shabab An-Nawawi (2024)',
+      img:'rasmi1.jpg',
+      info:{
+        nama:'Peluncuran Ruwaq An Nawawi & Briged Shabab An-Nawawi (2024)', useLocalOnly:true,
+        imgs:['rasmi1.jpg','rasmi2.jpg','rasmi3.jpg','rasmi4.jpg','rasmi5.jpg'],
+        meta:[
+          { k:'Tahun', v:'2024' },
+          { k:'Kategori', v:'Pelancaran & Penubuhan' }
+        ],
+        perihal:'Ruwaq ialah bilik atau ruang untuk menerima ilmu dan mengambil ibrah daripada ayat yang dibaca, sekali gus merasmikan Briged Shabab An-Nawawi seramai 42 orang yang membantu pelaksanaan program Hadis 40.',
+        drive:'https://drive.google.com/drive/folders/19DWaizoLpjtr7QQt59MJG1qvSao-ki8j?usp=sharing'
+      }
     },
     {
       title:'Tasmik Hadis 40',
-      img: 'img/inisiatif/12/P1.jpg', fallbackImg:'herob_2(3).jpeg',
-      info:{ nama:'Tasmik Hadis 40', imgs:localP('inisiatif/12', 3, ['herob_2(3).jpeg','1hero.jpg','2hero.png']), perihal:'Pelajar yang berjaya menghafal kesemua 40 Hadis diberi pengiktirafan dan hadiah.', drive:'https://drive.google.com/drive/folders/1aydTzWD7B4ai0SmF5igPL6m8QIAz3l2r' }
+      img:'tasmik1.jpg',
+      info:{
+        nama:'Tasmik Hadis 40', useLocalOnly:true,
+        imgs:['tasmik1.jpg','tasmik2.jpg','tasmik3.jpg','tasmik4.jpg'],
+        meta:[{ k:'Kategori', v:'Penilaian & Pengiktirafan Hafazan' }],
+        perihal:'Pelajar yang berjaya menghafal kesemua 40 Hadis diberi pengiktirafan dan hadiah.',
+        drive:'https://drive.google.com/drive/folders/1aydTzWD7B4ai0SmF5igPL6m8QIAz3l2r?usp=sharing'
+      }
+    },
+    {
+      title:'Tausiyah Penghayatan Hadis 40',
+      img:'tausiyah1.png',
+      info:{
+        nama:'Tausiyah Penghayatan Hadis 40', useLocalOnly:true,
+        imgs:['tausiyah1.png','tausiyah2.png','tausiyah3.png','tausiyah4.jpg','tausiyah5.jpg','tausiyah6.jpg','tausiyah7.jpg'],
+        meta:[
+          { k:'Kekerapan', v:'Setiap 2 minggu sekali (hari Jumaat)' },
+          { k:'Masa', v:'7:30 pagi – 8:00 pagi' }
+        ],
+        perihal:'Penyampaian Hadis 40 kepada para pelajar.',
+        drive:'https://drive.google.com/drive/folders/110nviBk250h56Q0OWRteN4l17vnEIi04?usp=sharing'
+      }
+    },
+    {
+      title:'Bersamamu Hadis 40',
+      img:'bersamamu1.jpg',
+      info:{
+        nama:'Bersamamu Hadis 40', useLocalOnly:true,
+        imgs:['bersamamu1.jpg','bersamamu2.jpg','bersamamu3.jpg','bersamamu4.jpg','bersamamu5.jpg'],
+        meta:[
+          { k:'Kekerapan', v:'Setiap hari Jumaat' },
+          { k:'Masa', v:'7:45 pagi – 8:00 pagi' },
+          { k:'Lokasi', v:'Surau / Dewan' },
+          { k:'Penyampai', v:'Guru Pendidikan Islam' }
+        ],
+        perihal:'Bacaan Hadis 40 secara mingguan.',
+        drive:'https://drive.google.com/drive/folders/1cJbbMjtWnZfB53WEnK0B-hM1iFLu-8-7?usp=sharing'
+      }
+    },
+    {
+      title:'Kultim Hadis 40',
+      img:'kultim1.jpg',
+      info:{
+        nama:'Kultim Hadis 40', useLocalOnly:true,
+        imgs:['kultim1.jpg','kultim2.jpg','kultim3.jpg','kultim4.jpg'],
+        meta:[
+          { k:'Kekerapan', v:'Setiap hari Selasa hingga Khamis' },
+          { k:'Masa', v:'7:15 pagi – 7:30 pagi' },
+          { k:'Lokasi', v:'Pejabat' }
+        ],
+        perihal:'Bacaan ringkas Hadis 40.',
+        drive:'https://drive.google.com/drive/folders/110nviBk250h56Q0OWRteN4l17vnEIi04?usp=sharing'
+      }
+    },
+    {
+      title:'Bedtime Reading Hadis 40',
+      img:'bedtime1.jpg',
+      info:{
+        nama:'Bedtime Reading Hadis 40', useLocalOnly:true,
+        imgs:['bedtime1.jpg','bedtime2.jpg','bedtime3.jpg'],
+        meta:[
+          { k:'Kekerapan', v:'Setiap malam' },
+          { k:'Masa', v:'11:00 malam – 11:10 malam' },
+          { k:'Lokasi', v:'Asrama' }
+        ],
+        perihal:'Bacaan ringkas Hadis 40 sebelum tidur.',
+        drive:'https://drive.google.com/drive/folders/1AL02AwuJX1Ya3Re72iXPrRUZpplX_te8?usp=sharing'
+      }
+    },
+    {
+      title:'Bacaan Hadis 40 Berkumpulan',
+      img:'berkumpulan1.jpg',
+      info:{
+        nama:'Bacaan Hadis 40 Berkumpulan', useLocalOnly:true,
+        imgs:['berkumpulan1.jpg','berkumpulan2.jpg','berkumpulan3.jpg','berkumpulan4.jpg'],
+        meta:[{ k:'Kekerapan', v:'Setiap 2 minggu sekali' }],
+        perihal:'Pelajar menghafal Hadis 40 secara berkumpulan bersama Naqib dan Naqibah.',
+        drive:'https://drive.google.com/drive/folders/1fkf-_kQabY4kA1lLQg4u1FtKR3w0CfW-?usp=sharing'
+      }
     },
     {
       title:'Usrah Hadis 40',
-      img: 'img/inisiatif/13/P1.jpg', fallbackImg:'1hero.jpg',
-      info:{ nama:'Usrah Hadis 40', imgs:localP('inisiatif/13', 3, ['1hero.jpg','2hero.png','3hero.jpeg']), perihal:'Taklimat awal dan bimbingan kepimpinan kepada para Naqib dan Naqibah Hadis 40.', drive:'https://drive.google.com/drive/folders/1vjcuIPNdohGFY-5WvAjODI6MpUrnR2Sj' }
+      img:'usrah2.jpg',
+      info:{
+        nama:'Usrah Hadis 40', useLocalOnly:true,
+        imgs:['usrah2.jpg','usrah3.jpg','usrah4.jpg'],
+        meta:[{ k:'Sasaran', v:'Naqib dan Naqibah Hadis 40' }],
+        perihal:'Taklimat awal dan bimbingan kepimpinan kepada para Naqib dan Naqibah.',
+        drive:'https://drive.google.com/drive/folders/1vjcuIPNdohGFY-5WvAjODI6MpUrnR2Sj?usp=sharing'
+      }
+    },
+    {
+      title:'Daurah Hadis 40',
+      img:'daurah1.jpg',
+      info:{
+        nama:'Daurah Hadis 40', useLocalOnly:true,
+        imgs:['daurah1.jpg','daurah2.jpg','daurah3.jpg'],
+        meta:[
+          { k:'Kekerapan', v:'Setiap pagi (sempena cuti penggiliran SPM)' },
+          { k:'Masa', v:'7:30 pagi – 8:30 pagi' },
+          { k:'Penyampai', v:'Guru bertugas dan pimpinan murid' }
+        ],
+        perihal:'Membantu murid memahami intipati Hadis 40 secara mendalam.',
+        drive:'https://drive.google.com/drive/folders/1fC5bTLXZo4m3HoTcHZ89qA3tsdN8yrp9?usp=sharing'
+      }
+    },
+    {
+      title:'Mukhayyam Madani Hadis 40',
+      img:'sharepair1.jpg',
+      info:{
+        nama:'Mukhayyam Madani Hadis 40', useLocalOnly:true,
+        imgs:['sharepair1.jpg','sharepair2.jpg','sharepair3.jpg','sharepair4.jpg'],
+        meta:[
+          { k:'Kekerapan', v:'Setiap pagi (30 minit)' },
+          { k:'Kaedah', v:'Teknik Pair & Share' }
+        ],
+        perihal:'Sesi tasmik bacaan dan huraian Hadis 40.',
+        drive:'https://drive.google.com/drive/folders/12yEiFW1D6Q6cfvBICrxDexzlaXJo8SpG?usp=sharing'
+      }
+    },
+    {
+      title:'Program Maal Hijrah Hadis 01: Jom Berhijrah, Jom Berubah',
+      img:'maal_hijrah2.jpg',
+      info:{
+        nama:'Program Maal Hijrah Hadis 01: Jom Berhijrah, Jom Berubah', useLocalOnly:true,
+        imgs:['maal_hijrah2.jpg','maal_hijrah1.jpg','maal_hijrah3.jpg'],
+        meta:[
+          { k:'Tarikh', v:'5 Julai 2024 (Jumaat)' },
+          { k:'Penyampai', v:'Tn. Hj. Khairul Asfani bin Nasir' },
+          { k:'Objektif', v:'Mengambil ibrah tentang perjuangan hijrah Rasulullah SAW sebagai pengajaran buat murid mendepani cabaran kini.' }
+        ],
+        perihal:'',
+        drive:'https://drive.google.com/drive/folders/11q-3f4pdGEPOjB5gPu_w7L7BR841mzvJ?usp=sharing'
+      }
     }
   ],
 
-  // 4) AKAN DATANG (4 KOTAK)
+  // 5) AKAN DATANG (4 KOTAK)
   akanDatang: [
     { tahun:'2027', img:'soon1.jpg' },
-    { tahun:'2027', img:'soon2.png' },
-    { tahun:'2028', img:'soon3.jpeg' },
-    { tahun:'2028', img:'soon4.jpg' }
+    { tahun:'2027', img:'soon2.jpg?v=2' },
+    { tahun:'2028', img:'soon3.jpg?v=2' },
+    { tahun:'2028', img:'soon4.jpg?v=2' }
   ],
 
   // KOLEKSI EKSKLUSIF (6 ITEM)
   koleksi: [
-    { title:'Rantai Kunci RoPix', img:'keychain_ropix.JPG' },
-    { title:'Pelekat RoPix', img:'sticker_ropix.JPG' },
-    { title:'Lencana RoPix', img:'button_ropix.JPG' },
-    { title:'Plak RoPix', img:'stand_ropix.JPG' },
-    { title:'Cawan RoPix', img:'mug_ropix.JPG' },
-    { title:'Koleksi Lengkap RoPix', img:'lengkap_ropix.JPG' }
+    { title:'Rantai Kunci RoPix', img:'keychain_ropix.JPG?v=2' },
+    { title:'Pelekat RoPix', img:'sticker_ropix.JPG?v=2' },
+    { title:'Lencana RoPix', img:'button_ropix.JPG?v=2' },
+    { title:'Plak RoPix', img:'stand_ropix.JPG?v=2' },
+    { title:'Cawan RoPix', img:'mug_ropix.JPG?v=2' },
+    { title:'Koleksi Lengkap RoPix', img:'lengkap_ropix.JPG?v=2' }
   ],
 
   // TESTIMONI (8)
@@ -3112,13 +3431,168 @@ function openInfoObj(c){
   const w=el('div');
   w.innerHTML=head(c.nama);
   const body=el('div','mdl-body');
-  body.appendChild(gallery(c.imgs, c.drive));
-  if(c.perihal){
-    // Tiada perkataan penanda Perihal/Huraian
-    body.insertAdjacentHTML('beforeend',`<div class="info one"><div class="row"><p style="font-size:15px;line-height:1.6">${esc(c.perihal)}</p></div></div>`);
+  body.appendChild(gallery(c.imgs, c.drive, {localOnly:!!c.useLocalOnly, thumbs:true, auto:true, interval:3800}));
+  const metaHtml = Array.isArray(c.meta) && c.meta.length
+    ? c.meta.map(m=>`<div class="row"><b>${esc(m.k)}</b><p>${esc(m.v)}</p></div>`).join('')
+    : '';
+  const perihalHtml = c.perihal
+    ? `<div class="row"><p style="font-size:15px;line-height:1.6">${esc(c.perihal)}</p></div>`
+    : '';
+  if(metaHtml || perihalHtml){
+    body.insertAdjacentHTML('beforeend',`<div class="info one">${metaHtml}${perihalHtml}</div>`);
   }
   w.appendChild(body);
   if(isReal(c.drive)) w.insertAdjacentHTML('beforeend',`<div class="mdl-foot">${driveBtn(c.drive)}</div>`);
+  openModal(w,'');
+}
+
+/* Modal Kronologi Versi Interaktif (Mat RoPix & Platform Digital) */
+function openKronologiModal(k){
+  if(!k || !Array.isArray(k.versions) || !k.versions.length)return;
+  const w=el('div');
+  w.innerHTML=head(k.nama);
+  const body=el('div','mdl-body');
+  let vIdx = clamp(k.defaultIdx||0, 0, k.versions.length-1);
+  let sIdx = 0;
+
+  body.innerHTML=`
+    <div class="krono-tabs" role="tablist" aria-label="Pilih versi">
+      ${k.versions.map((v,i)=>`<button type="button" class="krono-tab${i===vIdx?' on':''}" data-vi="${i}" role="tab" aria-selected="${i===vIdx?'true':'false'}">${esc(v.tab)}</button>`).join('')}
+    </div>
+    <div class="krono-stage">
+      <img id="kronoImg" src="" alt="" decoding="async">
+      <button type="button" class="garr prev" id="kronoPrev" aria-label="Sebelum"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="garr next" id="kronoNext" aria-label="Seterusnya"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="krono-yr-badge" id="kronoBadge"></div>
+    </div>
+    <div class="krono-substrip" id="kronoSub"></div>
+    ${k.perihal?`<div class="info one" style="margin-top:14px"><div class="row"><p style="font-size:15px;line-height:1.6">${esc(k.perihal)}</p></div></div>`:''}
+  `;
+  w.appendChild(body);
+
+  const footBtns=[];
+  if(isReal(k.drive)) footBtns.push(driveBtn(k.drive));
+  if(isReal(k.extraLink)) footBtns.push(`<a class="btn-drive" style="background:var(--ink)" href="${esc(k.extraLink)}" target="_blank" rel="noopener noreferrer">${esc(k.extraLabel||'Pautan Rasmi')}</a>`);
+  if(footBtns.length) w.insertAdjacentHTML('beforeend',`<div class="mdl-foot" style="gap:10px;flex-wrap:wrap">${footBtns.join('')}</div>`);
+
+  const im=$('#kronoImg',body), badge=$('#kronoBadge',body), sub=$('#kronoSub',body);
+  const tabs=$$('.krono-tab',body);
+
+  function draw(){
+    const ver=k.versions[vIdx];
+    const imgs=ver.imgs && ver.imgs.length ? ver.imgs : ['1hero.jpg'];
+    sIdx=clamp(sIdx, 0, imgs.length-1);
+    im.src=imgs[sIdx];
+    im.alt=k.nama+' - '+ver.badge;
+    badge.textContent=imgs.length>1 ? `${ver.badge} (${sIdx+1}/${imgs.length})` : ver.badge;
+    tabs.forEach((t,i)=>{
+      const on=i===vIdx;
+      t.classList.toggle('on',on);
+      t.setAttribute('aria-selected',on?'true':'false');
+    });
+    if(imgs.length>1){
+      sub.style.display='flex';
+      sub.innerHTML=imgs.map((src,i)=>`<button type="button" class="krono-subthumb${i===sIdx?' on':''}" data-si="${i}" aria-label="Paparan ${i+1}"><img src="${esc(src)}" alt="" loading="lazy" decoding="async"></button>`).join('');
+      $$('.krono-subthumb',sub).forEach(b=>b.onclick=()=>{sIdx=+b.dataset.si;draw()});
+    }else{
+      sub.style.display='none';
+      sub.innerHTML='';
+    }
+  }
+  tabs.forEach(t=>t.addEventListener('click',()=>{vIdx=+t.dataset.vi;sIdx=0;draw()}));
+  $('#kronoPrev',body).onclick=()=>{
+    const imgs=k.versions[vIdx].imgs||[];
+    if(sIdx>0){sIdx--}
+    else{vIdx=(vIdx-1+k.versions.length)%k.versions.length;sIdx=(k.versions[vIdx].imgs||['']).length-1}
+    draw();
+  };
+  $('#kronoNext',body).onclick=()=>{
+    const imgs=k.versions[vIdx].imgs||[];
+    if(sIdx<imgs.length-1){sIdx++}
+    else{vIdx=(vIdx+1)%k.versions.length;sIdx=0}
+    draw();
+  };
+  draw();
+  openModal(w,'');
+}
+
+/* Modal Muzik Video (Pilihan Lagu 1 Rasmi + Lagu 2 & 3 Akan Datang) */
+function openMusicModal(m){
+  if(!m || !Array.isArray(m.tracks) || !m.tracks.length)return;
+  let cur=0;
+  const w=el('div');
+  w.innerHTML=head(m.nama);
+  const body=el('div','mdl-body');
+  const st=el('div','yt-mdl-stage');
+  const listEl=el('div','mv-list');
+  listEl.innerHTML=m.tracks.map((t,i)=>`
+    <button type="button" class="mv-item${t.soon?' soon':''}${i===0?' on':''}" data-ti="${i}">
+      <b>${esc(t.title)}</b>
+      <span>${esc(t.status || (t.soon?'AKAN DATANG':'RASMI'))}</span>
+    </button>`).join('');
+
+  function draw(){
+    const t=m.tracks[cur];
+    $$('.mv-item',listEl).forEach((b,i)=>b.classList.toggle('on',i===cur));
+    if(t.soon || !t.ytId){
+      st.innerHTML=`<div class="mv-soon-stage">
+        <span class="mv-soon-tag">AKAN DATANG</span>
+        <strong style="font:700 clamp(16px,2.2vw,22px) var(--ff-h);letter-spacing:.08em;text-transform:uppercase">${esc(t.title)}</strong>
+        <p style="font-size:13.5px;color:#cfe0ff;max-width:38ch">Karya muzik baharu Briged Shabab An-Nawawi bakal dilancarkan tidak lama lagi.</p>
+      </div>`;
+    }else{
+      st.innerHTML=`<iframe src="https://www.youtube.com/embed/${encodeURIComponent(t.ytId)}?rel=0&modestbranding=1" title="${esc(t.title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+      document.dispatchEvent(new CustomEvent('airis:videoplay'));
+    }
+  }
+  body.appendChild(st);
+  body.appendChild(listEl);
+  if(m.perihal) body.insertAdjacentHTML('beforeend',`<div class="info one" style="margin-top:14px"><div class="row"><p style="font-size:15px;line-height:1.6">${esc(m.perihal)}</p></div></div>`);
+  w.appendChild(body);
+  if(isReal(m.drive)) w.insertAdjacentHTML('beforeend',`<div class="mdl-foot">${driveBtn(m.drive)}</div>`);
+  listEl.addEventListener('click',e=>{const b=e.target.closest('.mv-item');if(!b)return;cur=+b.dataset.ti;draw()});
+  draw();
+  openModal(w,'');
+}
+
+/* Modal Pembaca Buku Terus (Buku Hafalan Hadis 40 : RoPix — terus baca tanpa muat turun) */
+function openBookReaderModal(b){
+  if(!b || !Array.isArray(b.pages) || !b.pages.length)return;
+  let cur=0, zoom=1;
+  const w=el('div');
+  w.innerHTML=head(b.title);
+  const body=el('div','mdl-body');
+  body.innerHTML=`
+    <div class="reader-stage" id="rdStage"><img id="rdImg" src="${esc(b.pages[0])}" alt="${esc(b.title)}" decoding="async"></div>
+    <div class="reader-bar">
+      <div style="display:flex;gap:6px">
+        <button type="button" id="rdPrev">&lsaquo; Sebelum</button>
+        <button type="button" id="rdNext">Seterusnya &rsaquo;</button>
+      </div>
+      <span id="rdCnt" style="font:700 12.5px var(--ff-h);letter-spacing:.1em;color:var(--ink)">1 / ${b.pages.length}</span>
+      <div style="display:flex;gap:6px">
+        <button type="button" id="rdZOut">&minus;</button>
+        <button type="button" id="rdZIn">+</button>
+      </div>
+    </div>
+    <div class="gal-thumbs" id="rdThumbs" style="margin-top:10px">
+      ${b.pages.map((p,i)=>`<button type="button" class="gal-thumb${i===0?' on':''}" data-pi="${i}" aria-label="Halaman ${i+1}"><img src="${esc(p)}" alt="" loading="lazy" decoding="async"><span class="gal-thumb-no">${i+1}</span></button>`).join('')}
+    </div>
+  `;
+  w.appendChild(body);
+  if(isReal(b.drive)) w.insertAdjacentHTML('beforeend',`<div class="mdl-foot">${driveBtn(b.drive)}</div>`);
+  const im=$('#rdImg',body), cnt=$('#rdCnt',body), thumbs=$$('.gal-thumb',body);
+  const draw=()=>{
+    im.src=b.pages[cur];
+    im.style.transform=`scale(${zoom.toFixed(2)})`;
+    cnt.textContent=`${cur+1} / ${b.pages.length}`;
+    thumbs.forEach((t,i)=>t.classList.toggle('on',i===cur));
+  };
+  $('#rdPrev',body).onclick=()=>{cur=(cur-1+b.pages.length)%b.pages.length;zoom=1;draw()};
+  $('#rdNext',body).onclick=()=>{cur=(cur+1)%b.pages.length;zoom=1;draw()};
+  $('#rdZIn',body).onclick=()=>{zoom=clamp(zoom+0.25,1,2.5);draw()};
+  $('#rdZOut',body).onclick=()=>{zoom=clamp(zoom-0.25,1,2.5);draw()};
+  thumbs.forEach(t=>t.onclick=()=>{cur=+t.dataset.pi;zoom=1;draw()});
   openModal(w,'');
 }
 
@@ -3181,6 +3655,7 @@ function openHubungi(){
     ${contactCard(h.orang1, 1)}
     ${contactCard(h.orang2, 2)}
     <div class="ct-box ct-mail">
+      <span class="ct-mail-lbl">E-mel Rasmi Briged Shabab An-Nawawi</span>
       <a class="ct-mail-btn" href="mailto:${esc(h.email)}" aria-label="Hantar e-mel ke ${esc(h.email)}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg>
         <span>${esc(h.email)}</span>
@@ -3492,14 +3967,24 @@ function openKaderModal(k){
     if(!box)return;
     box.innerHTML=list.map((c,i)=>{
       const single = !!c.noInfo;
+      const noLogo = !!c.hideLogo || !c.logo;
       const isScroll = !!c.scrollKoleksi;
+      const isKrono = !!c.kronologi;
+      const isReader = !!c.bookReader;
       const isYt = !!(c.ytPlaylist && c.ytPlaylist.length);
+      const logoHtml = noLogo ? '' : `<span class="ic-logo slot" style="pointer-events:none">${img(c.logo,'Logo')}</span>`;
+      const lblHtml = c.label ? `<span class="ic-label" style="pointer-events:none">${esc(c.label)}</span>` : '';
       const stHtml = c.status ? `<span class="ic-status" style="pointer-events:none">${esc(c.status)}</span>` : '';
       const infoBtn = single ? '' : `<button class="ic-info" data-info="${i}" aria-label="Info ${esc(c.title)}">i</button>`;
-      const mainAttrs = isScroll ? `href="#koleksi" data-scroll-koleksi="1"` : (isYt ? `href="#" data-yt-modal="${i}"` : `href="${esc(c.link)}" target="_blank" rel="noopener noreferrer"`);
-      return `<article class="icard fr" style="--bw:0px;cursor:pointer" data-i="${i}">
+      const mainAttrs = isScroll ? `href="#koleksi" data-scroll-koleksi="1"`
+        : (isKrono ? `href="#" data-krono="${i}"`
+        : (isReader ? `href="#" data-reader="${i}"`
+        : (isYt ? `href="#" data-yt-modal="${i}"`
+        : `href="${esc(c.link)}" target="_blank" rel="noopener noreferrer"`)));
+      return `<article class="icard fr${noLogo?' no-logo':''}" style="--bw:0px;cursor:pointer" data-i="${i}">
         <div class="ic-img slot">${makeImgHtml(c.fallbackImg?{img:c.img,fallbackImg:c.fallbackImg}:c.img,c.title,false)}</div>
-        <span class="ic-logo slot" style="pointer-events:none">${img(c.logo,'Logo')}</span>
+        ${logoHtml}
+        ${lblHtml}
         ${stHtml}
         <div class="ic-foot"><h3>${esc(c.title)}</h3><div class="ic-btns ${single?'single':''}">
           <a class="ic-main" ${mainAttrs}>${esc(c.btn||'MAIN')}</a>
@@ -3510,10 +3995,16 @@ function openKaderModal(k){
       const inf=e.target.closest('.ic-info');
       if(inf){
         const item=list[+inf.dataset.info];
-        if(item.ytPlaylist) openYtSliderModal(item);
+        if(item.musicModal) openMusicModal(item.musicModal);
+        else if(item.ytPlaylist) openYtSliderModal(item);
+        else if(item.kronologi) openKronologiModal(item.kronologi);
         else openInfoObj(item.info);
         return;
       }
+      const krBtn=e.target.closest('[data-krono]');
+      if(krBtn){e.preventDefault();openKronologiModal(list[+krBtn.dataset.krono].kronologi);return;}
+      const rdBtn=e.target.closest('[data-reader]');
+      if(rdBtn){e.preventDefault();openBookReaderModal(list[+rdBtn.dataset.reader].bookReader);return;}
       const ytBtn=e.target.closest('[data-yt-modal]');
       if(ytBtn){e.preventDefault();openYtSliderModal(list[+ytBtn.dataset.ytModal]);return;}
       const skBtn=e.target.closest('[data-scroll-koleksi]');
@@ -3530,8 +4021,11 @@ function openKaderModal(k){
       const item=list[+card.dataset.i];
       if(item.scrollKoleksi){
         if(window._airisGo){await window._airisGo('utama',true);setTimeout(()=>{const elK=$('#koleksi');if(elK)elK.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})},120);}
-      }else if(item.ytPlaylist){openYtSliderModal(item);}
+      }else if(item.kronologi){openKronologiModal(item.kronologi);}
+      else if(item.bookReader){openBookReaderModal(item.bookReader);}
+      else if(item.ytPlaylist){openYtSliderModal(item);}
       else if(isReal(item.link)){window.open(item.link,'_blank','noopener,noreferrer');}
+      else if(item.musicModal){openMusicModal(item.musicModal);}
       else if(item.info){openInfoObj(item.info);}
     });
   }
@@ -3540,7 +4034,21 @@ function openKaderModal(k){
   renderCardList($('#ropixCards'), CFG.inovasi.concat(CFG.ropixExtra));
   renderCardList($('#karyaCards'), CFG.karyaKhas);
 
-  // 13 Kotak Inisiatif & Program
+  // Bahan Rasmi KPM (bentuk kotak sama seperti Inisiatif & Program)
+  const kpmBox=$('#kpmCards');
+  if(kpmBox && Array.isArray(CFG.bahanKpm)){
+    kpmBox.innerHTML=CFG.bahanKpm.map((item,i)=>`<article class="pcard" tabindex="0" role="button" data-i="${i}" aria-label="${esc(item.title)}">
+      <div class="pcard-in">
+        <div class="slot">${makeImgHtml(item.img, item.title)}</div>
+        <div class="pcard-shade"></div>
+        <h3 class="pcard-t">${esc(item.title)}</h3>
+      </div></article>`).join('');
+    const trigKpm=idx=>openInfoObj(CFG.bahanKpm[idx].info);
+    kpmBox.addEventListener('click',e=>{const c=e.target.closest('.pcard');if(c)trigKpm(+c.dataset.i)});
+    kpmBox.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('.pcard');if(c){e.preventDefault();trigKpm(+c.dataset.i)}}});
+  }
+
+  // 15 Kotak Inisiatif & Program
   const iniBox=$('#inisiatifCards');
   if(iniBox){
     iniBox.innerHTML=CFG.inisiatif.map((item,i)=>`<article class="pcard" tabindex="0" role="button" data-i="${i}" aria-label="${esc(item.title)}">
@@ -3981,7 +4489,40 @@ function openKoleksiZoom(k){
   $('#shopTikTok').addEventListener('click', handleShopSoon($('#shopTikTok')));
 
   const tc=CFG.testimoni.map(t=>`<article class="tc fr"><div class="tc-ph slot">${img(t.img,t.nama)}</div><div class="tc-b"><p class="tc-q">${esc(t.quote)}</p><div><div class="tc-n">${esc(t.nama)}</div><div class="tc-j">${esc(t.jawatan)}</div></div></div></article>`).join('');
-  $('#tTrack').innerHTML=tc+tc.replace(/<article class="tc fr">/g,'<article class="tc fr" aria-hidden="true">');
+  const tWrap=$('#tcards'), tTrack=$('#tTrack');
+  tTrack.innerHTML=tc+tc.replace(/<article class="tc fr">/g,'<article class="tc fr" aria-hidden="true">');
+
+  // Testimoni boleh seret kiri & kanan (tetikus & sentuhan) sambil kekal berjalan automatik
+  if(tWrap && tTrack){
+    let pos=0, dragging=false, hovered=false, startX=0, startPos=0, lastT=performance.now();
+    const wrapPos=(v,half)=>half>0?(((v%half)+half)%half)-half:0;
+    function step(now){
+      const dt=Math.min(0.05,(now-lastT)/1000);
+      lastT=now;
+      const half=tTrack.scrollWidth/2;
+      if(half>0){
+        if(!dragging && !hovered && !reduce) pos+=38*dt;
+        pos=wrapPos(pos,half);
+        tTrack.style.transform=`translate3d(${pos.toFixed(1)}px,0,0)`;
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+    tWrap.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hovered=true});
+    tWrap.addEventListener('pointerleave',()=>{hovered=false;dragging=false;tWrap.classList.remove('dragging')});
+    tWrap.addEventListener('pointerdown',e=>{
+      dragging=true;startX=e.clientX;startPos=pos;
+      tWrap.classList.add('dragging');
+      if(tWrap.setPointerCapture)try{tWrap.setPointerCapture(e.pointerId)}catch(_){}
+    });
+    tWrap.addEventListener('pointermove',e=>{
+      if(!dragging)return;
+      pos=startPos+(e.clientX-startX);
+    });
+    const endDrag=()=>{dragging=false;tWrap.classList.remove('dragging')};
+    tWrap.addEventListener('pointerup',endDrag);
+    tWrap.addEventListener('pointercancel',endDrag);
+  }
   const pl=CFG.rakan.map(r=>{
     const inner=`<span class="slot">${img(r.img,r.nama)}</span>`;
     return isReal(r.link)
