@@ -1681,6 +1681,23 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   font:700 12px var(--ff-h);letter-spacing:.08em;text-transform:uppercase;
   clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);cursor:pointer}
 .reader-bar button:hover{background:var(--yellow);color:var(--ink)}
+
+/* 6) Semua slide gambar kekal saiz asal (object-fit:contain) di phone & laptop + kawalan zoom (+/- & picit) */
+.gal-view{background:#071538 !important;aspect-ratio:16/10 !important;max-height:58dvh;touch-action:pan-y;user-select:none}
+.gal-view.zoomed,.krono-stage.zoomed{touch-action:none;cursor:grab}
+.gal-view.zoomed:active,.krono-stage.zoomed:active{cursor:grabbing}
+.gal-s.slot{background:#071538 !important;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.gal-s>img{position:relative !important;inset:auto !important;width:100% !important;height:100% !important;object-fit:contain !important;transform-origin:center center;transition:transform .12s ease-out;pointer-events:none;will-change:transform}
+.krono-stage{aspect-ratio:16/10 !important;max-height:58dvh;touch-action:pan-y;user-select:none}
+.krono-stage img{transform-origin:center center;transition:transform .12s ease-out;pointer-events:none;will-change:transform}
+.gal-zctrl{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+.gal-zbtn{padding:4px 12px;background:var(--ink);color:#fff;border:1.8px solid var(--ink);font:700 12px/1.1 var(--ff-h);letter-spacing:.08em;text-transform:uppercase;
+  clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);cursor:pointer;transition:background .18s,color .18s}
+.gal-zbtn:hover{background:var(--yellow);color:var(--ink)}
+.gal-zlvl{font:700 11.5px var(--ff-h);letter-spacing:.1em;color:var(--blue-dd);min-width:44px;text-align:center}
+@media (max-width:600px){
+  .gal-view,.krono-stage{aspect-ratio:4/3 !important;max-height:50dvh}
+}
 </style>
 </head>
 <body>
@@ -2024,7 +2041,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
           <h2 class="sec-title">Bahan Rasmi KPM</h2>
         </div>
       </div>
-      <div class="grid6" id="kpmCards"></div>
+      <div class="grid6 g-2" id="kpmCards"></div>
     </div>
   </section>
 
@@ -2494,12 +2511,8 @@ const CFG = {
     {
       logo:'Universe_ropix_logo.PNG', label:'Infografik', status:'',
       title:'Buku Hafalan Hadis 40 : RoPix',
-      img:'hafalanropixcover.jpg', fallbackImg: BOOK_ROPIX_URI, btn:'HAFAZ', link:'#',
-      bookReader:{
-        title:'Buku Hafalan Hadis 40 : RoPix',
-        pages:['hafalanropixcover.jpg','hafalanropix1.jpg','hafalanropix2.jpg','hafalanropix3.jpg','hafalanropix4.jpg','hafalanropix5.jpg'],
-        drive:'https://drive.google.com/drive/folders/15Cv9OVnn00EKRwrJ3_Mls7U56K_bwP1O?usp=sharing'
-      },
+      img:'hafalanropixcover.jpg', fallbackImg: BOOK_ROPIX_URI, btn:'HAFAZ',
+      link:'https://drive.google.com/file/d/15r7A2weD7pW9ezQTQuBDZnwhAXjEukkv/view?usp=sharing',
       info:{
         nama:'Buku Hafalan Hadis 40 : RoPix',
         useLocalOnly:true,
@@ -2551,8 +2564,6 @@ const CFG = {
         defaultIdx:0,
         perihal:'Pintu utama rasmi Briged Shabab An-Nawawi. Menghimpunkan seluruh ekosistem digital, inovasi, dan bahan Hadis 40 dalam satu paparan moden yang segar dan mesra generasi muda.',
         drive:'https://drive.google.com/drive/folders/1vl03YqeKVZDzs9pnKAnh5tqEhsd64qdx?usp=sharing',
-        extraLink:'https://linktr.ee/shababanawawi',
-        extraLabel:'Linktree Rasmi',
         versions:[
           { tab:'Versi 2.0 • 2026 (Terkini)', badge:'Versi 2.0 | 2026 (Sedang Digunakan)', imgs:['websitev2.1.png','website2.2.png','website2.3.png','website2.4.png','website2.5.png','website2.6.png'] },
           { tab:'Versi 1.0 • 2025', badge:'Versi 1.0 | 2025 (Versi Terawal)', imgs:['websitev1.png'] }
@@ -2591,17 +2602,14 @@ const CFG = {
   // 3) BAHAN RASMI KPM (Bentuk kotak sama seperti Inisiatif & Program)
   bahanKpm: [
     {
-      title:'Modul Penghayatan Hadis 40 Imam Nawawi (KPM)',
+      title:'Modul Penghayatan Hadis 40 Imam Nawawi',
       img:'modul_hadis_cover.png',
-      info:{
-        nama:'Modul Penghayatan Hadis 40 Imam Nawawi (KPM)',
-        useLocalOnly:true,
-        imgs:['modul_hadis_cover.png'],
-        meta:[
-          { k:'Penerbit', v:'Kementerian Pendidikan Malaysia (KPM)' }
-        ],
-        perihal:'Bahan rujukan rasmi Kementerian Pendidikan Malaysia bagi pelaksanaan Program Penghayatan Hadis 40 Imam Nawawi di sekolah.'
-      }
+      link:'https://drive.google.com/file/d/1tyTHjjzgfyAt1sV0UwxP5K4DJn4z_D82/view?usp=sharing'
+    },
+    {
+      title:'Chatbot Hadis 40 Imam Nawawi',
+      img:'Chat-GPT-logo.webp',
+      link:'https://chatgpt.com/g/g-68b5b5a5f8408191b3f3cbd15503c5ed-hadis-40-di-hatiku'
     }
   ],
 
@@ -2643,7 +2651,8 @@ const CFG = {
           { k:'Tahun', v:'2026' },
           { k:'Kategori', v:'Pelancaran Utama' }
         ],
-        perihal:''
+        perihal:'',
+        drive:'https://drive.google.com/drive/folders/1V8OvOLNL6MVHv8aHu9u3phg345P_oEz8?usp=sharing'
       }
     },
     {
@@ -2656,7 +2665,8 @@ const CFG = {
           { k:'Tahun', v:'2025' },
           { k:'Kategori', v:'Pelancaran Utama' }
         ],
-        perihal:''
+        perihal:'',
+        drive:'https://drive.google.com/drive/folders/1nwthtK_8sBgxDGkamoU1thP2AO0zynS0?usp=sharing'
       }
     },
     {
@@ -3306,6 +3316,72 @@ function closeModal(){
 modal.addEventListener('click',e=>{if(e.target===modal||e.target.closest('.x'))closeModal()});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
+function attachSlideZoom(stage, getImg, ctrlBox){
+  let scale=1, tx=0, ty=0, drag=false, sx=0, sy=0, btx=0, bty=0, pDist=0, pScale=1, lastTap=0;
+  const lvl=$('.gal-zlvl',ctrlBox);
+  const apply=()=>{
+    const im=getImg();
+    if(scale<=1){scale=1;tx=0;ty=0}
+    else{
+      const maxX=(stage.clientWidth*(scale-1))/2;
+      const maxY=(stage.clientHeight*(scale-1))/2;
+      tx=clamp(tx,-maxX,maxX);
+      ty=clamp(ty,-maxY,maxY);
+    }
+    stage.classList.toggle('zoomed',scale>1);
+    if(im) im.style.transform=`translate3d(${tx.toFixed(1)}px,${ty.toFixed(1)}px,0) scale(${scale.toFixed(2)})`;
+    if(lvl) lvl.textContent=Math.round(scale*100)+'%';
+  };
+  const reset=()=>{
+    const im=getImg();
+    scale=1;tx=0;ty=0;
+    stage.classList.remove('zoomed');
+    if(im) im.style.transform='';
+    if(lvl) lvl.textContent='100%';
+  };
+  const setZoom=z=>{scale=clamp(z,1,4);apply()};
+  const bIn=$('[data-z="in"]',ctrlBox), bOut=$('[data-z="out"]',ctrlBox), bRst=$('[data-z="rst"]',ctrlBox);
+  if(bIn) bIn.onclick=()=>setZoom(scale+0.5);
+  if(bOut) bOut.onclick=()=>setZoom(scale-0.5);
+  if(bRst) bRst.onclick=reset;
+  stage.addEventListener('dblclick',e=>{if(e.target.closest('button'))return;setZoom(scale>1.2?1:2.2)});
+  stage.addEventListener('wheel',e=>{
+    if(!e.ctrlKey && scale<=1) return;
+    e.preventDefault();
+    setZoom(scale+(e.deltaY<0?0.35:-0.35));
+  },{passive:false});
+  stage.addEventListener('pointerdown',e=>{
+    if(e.target.closest('button'))return;
+    if(e.pointerType==='touch'){
+      const now=Date.now();
+      if(now-lastTap<280){setZoom(scale>1.2?1:2.2);lastTap=0;return}
+      lastTap=now;
+    }
+    if(scale<=1)return;
+    drag=true;sx=e.clientX;sy=e.clientY;btx=tx;bty=ty;
+    if(stage.setPointerCapture)try{stage.setPointerCapture(e.pointerId)}catch(_){}
+  });
+  stage.addEventListener('pointermove',e=>{if(!drag)return;tx=btx+(e.clientX-sx);ty=bty+(e.clientY-sy);apply()});
+  stage.addEventListener('pointerup',()=>{drag=false});
+  stage.addEventListener('pointercancel',()=>{drag=false});
+  stage.addEventListener('touchstart',e=>{
+    if(e.touches.length===2){
+      drag=false;
+      pDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+      pScale=scale;
+    }
+  },{passive:true});
+  stage.addEventListener('touchmove',e=>{
+    if(e.touches.length===2 && pDist>0){
+      e.preventDefault();
+      const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+      setZoom(pScale*(d/pDist));
+    }
+  },{passive:false});
+  stage.addEventListener('touchend',e=>{if(e.touches.length<2)pDist=0},{passive:true});
+  return { reset, isZoomed:()=>scale>1 };
+}
+
 function gallery(imgs, driveUrl, opts){
   const g=el('div','gal');
   const o=opts||{};
@@ -3326,14 +3402,23 @@ function gallery(imgs, driveUrl, opts){
 
     g.innerHTML=`<div class="gal-view"><div class="gal-track">${list.map((s,i)=>`<div class="gal-s slot">${makeImgHtml(s,'Gambar '+(i+1))}</div>`).join('')}</div>
       ${n>1?`<button class="garr prev" aria-label="Gambar sebelum"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button class="garr next" aria-label="Gambar seterusnya"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>`:''}</div>${thumbsHtml}`;
+      <button class="garr next" aria-label="Gambar seterusnya"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>`:''}</div>
+      <div class="gal-zctrl" aria-label="Kawalan zum gambar">
+        <button type="button" class="gal-zbtn" data-z="out" aria-label="Zum keluar">&minus;</button>
+        <span class="gal-zlvl">100%</span>
+        <button type="button" class="gal-zbtn" data-z="in" aria-label="Zum masuk">+</button>
+        <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zum">Reset</button>
+      </div>${thumbsHtml}`;
 
-    const track=$('.gal-track',g),dbox=$('.gal-dots',g),tbox=$('.gal-thumbs',g);
+    const track=$('.gal-track',g),dbox=$('.gal-dots',g),tbox=$('.gal-thumbs',g),v=$('.gal-view',g),zctrl=$('.gal-zctrl',g);
+    const slides=$$('.gal-s',g);
     let cur=0;
+    const zoomApi = attachSlideZoom(v, () => slides[cur] ? $('img', slides[cur]) : null, zctrl);
     const dots=(!o.thumbs && dbox && n>1)?list.map((_,i)=>{const d=el('button','dot');d.setAttribute('aria-label','Gambar '+(i+1));d.onclick=()=>go(i,true);dbox.appendChild(d);return d}):[];
     const thumbs=tbox?$$('.gal-thumb',tbox):[];
 
     function go(i, manual){
+      zoomApi.reset();
       cur=(i+n)%n;
       track.style.transform=`translateX(${-cur*100}%)`;
       dots.forEach((d,k)=>d.classList.toggle('on',k===cur));
@@ -3351,7 +3436,7 @@ function gallery(imgs, driveUrl, opts){
       if(o.auto && n>1 && !reduce){
         autoTm=setInterval(()=>{
           if(!g.isConnected){stopAuto();return}
-          go(cur+1,false);
+          if(!zoomApi.isZoomed()) go(cur+1,false);
         }, o.interval||3600);
       }
     }
@@ -3359,9 +3444,13 @@ function gallery(imgs, driveUrl, opts){
       $('.prev',g).onclick=()=>go(cur-1,true);
       $('.next',g).onclick=()=>go(cur+1,true);
       thumbs.forEach(t=>t.addEventListener('click',()=>go(+t.dataset.gi,true)));
-      let sx=0;const v=$('.gal-view',g);
-      v.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;stopAuto()},{passive:true});
-      v.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1),true);else startAuto()},{passive:true});
+      let sx=0;
+      v.addEventListener('touchstart',e=>{if(e.touches.length===1){sx=e.touches[0].clientX;stopAuto()}},{passive:true});
+      v.addEventListener('touchend',e=>{
+        if(zoomApi.isZoomed())return;
+        const dx=e.changedTouches[0].clientX-sx;
+        if(Math.abs(dx)>40)go(cur+(dx<0?1:-1),true);else startAuto();
+      },{passive:true});
       g.addEventListener('pointerenter',stopAuto);
       g.addEventListener('pointerleave',startAuto);
     }
@@ -3459,11 +3548,17 @@ function openKronologiModal(k){
     <div class="krono-tabs" role="tablist" aria-label="Pilih versi">
       ${k.versions.map((v,i)=>`<button type="button" class="krono-tab${i===vIdx?' on':''}" data-vi="${i}" role="tab" aria-selected="${i===vIdx?'true':'false'}">${esc(v.tab)}</button>`).join('')}
     </div>
-    <div class="krono-stage">
+    <div class="krono-stage" id="kronoStage">
       <img id="kronoImg" src="" alt="" decoding="async">
       <button type="button" class="garr prev" id="kronoPrev" aria-label="Sebelum"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
       <button type="button" class="garr next" id="kronoNext" aria-label="Seterusnya"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
       <div class="krono-yr-badge" id="kronoBadge"></div>
+    </div>
+    <div class="gal-zctrl" id="kronoZCtrl" aria-label="Kawalan zum gambar">
+      <button type="button" class="gal-zbtn" data-z="out" aria-label="Zum keluar">&minus;</button>
+      <span class="gal-zlvl">100%</span>
+      <button type="button" class="gal-zbtn" data-z="in" aria-label="Zum masuk">+</button>
+      <button type="button" class="gal-zbtn" data-z="rst" aria-label="Set semula zum">Reset</button>
     </div>
     <div class="krono-substrip" id="kronoSub"></div>
     ${k.perihal?`<div class="info one" style="margin-top:14px"><div class="row"><p style="font-size:15px;line-height:1.6">${esc(k.perihal)}</p></div></div>`:''}
@@ -3475,10 +3570,12 @@ function openKronologiModal(k){
   if(isReal(k.extraLink)) footBtns.push(`<a class="btn-drive" style="background:var(--ink)" href="${esc(k.extraLink)}" target="_blank" rel="noopener noreferrer">${esc(k.extraLabel||'Pautan Rasmi')}</a>`);
   if(footBtns.length) w.insertAdjacentHTML('beforeend',`<div class="mdl-foot" style="gap:10px;flex-wrap:wrap">${footBtns.join('')}</div>`);
 
-  const im=$('#kronoImg',body), badge=$('#kronoBadge',body), sub=$('#kronoSub',body);
+  const im=$('#kronoImg',body), badge=$('#kronoBadge',body), sub=$('#kronoSub',body), kStage=$('#kronoStage',body), kZCtrl=$('#kronoZCtrl',body);
+  const kZoom = attachSlideZoom(kStage, () => im, kZCtrl);
   const tabs=$$('.krono-tab',body);
 
   function draw(){
+    kZoom.reset();
     const ver=k.versions[vIdx];
     const imgs=ver.imgs && ver.imgs.length ? ver.imgs : ['1hero.jpg'];
     sIdx=clamp(sIdx, 0, imgs.length-1);
@@ -4034,18 +4131,15 @@ function openKaderModal(k){
   renderCardList($('#ropixCards'), CFG.inovasi.concat(CFG.ropixExtra));
   renderCardList($('#karyaCards'), CFG.karyaKhas);
 
-  // Bahan Rasmi KPM (bentuk kotak sama seperti Inisiatif & Program)
+  // Bahan Rasmi KPM (bentuk kotak sama seperti Inisiatif & Program, klik terus buka pautan rasmi)
   const kpmBox=$('#kpmCards');
   if(kpmBox && Array.isArray(CFG.bahanKpm)){
-    kpmBox.innerHTML=CFG.bahanKpm.map((item,i)=>`<article class="pcard" tabindex="0" role="button" data-i="${i}" aria-label="${esc(item.title)}">
+    kpmBox.innerHTML=CFG.bahanKpm.map((item,i)=>`<a class="pcard" href="${esc(item.link)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(item.title)}">
       <div class="pcard-in">
         <div class="slot">${makeImgHtml(item.img, item.title)}</div>
         <div class="pcard-shade"></div>
         <h3 class="pcard-t">${esc(item.title)}</h3>
-      </div></article>`).join('');
-    const trigKpm=idx=>openInfoObj(CFG.bahanKpm[idx].info);
-    kpmBox.addEventListener('click',e=>{const c=e.target.closest('.pcard');if(c)trigKpm(+c.dataset.i)});
-    kpmBox.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('.pcard');if(c){e.preventDefault();trigKpm(+c.dataset.i)}}});
+      </div></a>`).join('');
   }
 
   // 15 Kotak Inisiatif & Program
