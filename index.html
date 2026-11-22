@@ -1709,12 +1709,52 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   .gal-view,.krono-stage{aspect-ratio:4/3 !important;max-height:50dvh}
 }
 
-/* 7) Page Kader: Tab 2027 kabur + Garisan Carta Organisasi tepat di laptop & phone */
+/* 7) Page Kader: Tab 2027 kabur + Modal boleh skrol + Piramid 1+3+3 seimbang + Garisan 100% bersambung */
+.kader-float-bar{position:relative !important;top:auto !important;z-index:2 !important;margin-bottom:clamp(16px,2.4vw,24px) !important}
 .org-branch3-top,.org-branch3-bot{width:min(760px,100%) !important}
 .org-dash-drops,.org-pair-bridge,.org-pair-to-tree{width:min(500px,100%) !important}
-.kunit-dirs.dirs-many{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));justify-items:center;gap:10px;max-width:290px}
-.kunit-dirs.dirs-many .kcard{width:100%;max-width:132px}
+
+/* Pop-up Kader: boleh skrol / seret ke bawah lancar di laptop & phone */
+.mdl.kader-mdl{width:min(860px,95vw) !important;max-height:90dvh !important;overflow:hidden !important;display:flex !important;flex-direction:column !important}
+.kpop-frame{display:flex;flex-direction:column;max-height:90dvh;width:100%;min-height:0}
+.kpop-in{display:flex;flex-direction:column;max-height:100%;min-height:0;overflow:hidden}
+.kpop-banner{flex:0 0 auto;height:clamp(92px,13vw,136px) !important}
+.kpop-body{flex:1 1 auto;min-height:0;overflow-y:auto !important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  padding:clamp(14px,2.2vw,24px) clamp(16px,3.6vw,44px) 16px !important;cursor:grab}
+.kpop-body:active{cursor:grabbing}
+.kpop-foot{flex:0 0 auto;margin-top:0 !important;padding:10px 18px 16px !important}
+.kpop-dots:empty{display:none}
+
+/* Piramid 1 (Hero 4 Director) + 3 + 3 Seimbang + Garisan Bersambung Penuh */
+.kunit{display:flex;flex-direction:column;align-items:center;width:100%;height:100%}
+.kunit-title{width:100%;max-width:270px;min-height:46px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.kunit-dirs{display:flex;justify-content:center;align-items:flex-start;gap:clamp(8px,1.2vw,14px);width:100%;margin-bottom:14px}
+.kfolder-plate{margin-top:auto !important}
+.kunit.kunit-hero{width:min(780px,100%);margin:0 auto}
+.kunit.kunit-hero .kunit-title{max-width:360px;min-height:42px}
+.kunit.kunit-hero .kunit-dirs{display:grid !important;grid-template-columns:repeat(4,minmax(0,150px));justify-content:center;gap:clamp(10px,1.6vw,20px);max-width:680px;margin-bottom:16px}
+.kunit.kunit-hero .kunit-dirs .kcard{width:100%;max-width:150px}
+.kunit.kunit-hero .kfolder-plate{width:min(280px,100%)}
+.kader-row-grid{align-items:stretch !important}
 .kader-row-grid.single{grid-template-columns:minmax(0,320px) !important;justify-content:center !important}
+.kader-row-join{position:relative;width:100%;max-width:980px;height:28px;margin:0 auto}
+.kader-row-join::before{content:"";position:absolute;left:16.66%;right:16.66%;bottom:0;height:3px;background:var(--ink)}
+.kader-row-join::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:var(--ink);transform:translateX(-50%)}
+.kader-row-join span{position:absolute;top:0;bottom:0;width:3px;background:var(--ink)}
+.kader-row-join span:first-child{left:16.66%}
+.kader-row-join span:last-child{right:16.66%}
+
+/* Grid folder adaptif supaya tiada ruang putih kosong pelik dalam folder kecil */
+.kfolder-in.kf-g2{grid-template-columns:repeat(2,1fr) !important;grid-template-rows:1fr !important;align-items:center !important;padding:14px !important;gap:12px !important}
+.kfolder-in.kf-g2 .kf-mini,.kfolder-in.kf-g2 .kf-expand{height:auto !important;aspect-ratio:1/1 !important}
+.kfolder-in.kf-g2 .kf-expand{grid-column:2 !important;grid-row:1 !important}
+.kfolder-in.kf-g4{grid-template-columns:repeat(2,1fr) !important;grid-template-rows:repeat(2,1fr) !important;gap:8px !important}
+.kfolder-in.kf-g4 .kf-expand{grid-column:2 !important;grid-row:2 !important}
+.kfolder-in.kf-g6{grid-template-columns:repeat(3,1fr) !important;grid-template-rows:repeat(2,1fr) !important;align-content:center !important;gap:8px !important}
+.kfolder-in.kf-g6 .kf-mini,.kfolder-in.kf-g6 .kf-expand{height:auto !important;aspect-ratio:1/1 !important}
+.kfolder-in.kf-g6 .kf-expand{grid-column:3 !important;grid-row:2 !important}
+
+/* Tab 2027 Kabur */
 .k27-wrap{position:relative;width:100%}
 .k27-blur{filter:blur(11px) saturate(.8);opacity:.78;pointer-events:none !important;user-select:none !important;-webkit-user-select:none !important}
 .k27-blur *{pointer-events:none !important}
@@ -1726,6 +1766,7 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   font:700 clamp(11.5px,1.5vw,14px)/1.1 var(--ff-h);letter-spacing:.16em;text-transform:uppercase;
   clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);box-shadow:3px 3px 0 var(--ink)}
 .k27-card p{font-size:clamp(13.5px,1.55vw,16px);line-height:1.72;color:var(--ink);font-weight:500}
+
 @media (max-width:720px){
   .kyr-btn{padding:6px 10px;font-size:12px;letter-spacing:.08em}
   .kyr-btn[data-yr="2026"]{padding:6px 12px;font-size:12.5px}
@@ -1736,26 +1777,25 @@ body:has(#hdr.hide) .kader-float-bar{top:calc(var(--maint,64px) + 10px) !importa
   .org-row-3 .kcard-name{font-size:9.5px;padding:2px 5px}
   .org-row-2{gap:12px;width:100%}
   .org-row-2 .kcard{width:100%;max-width:142px}
-  .kader-row-branch{width:100% !important;height:22px}
-  .kader-row-branch::before{left:25% !important;right:25% !important}
-  .kader-row-branch::after{display:none !important}
-  .kader-row-branch span:first-child{left:25% !important}
-  .kader-row-branch span:last-child{right:25% !important}
-  .kader-row-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:20px 12px !important}
-  .kader-row-grid.single{grid-template-columns:minmax(0,260px) !important}
-  .kunit-dirs{gap:6px}
-  .kunit-dirs .kcard{width:100%;max-width:116px}
-  .kunit-dirs.dirs-many{gap:6px;max-width:100%}
-  .kunit-dirs.dirs-many .kcard{max-width:92px}
-  .kunit-title{font-size:11.5px;padding:4px 9px}
-  .k25-top-branch{width:100%}
-  .k25-top-branch::before{left:25%;right:25%}
-  .k25-top-branch .l{left:25%}
-  .k25-top-branch .r{right:25%}
-  .k25-row2{gap:14px;width:100%}
-  .k25-cards{flex-wrap:wrap;gap:8px}
-  .k25-cards .kcard{width:calc(50% - 4px);min-width:74px;max-width:110px}
-  .k25-group.khas .k25-cards .kcard{width:calc(33.33% - 6px);min-width:78px;max-width:110px}
+  /* Di phone: susun 1 lajur tengah dengan garisan menegak tunggal yang 100% lurus & bersambung */
+  .kunit.kunit-hero .kunit-dirs{grid-template-columns:repeat(2,minmax(0,132px)) !important;gap:10px}
+  .kader-row-branch,.kader-row-join{width:3px !important;max-width:3px !important;height:22px !important;background:var(--ink) !important;margin:0 auto !important}
+  .kader-row-branch::before,.kader-row-branch::after,.kader-row-branch span,
+  .kader-row-join::before,.kader-row-join::after,.kader-row-join span{display:none !important}
+  .kader-row-grid,.kader-row-grid.single{grid-template-columns:minmax(0,290px) !important;justify-content:center !important;gap:0 !important}
+  .kader-row-grid>:last-child:nth-child(odd){grid-column:auto !important;width:100% !important}
+  .kader-row-grid>.kunit:not(:first-child){position:relative;padding-top:26px}
+  .kader-row-grid>.kunit:not(:first-child)::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:3px;height:26px;background:var(--ink)}
+  .kunit-title{min-height:38px;font-size:12.5px;padding:5px 12px}
+  .kunit-dirs .kcard{width:100%;max-width:136px}
+  .k25-top-branch{width:3px;height:22px;background:var(--ink);margin:0 auto}
+  .k25-top-branch::before,.k25-top-branch span{display:none}
+  .k25-row2{grid-template-columns:1fr;gap:0;width:100%}
+  .k25-row2::after{display:none}
+  .k25-row2>.k25-group:not(:first-child){position:relative;padding-top:26px}
+  .k25-row2>.k25-group:not(:first-child)::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:3px;height:26px;background:var(--ink)}
+  .k25-cards{flex-wrap:wrap;gap:10px}
+  .k25-cards .kcard{width:clamp(108px,36vw,136px)}
   .k24-grid{grid-template-columns:repeat(3,1fr) !important;gap:8px}
 }
 </style>
@@ -3925,18 +3965,19 @@ function openKaderModal(k){
     <div class="kpop-foot">${driveBtn(k.drive)}</div>
   </div>`;
 
-  const track=$('.kpop-track',w),dbox=$('.kpop-dots',w),totalPages=pages.length,vp=$('.kpop-viewport',w);
+  const track=$('.kpop-track',w),dbox=$('.kpop-dots',w),totalPages=pages.length,vp=$('.kpop-viewport',w),kbody=$('.kpop-body',w);
   let curPg=0,pgTimer=0;
-  const dots=pages.map((_,i)=>{
+  const dots=totalPages>1 ? pages.map((_,i)=>{
     const d=el('button','dot'+(i===0?' on':''));
     d.type='button';d.setAttribute('aria-label','Slaid '+(i+1));
     d.onclick=()=>{goPg(i);restartPgTimer()};
     dbox.appendChild(d);return d;
-  });
+  }) : [];
   function goPg(i){
     curPg=(i+totalPages)%totalPages;
     if(track)track.style.transform=`translateX(${-curPg*100}%)`;
     dots.forEach((d,idx)=>d.classList.toggle('on',idx===curPg));
+    if(kbody)kbody.scrollTop=0;
   }
   function restartPgTimer(){
     clearInterval(pgTimer);
@@ -3950,8 +3991,26 @@ function openKaderModal(k){
     vp.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
     vp.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){goPg(curPg+(dx<0?1:-1));restartPgTimer()}},{passive:true});
   }
+  // Sokongan seret (drag-to-scroll) menegak dengan tetikus di laptop
+  let dragDown=false, dragY=0, dragTop=0, moved=false;
+  const onPMove=e=>{
+    if(!dragDown||!kbody)return;
+    const dy=e.clientY-dragY;
+    if(Math.abs(dy)>5)moved=true;
+    kbody.scrollTop=dragTop-dy;
+  };
+  const onPUp=()=>{dragDown=false};
+  if(kbody){
+    kbody.addEventListener('pointerdown',e=>{
+      if(e.pointerType==='touch'||e.target.closest('button'))return;
+      dragDown=true;moved=false;dragY=e.clientY;dragTop=kbody.scrollTop;
+    });
+    kbody.addEventListener('click',e=>{if(moved){e.preventDefault();moved=false}},true);
+    window.addEventListener('pointermove',onPMove);
+    window.addEventListener('pointerup',onPUp);
+  }
   restartPgTimer();
-  window._kpopCleanup=()=>clearInterval(pgTimer);
+  window._kpopCleanup=()=>{clearInterval(pgTimer);window.removeEventListener('pointermove',onPMove);window.removeEventListener('pointerup',onPUp)};
   openModal(w,'kader-mdl');
 }
 
@@ -4444,19 +4503,21 @@ function openKaderModal(k){
     `;
   }
 
-  // Hanya bina kotak untuk ahli sebenar (tiada lagi kotak kosong!)
-  function renderKaderUnit2026(k,idx,locked){
+  // Folder adaptif (tiada ruang kosong pelik): <=1 ahli (2x1), <=3 ahli (2x2), <=5 ahli (3x2), >=6 ahli (3x3)
+  function renderKaderUnit2026(k,idx,locked,isHero){
     const ahli=k.ahli||[];
     const dirs=k.directors||[];
-    const shown = ahli.slice(0,8).map(m=>`<div class="kf-mini slot">${makeImgHtml(m.img,m.nama)}</div>`).join('');
-    const extra=Math.max(0,ahli.length-8);
+    const maxShow = ahli.length<=1 ? 1 : (ahli.length<=3 ? 3 : (ahli.length<=5 ? 5 : 8));
+    const gridCls = ahli.length<=1 ? ' kf-g2' : (ahli.length<=3 ? ' kf-g4' : (ahli.length<=5 ? ' kf-g6' : ''));
+    const shown = ahli.slice(0,maxShow).map(m=>`<div class="kf-mini slot">${makeImgHtml(m.img,m.nama)}</div>`).join('');
+    const extra=Math.max(0,ahli.length-maxShow);
     const plusHtml=extra>0?`<span class="kf-plus">+${extra}</span>`:'';
-    return `<div class="kunit">
+    return `<div class="kunit${isHero?' kunit-hero':''}">
       <div class="kunit-title">${esc(k.namaKader)}</div>
-      <div class="kunit-dirs${dirs.length>2?' dirs-many':''}">${dirs.map(renderStudentCard).join('')}</div>
+      <div class="kunit-dirs">${dirs.map(renderStudentCard).join('')}</div>
       <div class="kfolder-plate">
         <div role="button" tabindex="${locked?'-1':'0'}" class="kfolder" ${locked?'':'data-kidx="'+idx+'"'} aria-label="Buka senarai ahli ${esc(k.namaKader)} (${ahli.length} ahli)">
-          <div class="kfolder-in">
+          <div class="kfolder-in${gridCls}">
             ${shown}
             <div class="kf-expand" ${locked?'':'data-kidx="'+idx+'"'} title="Klik untuk lihat semua ahli ${esc(k.namaKader)}">
               ${expandSvg}
@@ -4470,21 +4531,39 @@ function openKaderModal(k){
 
   function buildOrgTree(Y, locked){
     const ks=Y.kaders||[];
-    const chunks=[];
-    for(let i=0;i<ks.length;i+=3) chunks.push({items:ks.slice(i,i+3), offset:i});
-    const rowsHtml = chunks.map((ch,ci)=>{
-      const isSingle = ch.items.length===1;
-      const topLine = isSingle ? '' : `<div class="kader-row-branch"><span></span><span></span></div>`;
-      const sep = ci>0 ? `<div class="org-v"></div>` : '';
-      return `${sep}${topLine}<div class="kader-row-grid${isSingle?' single':''}">${ch.items.map((k,i)=>renderKaderUnit2026(k,ch.offset+i,locked)).join('')}</div>`;
-    }).join('');
+    let treeBody='';
+    if(ks.length===7 && (ks[0].directors||[]).length>2){
+      // Piramid Seimbang 1 (Hero 4 Director) + 3 + 3 dengan garisan 100% bersambung
+      const tier1 = renderKaderUnit2026(ks[0], 0, locked, true);
+      const tier2 = ks.slice(1,4).map((k,i)=>renderKaderUnit2026(k, i+1, locked, false)).join('');
+      const tier3 = ks.slice(4,7).map((k,i)=>renderKaderUnit2026(k, i+4, locked, false)).join('');
+      treeBody = `
+        ${tier1}
+        <div class="org-v"></div>
+        <div class="kader-row-branch"><span></span><span></span></div>
+        <div class="kader-row-grid">${tier2}</div>
+        <div class="kader-row-join"><span></span><span></span></div>
+        <div class="org-v"></div>
+        <div class="kader-row-branch"><span></span><span></span></div>
+        <div class="kader-row-grid">${tier3}</div>`;
+    }else{
+      const chunks=[];
+      for(let i=0;i<ks.length;i+=3) chunks.push({items:ks.slice(i,i+3), offset:i});
+      treeBody = chunks.map((ch,ci)=>{
+        const isSingle = ch.items.length===1;
+        const topLine = isSingle ? '' : `<div class="kader-row-branch"><span></span><span></span></div>`;
+        const joinLine = (ci>0 && chunks[ci-1].items.length===3) ? `<div class="kader-row-join"><span></span><span></span></div>` : '';
+        const sep = ci>0 ? `${joinLine}<div class="org-v"></div>` : '';
+        return `${sep}${topLine}<div class="kader-row-grid${isSingle?' single':''}">${ch.items.map((k,i)=>renderKaderUnit2026(k,ch.offset+i,locked,false)).join('')}</div>`;
+      }).join('');
+    }
     return `
       <div class="org-row-2">${(Y.baris1||[]).map(renderStudentCard).join('')}</div>
       <div class="org-pair-bridge"><span class="l"></span><span class="r"></span></div>
       <div class="org-row-2">${(Y.baris2||[]).map(renderStudentCard).join('')}</div>
       <div class="org-pair-to-tree"><span class="l"></span><span class="r"></span></div>
       <div class="org-v"></div>
-      <div class="kader-tree-sec">${rowsHtml}</div>`;
+      <div class="kader-tree-sec">${treeBody}</div>`;
   }
 
   function buildYearHtml(yr){
