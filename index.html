@@ -942,11 +942,13 @@ body:has(#hdr.hide) .kader-float-bar{top:12px}
 .row b{flex:none;font:700 11px var(--ff-h);letter-spacing:.14em;text-transform:uppercase;background:var(--blue);color:#fff;padding:3px 10px 3px 8px;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 100%,0 100%)}
 .row.vip b{background:var(--yellow);color:var(--ink)}
 .row p{min-width:0;overflow-wrap:anywhere}
-.mdl-foot{padding:6px clamp(14px,2.4vw,24px) clamp(16px,2.6vw,26px);display:flex;justify-content:center}
+.mdl-foot{padding:6px clamp(14px,2.4vw,24px) clamp(16px,2.6vw,26px);display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
 .btn-drive{display:inline-flex;align-items:center;gap:12px;padding:12px 44px 12px 38px;font:700 15px var(--ff-h);letter-spacing:.18em;text-transform:uppercase;background:var(--blue);color:#fff;border:2px solid var(--ink);
   clip-path:polygon(16px 0,100% 0,calc(100% - 16px) 100%,0 100%);transition:background .25s,color .25s,transform .25s}
 .btn-drive svg{width:20px;height:20px}
 .btn-drive:hover{background:var(--yellow);color:var(--ink);transform:translateY(-3px)}
+.btn-drive.btn-yt-live{background:#d91f26;color:#fff;padding:12px 30px 12px 26px;letter-spacing:.12em}
+.btn-drive.btn-yt-live:hover{background:var(--yellow);color:var(--ink)}
 .ct{display:grid;grid-template-columns:1fr 1fr;gap:22px 24px;padding:clamp(18px,3vw,30px)}
 .ct-box{display:flex;gap:12px;align-items:flex-start;min-width:0}
 .ct-box>svg{flex:none;width:34px;height:34px;fill:none;stroke:var(--yellow);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -3052,7 +3054,9 @@ const CFG = {
           { k:'Masa', v:'7:30 pagi – 8:00 pagi' }
         ],
         perihal:'Penyampaian Hadis 40 kepada para pelajar.',
-        drive:'https://drive.google.com/drive/folders/1IOl-oWccdUgI9vC0ABr-hMc-Hsz7GVD3?usp=sharing'
+        drive:'https://drive.google.com/drive/folders/1IOl-oWccdUgI9vC0ABr-hMc-Hsz7GVD3?usp=sharing',
+        ytLive:'https://youtube.com/playlist?list=PLPEWwEkRsN8Y&si=BhV88Tc12OBKipOp',
+        ytLiveLabel:'Siaran Langsung (YouTube)'
       }
     },
     {
@@ -3880,7 +3884,13 @@ function openInfoObj(c, opts){
     body.insertAdjacentHTML('beforeend',`<div class="info one">${metaHtml}${perihalHtml}</div>`);
   }
   w.appendChild(body);
-  if(isReal(c.drive)) w.insertAdjacentHTML('beforeend', o.bts ? btsDriveFoot(c.drive) : `<div class="mdl-foot">${driveBtn(c.drive)}</div>`);
+  const ytBtnHtml = isReal(c.ytLive)
+    ? `<a class="btn-drive btn-yt-live" href="${esc(c.ytLive)}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>${esc(c.ytLiveLabel||'Siaran Langsung (YouTube)')}</a>`
+    : '';
+  if(isReal(c.drive) || ytBtnHtml){
+    if(o.bts && isReal(c.drive)) w.insertAdjacentHTML('beforeend', btsDriveFoot(c.drive));
+    else w.insertAdjacentHTML('beforeend', `<div class="mdl-foot">${ytBtnHtml}${driveBtn(c.drive)}</div>`);
+  }
   openModal(w,'');
 }
 
