@@ -2059,6 +2059,20 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
   .k24-head span{font-size:11px;padding:4px 14px;border-width:2px}
   .k24-name{flex:0 1 calc(25% - 6px) !important;padding:5px 4px !important;font-size:8.5px !important;border-width:1.5px !important;box-shadow:2px 2px 0 var(--blue) !important}
 }
+/* 9) Petunjuk animasi cubit zum (pinch-to-zoom) sementara di peta Kembara Kami */
+.map-zoom-cue{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.92);z-index:7;pointer-events:none;
+  display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 22px;text-align:center;
+  background:rgba(10,34,96,.9);border:2.5px solid var(--yellow);color:#fff;
+  clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+  box-shadow:0 12px 28px rgba(4,15,51,.48);opacity:0;visibility:hidden;transition:opacity .4s ease,transform .4s ease,visibility .4s}
+.map-zoom-cue.show{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+.map-zoom-cue svg{width:54px;height:54px;overflow:visible}
+.map-zoom-cue .pz-tl{animation:pzOutTL 1.6s ease-in-out infinite}
+.map-zoom-cue .pz-br{animation:pzOutBR 1.6s ease-in-out infinite}
+@keyframes pzOutTL{0%,100%{transform:translate(3px,3px)}50%{transform:translate(-4px,-4px)}}
+@keyframes pzOutBR{0%,100%{transform:translate(-3px,-3px)}50%{transform:translate(4px,4px)}}
+.map-zoom-cue strong{font:700 clamp(12px,1.5vw,14px)/1.2 var(--ff-h);letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}
+.map-zoom-cue span{font:500 clamp(11px,1.25vw,12.5px)/1.3 var(--ff-b);color:#eaf2ff}
 </style>
 </head>
 <body>
@@ -2255,6 +2269,20 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
             <button class="zbtn" id="zIn" aria-label="Zoom masuk"><svg viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></svg></button>
             <button class="zbtn" id="zOut" aria-label="Zoom keluar"><svg viewBox="0 0 24 24"><path d="M4 12h16"/></svg></button>
             <button class="zbtn" id="zReset" aria-label="Set semula peta"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+          </div>
+          <div class="map-zoom-cue" id="mapZoomCue" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <g class="pz-tl" stroke="#ffc720" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M26 26 L12 12 M12 22 V12 H22"/>
+                <circle cx="24" cy="24" r="5" fill="#ffc720" fill-opacity=".28"/>
+              </g>
+              <g class="pz-br" stroke="#ffc720" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M38 38 L52 52 M52 42 V52 H42"/>
+                <circle cx="40" cy="40" r="5" fill="#ffc720" fill-opacity=".28"/>
+              </g>
+            </svg>
+            <strong>Cubit Untuk Zum Peta</strong>
+            <span>Guna 2 jari atau butang + / &minus;</span>
           </div>
           <div class="map-hint">CTRL + SKROL / CUBIT UNTUK ZOOM &bull; SERET UNTUK GERAK &bull; PILIH PIN DI BAWAH</div>
         </div>
@@ -4298,6 +4326,26 @@ function openKaderModal(k){
    ===================================================================== */
 (function(){
   const stage=$('#mapStage'),svg=$('#mapSvg'),pinsG=$('#mapPins'),depthG=$('#mapDepth'),statesG=$('#mapStates'),shadow=$('#mapShadow'),tip=$('#pinTip'),pillsBox=$('#mapPills'),box=stage.parentElement;
+
+  // Papar simbol petunjuk cubit-zum selama beberapa saat apabila pengguna sampai ke peta Kembara Kami
+  const zCue=$('#mapZoomCue');
+  if(zCue){
+    let cueShown=false, cueTm=0;
+    const hideCue=()=>{zCue.classList.remove('show');clearTimeout(cueTm)};
+    const showCue=()=>{
+      if(cueShown)return;
+      cueShown=true;
+      zCue.classList.add('show');
+      cueTm=setTimeout(hideCue, 4600);
+    };
+    ['pointerdown','touchstart','wheel'].forEach(ev=>stage.addEventListener(ev,hideCue,{passive:true}));
+    if('IntersectionObserver' in window){
+      const io=new IntersectionObserver(en=>{
+        if(en[0].isIntersecting){showCue();io.disconnect()}
+      },{threshold:.35});
+      io.observe(stage);
+    }else{showCue()}
+  }
   $('#myP').setAttribute('d',MAP.d);
   const NS='http://www.w3.org/2000/svg';
   const mk=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
