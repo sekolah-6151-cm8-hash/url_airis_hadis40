@@ -2154,6 +2154,58 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
 /* Footer Hadis */
 .foot-p{max-width:64ch;line-height:1.65}
 .foot-riwayat{display:block;margin-top:4px;font-size:13.5px;font-weight:600;color:var(--ink);opacity:.86}
+
+/* 11) Butang & Pop-up Reaksi & Testimoni (Grid 3 lajur laptop, 2 lajur phone) */
+.testi-cta{margin-top:clamp(14px,2vw,22px);margin-bottom:6px;padding:0 var(--pad)}
+.btn-reaksi{display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:12px clamp(20px,3vw,34px);
+  background:#d91f26;color:#fff;border:2.5px solid var(--ink);
+  font:700 clamp(13px,1.5vw,15.5px)/1.15 var(--ff-h);letter-spacing:.14em;text-transform:uppercase;
+  clip-path:polygon(16px 0,100% 0,calc(100% - 16px) 100%,0 100%);
+  filter:drop-shadow(5px 5px 0 var(--yellow));
+  transition:transform .22s ease,background .22s ease,color .22s ease,filter .22s ease;cursor:pointer}
+.btn-reaksi svg{width:20px;height:20px;flex:none}
+.btn-reaksi:hover{background:var(--yellow);color:var(--ink);transform:translateY(-3px);filter:drop-shadow(7px 7px 0 var(--ink))}
+.btn-reaksi:active{transform:translateY(-1px)}
+
+.mdl.reaksi-mdl{width:min(860px,96vw)}
+.reaksi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rk-card{display:flex;flex-direction:column;gap:7px;text-align:left;cursor:pointer;color:var(--ink);text-decoration:none;transition:transform .2s ease}
+.rk-card:hover{transform:translateY(-3px)}
+.rk-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border:2px solid var(--ink);background:#071538;
+  box-shadow:3px 3px 0 var(--blue-d);transition:box-shadow .2s ease,border-color .2s ease}
+.rk-card:hover .rk-thumb{border-color:var(--blue);box-shadow:4px 4px 0 var(--yellow)}
+.rk-thumb>img.rk-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transition:transform .35s ease}
+.rk-card:hover .rk-thumb>img.rk-img{transform:scale(1.05)}
+.rk-tt-bg{position:absolute;inset:0;background:radial-gradient(circle at 25% 25%,rgba(37,244,238,.28),transparent 48%),radial-gradient(circle at 78% 78%,rgba(254,44,85,.3),transparent 52%),linear-gradient(145deg,#071538,#11121c);
+  display:flex;align-items:center;justify-content:center}
+.rk-tt-bg img.rk-tt-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34;filter:blur(1.5px)}
+.rk-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:40px;height:40px;border-radius:50%;
+  background:rgba(10,34,96,.82);border:2px solid #fff;color:#fff;display:grid;place-items:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform .2s ease,background .2s ease,color .2s ease}
+.rk-play svg{width:17px;height:17px;fill:currentColor;margin-left:2px}
+.rk-card:hover .rk-play{transform:translate(-50%,-50%) scale(1.1);background:var(--yellow);color:var(--ink);border-color:var(--ink)}
+.rk-plat{position:absolute;left:6px;top:6px;z-index:3;padding:2px 7px;font:700 9.5px/1.2 var(--ff-h);letter-spacing:.08em;text-transform:uppercase;
+  color:#fff;border:1.5px solid rgba(255,255,255,.85);clip-path:polygon(5px 0,100% 0,calc(100% - 5px) 100%,0 100%)}
+.rk-plat.yt{background:#d91f26}
+.rk-plat.tt{background:#111;border-color:#25F4EE}
+.rk-plat.ig{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)}
+.rk-time{position:absolute;right:6px;bottom:6px;z-index:3;padding:2px 6px;background:rgba(7,21,56,.88);color:var(--yellow);
+  font:700 10px/1.2 var(--ff-h);letter-spacing:.06em;border:1px solid rgba(255,199,32,.65)}
+.rk-title{font:700 12.5px/1.3 var(--ff-b);color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rk-player-wrap{display:flex;flex-direction:column;gap:10px}
+.rk-player-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.rk-back{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--sky);color:var(--ink);border:2px solid var(--ink);
+  font:700 12px/1.1 var(--ff-h);letter-spacing:.08em;text-transform:uppercase;
+  clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);cursor:pointer;transition:background .2s,color .2s}
+.rk-back:hover{background:var(--yellow);color:var(--ink)}
+.rk-now{font:700 13px/1.25 var(--ff-h);letter-spacing:.05em;color:var(--blue-dd);min-width:0;flex:1}
+@media (max-width:640px){
+  .reaksi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .rk-play{width:34px;height:34px}
+  .rk-play svg{width:14px;height:14px}
+  .rk-title{font-size:11.5px}
+  .btn-reaksi{padding:10px 20px;font-size:12.5px;letter-spacing:.1em}
+}
 </style>
 </head>
 <body>
@@ -2436,6 +2488,12 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
         <h2 class="sec-title" style="padding-top:calc(var(--n) * .3)">Testimoni</h2>
       </div>
       <div class="mq tcards" id="tcards"><div class="mq-track" id="tTrack"></div></div>
+      <div class="cta-row testi-cta">
+        <button type="button" class="btn-reaksi" id="btnReaksi" aria-label="Tonton Reaksi dan Testimoni">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+          <span>TONTON REAKSI &amp; TESTIMONI</span>
+        </button>
+      </div>
     </section>
 
     <section class="sec sec-rakan tab-r on-blue" id="rakan">
@@ -3311,6 +3369,42 @@ const CFG = {
     { img:'ustazsaf_pp.webp', quote:'Uishh tak penah ustaz tengok sekolah buat inovasi dekat Roblox', nama:'Ustaz SAF', jawatan:'Guru' },
     { img:'@ssupd14na_pp.webp', quote:'banyakkan content macam ni 😍😍, saya nak repost banyak2 biar anak muda nampak cara “main” roblox dengan betul 🥰✨🤝', nama:'@ssupd14na', jawatan:'Netizen' },
     { img:'Omar_pp.webp', quote:'Inisiatif Hadis 40 dalam Roblox ini baik didedahkan seawal prasekolah dan Tahun 1 supaya permainan di rumah lebih bermanfaat.', nama:'Tuan Haji Omar bin Salleh', jawatan:'Pengarah Bahagian Pendidikan Islam, KPM' }
+  ],
+
+  // REAKSI & TESTIMONI VIDEO (POP-UP GRID KECIL)
+  reaksiPlaylist: 'https://youtube.com/playlist?list=PLLn5XWkvXa3s&si=nsVUbK6HCHLRg1MP',
+  reaksiVideos: [
+    {
+      title: 'Reaksi Cikgu Zyd Gaming (Live)',
+      platform: 'YouTube',
+      platCls: 'yt',
+      ytId: 'jsMFtkuiC8w',
+      start: 9039,
+      timeLabel: '2:30:39',
+      link: 'https://www.youtube.com/live/jsMFtkuiC8w?t=9039&si=SJ8B_ZnTXliEdPdp'
+    },
+    {
+      title: 'Sorotan TVPSS Al-Irshad #1',
+      platform: 'TikTok',
+      platCls: 'tt',
+      cover: '5hero.webp',
+      link: 'https://vt.tiktok.com/ZSsjDC2Pu/'
+    },
+    {
+      title: 'Sorotan TVPSS Al-Irshad #2',
+      platform: 'TikTok',
+      platCls: 'tt',
+      cover: '4hero.webp',
+      link: 'https://vt.tiktok.com/ZSsjUEbaT/'
+    },
+    {
+      title: 'Generasi yang TERLEKA? | AIRIS TVPSS',
+      platform: 'YouTube',
+      platCls: 'yt',
+      ytId: 'ZJZ3ST232fA',
+      start: 0,
+      link: 'https://youtu.be/ZJZ3ST232fA?si=e23-wc8ZC8qabAnQ'
+    }
   ],
 
   // RAKAN STRATEGIK (9)
@@ -4252,6 +4346,61 @@ function openHubungi(){
   openModal(w,'blue');
 }
 $('#btnContact').addEventListener('click',openHubungi);
+
+/* Modal Reaksi & Testimoni (Grid 3 lajur laptop, 2 lajur phone + pemain YouTube terus ke minit mula) */
+function openReaksiModal(){
+  const list = CFG.reaksiVideos || [];
+  const w = el('div');
+  w.innerHTML = head('Reaksi & Testimoni');
+  const body = el('div','mdl-body');
+  const playIco = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+
+  function renderGrid(){
+    body.innerHTML = `<div class="reaksi-grid">${list.map((v,i)=>{
+      const isYt = !!v.ytId;
+      const thumbInner = isYt
+        ? `<img class="rk-img" src="https://i.ytimg.com/vi/${encodeURIComponent(v.ytId)}/hqdefault.jpg" alt="${esc(v.title)}" loading="lazy" decoding="async">`
+        : `<div class="rk-tt-bg">${v.cover?`<img class="rk-tt-photo" src="${esc(v.cover)}" alt="" loading="lazy" decoding="async">`:''}</div>`;
+      const timeHtml = v.timeLabel ? `<span class="rk-time">${esc(v.timeLabel)}</span>` : '';
+      const cardInner = `<div class="rk-thumb">${thumbInner}<span class="rk-plat ${esc(v.platCls||'yt')}">${esc(v.platform||'Video')}</span>${timeHtml}<span class="rk-play" aria-hidden="true">${playIco}</span></div><span class="rk-title">${esc(v.title)}</span>`;
+      if(isYt){
+        return `<button type="button" class="rk-card" data-rki="${i}" aria-label="${esc(v.title)}">${cardInner}</button>`;
+      }
+      return `<a class="rk-card" href="${esc(v.link)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(v.title)} (${esc(v.platform||'Pautan Luar')})">${cardInner}</a>`;
+    }).join('')}</div>`;
+    $$('.rk-card[data-rki]', body).forEach(btn=>{
+      btn.onclick = () => renderPlayer(list[+btn.dataset.rki]);
+    });
+  }
+
+  function renderPlayer(v){
+    if(!v || !v.ytId) return;
+    const startParam = v.start ? `&start=${encodeURIComponent(v.start)}` : '';
+    const embedUrl = `https://www.youtube.com/embed/${encodeURIComponent(v.ytId)}?autoplay=1&rel=0&modestbranding=1${startParam}`;
+    body.innerHTML = `<div class="rk-player-wrap">
+      <div class="rk-player-bar">
+        <button type="button" class="rk-back" id="rkBack">&lsaquo; Senarai Video</button>
+        <span class="rk-now">${esc(v.title)}${v.timeLabel?' ('+esc(v.timeLabel)+')':''}</span>
+        <a class="pdf-ext-link" href="${esc(v.link)}" target="_blank" rel="noopener noreferrer"><span>Buka di YouTube</span></a>
+      </div>
+      <div class="yt-mdl-stage">
+        <iframe src="${embedUrl}" title="${esc(v.title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>`;
+    document.dispatchEvent(new CustomEvent('airis:videoplay'));
+    const bk = $('#rkBack', body);
+    if(bk) bk.onclick = renderGrid;
+  }
+
+  renderGrid();
+  w.appendChild(body);
+  if(isReal(CFG.reaksiPlaylist)){
+    w.insertAdjacentHTML('beforeend', `<div class="mdl-foot"><a class="pdf-ext-link" href="${esc(CFG.reaksiPlaylist)}" target="_blank" rel="noopener noreferrer"><span>Buka Playlist YouTube</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5"/><path d="M10 14 19 5"/><path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg></a></div>`);
+  }
+  openModal(w,'pop-flex reaksi-mdl');
+}
+const btnReaksi = $('#btnReaksi');
+if(btnReaksi) btnReaksi.addEventListener('click', openReaksiModal);
 
 /* Pop-up Khas Watak (Epik, Animasi Terapung, Parallax, Tiada label Perihal) */
 function openWatakModal(c){
