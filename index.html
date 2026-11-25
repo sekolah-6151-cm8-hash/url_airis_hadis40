@@ -2113,12 +2113,10 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
   display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;
   box-shadow:0 -6px 18px rgba(10,34,96,.08);z-index:5}
 .mdl.pop-flex .mdl-foot.bts-foot{margin-top:0;padding-top:9px;gap:6px;border-top:2.5px solid var(--sky2)}
-.mdl.pop-flex .gal-view,.mdl.pop-flex .krono-stage{max-height:46dvh}
 .mdl.pop-flex .btn-drive{padding:10px 30px 10px 26px;font-size:14px;letter-spacing:.14em}
 .mdl.pop-flex .btn-drive.btn-yt-live{padding:10px 24px 10px 20px;font-size:13.5px;letter-spacing:.1em;background:#d91f26;color:#fff}
 .mdl.pop-flex .btn-drive.btn-yt-live:hover{background:var(--yellow);color:var(--ink)}
 @media (max-width:600px){
-  .mdl.pop-flex .gal-view,.mdl.pop-flex .krono-stage{max-height:36dvh}
   .mdl.pop-flex .mdl-foot{padding:8px 10px 11px;gap:8px}
   .mdl.pop-flex .btn-drive{padding:8px 18px 8px 16px;font-size:12px;letter-spacing:.1em;gap:8px}
   .mdl.pop-flex .btn-drive.btn-yt-live{padding:8px 16px 8px 14px;font-size:11.5px;letter-spacing:.07em}
@@ -2127,7 +2125,10 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
 
 /* Semua paparan gambar & bar thumbnail sentiasa berpusat tepat di tengah pada semua peranti */
 .slot>img{object-position:center center}
-.gal-view,.krono-stage{width:100%;margin-inline:auto}
+.gal-view,.krono-stage{width:min(100%,calc(58dvh * 1.6));max-width:100%;max-height:58dvh;margin-inline:auto}
+@media (max-width:600px){
+  .gal-view,.krono-stage{width:min(100%,calc(50dvh * 1.333));max-height:50dvh}
+}
 .gal-track{width:100%;height:100%}
 .gal-s.slot{flex:0 0 100%;width:100%;height:100%;display:flex !important;align-items:center !important;justify-content:center !important;background:#071538 !important;overflow:hidden}
 .gal-s>img{position:relative !important;inset:auto !important;width:100% !important;height:100% !important;object-fit:contain !important;object-position:center center !important;margin:auto !important;display:block}
