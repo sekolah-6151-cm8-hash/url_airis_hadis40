@@ -2259,20 +2259,52 @@ body:has(#hdr.hide) .kader-float-bar{top:8px !important}
   .prog-foot-note{font-size:11.5px}
 }
 
-/* 13) Pop-up Khas Kod 40 (?pop=kod40) */
-.mdl.kod40-mdl{width:min(560px,94vw)}
-.kod40-pop{position:relative;padding:clamp(28px,4vw,42px) clamp(20px,3.6vw,34px) clamp(26px,3.6vw,36px);text-align:center;
-  background:repeating-linear-gradient(135deg,rgba(40,119,254,.045) 0 2px,transparent 2px 16px),linear-gradient(160deg,#ffffff 0%,#eaf2ff 68%,#dbe9ff 100%)}
-.kod40-logos{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,26px);flex-wrap:wrap;margin:10px auto 20px}
-.kod40-logo-box{height:clamp(68px,11vw,94px);min-width:clamp(88px,16vw,136px);padding:10px 16px;background:#fff;border:2.5px solid var(--ink);
-  display:flex;align-items:center;justify-content:center;box-shadow:5px 5px 0 var(--blue-d);
-  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
-.kod40-logo-box img{max-height:100%;max-width:clamp(100px,22vw,160px);width:auto;height:auto;object-fit:contain;display:block}
-.kod40-x-sep{font:700 clamp(18px,2.6vw,24px)/1 var(--ff-h);color:var(--blue-d);opacity:.75;user-select:none}
-.kod40-badge{display:inline-block;padding:10px clamp(22px,4vw,38px);background:var(--yellow);color:var(--ink);border:3px solid var(--ink);
-  font:700 clamp(20px,3.8vw,32px)/1.1 var(--ff-h);letter-spacing:.14em;text-transform:uppercase;
+/* 13) Pop-up Khas Kod 40 (?pop=kod40) dengan watak Ridzuan (kiri) & Mija (kanan) */
+.mdl.kod40-mdl{width:min(880px,95vw)}
+.kod40-pop{position:relative;overflow:hidden;
+  padding:clamp(26px,3.6vw,40px) clamp(16px,3vw,32px) clamp(24px,3.2vw,34px);text-align:center;
+  background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.95) 0%,rgba(232,243,255,.92) 52%,rgba(205,227,255,.95) 100%),
+    repeating-linear-gradient(135deg,rgba(40,119,254,.055) 0 2px,transparent 2px 16px)}
+.kod40-pop::before{content:"";position:absolute;left:-60px;bottom:-60px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,rgba(40,119,254,.16),transparent 70%);pointer-events:none}
+.kod40-pop::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,199,32,.22),transparent 70%);pointer-events:none}
+.kod40-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(140px,210px) 1fr minmax(140px,210px);
+  align-items:end;gap:clamp(10px,2vw,22px)}
+.kod40-char{position:relative;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;user-select:none}
+.kod40-char img{width:100%;max-height:clamp(220px,31vw,320px);height:auto;object-fit:contain;display:block;
+  filter:drop-shadow(0 12px 18px rgba(10,34,96,.22));will-change:transform}
+.kod40-char.left img{animation:kod40InL .65s cubic-bezier(.2,.9,.25,1) both, kod40Float 4.4s ease-in-out .65s infinite}
+.kod40-char.right img{animation:kod40InR .65s cubic-bezier(.2,.9,.25,1) .08s both, kod40Float 4.4s ease-in-out -1.5s infinite}
+@keyframes kod40InL{from{opacity:0;transform:translateX(-28px) translateY(14px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes kod40InR{from{opacity:0;transform:translateX(28px) translateY(14px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes kod40Float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.kod40-center{display:flex;flex-direction:column;align-items:center;justify-content:center;align-self:center;padding:6px 0}
+.kod40-eyebrow{display:inline-block;margin-bottom:12px;padding:4px 14px;background:var(--ink);color:var(--yellow);border:1.8px solid var(--yellow);
+  font:700 11px/1.1 var(--ff-h);letter-spacing:.18em;text-transform:uppercase;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.kod40-logos{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.8vw,18px);flex-wrap:nowrap;margin:0 auto 18px}
+.kod40-logo-box{height:clamp(58px,8vw,82px);min-width:clamp(76px,11vw,118px);padding:8px 13px;background:#fff;border:2.5px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 var(--blue-d);
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+.kod40-logo-box img{max-height:100%;max-width:clamp(84px,14vw,136px);width:auto;height:auto;object-fit:contain;display:block}
+.kod40-x-sep{font:700 clamp(16px,2.2vw,22px)/1 var(--ff-h);color:var(--blue-d);opacity:.8;user-select:none}
+.kod40-badge{display:inline-block;padding:10px clamp(20px,3vw,34px);background:var(--yellow);color:var(--ink);border:3px solid var(--ink);
+  font:700 clamp(19px,3vw,30px)/1.1 var(--ff-h);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
   clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);box-shadow:6px 6px 0 var(--blue-dd)}
-.kod40-sub{margin:16px auto 0;max-width:40ch;font:500 clamp(13.5px,1.5vw,15px)/1.55 var(--ff-b);color:#203a75}
+.kod40-sub{margin:15px auto 0;max-width:36ch;font:500 clamp(13px,1.4vw,14.5px)/1.55 var(--ff-b);color:#203a75}
+.kod40-hint-blue{display:block;margin-top:8px;font-weight:700;color:var(--blue)}
+@media (max-width:680px){
+  .kod40-pop{padding:22px 14px 22px}
+  .kod40-grid{grid-template-columns:1fr 1fr;gap:10px 8px;align-items:end}
+  .kod40-char.left{grid-column:1;grid-row:1;justify-content:flex-end}
+  .kod40-char.right{grid-column:2;grid-row:1;justify-content:flex-start}
+  .kod40-char img{max-height:clamp(150px,42vw,210px);width:auto;max-width:100%}
+  .kod40-center{grid-column:1 / -1;grid-row:2;padding-top:4px}
+  .kod40-logos{margin-bottom:14px}
+  .kod40-logo-box{height:56px;min-width:80px;padding:7px 11px}
+  .kod40-badge{font-size:20px;padding:8px 22px}
+}
 </style>
 </head>
 <body>
@@ -4686,13 +4718,20 @@ if(btnReaksi) btnReaksi.addEventListener('click', openReaksiModal);
 function openKod40Modal(){
   const w = el('div','kod40-pop');
   w.innerHTML = `<button class="x" aria-label="Tutup">${XI}</button>
-    <div class="kod40-logos">
-      <div class="kod40-logo-box"><img src="Universe_ropix_logo.webp" alt="Logo RoPix Universe" decoding="async"></div>
-      <span class="kod40-x-sep" aria-hidden="true">&times;</span>
-      <div class="kod40-logo-box"><img src="kod40_logo.webp" alt="Logo Kod 40" decoding="async"></div>
-    </div>
-    <div class="kod40-badge">AKAN DATANG 2027</div>
-    <p class="kod40-sub">Projek baharu di bawah ekosistem RoPix Universe. Tekan butang <strong>&times;</strong> untuk meneroka Platform Digital Hadis 40 Imam Nawawi.</p>`;
+    <div class="kod40-grid">
+      <div class="kod40-char left"><img src="kod40_ridzuan_front.webp" alt="Ridzuan | Kod 40" decoding="async"></div>
+      <div class="kod40-center">
+        <span class="kod40-eyebrow">NANTIKAN PELANCARAN</span>
+        <div class="kod40-logos">
+          <div class="kod40-logo-box"><img src="Universe_ropix_logo.webp" alt="Logo RoPix Universe" decoding="async"></div>
+          <span class="kod40-x-sep" aria-hidden="true">&times;</span>
+          <div class="kod40-logo-box"><img src="kod40_logo.webp" alt="Logo Kod 40" decoding="async"></div>
+        </div>
+        <div class="kod40-badge">AKAN DATANG 2027</div>
+        <p class="kod40-sub">Projek baharu di bawah ekosistem RoPix Universe.<span class="kod40-hint-blue">Tekan butang &times; untuk meneroka Platform Digital Hadis 40 Imam Nawawi.</span></p>
+      </div>
+      <div class="kod40-char right"><img src="kod40_mija_front.webp" alt="Mija | Kod 40" decoding="async"></div>
+    </div>`;
   openModal(w,'kod40-mdl');
 }
 window._openKod40Modal = openKod40Modal;
